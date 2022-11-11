@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="./index_files/analytics.js.download"></script><script async="" src="./index_files/js"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-V7B9DQ480D');
+        </script>
+    
+    
+    <title>Mathematical methods for economic theory: 5.1 Necessary conditions for an interior optimum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="Mathematical methods for economic theory: necessary conditions for an interior optimum">
+        <meta name="keywords" content="mathematical methods, economic theory, optimization, interior optimum, necessary conditions">
+        
+        <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
+    <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
+    <link rel="stylesheet" href="./index_files/mathTutorial.css" type="text/css">
+    
+    <link rel="shortcut icon" href="https://mjo.osborne.economics.utoronto.ca/icon.png" type="image/png">
+    <link rel="icon" href="https://mjo.osborne.economics.utoronto.ca/icon.png" type="image/png">
+
+
+        <script type="text/javascript" src="./index_files/SurfacePlot.js.download"></script>
+    <script type="text/javascript" src="./index_files/ColourGradient.js.download"></script>
+    <script type="text/javascript" src="./index_files/glMatrix-0.9.5.min.js.download"></script>
+    <script type="text/javascript" src="./index_files/webgl-utils.js.download"></script>
+
+    
+    <script id="shader-fs" type="x-shader/x-fragment">
+        #ifdef GL_ES
+        precision highp float;
+        #endif
+
+        varying vec4 vColor;
+        varying vec3 vLightWeighting;
+
+        void main(void)
+        {
+            gl_FragColor = vec4(vColor.rgb * vLightWeighting, vColor.a);
+        }
+    </script>
+
+    <script id="shader-vs" type="x-shader/x-vertex">
+        attribute vec3 aVertexPosition;
+        attribute vec3 aVertexNormal;
+        attribute vec4 aVertexColor;
+
+        uniform mat4 uMVMatrix;
+        uniform mat4 uPMatrix;
+        uniform mat3 uNMatrix;
+        varying vec4 vColor;
+
+        uniform vec3 uAmbientColor;
+        uniform vec3 uLightingDirection;
+        uniform vec3 uDirectionalColor;
+        varying vec3 vLightWeighting;
+
+        void main(void)
+        {
+            gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+            vec3 transformedNormal = uNMatrix * aVertexNormal;
+            float directionalLightWeighting = max(dot(transformedNormal, uLightingDirection), 0.0);
+            vLightWeighting = uAmbientColor + uDirectionalColor * directionalLightWeighting;
+
+            vColor = aVertexColor;
+        }
+    </script>
+
+    <script id="axes-shader-fs" type="x-shader/x-fragment">
+        precision mediump float;
+                    varying vec4 vColor;
+
+                    void main(void)
+                    {
+                            gl_FragColor = vColor;
+                    }
+    </script>
+
+    <script id="axes-shader-vs" type="x-shader/x-vertex">
+        attribute vec3 aVertexPosition;
+                    attribute vec4 aVertexColor;
+                    uniform mat4 uMVMatrix;
+                    uniform mat4 uPMatrix;
+                    varying vec4 vColor;
+                    uniform vec3 uAxesColour;
+
+                    void main(void)
+                    {
+                            gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+                            vColor =  vec4(uAxesColour, 1.0);
+                    }
+    </script>
+
+    <script id="texture-shader-fs" type="x-shader/x-fragment">
+        #ifdef GL_ES
+        precision highp float;
+        #endif
+
+        varying vec2 vTextureCoord;
+
+        uniform sampler2D uSampler;
+
+        void main(void)
+        {
+            gl_FragColor = texture2D(uSampler, vTextureCoord);
+        }
+    </script>
+
+    <script id="texture-shader-vs" type="x-shader/x-vertex">
+        attribute vec3 aVertexPosition;
+
+        attribute vec2 aTextureCoord;
+        varying vec2 vTextureCoord;
+
+        uniform mat4 uMVMatrix;
+        uniform mat4 uPMatrix;
+
+        void main(void)
+        {
+            gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+            vTextureCoord = aTextureCoord;
+        }
+    </script>
+    
+
+    <script type="text/javascript">
+    
+        function toggleSolution(solutionId) {
+                var domStyle = getBrowserObject(solutionId,1);
+                domStyle.display = (domStyle.display == "block") ? "none" : "block";
+        }
+
+        function toggleProof(id1, id2) {
+                var domStyle1 = getBrowserObject(id1,1);
+                domStyle1.display = (domStyle1.display == "block") ? "none" : "block";
+                var domStyle2 = getBrowserObject(id2,1);
+                domStyle2.display = (domStyle2.display == "inline") ? "none" : "inline";
+        }
+
+
+        function showProof(id) {
+                var domStyleProof = getBrowserObject('f:' + id,1);
+                domStyleProof.display = "block";
+                var domStyleLink = getBrowserObject(id,1);
+                domStyleLink.display = "none";
+        }
+
+        function hideProof(id) {
+                var domStyleProof = getBrowserObject('f:' + id,1);
+                domStyleProof.display = "none";
+                var domStyleLink = getBrowserObject(id,1);
+                domStyleLink.display = "inline";
+        }
+
+        function toggleCommentForm() {
+        var domStyle = getBrowserObject('commentForm',1);
+        domStyle.display = (domStyle.display == "block") ? "none" : "block";
+        }
+
+        function validateForm() {
+            var x = document.forms["tutorialComment"]["captcha"].value;
+            if (x != "abcdef") {
+                alert("Error in last field");
+                return false;
+            }
+        }
+    
+        
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-72053428-1', 'auto');
+        ga('send', 'pageview');
+    
+        </script>
+
+    <script type="text/javascript" src="./index_files/general.js.download"></script>
+    </head>
+
+<body style="margin:0;">
+<div class="container">
+
+<header>
+    <div class="header">
+        <div id="headerTitle">
+            <h1>Mathematical methods for economic theory</h1>
+            <a href="https://www.economics.utoronto.ca/osborne/" class="title">Martin J. Osborne</a>
+        </div>
+
+        <div class="menuBar">
+            <span class="leftMenu">
+                <span class="hideable">
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Optimization: interior optima"></a>
+                                </span>
+
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Optimization: interior optima"></a>
+                
+                <span class="tab">
+                    <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
+                </span>
+
+                                    <span class="tab">
+                        <span class="text"><span class="boldUppercase">Text</span></span>
+                    </span>
+
+                                            <span class="tab">
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/x" class="menuAction">Exercises</a></span>
+                        </span>
+                                    
+            </span>  <!-- leftMenu -->
+
+            <span class="rightMenu">
+                            <span class="tab">
+                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
+                </span>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/30"><img alt="Next page" src="./index_files/next.gif" height="20" title="Local optima"></a>
+                            <span class="hideable">
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/32"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Equality constraints"></a>
+                                </span>
+            </span>
+        </div>  <!-- menuBar -->
+
+    </div> <!-- div class="header" -->
+</header>
+
+<div class="body">
+
+    <div id="acknowledgment" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <p>Thank you for your comment.  The author of the tutorial has been notified.</p>
+        </div>
+    </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('acknowledgment');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+    <article>
+        <div id="text">
+
+        <header>
+            <h2>5.1 Necessary conditions for an interior optimum</h2>
+        </header>
+
+	<h3>One variable</h3>
+From your previous study of mathematics, you probably know that if the function <i style="padding-right:0.2em;">f</i> of a single variable is differentiable and <i>I</i> is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF">interval</a> of numbers then there is a relationship between the solutions of the problem
+<div class="equation">max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>I</i></div>
+and the points in <i>I</i> at which the first derivative of <i style="padding-right:0.2em;">f</i> is zero—that is, the stationary points of <i style="padding-right:0.2em;">f</i>.
+<div class="definition" id="d:stationaryPoint1"><dl class="definition"><dt>Definition</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of a single variable</a> defined on a set <i>S</i>. A point <i>x</i>&nbsp;∈ <i>S</i> at which <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable</a> and <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0 is a <span id="stationaryPoints"><span class="definition">stationary point
+of</span></span> <i style="padding-right:0.2em;">f</i>.
+</dd></dl></div>
+What precisely is this relationship?  Consider the cases in the three figures.
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
+	
+     <path d="M 5,75 
+	    C 105,55 73.535534,-67.525126 195,70" style="fill:none;stroke:#ff0000;stroke-width:2;"></path>
+	 
+	 <path d="M110,10
+	    L110,80" class="guideline"></path>
+	 
+     <text x="5" y="95" style="text-anchor:middle;"><tspan font-style="italic">a</tspan></text>
+     <text x="195" y="95" style="text-anchor:middle;"><tspan font-style="italic">b</tspan></text>
+     <text x="110" y="95" style="text-anchor:middle;"><tspan font-style="italic">x</tspan>*</text>
+     <text x="165" y="20" style="text-anchor:middle;fill:#ff0000;"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)</text>
+
+	 
+	   </svg>
+&nbsp;&nbsp;
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
+	
+  <path d="M 80,80 80,3.1464176" class="guideline"></path>
+	 
+  <path d="M 115,80 115,36.4018" class="guideline"></path>
+  
+  <path d="M 136,80 136,29" class="guideline"></path>
+  
+  <path d="M 195,80 195,70" class="guideline"></path>
+
+	 <path d="M 5,75 C 47.921159,56.698727 55.995913,11.527694 77.363718,3.097309 92.39408,-2.832722 95.043772,48.18612 126.19416,31.83633 145.61001,21.645607 167.59115,39.056464 195,70" style="fill:none;stroke:#ff0000;stroke-width:2"></path>
+  <text x="5" y="95" style="text-anchor:middle;">
+    <tspan font-style="italic">a</tspan>
+  </text>
+  
+  <text x="195" y="95" style="text-anchor:middle;">
+    <tspan font-style="italic">b</tspan>
+  </text>
+
+  <text x="80" y="95" style="text-anchor:middle">
+     <tspan style="font-style:italic">x</tspan>*
+  </text>
+  
+  <text x="165" y="25" style="text-anchor:middle;fill:#ff0000;">
+	 <tspan style="font-style:italic">f</tspan>(<tspan font-style="italic">x</tspan>)
+  </text>
+  
+  <text x="115" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">x'</tspan>
+  </text>
+
+  <text x="136" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">x''</tspan>
+  </text>
+</svg>
+&nbsp;&nbsp;
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
+	
+  <path d="M 151,80 151,70" class="guideline"></path>
+	 
+  <path d="M 65,80 65,41.386294" class="guideline"></path>
+  
+  <path d="M 195,80, 195,41.386293" class="guideline"></path>
+
+  <path d="M 8,80 8,9.3769472" class="guideline"></path>
+
+	 <path d="M 8,9.2679127 
+	    C 30.16415,37.072559 41.044339,41 65,41 118.75524,41 120.90047,71 151,71 173.04371,71 181.60984,54.944314 195,41.962617" style="fill:none;stroke:#ff0000;stroke-width:2"></path>
+  <text x="8" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">a</tspan>
+  </text>
+  <text x="195" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">b</tspan>
+  </text>
+  <text x="65" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">x'</tspan>
+  </text>
+  
+  <text x="125" y="45" style="text-anchor:middle;fill:#ff0000;">
+	 <tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)
+  </text>
+
+  <text x="151" y="95" style="text-anchor:middle">
+    <tspan style="font-style:italic">x''</tspan>
+  </text>
+</svg></p><ul>
+   <li>The function in the left figure has a unique stationary point <i>x</i>*, which is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#globalMaximizer">global maximizer</a> of the function.
+   </li><li>The function in the middle figure has three stationary points, <i>x</i>*, <i>x</i>', and <i>x</i>".  The point <i>x</i>* is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#globalMaximizer">global maximizer</a> of the function, while <i>x</i>' is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local</a> (though not global) minimizer and <i>x</i>" is a local (but not global) maximizer.
+   </li><li>The function in the right figure has two stationary points, <i>x</i>' and <i>x</i>".  The point <i>x</i>' is neither a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer</a> nor a local minimizer; <i>x</i>" is a global minimizer.
+</li></ul>
+We see that
+<ul>
+   <li>a stationary point is not necessarily a global maximizer, or even a local maximizer, or even a local optimizer of any sort (maximizer or minimizer) (consider <i>x</i>' in the right-hand figure)
+   </li><li>a global maximizer is not necessarily a stationary point (consider <i>a</i> in the right-hand figure).
+</li></ul>
+
+That is, being a stationary point is <b>neither</b> a necessary condition nor a sufficient condition for solving the problem.  So what <i>is</i> the relation between stationary points and maximizers?
+<p>
+Although a maximizer may not be a stationary point, the only case in which it is not is when it is one of the endpoints of the interval <i>I</i> on which <i style="padding-right:0.2em;">f</i> is defined.  That is, any point <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:intervalInterior"><i>interior</i></a> to this interval that is a maximizer must be a stationary point.
+</p><div class="result" id="p:NecCond1"><dl class="result"><dt>Proposition 5.1.1 <span id="NecCond1" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;NecCond1&#39;)" class="showProof">proof</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of a single variable</a> defined on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:interval">interval</a> <i>I</i>.  If a point <i>x</i> in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:intervalInterior">interior</a> of <i>I</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer or minimizer</a> of <i style="padding-right:0.2em;">f</i> and <i style="padding-right:0.2em;">f</i>
+is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable at</a> <i>x</i> then <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0.
+</dd></dl></div>
+<div class="hiddenProof" id="f:NecCond1" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;NecCond1&#39;)" class="showProof">hide</a></span></dt><dd>
+Suppose that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>.  Because <i>x</i> is in the interior of <i>I</i>, for <i>h</i>&nbsp;&gt; 0 sufficiently small we have <i>x</i>&nbsp;+ <i>h</i>&nbsp;∈ <i>I</i>, so that <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>) is defined.  Thus because <i>x</i> is a local maximizer of
+<i style="padding-right:0.2em;">f</i>, for small enough values of <i>h</i> we have <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>), and hence (<i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>)&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i>(<i>x</i>))/<i>h</i>&nbsp;≤ 0.  The limit of
+left-hand side of this inequality as <i>h</i>&nbsp;→ 0 is <i style="padding-right:0.2em;">f</i>'(<i>x</i>) (by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">definition of a derivative</a>), so that <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;≤ 0.  A symmetric argument using <i>h</i>&nbsp;&lt; 0 shows that <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;≥ 0.  Thus
+<i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0.  A similar argument applies when <i>x</i> is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+</dd></dl></div>
+This result gives a <i>necessary</i> condition for <i>x</i> to be a maximizer (or a minimizer) of <i style="padding-right:0.2em;">f</i>: <b>if</b> <i>x</i> is a maximizer (or a minimizer) of <i style="padding-right:0.2em;">f</i>, <i>x</i> is not an endpoint of <i>I</i>, and <i style="padding-right:0.2em;">f</i> is differentiable at <i>x</i>, <b>then</b> <i>x</i> is a
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#d:stationaryPoint1">stationary point</a> of <i style="padding-right:0.2em;">f</i>.  The condition is obviously <b>not</b> <i>sufficient</i> for a point to be a maximizer—the condition is satisfied also, for example, at points that are minimizers.  The first-derivative is involved, so we refer to the condition as a <span class="definition">first-order condition</span>.
+<p>
+Thus among all the points in the interval <i>I</i>, only the endpoints (if any) and the stationary points of <i style="padding-right:0.2em;">f</i> can be maximizers of <i style="padding-right:0.2em;">f</i>.  <span id="method">Most</span> functions have a relatively small number of stationary points, so the following procedure to find the maximizers is useful.
+</p><div class="procedure" id="r:nen1"><dl class="procedure"><dt>Procedure for solving a single-variable maximization problem on an interval</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable function of a single variable</a> and let <i>I</i> be an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:interval">interval</a>.  If the problem max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>I</i> has a solution, it may be found as follows.
+<ul>
+   <li>Find all the stationary points of <i style="padding-right:0.2em;">f</i> (the points <i>x</i> for which <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0) that are in <i>I</i>, and calculate the values of <i style="padding-right:0.2em;">f</i> at each such point.
+   </li><li>Find the values of <i style="padding-right:0.2em;">f</i> at the endpoints, if any, of <i>I</i>.
+   </li><li>Among all the points <i>x</i> that you have found, those at which the value <i style="padding-right:0.2em;">f</i>(<i>x</i>) is largest are the maximizers of <i style="padding-right:0.2em;">f</i>.
+</li></ul>
+</dd></dl></div>
+The variant of this procedure in which the last step involves choosing the points <i>x</i> at which <i style="padding-right:0.2em;">f</i>(<i>x</i>) is smallest may be used to solve the analogous minimization problem.
+<div class="example" id="m:nenm1"><dl class="example"><dt>Example 5.1.1</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ [−1,&nbsp;2].</div>
+This problem satisfies the conditions of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/OPN#p:EVT1">extreme value theorem</a>, and hence has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= <i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 2<i>x</i>, so the function has a single stationary point, <i>x</i>&nbsp;= 0, which is in the constraint set.  The value of the
+function at this point is <i style="padding-right:0.2em;">f</i>(0)&nbsp;= 0.  The values of <i style="padding-right:0.2em;">f</i> at the endpoints of the interval on which it is defined are <i style="padding-right:0.2em;">f</i>(−1)&nbsp;= 1 and <i style="padding-right:0.2em;">f</i>(2)&nbsp;= 4.  Thus the global maximizer of the function on [−1,&nbsp;2] is <i>x</i>&nbsp;= 2 and the
+global minimizer is <i>x</i>&nbsp;= 0.
+</dd></dl></div>
+<div class="example" id="m:ex1"><dl class="example"><dt>Example 5.1.2</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i></sub>&nbsp;−<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ (−∞,&nbsp;∞).</div>
+This problem does <i>not</i> satisfy the conditions of the extreme value theorem, so that the theorem does not tell us whether it has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= −<i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= −2<i>x</i>, so that the function has a single stationary point, <i>x</i>&nbsp;= 0, which is in
+the constraint set.  The constraint set has no endpoints, so <i>x</i>&nbsp;= 0 is the only candidate for a solution to the problem.  We conclude that <i>if the problem has a solution</i> then the solution is <i>x</i>&nbsp;= 0.  In fact, the problem <i>does</i> have a solution: we have <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ 0 for all <i>x</i> and
+<i style="padding-right:0.2em;">f</i>(0)&nbsp;= 0, so the solution is indeed <i>x</i>&nbsp;= 0.
+</dd></dl></div>
+<div class="example" id="m:ex2"><dl class="example"><dt>Example 5.1.3</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ (−∞,&nbsp;∞).</div>
+Like the problem in the previous example, this problem does <i>not</i> satisfy the conditions of the extreme value theorem, so that the theorem does not tell us whether it has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= <i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 2<i>x</i>, so that the function has a single stationary point,
+<i>x</i>&nbsp;= 0, which is in the constraint set.  The constraint set has no endpoints, so <i>x</i>&nbsp;= 0 is the only candidate for a solution to the problem.  We conclude that <i>if the problem has a solution</i> then the solution is <i>x</i>&nbsp;= 0.  In fact, the problem does <i>not</i> have a solution: the function <i style="padding-right:0.2em;">f</i> increases without bound as <i>x</i>
+increases (or decreases) without bound.
+</dd></dl></div>
+
+<h3>Many variables</h3>
+Consider a maximum of a function of two variables.  At this maximum the function must decrease (or stay the same) in every direction (otherwise the point would not be a maximum!).  In particular, the maximum must be a maximum along a line parallel to the <i>x</i>-axis and also a maximum along a line parallel to the <i>y</i>-axis.  Hence, given the result for a function of a single variable, at the
+maximum both the partial derivative with respect to <i>x</i> and the partial derivative with respect to <i>y</i> must be zero.  Extending this idea to many dimensions gives us the following result, where <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub> is the partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument.
+<div class="result" id="p:NecCondn"><dl class="result"><dt>Proposition 5.1.2 <span id="NecCondn" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;NecCondn&#39;)" class="showProof">proof</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of <i>n</i> variables</a> defined on the set <i>S</i>.  If the point <i>x</i> in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">interior</a> of <i>S</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer</a> or minimizer of <i style="padding-right:0.2em;">f</i> and the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:partialDeriv">partial derivative</a> of
+<i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument exists at <i>x</i> then
+<div class="equation"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0.</div>
+In particular, if all of the partial derivatives of <i style="padding-right:0.2em;">f</i> exist at <i>x</i> then
+<div class="equation"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>j</i></sub>(<i>x</i>)&nbsp;= 0 for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>.</div>
+</dd></dl></div>
+<div class="hiddenProof" id="f:NecCondn" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;NecCondn&#39;)" class="showProof">hide</a></span></dt><dd>
+Suppose that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>.  Because <i>x</i> is in the interior of <i>S</i>, for some <i>r</i>&nbsp;&gt; 0 the set of all <i>n</i>-vectors <i>h</i> with ∥<i>x</i>&nbsp;−&nbsp;<i>h</i>∥&nbsp;&lt; <i>r</i> is a subset of <i>S</i>.  Define the function <i>g</i> of a single variable on the interval
+(<i>x</i><sub><i>i</i></sub>&nbsp;−&nbsp;<i>r</i>,&nbsp;<i>x</i><sub><i>i</i></sub>&nbsp;+ <i>r</i>) by <i>g</i>(<i>z</i><sub><i>i</i></sub>)&nbsp;=
+<nobr><span class="nobr"><i style="padding-right:0.2em;">f</i>(<i>x</i><sub>1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>i</i>−1</sub>,&nbsp;<i>z</i><sub><i>i</i></sub>,&nbsp;<i>x</i><sub><i>i</i>+1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>n</i></sub>)</span></nobr>.  The fact that the partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument exists at
+<i>x</i> means that <i>g</i> is differentiable at <i>x</i><sub><i>i</i></sub>, by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:partialDeriv">definition of a partial derivative</a>, and <i>g</i>'(<i>x</i><sub><i>i</i></sub>)&nbsp;= <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>).  Also, given that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>,
+<i>x</i><sub><i>i</i></sub> is a local maximizer of <i>g</i>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#p:NecCond1">a previous result</a>, <i>g</i>'(<i>x</i><sub><i>i</i></sub>)&nbsp;= 0.  Thus <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0.  A similar argument applies when <i>x</i> is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+</dd></dl></div>
+As for the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#p:NecCond1">analogous result for functions of a single variable</a>, this result gives a <i>necessary</i> condition for a maximum (or minimum): <i>if</i> a point is a maximizer <i>then</i> it satisfies the condition.  As before, the conditions are called <span class="definition">first-order conditions</span> and a point that satisfies them is a “stationary point”.
+<div class="definition" id="d:stationaryPointN"><dl class="definition"><dt>Definition</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of <i>n</i> variables</a> defined on a set <i>S</i>. A point <i>x</i>&nbsp;∈ <i>S</i> at which <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:diff">differentiable</a> and <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0 for <i>i</i>&nbsp;= 1, ..., <i>n</i> is a
+<span id="stationaryPointManyVar"><span class="definition">stationary point of</span></span> <i style="padding-right:0.2em;">f</i>.
+</dd></dl></div>
+
+As for functions of a single variable, the result tells us that the only points that can be global maximizers are <i>either</i> stationary points <i>or</i> points in <i>S</i> that are not interior points of <i>S</i>.  Thus the following procedure locates all global maximizers of a differentiable function.
+<div class="procedure" id="r:nenn"><dl class="procedure"><dt>Procedure for solving a many-variable maximization problem on a set</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a differentiable function of <i>n</i> variables and let <i>S</i> be a set of <i>n</i>-vectors.  If the problem max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>S</i> has solutions, they may be found as follows.
+<ul>
+   <li>Find all the stationary points of <i style="padding-right:0.2em;">f</i> (the points <i>x</i> for which <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0 for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>) in <i>S</i>.
+   </li><li>Among the points in <i>S</i> that are not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">interior</a> points of <i>S</i>, find those at which the value of <i style="padding-right:0.2em;">f</i> is largest.
+   </li><li>Among all the points you have found, the ones at which the value of <i style="padding-right:0.2em;">f</i> is largest are the maximizers of <i style="padding-right:0.2em;">f</i>.
+</li></ul>
+</dd></dl></div>
+The variant of this procedure in which “largest” is replaced by “smallest” in the second and third steps locates the solutions of the analogous minimization problem.
+<p>
+This method is much less generally useful than the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#method">analogous method for functions of a single variable</a> because for many problems finding the largest values of <i style="padding-right:0.2em;">f</i> at the points in <i>S</i> that are not interior points of <i>S</i> is difficult.  For this reason, I devote several subsequent pages to better methods for finding solutions of
+maximization problems with constraints.
+</p><p>
+Here are some examples, however, where the method may be fairly easily applied.  For convenience, for any sete <i>S</i>, I refer to the set of points in <i>S</i> that are not interior points of <i>S</i> as the <i>boundary</i> of <i>S</i>.  Note that this usage is a little nonstandard, and that the boundary of a set defined in this way does <i>not</i> necessarily consist of the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">boundary points</a> of the set, because the boundary points of a set are not necessarily members of the set.  For example, the boundary of (0,&nbsp;1), as I am using the term, is empty, but 0 and 1 are its boundary points.
+</p><div class="example" id="m:ex3"><dl class="example"><dt>Example 5.1.4</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub>[−(<i>x</i>&nbsp;− 1)<sup>2</sup>&nbsp;− (<i>y</i>&nbsp;+ 2)<sup>2</sup>] subject to −∞&nbsp;&lt; <i>x</i>&nbsp;&lt; ∞ and −∞&nbsp;&lt; <i>y</i>&nbsp;&lt; ∞.</div>
+This problem does <i>not</i> satisfy the conditions of the extreme value theorem (because the constraint set is not bounded), so the theorem does not tell us whether the problem has a solution.  The first-order conditions are
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">−2(<i>x</i>&nbsp;− 1)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+−2(<i>y</i>&nbsp;+ 2)&nbsp;</td>
+      <td class="mathAlign2">= 0,</td>
+</tr>
+</tbody></table></div>
+which have a unique solution, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;−2).  The constraint set has no boundary points, so we conclude that <i>if the problem has a solution</i>, this solution is (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;−2).  In fact, the problem does have a solution, because the value of the objective function at (1,&nbsp;−2) is 0, and its value at any point is
+nonpositive.
+</dd></dl></div>
+<div class="example" id="m:ex4"><dl class="example"><dt>Example 5.1.5</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub>[(<i>x</i>&nbsp;− 1)<sup>2</sup>&nbsp;+ (<i>y</i>&nbsp;− 1)<sup>2</sup>] subject to 0&nbsp;≤ <i>x</i>&nbsp;≤ 2 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3.</div>
+This problem satisfies the conditions of the extreme value theorem, and hence has a solution.  The first-order conditions are
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">2(<i>x</i>&nbsp;− 1)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+2(<i>y</i>&nbsp;− 1)&nbsp;</td>
+      <td class="mathAlign2">= 0,</td>
+</tr>
+</tbody></table></div>
+which have a unique solution, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;1), which is in the constraint set.  The value of the objective function at this point is 0.
+<p>
+Now consider the behavior of the objective function on the boundary of the constraint set, which is a rectangle.
+</p><ul>
+   <li>If <i>x</i>&nbsp;= 0 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3 then the value of the objective function is 1&nbsp;+ (<i>y</i>&nbsp;− 1)<sup>2</sup>.  The problem of finding <i>y</i> to maximize this function subject to −1&nbsp;≤ <i>y</i>&nbsp;≤ 3 satisfies the conditions of the extreme value theorem, and thus has a solution.  The first-order condition is
+2(<i>y</i>&nbsp;− 1)&nbsp;= 0, which has a unique solution <i>y</i>&nbsp;= 1, which is in the constraint set.  The value of the objective function at this point is 1.  On the boundary of the set {(0,&nbsp;<i>y</i>):&nbsp;−1&nbsp;≤ <i>y</i>&nbsp;≤ 3}—namely at the points (0,&nbsp;−1) and (0,&nbsp;3)—the value of the
+objective function is 5.  Thus on this part of the boundary, the points (0,&nbsp;−1) and (0,&nbsp;3) are the only candidates for a solution of the original problem.
+   </li><li>A similar analysis leads to the conclusion that the points (2,&nbsp;−1) and (2,&nbsp;3) are the only candidates for a maximizer on the part of the boundary for which <i>x</i>&nbsp;= 2 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3, the points (0,&nbsp;−1) and (2,&nbsp;−1) are the only candidates for a maximizer on the part of the boundary for which 0&nbsp;≤
+<i>x</i>&nbsp;≤ 2 and <i>y</i>&nbsp;= −1, and the points (0,&nbsp;3) and (2,&nbsp;3) are the only candidates for a maximizer on the part of the boundary for which 0&nbsp;≤ <i>x</i>&nbsp;≤ 2 and <i>y</i>&nbsp;= 3.
+   </li><li>The value of the objective function at all these candidates for a solution on the boundary of the constraint set is 5.
+</li></ul>
+Finally, comparing the values of the objective function at the candidates for a solution that are (a)&nbsp;interior to the constraint set (namely (1,&nbsp;1)) and (b)&nbsp;on the boundary of the constraint set, we conclude that the problem has four solutions, (0,&nbsp;−1), (0,&nbsp;3), (2,&nbsp;−1), and (2,&nbsp;3).
+</dd></dl></div>
+<div class="example" id="m:FindOpt"><dl class="example"><dt>Example 5.1.6</dt><dd>
+Consider the problems
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1 subject to <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1</div>
+and
+<div class="equation">min<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1 subject to <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1.</div>
+In each case the constraint set, {(<i>x</i>,&nbsp;<i>y</i>): <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1}, is compact.  The objective function is continuous, so by the extreme value theorem, the problem has a solution.
+<p>
+We apply the procedure as follows, denoting the objective function by <i style="padding-right:0.2em;">f</i>.
+</p><ul>
+   <li>We have <i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>x</i> and <i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>y</i>&nbsp;+ 1, so the stationary points are the solutions of 2<i>x</i>&nbsp;= 0 and 2<i>y</i>&nbsp;+ 1&nbsp;= 0.  Thus the function has a single stationary point,
+(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;−1/2), which is in the constraint set.  The value of the function at this point is <i style="padding-right:0.2em;">f</i>(0,&nbsp;−1/2)&nbsp;= −5/4.
+   </li><li>The boundary of the constraint set is the set of points (<i>x</i>,&nbsp;<i>y</i>) such that <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;= 1, as shown in the following figure.
+<p>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="200">
+
+     <!-- axes -->
+	 <path d="M0,80
+		      L70,80
+			  M90,80
+			  L160,80
+			  M80,0
+			  L80,70
+			  M80,90
+			  L80,160" class="axis"></path>
+     <text x="160" y="95" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
+     <text x="90" y="25" style="text-anchor:middle"><tspan font-style="italic">y</tspan></text>
+     <text x="90" y="12" style="text-anchor:middle">↑</text>
+
+     <!-- label 0 -->
+     <text x="80" y="85" style="text-anchor:middle; fill:#000000;">0</text>
+
+     <!-- labels on y-axis 1, -1 -->
+     <text x="75" y="35" style="text-anchor:end; fill:#000000;">1</text>
+     <text x="75" y="135" style="text-anchor:end; fill:#000000;">−1</text>
+
+     <!-- labels on x-axis 1, -1 -->
+     <text x="130" y="75" style="text-anchor:middle; fill:#000000;">1</text>
+     <text x="30" y="75" style="text-anchor:middle; fill:#000000;">−1</text>
+
+	 <circle cx="80" cy="80" r="50" style="stroke:#FF0000; fill:none; "></circle>
+	
+	 <!-- label at bottom -->
+     <text x="80" y="175" style="text-anchor:middle;">Boundary of</text>
+     <text x="80" y="195" style="text-anchor:middle;">constraint set</text>
+</svg></p><p>
+Thus for a point (<i>x</i>,&nbsp;<i>y</i>) on the boundary we have <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;+ 1&nbsp;− <i>x</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1&nbsp;= <i>y</i>.  We have −1&nbsp;≤ <i>y</i>&nbsp;≤ 1 on the boundary, so the maximum of the function on the boundary is 1, which is achieved at
+(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;1), and the minimum is −1, achieved at (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;−1).
+   </p></li><li>Looking at all the values we have found, we see that the global maximum of <i style="padding-right:0.2em;">f</i> is 1, achieved at (0,&nbsp;1), and the global minimum is −5/4, achieved at (0,&nbsp;−1/2).
+</li></ul>
+</dd></dl></div>
+Notice that the reasoning about the behavior of the function on the boundary of the constraint set is straightforward in this example because we are able easily to express the value of the function on the boundary in terms of a single variable (<i>y</i>).  In many other problems, doing so is not easy.
+
+   
+
+
+</div><!-- text, exercises, search, contents -->
+</article>
+
+<footer>
+<div id="footer">
+    <div id="footerContent">
+
+                <a class="action" href="javascript:toggleCommentForm()">Question? Correction? Comment?</a>
+        <div style="display: none" id="commentForm" class="commentForm">
+            <p>
+            </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
+                        <input type="hidden" name="commentId" value="0">
+            <input type="hidden" name="pageId" value="42">
+
+            
+
+            <table>
+                <tbody><tr class="top">
+                        <td class="label25">Your first name*</td>
+                        <td class="value75"><input type="text" required="required" name="firstName" value="" id="firstName" size="10" maxlength="40" class="textField"></td>
+                </tr>
+
+                <tr class="top">
+                        <td class="label25">Your last name*</td>
+                        <td class="value75"><input type="text" required="" name="lastName" value="" id="lastName" size="10" maxlength="40" class="textField"></td>
+                </tr>
+
+                <tr class="top">
+                        <td class="label25">Your email address*</td>
+                        <td class="value75"><input type="email" required="" name="email" value="" id="email" size="18" maxlength="80" class="textField"></td>
+                </tr>
+
+                <tr class="top">
+                        <td class="label25">Comment*</td>
+                        <td class="value75"><textarea name="comment" required="" id="comment" rows="10" cols="60" class="textArea"></textarea></td>
+                </tr>
+
+                <tr class="top">
+                        <td class="label25">Enter the first six letters of the alphabet*</td>
+                        <td class="value75"><input type="text" required="" pattern="abcdef" name="captcha" value="" id="captcha" size="6" maxlength="6" class="textField">
+                        (to help establish that you are human)</td>
+                </tr>
+            </tbody></table>
+            <p>
+            <input type="submit" value="Save" class="button defaultButton">
+            <input type="button" value="Cancel" class="button" onclick="toggleCommentForm();"></p>
+            <p>When you save your comment, the author of the tutorial will be notified.  Your comment will not be visible to anyone else.</p>
+
+            </form>
+        </div>
+                
+            <div id="footerNotes">
+    	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
+              First posted 1997.  This version 2022-08-16.
+    <br>
+        Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
+    </div><!-- footerNotes -->
+    </div><!-- footerContent -->
+
+</div><!-- footer -->
+</footer>
+    
+</div><!-- body -->
+</div><!-- container -->
+
+
+
+
+</body></html>
