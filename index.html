@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 8.2 First-order differential equations: existence and stability of solutions</title>
+    <title>Mathematical methods for economic theory: 8.6 Second-order differential equations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: existence of solution to first-order differential equations">
-        <meta name="keywords" content="mathematical methods, economic theory, differential equations, first-order differential equations">
+            <meta name="description" content="Mathematical methods for economic theory: second-order differential equations">
+        <meta name="keywords" content="mathematical methods, economic theory, second-order differential equations">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -202,7 +202,7 @@
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/46"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Differential equations"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/47"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Differential equations"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/51"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Phase diagrams"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,7 +222,7 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/49"><img alt="Next page" src="./index_files/next.gif" height="20" title="Separable equations"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/53"><img alt="Next page" src="./index_files/next.gif" height="20" title="Systems of equations"></a>
                             <span class="hideable">
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/54"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Difference equations"></a>
                                 </span>
@@ -268,268 +268,426 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>8.2 First-order differential equations: existence and stability of solutions</h2>
+            <h2>8.6 Second-order differential equations</h2>
         </header>
 
-	<div class="definition" id="d:foode"><dl class="definition"><dt>Definition</dt><dd>
-A <span class="definition">first-order ordinary differential equation</span> is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IDE#d:ode">ordinary differential equation</a> that may be written in the form
-<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</div>
-for some <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:function">function</a> <i style="padding-right:0.2em;">F</i> of two variables.
+	<h3>General form</h3>
+<div class="definition" id="d:soode"><dl class="definition"><dt>Definition</dt><dd>
+A <span class="definition">second-order ordinary differential equation</span> is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/IDE#d:ode">ordinary differential equation</a> that may be written in the form
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>),&nbsp;<i>x</i>'(<i>t</i>))</div>
+for some <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/IAF#d:function">function</a> <i style="padding-right:0.2em;">F</i> of three variables.
 </dd></dl></div>
 
-As I discussed on <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IDE#multiplicity">the previous page</a>, a differential equation generally has many solutions.  For a first-order equation, adding the requirement that <i>x</i> take a specific value for some specific value of <i>t</i> generally pins down a single solution.  Roughly, the additional requirement determines the level of <i>x</i> whereas the differential equation determines
-the rate of change of <i>x</i>.
+<h3>Equations of the form <i>x</i>"(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>'(<i>t</i>)) </h3>
+An equation of the form
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>'(<i>t</i>)),</div>
+in which <i>x</i>(<i>t</i>) does not appear, can be reduced to a first-order equation by making the substitution <i>z</i>(<i>t</i>)&nbsp;= <i>x</i>'(<i>t</i>).
+<div class="example" id="m:ex1"><dl class="example"><dt>Example 8.6.1</dt><dd>
+Let <i>u</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/IAF#d:function">function of a single variable</a>, with the interpretation that <i>u</i>(<i>w</i>) is the utility of an individual with wealth <i>w</i>.  The function ρ defined by
+<div class="equation">ρ(<i>w</i>)&nbsp;= −<i>w</i><i>u</i>"(<i>w</i>)/<i>u</i>'(<i>w</i>)</div>
+is known as the <i>Arrow-Pratt measure of relative risk aversion</i>.  (If ρ(<i>w</i>) for the function <i>u</i> exceeds ρ(<i>w</i>) for the function <i>v</i> for all <i>w</i> then <i>u</i> reflects a greater degree of risk-aversion than does <i>v</i>.)
 <p>
-A first-order differential equation plus a condition of this type—that  is, a condition of the form <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>, called an <i>initial condition</i>—is called a <i>first-order initial value problem</i>.  Despite the use of the word “initial”, the value of <i>t</i><sub>0</sub> in such a problem cannot necessarily be interpreted
-as a starting point.  (Indeed, as I remarked on the previous page, the variable <i>t</i> cannot necessarily be interpreted as time.)
-
-</p><div class="definition" id="d:ivp"><dl class="definition"><dt>Definition</dt><dd>
-A <span class="definition">first-order initial value problem</span> consists of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:foode">first-order ordinary differential equation</a>
-<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</div>
-and an <span class="definition">initial condition</span>
-<div class="equation"><i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>,</div>
-where <i>t</i><sub>0</sub> and <i>x</i><sub>0</sub> are numbers.
-</dd></dl></div>
-
-<h3>Existence of a solution</h3>
-Before trying to find a solution of a first-order initial value problem, it is useful to know whether a solution exists.
+What utility functions have a degree of risk-aversion that is independent of the level of wealth?  That is, for what utility functions <i>u</i> do we have
+</p><div class="equation"><i>a</i>&nbsp;= −<i>w</i><i>u</i>"(<i>w</i>)/<i>u</i>'(<i>w</i>) for all <i>w</i></div>
+for some number <i>a</i>?
 <p>
-A diagram known as a <span class="definition">direction field</span> or <span class="definition">integral field</span> helps us think about the existence of a solution.  We plot <i>t</i> on the horizontal axis and <i>x</i> on the vertical axis, and for each of a set of pairs (<i>t</i>,&nbsp;<i>x</i>) we draw a short line segment through (<i>t</i>,&nbsp;<i>x</i>) with slope
-<i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>)), which from the equation is equal to <i>x</i>'(<i>t</i>).  Such a diagram shows us the rate of change of <i>x</i> for each value of <i>t</i> and <i>x</i>(<i>t</i>).
-</p><div class="example" id="m:1"><dl class="example"><dt>Example 8.2.1</dt><dd>
-The direction field of the equation
-<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i>x</i>(<i>t</i>)<i>t</i></div>
-is shown in the figure below.  For example, at every point (<i>t</i>,&nbsp;0) and every point (0,&nbsp;<i>x</i>) we have <i>x</i>'(<i>t</i>)&nbsp;= 0, so the slope of the line segment through every such point is 0.  Similarly, at every point (1,&nbsp;<i>x</i>) we have <i>x</i>'(<i>t</i>)&nbsp;= <i>x</i>, so the slope of the line segment through (1,&nbsp;<i>x</i>) is <i>x</i> for each value of
-<i>x</i>.  (The grid size in the figure is 1/2.)
-<p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290" height="290">
-
-	 <path d="M0,145
-	          L290,145
-			  M145,0
-			  L145,290" class="axis"></path>
-	 
-	 <g transform="translate(-0.6,0)">
-	 
-	 <line x1="137.56677" y1="145" x2="153.62213" y2="145" id="line4195" style="stroke:#ff0000"></line>
-	 
-	 <line x1="107.46296" y1="145" x2="123.51832" y2="145" id="line4197" style="stroke:#ff0000"></line>
-	 
-	 <line x1="77.359138" y1="145" x2="93.414513" y2="145" id="line4199" style="stroke:#ff0000"></line>
-	 
-	 <line x1="47.255333" y1="145" x2="63.310707" y2="145" id="line4201" style="stroke:#ff0000"></line>
-	 
-	 <line x1="17.151545" y1="145" x2="33.206886" y2="145" id="line4203" style="stroke:#ff0000"></line>
-	 
-	 <line x1="167.67056" y1="145" x2="183.72592" y2="145" id="line4205" style="stroke:#ff0000"></line>
-	 
-	 <line x1="202.1926" y1="33.340076" x2="209.35632" y2="19.021135" id="line4207" style="stroke:#ff0000"></line><line x1="200.13251" y1="91.811874" x2="211.48465" y2="80.49794" id="line4209" style="stroke:#ff0000"></line><line x1="197.77435" y1="145" x2="213.82974" y2="145" id="line4211" style="stroke:#ff0000"></line><line x1="262.3992" y1="93.340866" x2="269.56387" y2="79.021927" id="line4213" style="stroke:#ff0000"></line><line x1="264.07495" y1="33.963093" x2="267.95935" y2="18.438128" id="line4215" style="stroke:#ff0000"></line><line x1="257.98196" y1="145" x2="274.03732" y2="145" id="line4217" style="stroke:#ff0000"></line><line x1="227.87817" y1="145" x2="243.93353" y2="145" id="line4219" style="stroke:#ff0000"></line><line x1="137.56677" y1="176.15459" x2="153.62213" y2="176.15459" id="line4221" style="stroke:#ff0000"></line><line x1="137.56677" y1="206.15451" x2="153.62213" y2="206.15451" id="line4223" style="stroke:#ff0000"></line><line x1="137.56677" y1="236.15439" x2="153.62213" y2="236.15439" id="line4225" style="stroke:#ff0000"></line><line x1="137.56677" y1="266.1543" x2="153.62213" y2="266.1543" id="line4227" style="stroke:#ff0000"></line><line x1="137.56677" y1="116.1548" x2="153.62213" y2="116.1548" id="line4229" style="stroke:#ff0000"></line><line x1="137.56677" y1="86.154892" x2="153.62213" y2="86.154892" id="line4231" style="stroke:#ff0000"></line><line x1="137.56677" y1="56.155018" x2="153.62213" y2="56.155018" id="line4233" style="stroke:#ff0000"></line><line x1="137.56677" y1="26.155107" x2="153.62213" y2="26.155107" id="line4235" style="stroke:#ff0000"></line><line x1="167.91541" y1="118.04478" x2="183.49411" y2="114.17482" id="line4237" style="stroke:#ff0000"></line><line x1="168.50644" y1="89.773911" x2="182.86798" y2="82.619919" id="line4239" style="stroke:#ff0000"></line><line x1="169.26105" y1="60.957996" x2="182.10031" y2="51.352039" id="line4241" style="stroke:#ff0000"></line><line x1="198.61023" y1="119.77379" x2="212.97177" y2="112.6198" id="line4243" style="stroke:#ff0000"></line><line x1="201.33264" y1="62.787983" x2="210.24036" y2="49.477039" id="line4245" style="stroke:#ff0000"></line><line x1="170.02869" y1="31.81209" x2="181.38083" y2="20.498125" id="line4247" style="stroke:#ff0000"></line><line x1="229.46866" y1="120.95879" x2="242.30792" y2="111.35182" id="line4249" style="stroke:#ff0000"></line><line x1="231.43643" y1="92.787888" x2="240.34415" y2="79.476913" id="line4251" style="stroke:#ff0000"></line><line x1="232.64059" y1="63.476978" x2="239.17108" y2="48.861042" id="line4253" style="stroke:#ff0000"></line><line x1="260.34009" y1="121.81178" x2="271.69324" y2="110.49785" id="line4255" style="stroke:#ff0000"></line><line x1="263.47992" y1="63.692005" x2="268.54736" y2="48.509022" id="line4257" style="stroke:#ff0000"></line><line x1="233.37613" y1="33.692097" x2="238.4436" y2="18.509142" id="line4259" style="stroke:#ff0000"></line><line x1="87.129829" y1="33.340076" x2="79.966133" y2="19.021135" id="line4261" style="stroke:#ff0000"></line><line x1="89.189949" y1="91.811874" x2="77.836784" y2="80.49794" id="line4263" style="stroke:#ff0000"></line><line x1="26.922228" y1="93.340866" x2="19.758524" y2="79.021927" id="line4265" style="stroke:#ff0000"></line><line x1="25.247454" y1="33.963093" x2="21.363054" y2="18.438128" id="line4267" style="stroke:#ff0000"></line><line x1="121.40705" y1="118.04478" x2="105.82832" y2="114.17482" id="line4269" style="stroke:#ff0000"></line><line x1="120.816" y1="89.773911" x2="106.45448" y2="82.619919" id="line4271" style="stroke:#ff0000"></line><line x1="120.0604" y1="60.957996" x2="107.22112" y2="51.352039" id="line4273" style="stroke:#ff0000"></line><line x1="90.712181" y1="119.77379" x2="76.350655" y2="112.6198" id="line4275" style="stroke:#ff0000"></line><line x1="87.989799" y1="62.787983" x2="79.081078" y2="49.477039" id="line4277" style="stroke:#ff0000"></line><line x1="119.29375" y1="31.81209" x2="107.94061" y2="20.498125" id="line4279" style="stroke:#ff0000"></line><line x1="59.853783" y1="120.95879" x2="47.014503" y2="111.35182" id="line4281" style="stroke:#ff0000"></line><line x1="57.885994" y1="92.787888" x2="48.977272" y2="79.476913" id="line4283" style="stroke:#ff0000"></line><line x1="56.681847" y1="63.476978" x2="50.151329" y2="48.861042" id="line4285" style="stroke:#ff0000"></line><line x1="28.982332" y1="121.81178" x2="17.629183" y2="110.49785" id="line4287" style="stroke:#ff0000"></line><line x1="25.842501" y1="63.692005" x2="20.775034" y2="48.509022" id="line4289" style="stroke:#ff0000"></line><line x1="55.946312" y1="33.692097" x2="50.878838" y2="18.509142" id="line4291" style="stroke:#ff0000"></line><line x1="87.129829" y1="257.14133" x2="79.966133" y2="271.46027" id="line4293" style="stroke:#ff0000"></line><line x1="89.189949" y1="198.66953" x2="77.836784" y2="209.98349" id="line4295" style="stroke:#ff0000"></line><line x1="26.922228" y1="197.14055" x2="19.758524" y2="211.45947" id="line4297" style="stroke:#ff0000"></line><line x1="25.247454" y1="256.51834" x2="21.363054" y2="272.04327" id="line4299" style="stroke:#ff0000"></line><line x1="121.40705" y1="172.43663" x2="105.82832" y2="176.3076" id="line4301" style="stroke:#ff0000"></line><line x1="120.816" y1="200.70749" x2="106.45448" y2="207.86148" id="line4303" style="stroke:#ff0000"></line><line x1="120.0604" y1="229.52341" x2="107.22112" y2="239.12939" id="line4305" style="stroke:#ff0000"></line><line x1="90.712181" y1="170.70763" x2="76.350655" y2="177.86162" id="line4307" style="stroke:#ff0000"></line><line x1="87.989799" y1="227.69342" x2="79.081078" y2="241.00439" id="line4309" style="stroke:#ff0000"></line><line x1="119.29375" y1="258.66934" x2="107.94061" y2="269.98328" id="line4311" style="stroke:#ff0000"></line><line x1="59.853783" y1="169.52263" x2="47.014503" y2="179.12962" id="line4313" style="stroke:#ff0000"></line><line x1="57.885994" y1="197.69351" x2="48.977272" y2="211.00449" id="line4315" style="stroke:#ff0000"></line><line x1="56.681847" y1="227.00443" x2="50.151329" y2="241.62039" id="line4317" style="stroke:#ff0000"></line><line x1="28.982332" y1="168.66963" x2="17.629183" y2="179.98357" id="line4319" style="stroke:#ff0000"></line><line x1="25.842501" y1="226.78943" x2="20.775034" y2="241.97134" id="line4321" style="stroke:#ff0000"></line><line x1="55.946312" y1="256.78934" x2="50.878838" y2="271.97125" id="line4323" style="stroke:#ff0000"></line><line x1="202.1926" y1="257.14133" x2="209.35632" y2="271.46027" id="line4325" style="stroke:#ff0000"></line><line x1="200.13251" y1="198.66953" x2="211.48465" y2="209.98349" id="line4327" style="stroke:#ff0000"></line><line x1="262.3992" y1="197.14055" x2="269.56387" y2="211.45947" id="line4329" style="stroke:#ff0000"></line><line x1="264.07495" y1="256.51834" x2="267.95935" y2="272.04327" id="line4331" style="stroke:#ff0000"></line><line x1="167.91541" y1="172.43663" x2="183.49411" y2="176.3076" id="line4333" style="stroke:#ff0000"></line><line x1="168.50644" y1="200.70749" x2="182.86798" y2="207.86148" id="line4335" style="stroke:#ff0000"></line><line x1="169.26105" y1="229.52341" x2="182.10031" y2="239.12939" id="line4337" style="stroke:#ff0000"></line><line x1="198.61023" y1="170.70763" x2="212.97177" y2="177.86162" id="line4339" style="stroke:#ff0000"></line><line x1="201.33264" y1="227.69342" x2="210.24036" y2="241.00439" id="line4341" style="stroke:#ff0000"></line><line x1="170.02869" y1="258.66934" x2="181.38083" y2="269.98328" id="line4343" style="stroke:#ff0000"></line><line x1="229.46866" y1="169.52263" x2="242.30792" y2="179.12962" id="line4345" style="stroke:#ff0000"></line><line x1="231.43643" y1="197.69351" x2="240.34415" y2="211.00449" id="line4347" style="stroke:#ff0000"></line><line x1="232.64059" y1="227.00443" x2="239.17108" y2="241.62039" id="line4349" style="stroke:#ff0000"></line><line x1="260.34009" y1="168.66963" x2="271.69324" y2="179.98357" id="line4351" style="stroke:#ff0000;stroke-width:2"></line><line x1="263.47992" y1="226.78943" x2="268.54736" y2="241.97134" id="line4353" style="stroke:#ff0000"></line><line x1="233.37613" y1="256.78934" x2="238.4436" y2="271.97125" id="line4355" style="stroke:#ff0000"></line>
-	 
-	 </g>
-	 
-     <text x="153" y="30" style="text-anchor:middle"><tspan font-style="italic">x</tspan></text>
-     <text x="153" y="15" style="text-anchor:middle">↑</text>
-    <text x="145" y="150" style="text-anchor:middle;">0</text>	 
-    <text x="290" y="160" style="text-anchor:end;"><tspan font-style="italic">t →</tspan></text>	 
-	
-	</svg></p></dd></dl></div>
-
-
-If the first-order initial value problem 
+This equation is a second-order differential equation in which the term <i>u</i>(<i>w</i>) does not appear.  (The variable is <i>w</i>, rather than <i>t</i>.)  Define <i>z</i>(<i>w</i>)&nbsp;= <i>u</i>'(<i>w</i>).  Then we have
+</p><div class="equation"><i>a</i>&nbsp;= −<i>w</i><i>z</i>'(<i>w</i>)/<i>z</i>(<i>w</i>)</div>
+or
+<div class="equation"><i>z</i>'(<i>w</i>)/<i>z</i>(<i>w</i>)&nbsp;= −<i>a</i>/<i>w</i>,</div>
+a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/SEP#d:sep">separable first-order ordinary differential equation</a>.  Integrating both sides yields
+<div class="equation">∫<sup><i>w</i></sup>(<i>z</i>'(<i>r</i>)/<i>z</i>(<i>r</i>))<i>d</i><i>r</i>&nbsp;= −<i>a</i>∫<sup><i>w</i></sup>(1/<i>r</i>)<i>d</i><i>r</i>&nbsp;+ <i>C</i>.</div>
+Making the substitution <i>y</i>&nbsp;= <i>z</i>(<i>r</i>), so that <i>d</i><i>y</i>&nbsp;= <i>z</i>'(<i>r</i>)<i>d</i><i>r</i>, we get
+<div class="equation">∫<sup><i>z</i>(<i>w</i>)</sup>(1/<i>y</i>)<i>d</i><i>y</i>&nbsp;= −<i>a</i>∫<sup><i>w</i></sup>(1/<i>r</i>)<i>d</i><i>r</i>&nbsp;+ <i>C</i>,</div>
+so that
+<div class="equation">ln&nbsp;<i>z</i>(<i>w</i>)&nbsp;= −<i>a</i>ln&nbsp;w&nbsp;+ <i>C</i></div>
+or
+<div class="equation"><i>z</i>(<i>w</i>)&nbsp;= <i>C</i><i>w</i><sup>−<i>a</i></sup>.</div>
+Now, <i>z</i>(<i>w</i>)&nbsp;= <i>u</i>'(<i>w</i>), so to get <i>u</i> we need to integrate:
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i>x</i>'(<i>t</i>) </td>
+      <td class="alignRight"><i>u</i>(<i>w</i>) =&nbsp;</td>
+      <td class="mathAlign2">
+        <table class="mathCases">
+          <tbody><tr>
+            <td class="brace" rowspan="2"><img alt="left brace" src="./index_files/lbrace2.gif"></td>
+            <td class="function"><i>C</i>ln&nbsp;<i>w</i>&nbsp;+
+<i>B</i></td>
+            <td class="condition">&nbsp;if <i>a</i>&nbsp;= 1</td>
+          </tr>
+          <tr>
+            <td class="function"><i>C</i><i>w</i><sup>1−<i>a</i></sup>/(1&nbsp;− <i>a</i>)&nbsp;+ <i>B</i></td>
+            <td class="condition">&nbsp;if <i>a</i>&nbsp;≠ 1.</td>
+      </tr>
+        </tbody></table></td>
+</tr>
+</tbody></table></div>
+We conclude that a utility function with a constant degree of relative risk-aversion equal to <i>a</i> takes this form.
+</dd></dl></div>
+
+<h3 id="s:solde">Linear second-order equations with constant coefficients</h3>
+<div class="definition" id="d:sle"><dl class="definition"><dt>Definition</dt><dd>
+A <span class="definition">linear second-order ordinary differential equation with constant coefficients</span> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:soode">second-order ordinary differential equation</a> that may be written in the form
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>)</div>
+for a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/IAF#d:function">function</a> <i style="padding-right:0.2em;">f</i> of a single variable and numbers <i>a</i> and <i>b</i>.  The equation is <span id="homogeneous"><span class="definition">homogeneous</span></span> if <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;= 0 for all <i>t</i>.
+</dd></dl></div>
+
+The next result says that if <i>x</i> is one solution of a linear second-order ordinary differential equation with constant coefficients, then <i>y</i> is a solution of the equation if and only if it is the sum of <i>x</i> and a solution of the homogeneous variant of the equation, in which the right-hand side is 0.
+<div class="result" id="p:genSoln"><dl class="result"><dt>Proposition 8.6.1</dt><dd>
+Let <i>x</i> be a solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:sle">linear second-order ordinary differential equation with constant coefficients</a>
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>).</div>
+Then <i>y</i> is a solution of this equation if and only if <i>y</i>(<i>t</i>)&nbsp;= <i>x</i>(<i>t</i>)&nbsp;+ <i>z</i>(<i>t</i>) for all <i>t</i>, where <i>z</i> is a solution of the (homogeneous) equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+</dd></dl></div>
+
+<div class="proof" id=""><dl class="proof"><dt>Proof</dt><dd>
+First let <i>y</i>(<i>t</i>)&nbsp;= <i>x</i>(<i>t</i>)&nbsp;+&nbsp;<i>z</i>(<i>t</i>) for all <i>t</i>, where <i>z</i> is a solution of the homogeneous equation, so that <i>z</i>''(<i>t</i>)&nbsp;+ <i>a</i><i>z</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>z</i>(<i>t</i>)&nbsp;= 0 for all <i>t</i>.  Then 
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"><i>y</i>''(<i>t</i>)&nbsp;+ <i>a</i><i>y</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>y</i>(<i>t</i>)</td>
       <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</td>
+      <td class="mathAlign2"> [<i>x</i>''(<i>t</i>)&nbsp;+&nbsp;<i>a</i><i>x</i>'(<i>t</i>)&nbsp;+&nbsp;<i>b</i><i>x</i>(<i>t</i>)]&nbsp;+
+[<i>z</i>''(<i>t</i>)&nbsp;+ <i>a</i><i>z</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>z</i>(<i>t</i>)]</td>
 </tr>
  <tr>
   <td class="alignRight">
-<i>x</i>(<i>t</i><sub>0</sub>) </td>
+</td>
       <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i>x</i><sub>0</sub></td>
+      <td class="mathAlign2"> <i style="padding-right:0.2em;">f</i>(<i>t</i>),</td>
 </tr>
 </tbody></table></div>
-has a solution, then the direction field for the differential equation helps us to see what it looks like.  The slope of the line segment at (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) gives the direction in which <i>x</i> is headed at <i>t</i><sub>0</sub>.  For instance, in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#m:1">previous example</a>, if the initial condition is <i>x</i>(−1)&nbsp;= 1, then for
-(<i>t</i>,&nbsp;<i>x</i>)&nbsp;= (−1,&nbsp;1), the rate of change of <i>x</i> is −1.  If we sketch a solution of the initial value problem starting at <i>t</i>&nbsp;= −1, we thus start by drawing a path that decreases, with slope −1.  But then as we move along that path, the slopes of the line segments in the direction field change, and we need to adjust the slope of our
-solution to conform.  When our solution crosses the vertical axis, for example, the rate of change of <i>x</i> is zero, so our solution path should be horizontal.  The path we create in this way will look something like the blue line in the following figure (which is the solution of the initial value problem for (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>)&nbsp;= (−1,&nbsp;1)).
+so that <i>y</i> is a solution of the original equation.
 <p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290" height="290">
+Now suppose that <i>y</i> is a solution of the original equation.  Define <i>z</i>(<i>t</i>)&nbsp;= <i>y</i>(<i>t</i>)&nbsp;−&nbsp;<i>x</i>(<i>t</i>) for all <i>t</i>. Then
+</p><div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"><i>z</i>''(<i>t</i>)&nbsp;+ <i>a</i><i>z</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>z</i>(<i>t</i>)</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> [<i>y</i>''(<i>t</i>)&nbsp;+&nbsp;<i>a</i><i>y</i>'(<i>t</i>)&nbsp;+&nbsp;<i>b</i><i>y</i>(<i>t</i>)]&nbsp;−
+[<i>x</i>''(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)]</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i>(<i>t</i>)</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> 0,</td>
+</tr>
+</tbody></table></div>
+so that <i>z</i> is a solution of the homogeneous equation.
+</dd></dl></div>
 
-  <defs id="defs4138">
-    <clippath id="clipPath">
-      <rect y="0" x="85" height="290" width="205" id="rect5427"></rect>
-    </clippath>
-  </defs>
-  
-  <path id="path4142" class="axis" d="M0,145            L290,145      M145,0      L145,290"></path>
-  <g id="g4144" transform="translate(-0.6,0)">
-    <line style="stroke:#ff0000" id="line4195" y2="145" x2="153.62213" y1="145" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4197" y2="145" x2="123.51832" y1="145" x1="107.46296"></line>
-    <line style="stroke:#ff0000" id="line4199" y2="145" x2="93.414513" y1="145" x1="77.359138"></line>
-    <line style="stroke:#ff0000" id="line4201" y2="145" x2="63.310707" y1="145" x1="47.255333"></line>
-    <line style="stroke:#ff0000" id="line4203" y2="145" x2="33.206886" y1="145" x1="17.151545"></line>
-    <line style="stroke:#ff0000" id="line4205" y2="145" x2="183.72592" y1="145" x1="167.67056"></line>
-    <line style="stroke:#ff0000" id="line4207" y2="19.021135" x2="209.35632" y1="33.340076" x1="202.1926"></line>
-    <line style="stroke:#ff0000" id="line4209" y2="80.49794" x2="211.48465" y1="91.811874" x1="200.13251"></line>
-    <line style="stroke:#ff0000" id="line4211" y2="145" x2="213.82974" y1="145" x1="197.77435"></line>
-    <line style="stroke:#ff0000" id="line4213" y2="79.021927" x2="269.56387" y1="93.340866" x1="262.3992"></line>
-    <line style="stroke:#ff0000" id="line4215" y2="18.438128" x2="267.95935" y1="33.963093" x1="264.07495"></line>
-    <line style="stroke:#ff0000" id="line4217" y2="145" x2="274.03732" y1="145" x1="257.98196"></line>
-    <line style="stroke:#ff0000" id="line4219" y2="145" x2="243.93353" y1="145" x1="227.87817"></line>
-    <line style="stroke:#ff0000" id="line4221" y2="176.15459" x2="153.62213" y1="176.15459" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4223" y2="206.15451" x2="153.62213" y1="206.15451" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4225" y2="236.15439" x2="153.62213" y1="236.15439" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4227" y2="266.1543" x2="153.62213" y1="266.1543" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4229" y2="116.1548" x2="153.62213" y1="116.1548" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4231" y2="86.154892" x2="153.62213" y1="86.154892" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4233" y2="56.155018" x2="153.62213" y1="56.155018" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4235" y2="26.155107" x2="153.62213" y1="26.155107" x1="137.56677"></line>
-    <line style="stroke:#ff0000" id="line4237" y2="114.17482" x2="183.49411" y1="118.04478" x1="167.91541"></line>
-    <line style="stroke:#ff0000" id="line4239" y2="82.619919" x2="182.86798" y1="89.773911" x1="168.50644"></line>
-    <line style="stroke:#ff0000" id="line4241" y2="51.352039" x2="182.10031" y1="60.957996" x1="169.26105"></line>
-    <line style="stroke:#ff0000" id="line4243" y2="112.6198" x2="212.97177" y1="119.77379" x1="198.61023"></line>
-    <line style="stroke:#ff0000" id="line4245" y2="49.477039" x2="210.24036" y1="62.787983" x1="201.33264"></line>
-    <line style="stroke:#ff0000" id="line4247" y2="20.498125" x2="181.38083" y1="31.81209" x1="170.02869"></line>
-    <line style="stroke:#ff0000" id="line4249" y2="111.35182" x2="242.30792" y1="120.95879" x1="229.46866"></line>
-    <line style="stroke:#ff0000" id="line4251" y2="79.476913" x2="240.34415" y1="92.787888" x1="231.43643"></line>
-    <line style="stroke:#ff0000" id="line4253" y2="48.861042" x2="239.17108" y1="63.476978" x1="232.64059"></line>
-    <line style="stroke:#ff0000" id="line4255" y2="110.49785" x2="271.69324" y1="121.81178" x1="260.34009"></line>
-    <line style="stroke:#ff0000" id="line4257" y2="48.509022" x2="268.54736" y1="63.692005" x1="263.47992"></line>
-    <line style="stroke:#ff0000" id="line4259" y2="18.509142" x2="238.4436" y1="33.692097" x1="233.37613"></line>
-    <line style="stroke:#ff0000" id="line4261" y2="19.021135" x2="79.966133" y1="33.340076" x1="87.129829"></line>
-    <line style="stroke:#ff0000" id="line4263" y2="80.49794" x2="77.836784" y1="91.811874" x1="89.189949"></line>
-    <line style="stroke:#ff0000" id="line4265" y2="79.021927" x2="19.758524" y1="93.340866" x1="26.922228"></line>
-    <line style="stroke:#ff0000" id="line4267" y2="18.438128" x2="21.363054" y1="33.963093" x1="25.247454"></line>
-    <line style="stroke:#ff0000" id="line4269" y2="114.17482" x2="105.82832" y1="118.04478" x1="121.40705"></line>
-    <line style="stroke:#ff0000" id="line4271" y2="82.619919" x2="106.45448" y1="89.773911" x1="120.816"></line>
-    <line style="stroke:#ff0000" id="line4273" y2="51.352039" x2="107.22112" y1="60.957996" x1="120.0604"></line>
-    <line style="stroke:#ff0000" id="line4275" y2="112.6198" x2="76.350655" y1="119.77379" x1="90.712181"></line>
-    <line style="stroke:#ff0000" id="line4277" y2="49.477039" x2="79.081078" y1="62.787983" x1="87.989799"></line>
-    <line style="stroke:#ff0000" id="line4279" y2="20.498125" x2="107.94061" y1="31.81209" x1="119.29375"></line>
-    <line style="stroke:#ff0000" id="line4281" y2="111.35182" x2="47.014503" y1="120.95879" x1="59.853783"></line>
-    <line style="stroke:#ff0000" id="line4283" y2="79.476913" x2="48.977272" y1="92.787888" x1="57.885994"></line>
-    <line style="stroke:#ff0000" id="line4285" y2="48.861042" x2="50.151329" y1="63.476978" x1="56.681847"></line>
-    <line style="stroke:#ff0000" id="line4287" y2="110.49785" x2="17.629183" y1="121.81178" x1="28.982332"></line>
-    <line style="stroke:#ff0000" id="line4289" y2="48.509022" x2="20.775034" y1="63.692005" x1="25.842501"></line>
-    <line style="stroke:#ff0000" id="line4291" y2="18.509142" x2="50.878838" y1="33.692097" x1="55.946312"></line>
-    <line style="stroke:#ff0000" id="line4293" y2="271.46027" x2="79.966133" y1="257.14133" x1="87.129829"></line>
-    <line style="stroke:#ff0000" id="line4295" y2="209.98349" x2="77.836784" y1="198.66953" x1="89.189949"></line>
-    <line style="stroke:#ff0000" id="line4297" y2="211.45947" x2="19.758524" y1="197.14055" x1="26.922228"></line>
-    <line style="stroke:#ff0000" id="line4299" y2="272.04327" x2="21.363054" y1="256.51834" x1="25.247454"></line>
-    <line style="stroke:#ff0000" id="line4301" y2="176.3076" x2="105.82832" y1="172.43663" x1="121.40705"></line>
-    <line style="stroke:#ff0000" id="line4303" y2="207.86148" x2="106.45448" y1="200.70749" x1="120.816"></line>
-    <line style="stroke:#ff0000" id="line4305" y2="239.12939" x2="107.22112" y1="229.52341" x1="120.0604"></line>
-    <line style="stroke:#ff0000" id="line4307" y2="177.86162" x2="76.350655" y1="170.70763" x1="90.712181"></line>
-    <line style="stroke:#ff0000" id="line4309" y2="241.00439" x2="79.081078" y1="227.69342" x1="87.989799"></line>
-    <line style="stroke:#ff0000" id="line4311" y2="269.98328" x2="107.94061" y1="258.66934" x1="119.29375"></line>
-    <line style="stroke:#ff0000" id="line4313" y2="179.12962" x2="47.014503" y1="169.52263" x1="59.853783"></line>
-    <line style="stroke:#ff0000" id="line4315" y2="211.00449" x2="48.977272" y1="197.69351" x1="57.885994"></line>
-    <line style="stroke:#ff0000" id="line4317" y2="241.62039" x2="50.151329" y1="227.00443" x1="56.681847"></line>
-    <line style="stroke:#ff0000" id="line4319" y2="179.98357" x2="17.629183" y1="168.66963" x1="28.982332"></line>
-    <line style="stroke:#ff0000" id="line4321" y2="241.97134" x2="20.775034" y1="226.78943" x1="25.842501"></line>
-    <line style="stroke:#ff0000" id="line4323" y2="271.97125" x2="50.878838" y1="256.78934" x1="55.946312"></line>
-    <line style="stroke:#ff0000" id="line4325" y2="271.46027" x2="209.35632" y1="257.14133" x1="202.1926"></line>
-    <line style="stroke:#ff0000" id="line4327" y2="209.98349" x2="211.48465" y1="198.66953" x1="200.13251"></line>
-    <line style="stroke:#ff0000" id="line4329" y2="211.45947" x2="269.56387" y1="197.14055" x1="262.3992"></line>
-    <line style="stroke:#ff0000" id="line4331" y2="272.04327" x2="267.95935" y1="256.51834" x1="264.07495"></line>
-    <line style="stroke:#ff0000" id="line4333" y2="176.3076" x2="183.49411" y1="172.43663" x1="167.91541"></line>
-    <line style="stroke:#ff0000" id="line4335" y2="207.86148" x2="182.86798" y1="200.70749" x1="168.50644"></line>
-    <line style="stroke:#ff0000" id="line4337" y2="239.12939" x2="182.10031" y1="229.52341" x1="169.26105"></line>
-    <line style="stroke:#ff0000" id="line4339" y2="177.86162" x2="212.97177" y1="170.70763" x1="198.61023"></line>
-    <line style="stroke:#ff0000" id="line4341" y2="241.00439" x2="210.24036" y1="227.69342" x1="201.33264"></line>
-    <line style="stroke:#ff0000" id="line4343" y2="269.98328" x2="181.38083" y1="258.66934" x1="170.02869"></line>
-    <line style="stroke:#ff0000" id="line4345" y2="179.12962" x2="242.30792" y1="169.52263" x1="229.46866"></line>
-    <line style="stroke:#ff0000" id="line4347" y2="211.00449" x2="240.34415" y1="197.69351" x1="231.43643"></line>
-    <line style="stroke:#ff0000" id="line4349" y2="241.62039" x2="239.17108" y1="227.00443" x1="232.64059"></line>
-    <line style="stroke:#ff0000;stroke-width:2" id="line4351" y2="179.98357" x2="271.69324" y1="168.66963" x1="260.34009"></line>
-    <line style="stroke:#ff0000" id="line4353" y2="241.97134" x2="268.54736" y1="226.78943" x1="263.47992"></line>
-    <line style="stroke:#ff0000" id="line4355" y2="271.97125" x2="238.4436" y1="256.78934" x1="233.37613"></line>
-  </g>
-  <text id="text4227" style="text-anchor:middle" y="30" x="153">
-    <tspan id="tspan4229" font-style="italic">x</tspan>
-  </text>
-  <text id="text4231" style="text-anchor:middle" y="15" x="153">↑</text>
-  <text id="text4233" style="text-anchor:middle;" y="150" x="145">0</text>
-  <text id="text4235" style="text-anchor:end;" y="160" x="290">
-    <tspan id="tspan4237" font-style="italic">t →</tspan>
-  </text>
-  <rect y="0" x="0" height="290" width="290" id="rect4243" style="opacity:1;fill:none;stroke:none;stroke-width:2;"></rect>
-  <path clip-path="url(#clipPath)" title="60*2.71828**(((((x-145)/60)**2)-1)/2)+145" d="m 0,290 290,0 M 0,290 0,0 m 0,-529.84418 c 13.809524,374.99297 27.619048,449.195981 41.428571,513.391729 13.809524,64.195748 27.619048,84.388739 41.428572,99.231201 13.809524,14.842462 27.619047,20.52203 41.428567,23.59471 13.80953,3.07268 27.61905,3.06581 41.42858,0 13.80952,-3.06581 27.61904,-8.772743 41.42857,-23.59471 C 220.95238,67.956783 234.7619,47.641186 248.57143,-16.452451 262.38095,-80.546087 276.19048,-154.85121 290,-529.84418" style="opacity:1;fill:none;stroke:#0000ff;stroke-width:2;" transform="translate(-0.5,2.5)"></path>
-</svg></p><p>
-This construction suggests that any first-order initial value problem in which the slopes of the line segments in the direction field change continuously as (<i>t</i>,&nbsp;<i>x</i>) changes—that is, in which <i style="padding-right:0.2em;">F</i> is continuous—has a solution.  If the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:partialDeriv">partial derivative</a> of <i style="padding-right:0.2em;">F</i> with
-respect to its second argument is continuous, then in fact the initial value problem has a <i>unique</i> solution.
-</p><div class="result" id="p:deexist"><dl class="result"><dt>Proposition 8.2.1 <span id="deexist" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;deexist&#39;)" class="showProof">source</a></span></dt><dd>
-If <i style="padding-right:0.2em;">F</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:function">function of two variables</a> that is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:cts">continuous</a> at (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) then there exists a number <i>a</i>&nbsp;&gt; 0 and a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:ctsDiff">continuously differentiable</a> function <i>x</i> of a single variable defined on the interval
-(<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>) that solves the first-order initial value problem
+The practical importance of this result is that the set of all solutions of the original equation may be found by finding <i>one</i> solution of this equation and adding to it the general solution of the homogeneous equation.  That is, we may use the following procedure to solve the original equation.
+
+<div class="procedure" id="o:lsde"><dl class="procedure"><dt>Procedure for finding general solution of linear second-order ordinary differential equation with constant coefficients</dt><dd>
+The general solution of the differential equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>)</div>
+may be found as follows.
+<ol type="1">
+<li>Find the general solution of the associated homogeneous equation <i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0.
+</li><li>Find a single solution of the original equation <i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>).
+</li><li>Add together the solutions found in steps&nbsp;1 and 2.
+</li></ol>
+</dd></dl></div>
+
+I now explain how to perform the first two steps and illustrate step&nbsp;3.
+<h4>1. Find the general solution of a homogeneous equation</h4>
+You might guess, based on the solutions we found for first-order equations, that the homogeneous equation has a solution of the form <i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>.  Let's see if it does.  If <i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup> then <i>x</i>'(<i>t</i>)&nbsp;= <i>r</i><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup> and
+<i>x</i>"(<i>t</i>)&nbsp;= <i>r</i><sup>2</sup><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>, so that
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i>x</i>'(<i>t</i>) </td>
+      <td class="alignRight"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>) </td>
       <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</td>
+      <td class="mathAlign2"><i>r</i><sup>2</sup><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>&nbsp;+
+<i>a</i><i>r</i><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>&nbsp;+ <i>b</i><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup></td>
 </tr>
  <tr>
   <td class="alignRight">
-<i>x</i>(<i>t</i><sub>0</sub>) </td>
+</td>
       <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i>x</i><sub>0</sub></td>
+      <td class="mathAlign2"> <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>(<i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>).</td>
 </tr>
 </tbody></table></div>
-for all <i>t</i>&nbsp;∈ (<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>).  If in addition the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:partialDeriv">partial derivative</a> of <i style="padding-right:0.2em;">F</i> with respect to <i>x</i> is continuous on an open rectangle containing (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) then there exists a number <i>a</i>&nbsp;&gt; 0 and
-a unique function <i>x</i> defined on the interval (<i>t</i><sub>0</sub>&nbsp;−&nbsp;<i>a</i>, <i>t</i><sub>0</sub>&nbsp;+&nbsp;<i>a</i>) that solves the initial value problem for all <i>t</i>&nbsp;∈ (<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>).
+Thus for <i>x</i>(<i>t</i>) to be a solution of the equation we need
+<div class="equation"><i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0.</div>
+This equation is known as the <span id="charEq"><span class="definition">characteristic equation</span></span> of the differential equation.  If <i>a</i><sup>2</sup> &gt; 4<i>b</i> this equation has two distinct real roots, if <i>a</i><sup>2</sup>&nbsp;= 4<i>b</i> it has a single real root, and if <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i> it has two complex roots.
+<p>
+Suppose that <i>a</i><sup>2</sup> &gt; 4<i>b</i>, so that the characteristic equation has two distinct real roots, say <i>r</i> and <i>s</i>.  We have shown that both <i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup> and <i>x</i>(<i>t</i>)&nbsp;= <i>B</i><i>e</i><sup><i>s</i><i>t</i></sup>, for any values of <i>A</i> and <i>B</i>, are solutions of the equation.  Thus also
+<i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup><i>s</i><i>t</i></sup> is a solution.  It can be shown, in fact, that <i>every</i> solution of the equation takes this form.
+</p><p>
+The cases in which the characteristic equation has a single real root (<i>a</i><sup>2</sup>&nbsp;= 4<i>b</i>) or complex roots (<i>a</i><sup>2</sup> &lt; 4<i>b</i>) require slightly different analyses, with the following conclusions.
+
+</p><div class="result" id="p:sde"><dl class="result"><dt>Proposition 8.6.2 <button class="proofButton" id="sde" onclick="javascript:showProof(&#39;sde&#39;)" style="display: none;">source</button></dt><dd>
+Consider the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#homogeneous">homogeneous</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:sle">linear second-order ordinary differential equation with constant coefficients</a>
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+The general solution of this equation depends on the character of the roots of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#charEq">characteristic equation</a> <i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0 as follows.
+<dl>
+<dt class="green">Distinct real roots</dt>
+<dd> If <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>b</i>, in which case the characteristic equation has distinct real roots, say <i>r</i> and <i>s</i>, the general solution of the equation is
+<div class="equation"><i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup><i>s</i><i>t</i></sup>.</div>
+</dd><dt class="green">Single real root</dt>
+<dd> If <i>a</i><sup>2</sup>&nbsp;= 4<i>b</i>, in which case the characteristic equation has a single root, say <i>r</i>, the general solution of the equation is
+<div class="equation">(<i>A</i>&nbsp;+ <i>B</i><i>t</i>)<i>e</i><sup><i>r</i><i>t</i></sup>,</div>
+where <i>r</i>&nbsp;= −<i>a</i>/2 is the root.
+</dd><dt id="complexroots" class="green">Complex roots</dt>
+<dd>  If <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i>, in which case the characteristic equation has complex roots, the general solution of the equation is
+<div class="equation">(<i>A</i>cos(β<i>t</i>)&nbsp;+ <i>B</i>sin(β<i>t</i>))<i>e</i><sup>α<i>t</i></sup>,</div>
+where α&nbsp;= −<i>a</i>/2 and β&nbsp;= √(<i>b</i>&nbsp;− <i>a</i><sup>2</sup>/4).  This solution may alternatively be expressed as
+<div class="equation"><i>C</i><i>e</i><sup>α<i>t</i></sup>cos(β<i>t</i>&nbsp;+ ω),</div>
+where the relationships between the constants <i>C</i>, ω, <i>A</i>, and <i>B</i> are <i>A</i>&nbsp;= <i>C</i>&nbsp;cos&nbsp;ω and <i>B</i>&nbsp;= −<i>C</i>&nbsp;sin&nbsp;ω.
+</dd></dl>
 </dd></dl></div>
-<div class="hiddenProof" id="f:deexist" style="display: block;"><dl class="proof"><dt>Source &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;deexist&#39;)" class="showProof">hide</a></span></dt><dd>
-For a proof of existence (the first sentence of the result) see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/REF#CoddingtonLevinson1955">Coddington and Levinson</a>&nbsp;(1955), p.&nbsp;6.  For a proof of uniqueness (the second sentence of the result), see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/REF#BoyceDiPrima1969">Boyce and DiPrima</a>&nbsp;(1969), pp.&nbsp;71–78.
+<div class="hiddenProof" id="f:sde" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;sde&#39;)">hide</button></dt><dd>
+For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/REF#Coddington1961">Coddington</a> (1961), Theorem&nbsp;1 on p.&nbsp;51 and Theorem&nbsp;5 on p.&nbsp;58, and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/REF#BoyceDiPrima1969">Boyce and DiPrima</a> (1969), pp.&nbsp;106–116.
 </dd></dl></div>
 
-The condition guaranteeing a unique solution (that the partial derivative of <i style="padding-right:0.2em;">F</i> with respect to <i>x</i> be continuous) is relatively mild, and is satisfied in almost all the examples we study.  After looking at some direction fields, you might wonder how even a first-order initial value problem that does not satisfy the condition could have more than one
-solution.  Here is an example.
-<div class="example" id="m:nonunique"><dl class="example"><dt>Example 8.2.2</dt><dd>
-Consider the first-order initial value problem
+You may be asking yourself how it is possible that trigonometric functions (sin and cos) appear in the solutions.  The answer lies in fact that
+<div class="equation"><i>e</i><sup><i>i</i><i>x</i></sup>&nbsp;= cos&nbsp;<i>x</i>&nbsp;+ <i>i</i>sin&nbsp;<i>x</i> for all <i>x</i>,</div>
+where <i>i</i> is the square root of −1.  For details, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/REF#BoyceDiPrima1969">Boyce and DiPrima</a> (1969), pp.&nbsp;106–116.
+
+
+<div class="example" id="m:ex3"><dl class="example"><dt>Example 8.6.2</dt><dd>
+Consider the differential equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>x</i>'(<i>t</i>)&nbsp;− 2<i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+The characteristic equation is
+<div class="equation"><i>r</i><sup>2</sup>&nbsp;+ <i>r</i>&nbsp;− 2&nbsp;= 0</div>
+so the roots are 1 and −2.  That is, the roots are real and distinct.  Thus the general solution of the differential equation is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup>−2<i>t</i></sup>.</div>
+</dd></dl></div>
+
+<div class="example" id="m:ex4"><dl class="example"><dt>Example 8.6.3</dt><dd>
+Consider the differential equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ 6<i>x</i>'(<i>t</i>)&nbsp;+ 9<i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+The characteristic equation has a single real root, −3.  Thus the general solution of the differential equation is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= (<i>A</i>&nbsp;+ <i>B</i><i>t</i>)<i>e</i><sup>−3<i>t</i></sup>.</div>
+</dd></dl></div>
+
+<div class="example" id="m:ex5"><dl class="example"><dt>Example 8.6.4</dt><dd>
+Consider the equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ 2<i>x</i>'(<i>t</i>)&nbsp;+ 17<i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+The roots of the characteristic equation are complex.  We have <i>a</i>&nbsp;= 2 and <i>b</i>&nbsp;= 17, so α&nbsp;= −1 and β&nbsp;= 4.  Thus the general solution of the differential equation is
+<div class="equation">[<i>A</i>&nbsp;cos(4<i>t</i>)&nbsp;+ <i>B</i>&nbsp;sin(4<i>t</i>)]<i>e</i><sup>−<i>t</i></sup>.</div>
+</dd></dl></div>
+
+<h4 id="s:nonhomog">2. Find a solution of a nonhomogeneous equation</h4>
+Consider the nonhomogeneous equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>).</div>
+If <i style="padding-right:0.2em;">f</i>(<i>t</i>) is a constant, say <i>c</i>, then a solution of this equation is
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i>x</i>'(<i>t</i>)&nbsp;</td>
-      <td class="mathAlign2">= (<i>x</i>(<i>t</i>))<sup>1/2</sup></td>
+      <td class="alignRight"><i>x</i>(<i>t</i>) =&nbsp;</td>
+      <td class="mathAlign2">
+        <table class="mathCases">
+          <tbody><tr>
+            <td class="brace" rowspan="3"><img alt="left brace" src="./index_files/lbrace3.gif"></td>
+
+           <td class="function"><i>c</i>/<i>b</i></td>
+            <td class="condition">&nbsp;if <i>b</i>&nbsp;≠ 0</td>
+          </tr>
+          <tr>
+            <td class="function"><i>c</i><i>t</i>/<i>a</i></td>
+            <td class="condition">&nbsp;if <i>b</i>&nbsp;= 0 and <i>a</i>&nbsp;≠ 0</td>
+          </tr>
+
+         <tr>
+            <td class="function"><i>c</i><i>t</i><sup>2</sup>/2</td>
+            <td class="condition">&nbsp;if <i>a</i>&nbsp;= <i>b</i>&nbsp;= 0.</td>
+      </tr>
+        </tbody></table></td>
+</tr>
+</tbody></table></div>
+For other forms of <i style="padding-right:0.2em;">f</i>, a good technique to find a solution is to try a linear combination of <i style="padding-right:0.2em;">f</i>(<i>t</i>) and its first and second derivatives.  If, for example, <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;= 3<i>t</i>&nbsp;− 6<i>t</i><sup>2</sup>, then <i style="padding-right:0.2em;">f</i>'(<i>t</i>)&nbsp;=
+3&nbsp;− 12<i>t</i> and <i style="padding-right:0.2em;">f</i>"(<i>t</i>)&nbsp;= −12, so that you should try to find values of <i>A</i>, <i>B</i>, and <i>C</i> such that <i>A</i>&nbsp;+ <i>B</i><i>t</i>&nbsp;+ <i>C</i><i>t</i><sup>2</sup> is a solution.  Or if <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;= 2sin&nbsp;<i>t</i>&nbsp;+&nbsp;cos&nbsp;<i>t</i>, then you should try to
+find values of <i>A</i> and <i>B</i> such that <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;= <i>A</i>sin&nbsp;<i>t</i>&nbsp;+&nbsp;<i>B</i>cos&nbsp;<i>t</i> is a solution.  If <i style="padding-right:0.2em;">f</i>(<i>t</i>) is an exponential function, the method is slightly different.  Suppose that <i style="padding-right:0.2em;">f</i>(<i>t</i>)&nbsp;=
+<i>k</i><i>e</i><sup><i>B</i><i>t</i></sup> for some values of <i>k</i> and <i>B</i>.  Then if <i>e</i><sup><i>B</i><i>t</i></sup> is not a solution of the homogeneous equation, you should try to find a value of <i>A</i> such that <i>A</i><i>e</i><sup><i>B</i><i>t</i></sup> is a solution of the original equation, but if <i>e</i><sup><i>B</i><i>t</i></sup> <i>is</i> a solution of the homogeneous
+equation, you should try to find a value of <i>A</i> such that <i>A</i><i>t</i><i>e</i><sup><i>B</i><i>t</i></sup> is a solution of the original equation.
+
+<div class="example" id="m:ex2"><dl class="example"><dt>Example 8.6.5</dt><dd>
+Consider the differential equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>x</i>'(<i>t</i>)&nbsp;− 2<i>x</i>(<i>t</i>)&nbsp;= <i>t</i><sup>2</sup>.</div>
+A linear combination of the function on the right-hand side and its first and second derivatives is <i>C</i>&nbsp;+ <i>D</i><i>t</i>&nbsp;+ <i>E</i><i>t</i><sup>2</sup>.  For this function to be a solution,
+<div class="equation">2<i>E</i>&nbsp;+ <i>D</i>&nbsp;+ 2<i>E</i><i>t</i>&nbsp;− 2<i>C</i>&nbsp;− 2<i>D</i><i>t</i>&nbsp;− 2<i>E</i><i>t</i><sup>2</sup>&nbsp;= <i>t</i><sup>2</sup> for all <i>t</i>.</div>
+For this condition to be satisfied (note that the equation must be satisfied <i>for all</i> <i>t</i>), the constant and coefficient of <i>t</i> on the left must be zero and the coefficient of <i>t</i><sup>2</sup> on the left must be 1.  That is,
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">2<i>E</i>&nbsp;+ <i>D</i>&nbsp;− 2<i>C</i>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-<i>x</i>(0)&nbsp;</td>
-      <td class="mathAlign2">= 0.</td>
+2<i>E</i>&nbsp;− 2<i>D</i>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+−2<i>E</i>&nbsp;</td>
+      <td class="mathAlign2">= 1.</td>
 </tr>
 </tbody></table></div>
-This problem does not satisfy the condition in the proposition for a unique solution, because the square root function is not differentiable at 0.
+The unique solution of these equations is <i>E</i>&nbsp;= −1/2, <i>D</i>&nbsp;= −1/2, and <i>C</i>&nbsp;= −3/4.  Thus
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= −3/4&nbsp;− <i>t</i>/2&nbsp;− <i>t</i><sup>2</sup>/2</div>
+is a solution of the differential equation.
+</dd></dl></div>
+
+<div class="example" id="m:ex2b"><dl class="example"><dt>Example 8.6.6</dt><dd>
+Consider the differential equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;− 3<i>x</i>'(<i>t</i>)&nbsp;+ 2<i>x</i>(<i>t</i>)&nbsp;= 2<i>e</i><sup><i>t</i></sup>.</div>
+The characteristic equation is <i>r</i><sup>2</sup>&nbsp;− 3<i>r</i>&nbsp;+ 2&nbsp;= 0, which has roots 1 and 2, so <i>e</i><sup><i>t</i></sup> is a solution of the homogeneous equation.  Thus in this case we try <i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>t</i><i>e</i><sup><i>t</i></sup>.  We have <i>x</i>'(<i>t</i>)&nbsp;= <i>A</i>(1&nbsp;+&nbsp;<i>t</i>)<i>e</i><sup><i>t</i></sup> and
+<i>x</i>"(<i>t</i>)&nbsp;= <i>A</i>(2&nbsp;+&nbsp;<i>t</i>)<i>e</i><sup><i>t</i></sup>, so for <i>x</i> to be a solution of the differential equation we need
+<div class="equation"><i>A</i>(2&nbsp;+&nbsp;<i>t</i>)<i>e</i><sup><i>t</i></sup>&nbsp;− 3<i>A</i>(1&nbsp;+&nbsp;<i>t</i>)<i>e</i><sup><i>t</i></sup>&nbsp;+ 2<i>A</i><i>t</i><i>e</i><sup><i>t</i></sup>&nbsp;= 2<i>e</i><sup><i>t</i></sup> for all <i>t</i>,</div>
+or −<i>A</i><i>e</i><sup><i>t</i></sup>&nbsp;= 2<i>e</i><sup><i>t</i></sup> for all <i>t</i>, so that <i>A</i>&nbsp;= 2.
 <p>
-Two solutions of the problem are <i>x</i>(<i>t</i>)&nbsp;= 0 for all <i>t</i> and <i>x</i>(<i>t</i>)&nbsp;= (<i>t</i>/2)<sup>2</sup> for all <i>t</i>.
+Thus a solution of the differential equation is <i>x</i>(<i>t</i>)&nbsp;= −2<i>t</i><i>e</i><sup><i>t</i></sup>.
 </p></dd></dl></div>
 
-<h3>Stability of solutions</h3>
+<h4>3. Add together the solutions found in steps 1 and 2</h4>
+This step is quite trivial!
+<div class="example" id="m:ex2a"><dl class="example"><dt>Example 8.6.7</dt><dd>
+Consider the equation from a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#m:ex2">previous example</a>, namely
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>x</i>'(<i>t</i>)&nbsp;− 2<i>x</i>(<i>t</i>)&nbsp;= <i>t</i><sup>2</sup>.</div>
+We saw <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#m:ex3">above</a> that the general solution of the associated homogeneous equation is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup>−2<i>t</i></sup>.</div>
+and that 
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= −3/4&nbsp;− <i>t</i>/2&nbsp;− <i>t</i><sup>2</sup>/2</div>
+is a solution of the original equation.
+<p>
+Thus the general solution of the original equation is
+</p><div class="equation"><i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup>−2<i>t</i></sup>&nbsp;− 3/4&nbsp;− <i>t</i>/2&nbsp;− <i>t</i><sup>2</sup>/2.</div>
+</dd></dl></div>
+
+<h4>Second-order initial value problems</h4>
+A <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/FDE#d:ivp">first-order initial value problem</a> consists of a first-order ordinary differential equation <i>x</i>'(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>)) and an “initial condition” that specifies the value of <i>x</i> for one value of <i>t</i>.  For a second-order equation, requiring an initial condition of that form does
+not generally determine a unique solution.  To determine a unique solution, we generally need to specify both the value of <i>x</i> for some value of <i>t</i> and the rate of change of <i>x</i> at that value of <i>t</i>.  Accordingly, we make the following definition.
+<div class="definition" id="d:soivp"><dl class="definition"><dt>Definition</dt><dd>
+A <span class="definition">second-order initial value problem</span> consists of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:soode">second-order ordinary differential equation</a>
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>),&nbsp;<i>x</i>'(<i>t</i>))</div>
+and <span class="definition">initial conditions</span>
+<div class="equation"><i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub> and <i>x</i>'(<i>t</i><sub>0</sub>)&nbsp;= <i>k</i><sub>0</sub></div>
+where <i>t</i><sub>0</sub>, <i>x</i><sub>0</sub>, and <i>k</i><sub>0</sub> are numbers.
+</dd></dl></div>
+
+<div class="example" id="m:ex7"><dl class="example"><dt>Example 8.6.8</dt><dd>
+Consider the second-order initial value problem in which the differential equation is the one in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#m:ex2">previous example</a>, namely
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>x</i>'(<i>t</i>)&nbsp;− 2<i>x</i>(<i>t</i>)&nbsp;= <i>t</i><sup>2</sup>,</div>
+and the initial conditions are
+<div class="equation"><i>x</i>(0)&nbsp;= 0 and <i>x</i>'(0)&nbsp;= 1.</div>
+From the previous example, the general solution of the equation is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= <i>A</i><i>e</i><sup><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup>−2<i>t</i></sup>&nbsp;− 3/4&nbsp;− <i>t</i>/2&nbsp;− <i>t</i><sup>2</sup>/2.</div>
+We have
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i>x</i>(0) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>A</i>&nbsp;+ <i>B</i>&nbsp;− 3/4</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i>x</i>'(0) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>A</i>&nbsp;− 2<i>B</i>&nbsp;− 1/2</td>
+</tr>
+</tbody></table></div>
+so that for the initial conditions to be satisfied we need
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">0 </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>A</i>&nbsp;+ <i>B</i>&nbsp;− 3/4</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+1 </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>A</i>&nbsp;− 2<i>B</i>&nbsp;− 1/2.</td>
+</tr>
+</tbody></table></div>
+The unique solution of these equations is <i>A</i>&nbsp;= 1, <i>B</i>&nbsp;= −1/4.  Thus the solution of the initial value problem is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= <i>e</i><sup><i>t</i></sup>&nbsp;− (1/4)<i>e</i><sup>−2<i>t</i></sup>&nbsp;− 3/4&nbsp;− <i>t</i>/2&nbsp;− <i>t</i><sup>2</sup>/2.</div>
+</dd></dl></div>
+
+<h4 id="stability">Equilibrium and stability</h4>
+The notions of equilibrium and stability for a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:soode">second-order initial value problem</a> are closely related to the corresponding notions for a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/FDE#d:stable">first-order initial value problem</a>.
 
 <div class="definition" id="d:ss"><dl class="definition"><dt>Definition</dt><dd>
-If for some initial condition a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ivp">first-order initial value problem</a> has a solution that is a constant function (independent of <i>t</i>), the value of the constant is an <span class="definition">equilibrium</span> or <span class="definition">stationary state</span> of the associated differential equation.
+If for some initial conditions a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:soivp">second-order initial value problem</a> has a solution that is a constant, the value of the constant is an <span class="definition">equilibrium</span> or <span class="definition">stationary state</span> of the associated differential equation.  If, for all initial conditions, the solution of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:soivp">second-order initial value
+problem</a> converges to an equilibrium of the associated differential equation as the variable <i>t</i> increases without bound, then the equilibrium is <span class="definition">globally stable</span>.
 </dd></dl></div>
 
-<div class="example" id="m:ex6"><dl class="example"><dt>Example 8.2.3</dt><dd>
-Consider the first-order initial value problem
-<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;+ <i>x</i>(<i>t</i>)&nbsp;= 2 with <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>.</div>
-The solution of this problem, as we shall <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/FLE#lin1">see later</a>, is
-<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= (<i>x</i><sub>0</sub>&nbsp;− 2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup>&nbsp;+ 2.</div>
-(You can verify that this function is a solution of the problem by calculating <i>x</i>'(<i>t</i>) and substituting it into the differential equation and by checking that <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>.)
+Consider the homogeneous linear second-order equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+If <i>b</i>&nbsp;≠ 0, this equation has a single <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">equilibrium</a>, namely 0.  (That is, the only constant function that is a solution is equal to 0 for all <i>t</i>.)  To study the stability of this equilibrium, consider separately the three possible forms of the general solution of the equation, as given in a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#p:sde">previous result</a>.
+<dl>
+<dt>Characteristic equation has two real roots
+</dt><dd>If the characteristic equation has two real roots, <i>r</i> and <i>s</i>, the general solution of the equation is <i>A</i><i>e</i><sup><i>r</i><i>t</i></sup>&nbsp;+ <i>B</i><i>e</i><sup><i>s</i><i>t</i></sup>.  This function converges to 0 for all values of <i>A</i> and <i>B</i>, so that the equilibrium is globally stable, if and only if <i>r</i>&nbsp;&lt; 0 and <i>s</i>&nbsp;&lt; 0.
+</dd><dt>Characteristic equation has a single real root
+</dt><dd>If the characteristic equation has a single real root, <i>r</i>, the general solution of the equation is (<i>A</i>&nbsp;+&nbsp;<i>B</i><i>t</i>)<i>e</i><sup><i>r</i><i>t</i></sup>.  This function converges to 0 for all values of <i>A</i> and <i>B</i>, so that the equilibrium is globally stable, if and only if <i>r</i>&nbsp;&lt; 0.  (If <i>r</i>&nbsp;&lt; 0 then for any value of <i>k</i>,
+<i>t</i><sup><i>k</i></sup><i>e</i><sup><i>r</i><i>t</i></sup> converges to 0 as <i>t</i> increases without bound.)
+</dd><dt>Characteristic equation has complex roots
+</dt><dd>If the characteristic equation has complex roots, the general solution of the equation is (<i>A</i>cos(β<i>t</i>)&nbsp;+ <i>B</i>sin(β<i>t</i>))<i>e</i><sup>α<i>t</i></sup>, where α&nbsp;= −<i>a</i>/2, β&nbsp;= √(<i>b</i>&nbsp;−&nbsp;<i>a</i><sup>2</sup>/4).  This function converges to 0 for all values of <i>A</i> and <i>B</i>, so that the equilibrium
+is globally stable, if and only if α&nbsp;&lt; 0, or equivalently <i>a</i>&nbsp;&gt; 0.  (Remember that cos&nbsp;θ and sin&nbsp;θ lie between +1 and −1 for all values of θ.)
+</dd></dl>
+Now, the roots of the characteristic equation
+<div class="equation"><i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0</div>
+are, by the quadratic formula,
+<div class="equation">(−<i>a</i>&nbsp;±&nbsp;√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>))/2.</div>
+Thus if these roots are complex, then the <i>real</i> part of each of them is −<i>a</i>/2.  Hence the condition for stability in the case of complex roots is that the real part of each root is negative.  Because the real part of a real root is simply the root, the conditions in the other two cases are exactly the same.  That is, regardless of the nature of the roots, the equilibrium is
+globally stable if and only if the real part of each root of the characteristic equation is negative.
 <p>
-Thus for <i>x</i><sub>0</sub>&nbsp;= 2, the solution of the problem is <i>x</i>(<i>t</i>)&nbsp;= 2 for all <i>t</i>, so that 2 is an equilibrium of the differential equation.  For no other value of <i>x</i><sub>0</sub> is the solution a constant function, so 2 is the only equilibrium.
-</p></dd></dl></div>
+If <i>b</i>&nbsp;= 0, then every number is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">equilibrium</a>.  By a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#p:sde">previous result</a> the general solution of the equation is <nobr><span class="nobr"><i>A</i><i>e</i><sup>−<i>a</i><i>t</i></sup></span></nobr>&nbsp;+ <i>B</i> if <i>a</i>&nbsp;≠ 0 and <i>A</i>&nbsp;+ <i>B</i><i>t</i> if <i>a</i>&nbsp;= 0.  In both cases, for no equilibrium does the
+solution converge to the equilibrium for all values of <i>A</i> and <i>B</i>.
+</p><p>
+Thus an equilibrium of the second-order linear homogeneous equation
+</p><div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0</div>
+is globally stable if and only if the real parts of each root of the characteristic equation
+<div class="equation"><i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0</div>
+is negative.  If <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>b</i> then the roots are real, equal to (−<i>a</i>&nbsp;±&nbsp;√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>))/2.  They are both negative if and only if −<i>a</i>&nbsp;+&nbsp;√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)&nbsp;&lt; 0, which is true if and only if <i>a</i>&nbsp;&gt; 0 and <i>b</i>&nbsp;&gt;
+0.  If <i>a</i><sup>2</sup>&nbsp;= 4<i>b</i> then <i>b</i>&nbsp;≥ 0 (because the square of any number is nonnegative) and the single root is −<i>a</i>/2, which is negative if and only if <i>a</i>&nbsp;&gt; 0, in which case <i>b</i>&nbsp;&gt; 0.  Finally, if <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i> then also <i>b</i>&nbsp;&gt; 0 and the real part of each root is −<i>a</i>/2, which
+is negative if and only if <i>a</i>&nbsp;&gt; 0.
+<p>
+Thus we have the following result.
+</p><div class="result" id="p:1"><dl class="result"><dt>Proposition 8.6.3</dt><dd>
+An <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">equilibrium</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#homogeneous">homogeneous</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:sle">linear second-order ordinary differential equation with constant coefficients</a> <i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0 is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">stable</a> if and only if the real parts of both roots of the <a href="file:///D:/charEq">characteristic
+equation</a> <i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0 are negative, or, equivalently, if and only if <i>a</i>&nbsp;&gt; 0 and <i>b</i>&nbsp;&gt; 0.
+</dd></dl></div>
 
-If the solution of a first-order initial value problem converges to an equilibrium of the associated differential equation for all initial conditions, then we say that the equilibrium is “stable”.  Here is a more precise definition that distinguishes between two types of stability.
-<div class="definition" id="d:stable"><dl class="definition"><dt>Definition</dt><dd>
-If, for all initial conditions, the solution of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ivp">first-order initial value problem</a> converges to an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ss">equilibrium</a> of the associated differential equation as <i>t</i> increases without bound, then the equilibrium is <span class="definition">globally stable</span>.  If, for all values of <i>x</i><sub>0</sub> sufficiently close to the equilibrium the solution
-converges to the equilibrium as <i>t</i> increases without bound, then the equilibrium is <span class="definition">locally stable</span>.  An equilibrium that is not locally stable is <span class="definition">unstable</span>.
+Now consider the (nonhomogeneous) linear second-order equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i>c</i></div>
+where <i>b</i>&nbsp;≠ 0 and <i>c</i>&nbsp;≠ 0.  The constant function <i>x</i>(<i>t</i>)&nbsp;= <i>c</i>/<i>b</i> is a solution of this equation, so that by our <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#o:lsde">procedure</a>, the general solution of the equation is the sum of <i>c</i>/<i>b</i> and the general solution of the homogeneous equation
+<div class="equation"><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= 0.</div>
+Thus the equilibrium (0) of this homogeneous equation is globally stable if and only if the equilibrium of the original equation is globally stable.  That is, we have the following result.
+<div class="result" id="p:2"><dl class="result"><dt>Proposition 8.6.4</dt><dd>
+For any value of <i>c</i>, an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">equilibrium</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:sle">linear second-order ordinary differential equation with constant coefficients </a><i>x</i>"(<i>t</i>)&nbsp;+ <i>a</i><i>x</i>'(<i>t</i>)&nbsp;+ <i>b</i><i>x</i>(<i>t</i>)&nbsp;= <i>c</i> with <i>b</i>&nbsp;≠ 0 is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#d:ss">stable</a> if and only if the real parts of both roots of the
+<a href="file:///D:/charEq">characteristic equation</a> <i>r</i><sup>2</sup>&nbsp;+ <i>a</i><i>r</i>&nbsp;+ <i>b</i>&nbsp;= 0 are negative, or, equivalently, if and only if <i>a</i>&nbsp;&gt; 0 and <i>b</i>&nbsp;&gt; 0.
 </dd></dl></div>
-<div class="example" id="m:ex7"><dl class="example"><dt>Example 8.2.4</dt><dd>
-The solution of the initial value problem in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#m:ex6">previous example</a> is
-<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= (<i>x</i><sub>0</sub>&nbsp;− 2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup>&nbsp;+ 2.</div>
-For every value of (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>), (<i>x</i><sub>0</sub>&nbsp;−&nbsp;2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup> converges to zero, so the equilibrium <i>x</i>&nbsp;= 2 is globally stable.
-</dd></dl></div>
+
+<div class="example" id="m:ex6"><dl class="example"><dt>Example 8.6.9</dt><dd>
+Consider the following model of an economy with one good.  Suppose that the aggregate for the good is
+<div class="equation"><i>D</i>(<i>t</i>)&nbsp;= <i>a</i>&nbsp;− <i>b</i><i>p</i>(<i>t</i>)&nbsp;+ <i>c</i>π(<i>t</i>),</div>
+where <i>p</i> is the price of the good, π is the expected rate of inflation, and <i>a</i>&nbsp;&gt; 0, <i>b</i>&nbsp;&gt; 0, and <i>c</i>&nbsp;&gt; 0 are constants.  Suppose that the aggregate supply of the good is fixed at <i>Q</i>*, and that the price adjusts according to
+<div class="equation"><i>p</i>'(<i>t</i>)&nbsp;= <i>h</i>(<i>D</i>(<i>t</i>)&nbsp;− <i>Q</i>*)&nbsp;+ π(<i>t</i>),</div>
+where <i>h</i>&nbsp;&gt; 0.  Finally, suppose that expectations are adaptive:
+<div class="equation">π'(<i>t</i>)&nbsp;= <i>k</i>(<i>p</i>'(<i>t</i>)&nbsp;− π(<i>t</i>))</div>
+for some <i>k</i>&nbsp;&gt; 0.  Is the equilibrium of this system stable?
+<p>
+One way to answer this question is to reduce the system to a single second-order differential equation by differentiating the equation for <i>p</i>'(<i>t</i>) to obtain <i>p</i>"(<i>t</i>) and then substituting in for π'(<i>t</i>) and π(<i>t</i>).  We obtain
+</p><div class="equation"><i>p</i>"(<i>t</i>)&nbsp;− <i>h</i>(<i>k</i><i>c</i>&nbsp;− <i>b</i>)<i>p</i>'(<i>t</i>)&nbsp;+ <i>k</i><i>h</i><i>b</i><i>p</i>(<i>t</i>)&nbsp;= <i>k</i><i>h</i>(<i>a</i>&nbsp;− <i>Q</i>*).</div>
+Given <i>k</i>&nbsp;&gt; 0, <i>h</i>&nbsp;&gt; 0, and <i>b</i>&nbsp;&gt; 0, we have <i>k</i><i>h</i><i>b</i>&nbsp;&gt; 0, so from the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sde/t#p:2">previous proposition</a> the equilibrium is stable if and only if <i>k</i><i>c</i>&nbsp;&lt; <i>b</i>.
+<p>
+In particular, if <i>c</i>&nbsp;= 0 (i.e. expectations are ignored) then the equilibrium is stable.  If expectations are taken into account, however, and respond rapidly to changes in the rate of inflation (<i>k</i> is large), then the equilibrium may not be stable.
+</p></dd></dl></div>
 
 
 
@@ -546,7 +704,7 @@ For every value of (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>), (<i>x</i><
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="72">
+            <input type="hidden" name="pageId" value="80">
 
             
 
