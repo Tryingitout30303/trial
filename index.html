@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 7.2 Optimization with inequality constraints: the necessity of the Kuhn-Tucker conditions</title>
+    <title>Mathematical methods for economic theory: 7.3 Optimization with inequality constraints: the sufficiency of the Kuhn-Tucker conditions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: necessity of Kuhn-Tucker conditions for optimization problems with inequality constraints">
-        <meta name="keywords" content="mathematical methods, economic theory, optimization, inequality constraints, Kuhn-Tucker conditions, necessity">
+            <meta name="description" content="Mathematical methods for economic theory: sufficiency of Kuhn-Tucker conditions for optimization problems with inequality constraints">
+        <meta name="keywords" content="mathematical methods, economic theory, optimization, inequality constraints, Kuhn-Tucker conditions, sufficiency">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -202,7 +202,7 @@
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/40"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Kuhn-Tucker conditions"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/41"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Kuhn-Tucker conditions"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/42"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Kuhn-Tucker conditions"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -212,6 +212,9 @@
                         <span class="text"><span class="boldUppercase">Text</span></span>
                     </span>
 
+                                            <span class="tab">
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/x" class="menuAction">Exercises</a></span>
+                        </span>
                                     
             </span>  <!-- leftMenu -->
 
@@ -219,7 +222,7 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/43"><img alt="Next page" src="./index_files/next.gif" height="20" title="Kuhn-Tucker conditions"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/44"><img alt="Next page" src="./index_files/next.gif" height="20" title="Nonnegativity conditions"></a>
                             <span class="hideable">
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/46"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Differential equations"></a>
                                 </span>
@@ -265,107 +268,512 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>7.2 Optimization with inequality constraints: the necessity of the Kuhn-Tucker conditions</h2>
+            <h2>7.3 Optimization with inequality constraints: the sufficiency of the Kuhn-Tucker conditions</h2>
         </header>
 
-	<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/MEN#p:con-opt">We have seen</a> that a solution <i>x</i>* of an optimization problem with equality constraints is a stationary point of the Lagrangean if the constraints satisfy a condition sometimes referred to as a “regularity” condition.  In the case of a single constraint <i>g</i>(<i>x</i>)&nbsp;= <i>c</i>, the condition is that the partial derivatives of <i>g</i> are not
-all zero at <i>x</i>*, or, in more compact notation, ∇<i>g</i>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0).  In an optimization problem with inequality constraints a related regularity condition guarantees that a solution satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTC#d:KTconds">Kuhn-Tucker</a> conditions.  The weakest forms of this regularity condition are difficult to verify.  The next result gives three
-alternative strong forms that are much easier to verify.
-<div class="result" id="p:KTFOC"><dl class="result"><dt>Proposition 7.2.1 (Necessity of Kuhn-Tucker conditions) &nbsp;<button class="proofButton" id="KTFOC" onclick="javascript:showProof(&#39;KTFOC&#39;)" style="display: none;">source</button></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CLN#d:diff">differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i>x</i>*&nbsp;∈ <i>S</i> solves the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i></div>
-and that
+	We saw previously that for both an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/GOP#p:maxconcaven">unconstrained maximization problem</a> and a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/MEG#p:18.2">maximization problem with an equality constraint</a> the first-order conditions are sufficient for a global optimum when the objective and constraint functions satisfy appropriate concavity/convexity conditions.  The same is true for an optimization problem with
+inequality constraints.
+<h3>Concave objective function</h3>
+<div class="result" id="p:KTFOC"><dl class="result"><dt>Proposition 7.3.1 (Sufficiency of Kuhn-Tucker conditions for concave objective function) &nbsp;<button class="proofButton" id="KTFOC" onclick="javascript:showProof(&#39;KTFOC&#39;)" style="display: none;">proof</button></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that
 <ul>
-   <li><b>either</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:ccvfn">concave</a>
-   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:ccvfn">convex</a> and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for every <i>j</i> for which <i>g</i><sub><i>j</i></sub> is linear and <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for every <i>j</i> for which
-<i>g</i><sub><i>j</i></sub> is not linear
-   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/QCC#d:qcvx">quasiconvex</a>, ∇<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0) for all <i>j</i>&nbsp;= 1, ..., <i>m</i>, and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i>.
+   <li><i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a>
+   </li><li>and <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.
 </li></ul>
-Then there exists a vector λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
+If there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) and a point <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.</div>
 </dd></dl></div>
-<div class="hiddenProof" id="f:KTFOC" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC&#39;)">hide</button></dt><dd>
-For proofs under the first two conditions, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#ArrowHurwiczUzawa1961">Arrow, Hurwicz, and Uzawa</a> (1961), Theorem&nbsp;3 and Corollaries&nbsp;1 and 3 (p.&nbsp;183).  See also <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Takayama1985">Takayama</a> (1985), pp.&nbsp;106–111.  (Note that in both cases the constraints are formulated as <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≥ 0 rather than
-<i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub>, so the conditions of concavity and convexity have to be interchanged to fit my statement of the result.)  A proof under a slight variant of the second condition is given in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Carter2001">Carter</a> (2001), Theorem&nbsp;5.4 (p.&nbsp;577).  The third condition is also included in Carter's Theorem&nbsp;5.4; the
-proof is left as an exercise (5.42 on p.&nbsp;579).  The solution to the exercise is available on the author's <a href="http://michaelcarteronline.com/FOME/answers.html" target="_blank">website for the book</a>.
+<div class="hiddenProof" id="f:KTFOC" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC&#39;)">hide</button></dt><dd>
+The fact that (<i>x</i>*,&nbsp;λ) satisfies the Kuhn-Tucker conditions means that
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;− ∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)&nbsp;=&nbsp;0 for
+<i>i</i>&nbsp;= 1, ...,&nbsp;<i>n</i></td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">λ<sub><i>j</i></sub>&nbsp;≥&nbsp;0,&nbsp;<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;≤&nbsp;<i>c</i><sub><i>j</i></sub> and λ<sub><i>j</i></sub>[<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;− <i>c</i><sub><i>j</i></sub>]&nbsp;= 0 for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></td>
+</tr>
+</tbody></table></div>
+(where <i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*) is the derivative of <i>g</i><sub><i>j</i></sub> with respect to its <i>i</i>th argument evaluated at <i>x</i>*).
+<p>
+Let <i>x</i> be such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for all <i>j</i>.  We need to show that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*). 
+</p><p>
+Let <i>j</i> be an index such that <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub>.  (That is, the <i>j</i>th constraint is binding at <i>x</i>*.)  Then <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>g</i><sub><i>j</i></sub>(<i>x</i>*), so that by a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#p:qccOnceDiff">characterization of quasiconvex functions</a>,
+<nobr><span class="nobr">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤</span></nobr> 0.  Thus given λ<sub><i>j</i></sub>&nbsp;≥ 0 we have
+<nobr><span class="nobr">λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤</span></nobr> 0.
+</p><p>
+Now let <i>j</i> be an index such that <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;&lt; <i>c</i><sub><i>j</i></sub>.  Then by the complementary slackness condition for constraint <i>j</i> in the Kuhn-Tucker conditions, λ<sub><i>j</i></sub>&nbsp;= 0.
+</p><p>
+Thus for every constraint <i>j</i> we have
+</p><div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
+0</td>
+</tr>
+</tbody></table></div>
+and hence
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;−
+<i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤ 0,</td>
+</tr>
+</tbody></table></div>
+or, reversing the summations,
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;−
+<i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤ 0.</td>
+</tr>
+</tbody></table></div>
+Now, multiplying the <i>i</i>th first-order condition in the Kuhn-Tucker conditions by <i>x</i><sub><i>i</i></sub>&nbsp;−&nbsp;<i>x</i>*<sub class="star"><i>i</i></sub> and summing over <i>i</i> we get
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;−
+∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;=&nbsp;0.</td>
+</tr>
+</tbody></table></div>
+By the previous inequality, the second term is nonpositive, so
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
+0.</td>
+</tr>
+</tbody></table></div>
+Thus from <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#p:concaveOnceDiff">characterization of concave functions</a>, <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*), completing the proof.
 </dd></dl></div>
 
-Recall that a linear function is concave, so the conditions in the result are satisfied if each constraint function is linear.
+This result together with <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a>, giving conditions under which the Kuhn-Tucker conditions are necessary, and the fact that a convex function (and hence a linear one) is quasiconvex yields the following useful corollary.
+<div class="result" id="c:KTN&amp;S1"><dl class="result"><dt>Corollary 7.3.1 (Necessity and sufficiency of Kuhn-Tucker conditions for concave objective function)</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and
+<ul>
+   <li><b>either</b> each <i>g</i><sub><i>j</i></sub> is linear
+   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">convex</a> and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i>.
+</li></ul>
+Then <i>x</i>*&nbsp;∈ <i>S</i> solves the problem
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i></div>
+if and only if there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker</a> conditions.
+</dd></dl></div>
+
+<h3>Quasiconcave objective function</h3>
+The condition that the objective function be concave is a bit too strong to be useful in some economic applications.  For example, the assumption we would like to impose on a consumer's utility function is that it be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a>.  The next result is useful in this case.
+<div class="result" id="p:KTFOC2"><dl class="result"><dt>Proposition 7.3.2 (Sufficiency of Kuhn-Tucker conditions for quasiconcave objective function) &nbsp;<button class="proofButton" id="KTFOC2" onclick="javascript:showProof(&#39;KTFOC2&#39;)" style="display: none;">proof</button></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of <i>n</i> variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that
+<ul>
+   <li><i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a>
+   </li><li>and <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.
+</li></ul>
+If there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) and <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and it is not the case that <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>n</i> then <i>x</i>* solves the problem
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.</div>
+</dd></dl></div>
+<div class="hiddenProof" id="f:KTFOC2" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC2&#39;)">hide</button></dt><dd>
+The proof of the previous result, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a>, uses the concavity of <i style="padding-right:0.2em;">f</i> only in the last sentence.  In particular, under the assumption that <i style="padding-right:0.2em;">f</i> is quasiconcave we can conclude that
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
+0,</td>
+</tr>
+</tbody></table></div>
+as in that proof.  Now suppose, contrary to the claim that <i>x</i>* solves the maximization problem, that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*) for some <i>x</i> that satisfies the constraints.
 <p>
-Note that the last part of the second and third conditions requires only that <i>some</i> point strictly satisfy all the constraints.  This requirement is given in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Slater1950">Slater</a> (1950) and is known as <i>Slater's condition</i>.
-</p><p>
-One way in which the conditions in the result may be weakened is sometimes useful: the conditions on the constraint functions need to be satisfied only by the binding constraints—those for which <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub>.
-</p><p>
-See the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTS">next page</a> for some examples illustrating how to use the result.
-</p><p>
-The next example shows that <i>some</i> conditions on the constraint functions are needed.  The problem in the example has a solution, but this solution does not satisfy the Kuhn-Tucker conditions (which have no solution).
-</p><div class="example" id="m:ex5"><dl class="example"><dt>Example 7.2.1</dt><dd>
+Denote the vector of partial derivatives of <i style="padding-right:0.2em;">f</i> by ∇<i style="padding-right:0.2em;">f</i>.  Given the continuity of <i style="padding-right:0.2em;">f</i>, the fact that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*) means that there exists <i>t</i>&nbsp;&gt; 0 (small enough) such that
+<i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*), and the conclusion from the proof of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> may be written
+</p><div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·(<i>x</i>&nbsp;−&nbsp;<i>x</i>*)&nbsp;≤ 0.</td>
+</tr>
+</tbody></table></div>
+Thus
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight">∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;− <i>x</i>*) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">
+−<i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;+ ∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)(<i>x</i>&nbsp;− <i>x</i>*)</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">&nbsp;≤&nbsp;</td>
+      <td class="mathAlign2"> −<i>t</i>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>(<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*))<sup>2</sup>&nbsp;&lt; 0,</td>
+</tr>
+</tbody></table></div>
+given the assumption that ∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0).  But now, by a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#p:qccOnceDiff">characterization of quasiconcave functions</a>, this inequality implies that <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;−&nbsp;<i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&lt;
+<i style="padding-right:0.2em;">f</i>(<i>x</i>*), contradicting <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*).  Thus in fact <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*).
+</dd></dl></div>
+
+The constraints in a standard consumer's optimization problem are linear, so the following implication of this result and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a>, giving conditions under which the Kuhn-Tucker conditions are necessary, is useful.
+<div class="result" id="c:KTN&amp;S2"><dl class="result"><dt>Corollary 7.3.2 (Necessity and sufficiency of Kuhn-Tucker conditions for quasiconcave objective function)</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of <i>n</i> variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> and each <i>g</i><sub><i>j</i></sub> is linear.
+If <i>x</i>*&nbsp;∈ <i>S</i> solves the problem 
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
+then there exists a unique <i>m</i>-vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>, and if there exists an <i>m</i>-vector λ and a point <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and it is not the case that
+<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i> then <i>x</i>* solves the problem.
+</dd></dl></div>
+If you have a minimization problem, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#trans">remember</a> that you can transform it to a maximization problem by multiplying the objective function by −1.  Thus for a minimization problem the condition on the objective function in the first result above is that it be convex, and the condition in the second result is that it be quasiconvex.
+
+<h3>Examples</h3>
+The next two simple examples illustrate how to use these results and the ones in Section&nbsp;7.2 to solve optimization problems.
+<div class="example" id="m:ex1"><dl class="example"><dt>Example 7.3.1</dt><dd>
 Consider the problem
-<div class="equation">max<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i> subject to <i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>&nbsp;≤ 0 and <i>y</i>&nbsp;≥ 0,</div>
-with the domain of both the objective function and the constraint function the set of all pairs (<i>x</i>,&nbsp;<i>y</i>).
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to <i>x</i>&nbsp;≥ 1,</div>
+where <i>S</i> is the set of all numbers.  This problem is illustrated in the following figure.
 <p>
-The constraint does not satisfy any of the conditions in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/t#p:KTFOC">proposition</a>.
-</p><p>
-The solution is clearly (1,&nbsp;0).
-</p><p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="217" height="190">
+
+	 <g transform="translate(27,20)">
+
+     <path d="M40,-20
+			  L40,160
+			  L190,160
+			  L190,-20" style="fill:#ccffcc;stroke:none;"></path>
+	 
+	 <path d="M-27,0
+	          L-17,0
+	          M-3,0
+	          L190,0
+			  M0,-3
+			  L0,160" class="axis"></path>	 
+	 
+  <g transform="translate(0,-892.36216)">
+    <path id="path4174" clip-path="url(#clipPath)" title="-((x-80)**2)/40" d="M 0.0 1052.36218 C 7.61904761905 1021.89034327 15.2380952381 995.767894286 22.8571428571 973.994833061 C 30.4761904762 952.221771837 38.0952380952 934.815513333 45.7142857143 921.749935102 C 53.3333333333 908.684356871 60.9523809524 899.985581361 68.5714285714 895.627486122 C 76.1904761905 891.269390884 83.8095238095 891.278098367 91.4285714286 895.627486122 C 99.0476190476 899.976873878 106.666666667 908.693064354 114.285714286 921.749935102 C 121.904761905 934.80680585 129.523809524 952.23047932 137.142857143 973.994833061 C 144.761904762 995.759186803 152.380952381 1021.89034327 160.0 1052.36218" style="opacity:1;fill:none;fill-opacity:0.21176471;stroke:#ff0000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></path>
+  </g>
+  
+     <path d="M40,-3
+	          L40,160" style="stroke:green"></path>
+		
+		<circle cx="80" cy="0" r="2.5" style="fill:magenta;stroke:magenta;"></circle>
+
+     <text x="190" y="15" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
+
+       <text x="0" y="-5" style="text-anchor:middle;">0</text>
+       <text x="40" y="-5" style="text-anchor:middle;">1</text>
+       <text x="80" y="-5" style="text-anchor:middle;">2</text>
+       <text x="120" y="-5" style="text-anchor:middle;">3</text>
+       <text x="160" y="-5" style="text-anchor:middle;">4</text>
+
+       <text x="-5" y="5" style="text-anchor:end;">0</text>
+       <text x="-5" y="45" style="text-anchor:end;">−1</text>
+       <text x="-5" y="85" style="text-anchor:end;">−2</text>
+       <text x="-5" y="125" style="text-anchor:end;">−3</text>
+       <text x="-5" y="165" style="text-anchor:end;">−4</text>
+  
+       <text x="45" y="80" style="text-anchor:start;fill:green;"><tspan font-style="italic">x</tspan> = 1</text>
+
+  <text x="148" y="140" style="text-anchor:end;fill:#ff0000">−(<tspan font-style="italic">x</tspan> − 2)<tspan dy="-5">2</tspan></text>
+
+	   </g>
+</svg></p><p>
+Written in the standard format, this problem is
+</p><div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to 1&nbsp;− <i>x</i>&nbsp;≤ 0.</div>
+The set <i>S</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> on this set.  The objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and the constraint function is linear, and hence both <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a number λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>) and by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> they are sufficient (if
+(<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem).
+<p>
+The Lagrangean is the function L defined by
+</p><div class="equation">L(<i>x</i>)&nbsp;= −(<i>x</i>&nbsp;− 2)<sup>2</sup>&nbsp;− λ(1&nbsp;− <i>x</i>).</div>
+<p>
+The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">−2(<i>x</i>&nbsp;− 2)&nbsp;+ λ&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+1&nbsp;− <i>x</i>&nbsp;≤ 0, λ&nbsp;≥ 0, and λ(1&nbsp;− <i>x</i>)&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+From the last condition we have either λ&nbsp;= 0 or <i>x</i>&nbsp;= 1.
+<ul>
+   <li><i>x</i>&nbsp;= 1: 2&nbsp;+ λ&nbsp;= 0, or λ&nbsp;= −2, which violates λ&nbsp;≥ 0.
+   </li><li>λ&nbsp;= 0: −2(<i>x</i>&nbsp;− 2)&nbsp;= 0; the only solution is <i>x</i>&nbsp;= 2.
+</li></ul>
+Thus the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> have a unique solution, (<i>x</i>,&nbsp;λ)&nbsp;= (2,&nbsp;0).  Hence <i>x</i>&nbsp;= 2 is the unique solution of the problem.
+</dd></dl></div>
+<div class="example" id="m:ex2"><dl class="example"><dt>Example 7.3.2</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to <i>x</i>&nbsp;≥ 3,</div>
+where <i>S</i> is the set of all numbers.  This problem is illustrated in the following figure.
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="217" height="190">
+
+	 <g transform="translate(27,20)">
+
+     <path d="M120,-20
+			  L120,160
+			  L190,160
+			  L190,-20" style="fill:#ccffcc;stroke:none;"></path>
+	 
+	 <path d="M-27,0
+	          L-17,0
+			  M-3,0
+	          L190,0
+			  M0,-3
+			  L0,160" class="axis"></path>	 
+	 
+  <g transform="translate(0,-892.36216)">
+    <path id="path4174" clip-path="url(#clipPath)" title="-((x-80)**2)/40" d="M 0.0 1052.36218 C 7.61904761905 1021.89034327 15.2380952381 995.767894286 22.8571428571 973.994833061 C 30.4761904762 952.221771837 38.0952380952 934.815513333 45.7142857143 921.749935102 C 53.3333333333 908.684356871 60.9523809524 899.985581361 68.5714285714 895.627486122 C 76.1904761905 891.269390884 83.8095238095 891.278098367 91.4285714286 895.627486122 C 99.0476190476 899.976873878 106.666666667 908.693064354 114.285714286 921.749935102 C 121.904761905 934.80680585 129.523809524 952.23047932 137.142857143 973.994833061 C 144.761904762 995.759186803 152.380952381 1021.89034327 160.0 1052.36218" style="opacity:1;fill:none;fill-opacity:0.21176471;stroke:#ff0000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></path>
+  </g>
+  
+     <path d="M120,-3
+	          L120,160" style="stroke:green"></path>
+		
+		<circle cx="120" cy="40" r="2.5" style="fill:magenta;stroke:magenta;"></circle>
+		
+
+     <text x="190" y="15" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
+
+       <text x="0" y="-5" style="text-anchor:middle;">0</text>
+       <text x="40" y="-5" style="text-anchor:middle;">1</text>
+       <text x="80" y="-5" style="text-anchor:middle;">2</text>
+       <text x="120" y="-5" style="text-anchor:middle;">3</text>
+       <text x="160" y="-5" style="text-anchor:middle;">4</text>
+
+       <text x="-5" y="5" style="text-anchor:end;">0</text>
+       <text x="-5" y="45" style="text-anchor:end;">−1</text>
+       <text x="-5" y="85" style="text-anchor:end;">−2</text>
+       <text x="-5" y="125" style="text-anchor:end;">−3</text>
+       <text x="-5" y="165" style="text-anchor:end;">−4</text>
+  
+       <text x="115" y="80" style="text-anchor:end;fill:green;"><tspan font-style="italic">x</tspan> = 3</text>
+
+  <text x="8" y="140" style="text-anchor:start;fill:#ff0000">−(<tspan font-style="italic">x</tspan> − 2)<tspan dy="-5">2</tspan></text>
+
+	   </g>
+</svg></p><p>
+Written in the standard format, this problem is
+</p><div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to 3&nbsp;− <i>x</i>&nbsp;≤ 0.</div>
+As in the previous example, 7.3.1, the objective function is concave and the constraint function is linear, so that <i>x</i>* is a solution of the problem if and only if there is a number λ such that (<i>x</i>*,&nbsp;λ) is a solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
+<p>
 The Lagrangean is
-</p><div class="equation">L(<i>x</i>)&nbsp;= <i>x</i>&nbsp;− λ<sub>1</sub>(<i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>)&nbsp;+ λ<sub>2</sub><i>y</i>.</div>
+</p><div class="equation">L(<i>x</i>)&nbsp;= −(<i>x</i>&nbsp;− 2)<sup>2</sup>&nbsp;− λ(3&nbsp;− <i>x</i>).</div>
+<p>
+The Kuhn-Tucker conditions are
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">−2(<i>x</i>−2)&nbsp;+ λ&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+3&nbsp;− <i>x</i>&nbsp;≤ 0, λ&nbsp;≥ 0, and λ(3&nbsp;− <i>x</i>)&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+From the last conditions we have either λ&nbsp;= 0 or <i>x</i>&nbsp;= 3.
+<ul>
+   <li><i>x</i>&nbsp;= 3: −2&nbsp;+ λ&nbsp;= 0, or λ&nbsp;= 2.
+   </li><li>λ&nbsp;= 0: −2(<i>x</i>&nbsp;− 2)&nbsp;= 0; since <i>x</i>&nbsp;≥ 3 this has no solution compatible with the other conditions.
+</li></ul>
+Thus the Kuhn-Tucker conditions have a single solution, (<i>x</i>,&nbsp;λ)&nbsp;= (3,&nbsp;2).  Hence <i>x</i>&nbsp;= 3 is the unique solution of the problem.
+</dd></dl></div>
+These two examples illustrate a procedure for finding solutions of the Kuhn-Tucker conditions that is useful in many problems.  First, look at the complementary slackness conditions, which imply that either a Lagrange multiplier is zero or a constraint is binding.  Then follow through the implications of each case, using the other equations.  In the two examples, this procedure is very easy to
+follow.  In the following examples doing so is more complicated.
+<div class="example" id="m:ex3"><dl class="example"><dt>Example 7.3.3</dt><dd>
+Consider the problem
+<div class="equation">max<sub>(<i>x</i><sub>1</sub>,&nbsp;</sub><sub><i>x</i><sub>2</sub>)∈S</sub>&nbsp;[−(<i>x</i><sub>1</sub>&nbsp;− 4)<sup>2</sup>&nbsp;− (<i>x</i><sub>2</sub>&nbsp;−&nbsp;4)<sup>2</sup>] subject to <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;≤ 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;≤ 9,</div>
+where <i>S</i> is the set of all pairs of numbers.  The set <i>S</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> on this set.  The objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and each constraint function is linear, and hence both
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a number λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>) and by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition
+7.3.1</a> they are sufficient (if (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem).
+<p>
+In <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#m:ex1">Example 7.1.1</a> we previously found that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> for this problem are
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">−2(<i>x</i><sub>1</sub>&nbsp;−&nbsp;4)&nbsp;−&nbsp;λ<sub>1</sub>&nbsp;−&nbsp;λ<sub>2</sub>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+−2(<i>x</i><sub>2</sub>&nbsp;−&nbsp;4)&nbsp;−&nbsp;λ<sub>1</sub>&nbsp;−&nbsp;3λ<sub>2</sub>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i>x</i><sub>1</sub>&nbsp;+&nbsp;<i>x</i><sub>2</sub>&nbsp;≤&nbsp;4,&nbsp;λ<sub>1</sub>&nbsp;≥ 0, and λ<sub>1</sub>(<i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;− 4)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i>x</i><sub>1</sub>&nbsp;+&nbsp;3<i>x</i><sub>2</sub>&nbsp;≤&nbsp;9,&nbsp;λ<sub>2</sub>&nbsp;≥ 0, and λ<sub>2</sub>(<i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;− 9)&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+What are the solutions of these conditions?  Start by looking at the two conditions λ<sub>1</sub>(<i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;− 4)&nbsp;= 0 and λ<sub>2</sub>(<i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;− 9)&nbsp;= 0.  These two conditions yield the following four cases.
+<ul>
+   <li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;= 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;= 9: In this case we have <i>x</i><sub>1</sub>&nbsp;= 3/2 and <i>x</i><sub>2</sub>&nbsp;= 5/2.  Then the first two equations are
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">5&nbsp;− λ<sub>1</sub>&nbsp;−&nbsp;&nbsp;&nbsp;λ<sub>2</sub> </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+3&nbsp;− λ<sub>1</sub>&nbsp;− 3λ<sub>2</sub> </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
+</tr>
+</tbody></table></div>
+which imply that λ<sub>1</sub>&nbsp;= 6 and λ<sub>2</sub>&nbsp;= −1, which violates the condition λ<sub>2</sub>&nbsp;≥ 0.
+   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;= 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;&lt; 9, so that λ<sub>2</sub>&nbsp;= 0: Then first two equations imply <i>x</i><sub>1</sub>&nbsp;= <i>x</i><sub>2</sub>&nbsp;= 2 and λ<sub>1</sub>&nbsp;= 4.  All the conditions are satisfied, so
+(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;= (2,&nbsp;2,&nbsp;4,&nbsp;0) is a solution.
+   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;= 9, so that λ<sub>1</sub>&nbsp;= 0: Then the first two equations imply <i>x</i><sub>1</sub>&nbsp;= 33/10 and <i>x</i><sub>2</sub>&nbsp;= 19/10, violating <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4.
+   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;&lt; 9, so that λ<sub>1</sub>&nbsp;= λ<sub>2</sub>&nbsp;= 0: Then first two equations imply <i>x</i><sub>1</sub>&nbsp;= <i>x</i><sub>2</sub>&nbsp;= 4, violating <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4.
+</li></ul>
+So (<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;= (2,&nbsp;2,&nbsp;4,&nbsp;0) is the single solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.  Hence the unique solution of problem is (<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>)&nbsp;= (2,&nbsp;2).
+</dd></dl></div>
+The next two examples involve problems of the form
+<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>u</i>(<i>x</i>) subject to <i>p</i>·<i>x</i>&nbsp;≤ <i>w</i>, <i>x</i>&nbsp;≥ 0,</div>
+where <i>u</i> is a function of many variables, <i>p</i> is a vector, and <i>w</i> is a scalar.  A standard consumer's maximization problem in economic theory takes this form; the techniques used in the example may be used also in problems with other specifications of the function <i>u</i>.
+<div class="example" id="m:ex4"><dl class="example"><dt>Example 7.3.4</dt><dd>
+Consider the problem
+<div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i></sub>&nbsp;<i>x</i><i>y</i> subject to <i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ 6, <i>x</i>&nbsp;≥ 0, and <i>y</i>&nbsp;≥ 0,</div>
+where <i>S</i> is the set of all pairs of numbers.  This set is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">differentiable</a> on it.  Each constraint function is linear, and hence <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>).  Also, the objective function is continuous and the constraint set is compact, so by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/OPN#p:EVT1">extreme value theorem</a> the problem has a solution.  Thus
+<i>x</i>* is a solution of the problem if and only if there is a vector λ* such that (<i>x</i>*,&nbsp;λ*) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and <i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;≥ <i style="padding-right:0.2em;">f</i>(<i>x</i>) for all values of <i>x</i> for which there is a vector λ such that (<i>x</i>,&nbsp;λ) satisfies
+the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
+<p>
+(Note that we cannot use <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> because the objective function is not concave, and we cannot use <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC2">Proposition 7.3.2</a> because although the objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> on the set of vectors <i>x</i> with <i>x</i>&nbsp;≥ 0, it is not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> on any open set that contains this
+set.)
+</p><p>
+The Lagrangean is given by
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><i>y</i>&nbsp;− λ<sub>1</sub>(<i>x</i>&nbsp;+ <i>y</i>&nbsp;− 6)&nbsp;+ λ<sub>2</sub><i>x</i>&nbsp;+ λ<sub>3</sub><i>y</i>.</div>
+The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i>y</i>&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i>x</i>&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>3</sub>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+λ<sub>1</sub>&nbsp;≥ 0, <i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ 6, λ<sub>1</sub>(<i>x</i>&nbsp;+&nbsp;<i>y</i>&nbsp;−&nbsp;6)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+λ<sub>2</sub>&nbsp;≥ 0, <i>x</i>&nbsp;≥ 0, λ<sub>2</sub><i>x</i>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+λ<sub>3</sub>&nbsp;≥ 0, <i>y</i>&nbsp;≥ 0, λ<sub>3</sub><i>y</i>&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+<ul>
+   <li>If <i>x</i> &gt; 0 and <i>y</i> &gt; 0 then λ<sub>2</sub>&nbsp;= λ<sub>3</sub>&nbsp;= 0, so that λ<sub>1</sub>&nbsp;= <i>x</i>&nbsp;= <i>y</i> from the first two conditions.  Hence <i>x</i>&nbsp;= <i>y</i>&nbsp;= λ<sub>1</sub>&nbsp;= 3 from the third condition.  These values satisfy all the conditions.
+   </li><li>If <i>x</i>&nbsp;= 0 and <i>y</i> &gt; 0 then λ<sub>3</sub>&nbsp;= 0 from the last condition and hence λ<sub>1</sub>&nbsp;= <i>x</i>&nbsp;= 0 from the second condition.  But now from the first condition λ<sub>2</sub>&nbsp;= −<i>y</i> &lt; 0, contradicting λ<sub>2</sub>&nbsp;≥ 0.
+   </li><li>If <i>x</i> &gt; 0 and <i>y</i>&nbsp;= 0 then λ<sub>2</sub>&nbsp;= 0, and a symmetric argument yields a contradiction.
+   </li><li>If <i>x</i>&nbsp;= <i>y</i>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 0 from the third set of conditions, so that λ<sub>2</sub>&nbsp;= λ<sub>3</sub> from the first and second conditions.  These values satisfy all the conditions.
+</li></ul>
+We conclude that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> have two solutions, (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>,&nbsp;λ<sub>3</sub>)&nbsp;= (3,&nbsp;3,&nbsp;3,&nbsp;0,&nbsp;0) and (0,&nbsp;0,&nbsp;0,&nbsp;0,&nbsp;0).  We have <i style="padding-right:0.2em;">f</i>(3,&nbsp;3)&nbsp;= 9 and
+<i style="padding-right:0.2em;">f</i>(0,&nbsp;0)&nbsp;= 0, so the solution of the problem is (3,&nbsp;3).
+</dd></dl></div>
+
+In this example, the objective function is defined on an open convex set that contains the constraint set and is differentiable there.  In the next example,  there is no such open convex set.
+
+<div class="example" id="m:ex5"><dl class="example"><dt>Example 7.3.5</dt><dd>
+Consider the problem
+<div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i></sub> <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i> subject to <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i>, <i>x</i>&nbsp;≥ 0, and <i>y</i>&nbsp;≥ 0</div>
+where <i>S</i> is the set of pairs (<i>x</i>,&nbsp;<i>y</i>) of numbers with <i>x</i>&nbsp;≥ 0, and <i>p</i>&nbsp;&gt; 0 and <i>I</i>&nbsp;&gt; 0 are parameters.  The set <i>S</i> is not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a>, and the objective function is defined only for <i>x</i>&nbsp;≥ 0, so it is not defined on any <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> set that contains the constraint
+set.  Thus the argument in the previous example cannot be used. 
+<p>
+Instead, first consider the problem
+</p><div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i>'</sub> <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i> subject to <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i> and <i>y</i>&nbsp;≥ 0</div>
+where <i>S</i>'&nbsp;= {(<i>x</i>,&nbsp;<i>y</i>):&nbsp;<i>x</i>&nbsp;&gt; 0}.  The set <i>S</i>' is open and convex, the objective and constraint functions are continuously differentiable on this set, the objective function is quasiconcave, and each constraint function is linear, so by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#c:KTN&amp;S2">Corollary 7.3.2</a> if <i>x</i>*&nbsp;∈
+<i>S</i>' solves the problem then there is a vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and if there is a vector λ and a point <i>x</i>*&nbsp;∈ <i>S</i>' such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and not all the partial derivatives of the objective function
+are 0 at <i>x</i>* then <i>x</i>* solves the problem.
+<p>
+The Lagrangean of the modified problem is given by
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i>&nbsp;− λ<sub>1</sub>(<i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;− <i>I</i>)&nbsp;+ λ<sub>2</sub><i>y</i>.</div>
 The Kuhn-Tucker conditions are
 <div class="equation">
-  <table class="mathAlignTop">
+  <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">1&nbsp;− 3λ<sub>1</sub>(1&nbsp;− <i>x</i>)<sup>2</sup>&nbsp;=&nbsp;0</td>
+      <td class="alignRight">(1/2)<i>x</i><sup>−1/2</sup>&nbsp;− λ<sub>1</sub><i>p</i>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-</td>
-      <td class="mathAlign2">−λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;=&nbsp;0</td>
+1&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-</td>
-      <td class="mathAlign2"><i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>&nbsp;≤ 0, λ<sub>1</sub>&nbsp;≥ 0, and λ<sub>1</sub>[<i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>]&nbsp;=&nbsp;0</td>
+λ<sub>1</sub>&nbsp;≥ 0, <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i>, and λ<sub>1</sub>(<i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;− <i>I</i>)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-</td>
-      <td class="mathAlign2">−<i>y</i>&nbsp;≤ 0, λ<sub>2</sub>&nbsp;≥ 0, and λ<sub>2</sub>[−<i>y</i>]&nbsp;=&nbsp;0.</td>
+λ<sub>2</sub>&nbsp;≥ 0, −<i>y</i>&nbsp;≤ 0, and λ<sub>2</sub><i>y</i>&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
 </tr>
 </tbody></table></div>
-These conditions have no solution.  From the last condition, either λ<sub>2</sub>&nbsp;= 0 or <i>y</i>&nbsp;= 0.  If λ<sub>2</sub>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 0 from the second condition, so that no value of <i>x</i> is compatible with the first condition.  If <i>y</i>&nbsp;= 0 then from the third condition either λ<sub>1</sub>&nbsp;= 0 or <i>x</i>&nbsp;= 1, both of
-which are incompatible with the first condition.
-</dd></dl></div>
-The following variant of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/MEN#m:ex4">previous example</a> shows that the second part of the second condition cannot be dispensed with: the convexity alone of the constraint functions does not guarantee that a solution of the problem satisfies the Kuhn-Tucker conditions.
-<div class="example" id="m:ex4"><dl class="example"><dt>Example 7.2.2</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i> subject to <i>x</i><sup>2</sup>&nbsp;≤ 0,</div>
-with the domain of both the objective function and the constraint function the set of all numbers <i>x</i>.
-<p>
-The constraint function is convex, but no value of <i>x</i> strictly satisfies the constraint.
-</p><p>
-The only value of <i>x</i> that satisfies the constraint is 0, so that is the solution of the problem.
-</p><p>
-The Lagrangean is
-</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i>&nbsp;− λ<i>x</i><sup>2</sup></div>
-so the Kuhn-Tucker conditions are
+From the first condition, λ<sub>1</sub>&nbsp;&gt; 0 and <i>x</i>&nbsp;= 1/(2λ<sub>1</sub><i>p</i>)<sup>2</sup>.  From the last condition, either λ<sub>2</sub>&nbsp;= 0 or <i>y</i>&nbsp;= 0.
+<ul>
+   <li>If λ<sub>2</sub>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 1 from the second condition, and hence <i>x</i>&nbsp;= 1/(4<i>p</i><sup>2</sup>) and <i>y</i>&nbsp;= <i>I</i>&nbsp;− 1/(4<i>p</i>).  We have 1/(4<i>p</i><sup>2</sup>)&nbsp;&gt; 0, so (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;=
+(1/(4<i>p</i><sup>2</sup>),&nbsp;<i>I</i>&nbsp;−&nbsp;1/(4<i>p</i>),&nbsp;1,&nbsp;0) is a solution of the Kuhn-Tucker conditions if <i>I</i>&nbsp;−&nbsp;1/(4<i>p</i>)&nbsp;≥ 0, or <i>p</i>&nbsp;≥ 1/(4<i>I</i>).
+   </li><li>If <i>y</i>&nbsp;= 0 then <i>x</i>&nbsp;= <i>I</i>/<i>p</i>, λ<sub>1</sub>&nbsp;= 1/(2(<i>p</i><i>I</i>)<sup>1/2</sup>), and λ<sub>2</sub>&nbsp;= λ<sub>1</sub>&nbsp;− 1, so that λ<sub>2</sub>&nbsp;≥ 0 if and only if λ<sub>1</sub>&nbsp;≥ 1, or <i>p</i>&nbsp;≤ 1/(4<i>I</i>).
+</li></ul>
+Thus for each pair (<i>p</i>,&nbsp;<i>I</i>) of values of the parameters, the Kuhn-Tucker conditions have a single solution, 
 <div class="equation">
-  <table class="mathAlignTop">
+  <table class="mathAlign">
     <tbody><tr>
       <td class="alignRight"></td>
-      <td class="mathAlign2">1&nbsp;− 2λ<i>x</i>&nbsp;= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-</td>
-      <td class="mathAlign2">λ&nbsp;≥ 0, <i>x</i><sup>2</sup>&nbsp;≤ 0, and λ<i>x</i>&nbsp;= 0.</td>
+      <td class="mathAlign2">
+        <table class="mathCases">
+          <tbody><tr>
+            <td class="brace" rowspan="2"><img alt="left brace" src="./index_files/lbrace2.gif"></td>
+
+           <td class="function">(<i>I</i>/<i>p</i>,&nbsp;0)</td>
+            <td class="condition">if <i>p</i>&nbsp;≤ 1/(4<i>I</i>)</td>
+          </tr>
+          <tr>
+            <td class="function">(1/(4<i>p</i><sup>2</sup>),<i>I</i>&nbsp;− 1/(4<i>p</i>))</td>
+            <td class="condition">if <i>p</i>&nbsp;&gt; 1/(4<i>I</i>).</td>
+      </tr>
+
+       </tbody></table></td>
 </tr>
 </tbody></table></div>
-The condition <i>x</i><sup>2</sup>&nbsp;≤ 0 implies that <i>x</i>&nbsp;= 0.  However, there is no value of λ for which (0,&nbsp;λ) satisfies the first condition.
-</dd></dl></div>
-
-
-
+Neither partial derivative of the objective function is 0 for any point (<i>x</i>,&nbsp;<i>y</i>), so we conclude that the solution of the modified problem for each value of (<i>p</i>,&nbsp;<i>I</i>) is given by this expression.
+<p>
+Now return to the original problem.  The maximal value of the objective function when <i>x</i>&nbsp;= 0 is <i>I</i>.  At the solution of the modified problem, the value of the objective function is (<i>I</i>/<i>p</i>)<sup>1/2</sup> if <i>p</i>&nbsp;≤ 1/(4<i>I</i>), and 1/(2<i>p</i>)&nbsp;+ <i>I</i>&nbsp;− 1/(4<i>p</i>)&nbsp;= <i>I</i>&nbsp;+ 1/(4<i>p</i>) if <i>p</i>&nbsp;&gt;
+<i>I</i>/(4<i>p</i>).  If <i>p</i>&nbsp;≤ 1/(4<i>I</i>) then (<i>I</i>/<i>p</i>)<sup>1/2</sup>&nbsp;≥ 2<i>I</i>, so in both cases the value of the objective function exceeds <i>I</i>.  We conclude that the solution of the original problem is the solution of the modified problem.
+</p></dd></dl></div>
 
 
 
@@ -382,7 +790,7 @@ The condition <i>x</i><sup>2</sup>&nbsp;≤ 0 implies that <i>x</i>&nbsp;= 0.  H
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="64">
+            <input type="hidden" name="pageId" value="65">
 
             
 
@@ -423,7 +831,7 @@ The condition <i>x</i><sup>2</sup>&nbsp;≤ 0 implies that <i>x</i>&nbsp;= 0.  H
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-06-04.
+              First posted 1997.  This version 2022-06-05.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
