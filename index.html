@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 5.2 Local optima</title>
+    <title>Mathematical methods for economic theory: 6.1.1 Optimization with an equality constraint: necessary conditions for an optimum for a function of two variables</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: local optima">
-        <meta name="keywords" content="mathematical methods, economic theory, local optima, optimization">
+            <meta name="description" content="Mathematical methods for economic theory: necessary conditions for an optimum for an optimization problem with an equality constraint">
+        <meta name="keywords" content="mathematical methods, economic theory, optimization, equality constraint, necessary conditions, optimum">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -199,10 +199,10 @@
         <div class="menuBar">
             <span class="leftMenu">
                 <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Optimization: interior optima"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/33"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Two variables, one constraint"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/29"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Necessary conditions"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/33"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Two variables, one constraint"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,9 +222,9 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/31"><img alt="Next page" src="./index_files/next.gif" height="20" title="Global optima"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/35"><img alt="Next page" src="./index_files/next.gif" height="20" title="Lagrange multipliers"></a>
                             <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/32"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Equality constraints"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/41"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Kuhn-Tucker conditions"></a>
                                 </span>
             </span>
         </div>  <!-- menuBar -->
@@ -268,589 +268,333 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>5.2 Local optima</h2>
+            <h2>6.1.1 Optimization with an equality constraint: necessary conditions for an optimum for a function of two variables</h2>
         </header>
 
-	<h3>One variable</h3>
-Occasionally we are interested only in the <i>local</i> maximizers or minimizers of a function.  We may be able to tell whether a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#stationaryPoints">stationary point</a> point is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a>, a local minimizer, or neither by examining the second derivative of the function at the stationary point.
+	<h3>Motivation</h3>
+Consider the two-variable problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>, <i>y</i>) subject to <i>g</i>(<i>x</i>, <i>y</i>)&nbsp;= <i>c</i>.</div>
+The constraint set (i.e. the set of all pairs (<i>x</i>,&nbsp;<i>y</i>) for which <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i>) is a set of points in (<i>x</i>,&nbsp;<i>y</i>) space.  Suppose that it is a curve (a one-dimensional set).  Assume also that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/SKE#level_curves">level curves</a> of <i style="padding-right:0.2em;">f</i> are one-dimensional, as in the following figure. 
+Assume that <i style="padding-right:0.2em;">f</i> is increasing, so that <i>k</i>'&nbsp;&gt; <i>k</i>.
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="250">
+		
+    <path d="M 0,66.625127 C 42.188663,77.59474 65.094741,84.666563 99.487006,116.8627 c 40.383304,37.80462 32.000004,46 79.000004,71 47,25 71.67956,14.98895 119,36.81492" style="fill:none;stroke:#ff0000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"></path>
+	 
+	 <path d="M 68.911603,0 C 102.03591,53.743094 103.07954,73.892995 111.96409,98.917127 c 15.72872,44.301333 21.14792,53.904573 31.81492,64.237573 17.783,17.227 34,24 78,28 44,4 46.4337,4.91713 75.54696,6.42265" style="fill:none;stroke:#0000ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"></path>
+	 
+	 <path d="M 83.112006,0 C 105.77901,36.821696 113.30814,55.78026 125.97514,85.78026 c 12.667,30 17.52486,48.45304 43.13687,70.37444 46.53323,30.67651 120.7877,30.27302 128,30.4877" style="fill:none;stroke:#0000ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"></path>
+	 
+	 <text x="100" y="20" style="text-anchor:start;fill:#0000ff;"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">y</tspan>) = <tspan font-style="italic">k'</tspan></text>
 
-<div class="result" id="p:LocalOpt1"><dl class="result"><dt>Proposition 5.2.1 (Second-order conditions for local optimum of function of one variable) &nbsp;<span id="LocalOpt1" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;LocalOpt1&#39;)" class="showProof">proof</a></span></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of a single variable</a> with a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:cts">continuous</a> second derivative, defined on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:interval">interval</a> <i>I</i>.  Suppose that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0 for some <i>x</i>* in the
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:intervalInterior">interior</a> of <i>I</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPoint1">stationary point</a> of <i style="padding-right:0.2em;">f</i>).
+	 <text x="3" y="50" style="text-anchor:start;fill:#0000ff;"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">y</tspan>) = <tspan font-style="italic">k</tspan></text>
+	 
+	 <text x="290" y="240" style="text-anchor:end;fill:#ff0000;"><tspan font-style="italic">g</tspan>(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">y</tspan>) = <tspan font-style="italic">c</tspan></text>
+
+</svg></p><p>
+Assuming that the functions <i style="padding-right:0.2em;">f</i> and <i>g</i> are differentiable, we see from the figure that at a solution (<i>x</i>*,&nbsp;<i>y</i>*) of the problem, the constraint curve is tangent to a level curve of <i style="padding-right:0.2em;">f</i>, so that (using the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/DFI#TangEq">equation for a tangent</a>),
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">−</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*, <i>y</i>*) </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*, <i>y</i>*)</td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">&nbsp;=&nbsp;−</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i>g</i>'<sub class="prime">1</sub>(<i>x</i>*, <i>y</i>*) </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom">
+<i>g</i>'<sub class="prime">2</sub>(<i>x</i>*, <i>y</i>*)</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+or
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*, <i>y</i>*) </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> <i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,
+<i>y</i>*)</td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*, <i>y</i>*) </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> <i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,
+<i>y</i>*)</td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">,</td>
+</tr>
+</tbody></table></div>
+assuming that neither <i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*) nor <i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*) is zero.
+<p>
+Now introduce a new variable, λ, and set it equal to the common value of the quotients: λ&nbsp;= <i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)/<i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;=
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)/<i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*).  You might think that introducing a new variable merely complicates the problem, but in fact it is a clever step that allows the condition for a maximum to be expressed in an appealing way.  In addition, the variable turns out to have a very
+useful interpretation.
+</p><p>
+Given the definition of λ, the condition for (<i>x</i>*,&nbsp;<i>y</i>*) to solve the problem may be written as the two equations
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;− λ<i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;− λ<i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+At a solution of the problem we need, in addition, <i>c</i>&nbsp;= <i>g</i>(<i>x</i>*,&nbsp;<i>y</i>*) (the constraint is satisfied).  Thus the following conditions must be satisfied at a solution (<i>x</i>*,&nbsp;<i>y</i>*):
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;− λ<i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;− λ<i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;</td>
+      <td class="mathAlign2">= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i>c</i>&nbsp;− <i>g</i>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;</td>
+      <td class="mathAlign2">= 0.</td>
+</tr>
+</tbody></table></div>
+The first two equations can be viewed conveniently as the conditions for the derivatives of the <span id="Lagrangean"><span class="definition">Lagrangean</span></span>
+<div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− λ(<i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− <i>c</i>)</div>
+with respect to <i>x</i> and <i>y</i> to be zero.  They are known as the <span class="definition">first-order conditions</span> for the problem, and λ is called the <span id="LagrangeMultiplier"> <span class="definition">Lagrange multiplier</span></span>.
+<p>
+In summary, this argument suggests that if (<i>x</i>*,&nbsp;<i>y</i>*) solves the problem
+</p><div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>, <i>y</i>) subject to <i>g</i>(<i>x</i>, <i>y</i>)&nbsp;= <i>c</i></div>
+then, if neither <i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*) nor <i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*) is zero and (<i>x</i>*,&nbsp;<i>y</i>*) is in the interior of the domain, (<i>x</i>*,&nbsp;<i>y</i>*) is a stationary point of the Lagrangean L (and, of course, the constraint is satisfied).
+<p>
+This method was developed by <a href="https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange" target="_blank">Joseph-Louis Lagrange</a> (1736–1813).
+</p><h3>Necessary conditions for an optimum</h3>
+Precise conditions for an optimum are given in the following result which, unlike the preceding informal argument, requires only either <i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;≠ 0 or <i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;≠ 0, not both of these conditions.  (Recall that a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:ctsDiff">continuously differentiable</a>
+function is one whose partial derivatives all exist and are continuous.)
+<div class="result" id="p:con-opt"><dl class="result"><dt>Proposition 6.1.1.1 <button class="proofButton" id="con-opt" onclick="javascript:showProof(&#39;con-opt&#39;)" style="display: none;">source</button></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/IAF#d:function">functions of two variables</a> defined on a set <i>S</i> that are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:ctsDiff">continuously differentiable</a> on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:interior">interior</a> of <i>S</i>, let <i>c</i> be a number, and suppose that (<i>x</i>*,&nbsp;<i>y</i>*) is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:interior">interior point</a> of <i>S</i> that
+solves the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) subject to <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i></div>
+or the problem
+<div class="equation">min<sub><i>x</i>,<i>y</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) subject to <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i></div>
+or is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/DEF#d:localMax">local maximizer</a> or minimizer of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) subject to <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i>.  Suppose also that either <i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;≠ 0 or <i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;≠ 0.
+<p>
+Then there is a unique number λ such that (<i>x</i>*,&nbsp;<i>y</i>*) is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/NEN#d:stationaryPointN">stationary point</a> of the Lagrangean
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− λ(<i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− <i>c</i>).</div>
+That is, (<i>x</i>*,&nbsp;<i>y</i>*) satisfies the first-order conditions
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight">L'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;−
+λ<i>g</i>'<sub class="prime">1</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;=&nbsp;0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+&nbsp;L'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"><i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;− λ<i>g</i>'<sub class="prime">2</sub>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;=&nbsp;0.</td>
+</tr>
+</tbody></table></div>
+In addition, <i>g</i>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= <i>c</i>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:con-opt" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;con-opt&#39;)">hide</button></dt><dd>
+For proofs, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/REF#SimonBlume1994">Simon and Blume</a> (1994), pp.&nbsp;478–480, and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/REF#Sydsaeter1981">Sydsæter</a> (1981), Theorem&nbsp;5.20 (p.&nbsp;275).
+</dd></dl></div>
+
+We deduce from this result that the following procedure may be used to solve a maximization problem of the type we are considering.
+<div class="procedure" id="r:1"><dl class="procedure"><dt>Procedure for solving a two-variable maximization problem with an equality constraint</dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i> be functions of two variables defined on a set <i>S</i> that are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:ctsDiff">continuously differentiable</a> on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/CLN#d:interior">interior</a> of <i>S</i>, and let <i>c</i> be a number.  If the problem max<sub><i>x</i>,<i>y</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) subject to
+<i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i> has a solution, it may be found as follows.
 <ul>
-   <li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0 then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
-   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≤ 0.
-   </li><li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
-   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≥ 0.
+   <li>Find all the values of (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ) in which (a)&nbsp;(<i>x</i>,&nbsp;<i>y</i>) is an interior point of <i>S</i> and (b)&nbsp;(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ) satisfies the first-order conditions and the constraint (the points (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ) for which
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− λ<i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0, <i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;− λ<i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0, and
+<i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i>).
+   </li><li>Find all the points (<i>x</i>,&nbsp;<i>y</i>) that satisfy <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0, <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0, and <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i>.  (For most problems, there are no such values of (<i>x</i>,&nbsp;<i>y</i>).  In particular, if <i>g</i> is linear there are no such
+values of (<i>x</i>,&nbsp;<i>y</i>).)
+   </li><li>If the set <i>S</i> has any boundary points, find all the points that solve the problem max<sub><i>x</i>,<i>y</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) subject to the two conditions <i>g</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>c</i> and (<i>x</i>,&nbsp;<i>y</i>) is a boundary point of <i>S</i>.
+   </li><li>The points (<i>x</i>,&nbsp;<i>y</i>) you have found for which <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) is largest are the solutions of the problem.
 </li></ul>
 </dd></dl></div>
-<div class="hiddenProof" id="f:LocalOpt1" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt1&#39;)" class="showProof">hide</a></span></dt><dd>
-To prove the first point, note that given that <i style="padding-right:0.2em;">f</i>" is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:diff">derivative</a> of <i style="padding-right:0.2em;">f</i>', we have
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
-      <td class="mathAlign2"><table class="frac"> <tbody><tr>
-  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;− <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)
-</td>
-</tr>
-<tr>
-  <td class="fracRule"></td>
-</tr>
-<tr>
-  <td class="fracBottom"> <i>h</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-Given <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0, we thus have
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
-      <td class="mathAlign2"><table class="frac"> <tbody><tr>
-  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)
-</td>
-</tr>
-<tr>
-  <td class="fracRule"></td>
-</tr>
-<tr>
-  <td class="fracBottom"> <i>h</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-Hence if <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0, there exists ε&nbsp;&gt; 0 such that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;&gt; 0 for −ε&nbsp;&lt; <i>h</i>&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)&nbsp;&lt; 0 for 0&nbsp;&lt; <i>h</i>&nbsp;&lt; ε.  Thus
-<i style="padding-right:0.2em;">f</i> is increasing on (<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*) and decreasing on (<i>x</i>*,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), so that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.
+As before, the variant of this procedure in which the last step involves choosing the points (<i>x</i>,&nbsp;<i>y</i>) at which <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>) is smallest may be used to solve the analogous minimization problem.
+<div class="example" id="m:ex1"><dl class="example"><dt>Example 6.1.1.1</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i><i>y</i> subject to <i>x</i>&nbsp;+ <i>y</i>&nbsp;= 6,</div>
+where the objective and constraint functions are defined on the set of all 2-vectors, which has no boundary.
 <p>
-The proof of the third point is similar.
+The constraint set is not bounded, so the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/OPN#p:EVT1">Extreme Value Theorem</a> does not imply that this problem has a solution.
 </p><p>
-To prove the second point, suppose that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.  If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then from the third point, <i>x</i>* is also a local minimizer of <i style="padding-right:0.2em;">f</i>.  But then for some ε&nbsp;&gt; 0, <i style="padding-right:0.2em;">f</i> is constant on the interval
-(<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), in which case <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0, contradicting <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0.
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><i>y</i>&nbsp;− λ(<i>x</i>&nbsp;+ <i>y</i>&nbsp;− 6)</div>
+so the first-order conditions are
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">L'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>y</i>&nbsp;− λ</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+&nbsp;L'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i>&nbsp;− λ</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> 0</td>
+</tr>
+</tbody></table></div>
+and the constraint is <i>x</i>&nbsp;+ <i>y</i>&nbsp;− 6&nbsp;= 0.
+<p>
+These equations have a unique solution, (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (3,&nbsp;3,&nbsp;3).  We have <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 1&nbsp;≠ 0 and <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 1&nbsp;≠ 0 for all (<i>x</i>,&nbsp;<i>y</i>), so we conclude that if the problem has a solution it is
+(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (3,&nbsp;3).
+</p>
+<p>
+(We can additionally argue that if the problem has a solution (<i>x</i>,&nbsp;<i>y</i>) then, given that <i>x</i>&nbsp;+ <i>y</i>&nbsp;= 6, we have <i>x</i>&nbsp;≥ 0 and <i>y</i>&nbsp;≥ 0, because the value of the objective function at (3,&nbsp;3) is positive and negative at any point (<i>x</i>,&nbsp;<i>y</i>) with <i>x</i>&nbsp;+ <i>y</i>&nbsp;= 6 and either <i>x</i>&nbsp;&lt; 0 or
+<i>y</i>&nbsp;&lt; 0.  Thus any solution of the problem with the additional constraints <i>x</i>&nbsp;≥ 0 and <i>y</i>&nbsp;≥ 0 is a solution of the problem.  Now, the problem with the additional constraints has a solution because its constraint set is closed and bounded.  Thus the original problem has a solution, and hence this solution is (3,&nbsp;3).)
+</p>
+</dd></dl></div>
+<div class="example" id="m:ex2"><dl class="example"><dt>Example 6.1.1.2</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i><sup>2</sup><i>y</i> subject to 2<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;= 3,</div>
+where the objective and constraint functions are defined on the set of all 2-vectors, which has no boundary.
+<p>
+The constraint set is compact and the objective function is continuous, so the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/OPN#p:EVT1">Extreme Value Theorem</a> implies that the problem has a solution.
 </p><p>
-The proof of the fourth point is similar.
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup><i>y</i>&nbsp;− λ(2<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;− 3)</div>
+so the first-order conditions are
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight">L'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> 2<i>x</i><i>y</i>&nbsp;− 4λ<i>x</i>&nbsp;= 2<i>x</i>(<i>y</i>&nbsp;−&nbsp;2λ)&nbsp;= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+&nbsp;L'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>x</i><sup>2</sup>&nbsp;− 2λ<i>y</i>&nbsp;= 0</td>
+</tr>
+</tbody></table></div>
+and the constraint is 2<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;− 3&nbsp;= 0.
+<p>
+To find the solutions of these three equations, first note that from the first equation we have <b>either</b> <i>x</i>&nbsp;= 0 or <i>y</i>&nbsp;= 2λ.  We can check each possibility in turn.
+</p><ul>
+   <li><i>x</i>&nbsp;= 0: we have <i>y</i>&nbsp;= 3<sup>1/2</sup> and λ&nbsp;= 0, <b>or</b> <i>y</i>&nbsp;= −3<sup>1/2</sup> and λ&nbsp;= 0.
+   </li><li><i>y</i>&nbsp;= 2λ: we have <i>x</i><sup>2</sup>&nbsp;= <i>y</i><sup>2</sup> from the second equation, so either <i>x</i>&nbsp;= 1 or <i>x</i>&nbsp;= −1 from the third equation.
+<ul>
+   <li><i>x</i>&nbsp;= 1: either <i>y</i>&nbsp;= 1 and λ&nbsp;= 1/2, <b>or</b> <i>y</i>&nbsp;= −1 and λ&nbsp;= −1/2.
+   </li><li><i>x</i>&nbsp;= −1: either <i>y</i>&nbsp;= 1 and λ&nbsp;= 1/2, <b>or</b> <i>y</i>&nbsp;= −1 and λ&nbsp;= −1/2.
+</li></ul>
+</li></ul>
+In summary, the first-order conditions have six solutions:
+<ol type="1">
+<li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (0,&nbsp;3<sup>1/2</sup>,0), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0.
+</li><li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (0,&nbsp;−3<sup>1/2</sup>,0), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0.
+</li><li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (1,&nbsp;1,&nbsp;1/2), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 1.
+</li><li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (1,&nbsp;−1,&nbsp;−1/2), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= −1.
+</li><li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (−1,&nbsp;1,&nbsp;1/2), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 1.
+</li><li>(<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ)&nbsp;= (−1,&nbsp;−1,&nbsp;−1/2), with <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= −1.
+</li></ol>
+Now, <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 4<i>x</i> and <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>y</i>, so the only value of (<i>x</i>,&nbsp;<i>y</i>) for which <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0 and <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0 is
+(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0).  At this point the constraint is not satisfied, so the only possible solutions of the problem are the solutions of the first-order conditions.
+<p>
+We conclude that the problem has two solutions, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;1) and (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (−1,&nbsp;1).
 </p></dd></dl></div>
-If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0 then we don't know, without further investigation, whether <i>x</i>* is a local maximizer or local minimizer of <i style="padding-right:0.2em;">f</i>, or neither (check the functions <i>x</i><sup>4</sup>, −<i>x</i><sup>4</sup>, and <i>x</i><sup>3</sup> at <i>x</i>&nbsp;= 0).  In this case, information about the signs of the higher
-order derivatives may tell us whether a point is a local maximum or a local minimum.  In practice, however, these conditions are rarely useful; I do not discuss them.
-<h3>Many variables</h3>
-As for a function of a single variable, a stationary point of a function of many variables may be a local maximizer, a local minimizer, or neither, and we may be able to distinguish the cases by examining the second-order derivatives of the function at the stationary point.
+The problem in the next example can be interpreted as the problem of a consumer with utility function <i>x</i><sup><i>a</i></sup><i>y</i><sup><i>b</i></sup> and budget constraint <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;= <i>m</i>.
+<div class="example" id="m:ex3"><dl class="example"><dt>Example 6.1.1.3</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i><sup><i>a</i></sup><i>y</i><sup><i>b</i></sup> subject to <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;= <i>m</i>,</div>
+where <i>a</i>&nbsp;&gt; 0, <i>b</i>&nbsp;&gt; 0, <i>p</i>&nbsp;&gt; 0, and <i>m</i>&nbsp;&gt; 0, and the objective and constraint functions are defined on the set of all points (<i>x</i>,&nbsp;<i>y</i>) with <i>x</i>&nbsp;≥ 0 and <i>y</i>&nbsp;≥ 0 (and are continuously differentiable on the interior of this set).
 <p>
-Let (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) be a stationary point of the function <i style="padding-right:0.2em;">f</i> of two variables.  Suppose it is a local maximizer.  Then certainly it must be a maximizer along the two lines through (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) parallel to the axes.  Using the theory for functions of a single variable, we conclude that
-</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0,</div>
-where <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> denotes the second partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument, then with respect to its <i>j</i>th argument.
-<p>
-However, even the variant of this condition in which both inequalities are strict is not <i>sufficient</i> for (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) to be a maximizer, as the following example shows.
-</p><div class="example" id="m:loc1"><dl class="example"><dt>Example 5.2.1</dt><dd>
-Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 3<i>x</i><i>y</i>&nbsp;− <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>.  The first-order conditions are
-<p>
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;3<i>y</i>&nbsp;− 2<i>x</i>&nbsp;= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;3<i>x</i>&nbsp;− 2<i>y</i>&nbsp;= 0</td>
-</tr>
-</tbody></table></div>
-so that <i style="padding-right:0.2em;">f</i> has a single stationary point, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0).  Now,
-<p>
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0, 0)&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0, 0)&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0.</td>
-</tr>
-</tbody></table></div>
-But (0, 0) is <b>not</b> a local maximizer: at (0,&nbsp;0) the value of the function is 0, but at (ε,&nbsp;ε) with ε&nbsp;&gt; 0 the value of the function is 3ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;= ε<sup>2</sup>, which is positive (and hence exceeds <i style="padding-right:0.2em;">f</i>(0,&nbsp;0)&nbsp;= 0) no matter how small
-ε is.
-<p>
-The point (0,&nbsp;0) is a col.  If you walk due north or due south, you descend; if you walk due east or due west, you also descend.  But if you walk northeast or southwest, you climb mountains.  The <a href="https://openstreetmap.org/node/479370430" target="_blank">Col d'Arratille</a> is an example.
-</p><p>
-The function is plotted in the following figure.  Rotate the figure by dragging your mouse.  (Rotation on a touch device isn't possible.)
-</p><p>
-
-	</p><div id="surfacePlotDiv01" class="surfacePlot">
-		<!-- SurfacePlot goes here... -->
-	<div id="surfacePlot1" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
-
-		
-		<script type="text/javascript">
-		
-		    var surfacePlot;
-			var data, options, basicPlotOptions, glOptions, animated, values;
-			
-			function setUp()
-			{
-				var numRows = 41;
-				var numCols = 41;
-				
-				var tooltipStrings = new Array();
-				values = new Array();
-				data = {nRows: numRows, nCols: numCols, formattedValues: values};
-				
-				var idx = 0;
-				
-				for (var i = 0; i < numRows; i++) 
-				{
-					values[i] = new Array();
-					
-					for (var j = 0; j < numCols; j++)
-					{
-						var x = (i - 20) / 20;
-						var y = (j - 20) / 20;
-						var value = (3 * x * y - Math.pow(x, 2) - Math.pow(y, 2));
-						
-						values[i][j] = value;
-						
-						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
-						idx++;
-					}
-				}
-
-				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv01"));
-				
-				// Don't fill polygons in IE < v9. It's too slow.
-				var fillPly = true;
-				
-				// Define a colour gradient.
-				var colour1 = {red:0, green:0, blue:255};
-				var colour2 = {red:0, green:255, blue:255};
-				var colour3 = {red:0, green:255, blue:0};
-				var colour4 = {red:255, green:255, blue:0};
-				var colour5 = {red:255, green:0, blue:0};
-				var colours = [colour1, colour2, colour3, colour4, colour5];
-				
-				// Axis labels.
-				var xAxisHeader	= "x";
-				var yAxisHeader	= "y";
-				var zAxisHeader	= "f(x,y)";
-				
-				var renderDataPoints = false;
-				var background = '#ccffff';
-				var axisForeColour = '#000000';
-				var hideFloorPolygons = true;
-				var chartOrigin = {x: 0, y:0};
-				
-				var startXAngle_GL = -50;
-				var startYAngle_GL = -42;
-				
-				// Options for the basic canvas pliot.
-				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
-				
-				// Options for the webGL plot.
-				var xLabels = [-1, -0.5, 0, 0.5, 1];
-				var yLabels = [-1, -0.5, 0, 0.5, 1];
-				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
-				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
-				
-				var plotDiv = document.getElementById("surfacePlotDiv01");
-				
-				// Options common to both types of plot.
-				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
-					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
-					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
-					startXAngle_GL: startXAngle_GL,
-					startYAngle_GL: startYAngle_GL};
-				
-				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
-				
-			}
-			
-			setUp();
-			
-		</script>
-
-		</dd></dl></div>
-This example shows that we cannot determine the nature of a stationary point of a function <i style="padding-right:0.2em;">f</i> of two variables by looking only at the partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub> and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub> at the stationary point.
-<p>
-The next result gives a condition that involves the definiteness of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of the function, and thus all the cross-partials.  The result assumes that all the second-order partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> are continuous for all <i>x</i> in some set <i>S</i>, so that by
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#p:Young">Young's theorem</a> we have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub>(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>j</i><i>i</i></sub>(<i>x</i>) for all <i>x</i>&nbsp;∈ <i>S</i>, and hence the Hessian is <b>symmetric</b>.  (The condition on <i style="padding-right:0.2em;">f</i> is
-satisfied, for example, by any polynomial.)
-</p><div class="result" id="p:LocalOpt"><dl class="result"><dt>Proposition 5.2.2 (Second-order conditions for local optimum of function of many variables) &nbsp;<span id="LocalOpt" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;LocalOpt&#39;)" class="showProof">source</a></span></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of <i>n</i> variables</a> with continuous <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:partialDeriv">partial derivatives</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:crossPartial">cross partial derivatives</a>, defined on the set <i>S</i>.  Suppose that
-<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;= 1, ..., <i>n</i> for some <i>x</i>* in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:interior">interior</a> of <i>S</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPointN">stationary point</a> of <i style="padding-right:0.2em;">f</i>).  Let <i style="padding-right:0.2em;">H</i> be the
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of <i style="padding-right:0.2em;">f</i>.
-<ul>
-   <li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative definite</a> then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
-   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative semidefinite</a>.
-   </li><li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
-   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite.
-</li></ul>
-</dd></dl></div>
-<div class="hiddenProof" id="f:LocalOpt" style="display: block;"><dl class="proof"><dt>Source &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt&#39;)" class="showProof">hide</a></span></dt><dd>
-Proofs may be found in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#Sydsaeter1981">Sydsæter</a> (1981) (Theorem&nbsp;5.11, p.&nbsp;243) and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994">Simon and Blume</a> (1994) (Theorem&nbsp;30.10, p.&nbsp;836).
-</dd></dl></div>
-
-An implication of this result is that if <i>x</i>* is a stationary point of <i style="padding-right:0.2em;">f</i> then
-<ul>
-   <li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative definite then <i>x</i>* is a local maximizer
-   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative semidefinite, but neither negative definite nor positive semidefinite, then <i>x</i>* is not a local minimizer, but might be a local maximizer
-   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer
-   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite, but neither positive definite nor negative semidefinite, then <i>x</i>* is not a local maximizer, but might be a local minimizer
-   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is neither positive semidefinite nor negative semidefinite then <i>x</i>* is neither a local maximizer nor a local minimizer.
-</li></ul>
-For a function <i style="padding-right:0.2em;">f</i> of two variables, the Hessian is
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup><i>a</i></sup><i>y</i><sup><i>b</i></sup>&nbsp;− λ(<i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;− <i>m</i>)</div>
+so the first-order conditions are
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
-
-<td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)</td>
-  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)</td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)</td>
-  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)</td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-This matrix is negative definite if <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0.  (These two inequalities imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0.)  Thus the extra condition, in addition to the two conditions
-<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0 considered originally, for <i>x</i>* to be a local maximizer is
-<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;− <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)&nbsp;&gt; 0.
-<p>
-Similarly, a sufficient condition for a stationary point <i>x</i>* of a function of two variables to be a local minimizer are <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*) &gt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0 (which imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*) &gt; 0).
-</p><p>
-In particular, if, for a function of two variables, |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0, then <i>x</i>* is neither a local maximizer nor a local minimizer.  (Note that this condition is only sufficient, not necessary.)
-</p><p>
-A stationary point that is neither a local maximizer nor a local minimizer is called a <span class="definition">saddle point</span>.  Examples are the point (0,&nbsp;0) for the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup> and the point (0,&nbsp;0) for the function
-<i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  In both cases, (0,&nbsp;0) is a maximizer in the <i>y</i> direction given <i>x</i>&nbsp;= 0 and a minimizer in the <i>x</i> direction given <i>y</i>&nbsp;= 0; the graph of each function resembles a saddle for a horse.  Note that not all saddle points look like saddles. 
-For example, every point (0,&nbsp;<i>y</i>) is a saddle point of the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>.  From the results above, a sufficient, though not necessary, condition for a stationary point <i>x</i>* of a function <i style="padding-right:0.2em;">f</i> of two variables to be a saddle point is
-|<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0.
-</p><p>
-A saddle point is sometimes defined to be a stationary point at which the Hessian is indefinite.  (See, for example, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994"><i>Mathematics for economists</i></a> by Simon and Blume, p.&nbsp;399.) Under this definition, (0,&nbsp;0) is a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>,
-but is not a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  The definition I give appears to be more standard.
-</p><div class="example" id="m:lo2"><dl class="example"><dt>Example 5.2.2</dt><dd>
-Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>&nbsp;+ <i>y</i><sup>3</sup>&nbsp;− 3<i>x</i><i>y</i>.  The first-order conditions for an optimum are
-<p>
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">3<i>x</i><sup>2</sup>&nbsp;− 3<i>y</i>&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;0<sup>&nbsp;</sup></td>
+      <td class="alignRight"><i>a</i><i>x</i><sup><i>a</i>−1</sup><i>y</i><sup><i>b</i></sup>&nbsp;− λ<i>p</i></td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">0</td>
 </tr>
  <tr>
   <td class="alignRight">
-3<i>y</i><sup>2</sup>&nbsp;− 3<i>x</i>&nbsp;</td>
-      <td class="mathAlign2">=&nbsp;0.<sup>&nbsp;</sup></td>
+&nbsp;<i>b</i><i>x</i><sup><i>a</i></sup><i>y</i><sup><i>b</i>−1</sup>&nbsp;− λ</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">0</td>
 </tr>
-</tbody></table></div>
-Thus the stationary points satisfy <i>y</i>&nbsp;= <i>x</i><sup>2</sup>&nbsp;= <i>y</i><sup>4</sup>, so that either (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0) or <i>y</i><sup>3</sup>&nbsp;= 1.  So there are two stationary points: (0,&nbsp;0), and (1,&nbsp;1).
+</tbody></table></div><p>
+and the constraint is <i>p</i><i>x</i>&nbsp;+ <i>y</i> =&nbsp;<i>m</i>.  From the first two conditions we have <i>a</i><i>y</i>&nbsp;= <i>p</i><i>b</i><i>x</i>.  Substituting into the constraint we obtain
+</p><div class="equation"><i>x</i>&nbsp;= <i>a</i><i>m</i>/((<i>a</i>&nbsp;+ <i>b</i>)<i>p</i>) and <i>y</i>&nbsp;= <i>b</i><i>m</i>/(<i>a</i>&nbsp;+ <i>b</i>),</div>
+so that (<i>x</i>,&nbsp;<i>y</i>) is an interior point of the domain of the objective function and
+<div class="equation">λ&nbsp;= <span class="nobr">[<i>a</i><sup><i>a</i></sup><i>b</i><sup><i>b</i></sup>/(<i>a</i>+<i>b</i>)<sup><i>a</i>+<i>b</i>−1</sup>]</span><span class="nobr">[<i>m</i><sup><i>a</i>+<i>b</i>−1</sup>/<i>p</i><sup><i>a</i></sup>]</span>.</div>
+The value of the objective function at this point is [<i>a</i><i>m</i>/((<i>a</i>&nbsp;+ <i>b</i>)<i>p</i>)]<sup><i>a</i></sup>[<i>b</i><i>m</i>/(<i>a</i>&nbsp;+ <i>b</i>)]<sup><i>b</i></sup>, which is positive.
 <p>
-Now, the Hessian of <i style="padding-right:0.2em;">f</i> at any point (<i>x</i>,&nbsp;<i>y</i>) is
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">H</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
-
-<td class="cell">6<i>x</i></td>
-  <td class="cell">−3</td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
- <tr>
-  <td class="cell">−3</td>
-  <td class="cell">6<i>y</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-Thus |<i style="padding-right:0.2em;">H</i>(0,&nbsp;0)|&nbsp;= −9, so that (0,&nbsp;0) is neither a local maximizer nor a local  minimizer (i.e. is a saddle point).  We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1,&nbsp;1)&nbsp;= 6&nbsp;&gt; 0 and |<i style="padding-right:0.2em;">H</i>(1,&nbsp;1)|&nbsp;= 36&nbsp;− 9&nbsp;&gt; 0, so that (1,&nbsp;1) is
-a local minimizer.
-<p>
-The function is plotted in the following figure.
+We have <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>p</i> and <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 1, so there are no values of (<i>x</i>,&nbsp;<i>y</i>) for which <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0.
 </p><p>
-
-	</p><div id="surfacePlotDiv02" class="surfacePlot">
-		<!-- SurfacePlot goes here... -->
-	<div id="surfacePlot2" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
-
-		
-		<script type="text/javascript">
-		
-		    var surfacePlot;
-			var data, options, basicPlotOptions, glOptions, animated, values;
-			
-			function setUp()
-			{
-				var numRows = 41;
-				var numCols = 41;
-				
-				var tooltipStrings = new Array();
-				values = new Array();
-				data = {nRows: numRows, nCols: numCols, formattedValues: values};
-				
-				var idx = 0;
-				
-				for (var i = 0; i < numRows; i++) 
-				{
-					values[i] = new Array();
-					
-					for (var j = 0; j < numCols; j++)
-					{
-						var x = (i - 10) / 20;
-						var y = (j - 10) / 20;
-						var value = (Math.pow(x, 3) + Math.pow(y, 3) - 3 * x * y);
-						
-						values[i][j] = value;
-						
-						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
-						idx++;
-					}
-				}
-
-				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv02"));
-				
-				// Don't fill polygons in IE < v9. It's too slow.
-				var fillPly = true;
-				
-				// Define a colour gradient.
-				var colour1 = {red:0, green:0, blue:255};
-				var colour2 = {red:0, green:255, blue:255};
-				var colour3 = {red:0, green:255, blue:0};
-				var colour4 = {red:255, green:255, blue:0};
-				var colour5 = {red:255, green:0, blue:0};
-				var colours = [colour1, colour2, colour3, colour4, colour5];
-				
-				// Axis labels.
-				var xAxisHeader	= "x";
-				var yAxisHeader	= "y";
-				var zAxisHeader	= "f(x,y)";
-				
-				var renderDataPoints = false;
-				var background = '#ccffff';
-				var axisForeColour = '#000000';
-				var hideFloorPolygons = true;
-				var chartOrigin = {x: 0, y:0};
-
-				var startXAngle_GL = -45; // less negative value tips graphic up, with view more from top
-				var startYAngle_GL = -15; // less negative value rotates graphic counterclockwise
-				
-				// Options for the basic canvas plot.
-				basicPlotOptions = {
-					fillPolygons: fillPly,
-					tooltips: tooltipStrings,
-					renderPoints: renderDataPoints
-					}
-				
-				// Options for the webGL plot.
-				var xLabels = [-0.5, 0, 0.5, 1, 1.5];
-				var yLabels = [-0.5, 0, 0.5, 1, 1.5];
-				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
-				glOptions = {
-					xLabels: xLabels,
-					yLabels: yLabels,
-					zLabels: zLabels,
-					chkControlId: "allowWebGL",
-					autoCalcZScale: true,
-					animate: true
-					};
-				
-				var plotDiv = document.getElementById("surfacePlotDiv01");
-				
-				// Options common to both types of plot.
-				options = {
-					xPos: 0,
-					yPos: 0,
-					width: plotDiv.offsetWidth,
-					height: plotDiv.offsetHeight,
-					colourGradient: colours,
-					xTitle: xAxisHeader,
-					yTitle: yAxisHeader,
-					zTitle: zAxisHeader, 
-					backColour: background,
-					axisTextColour: axisForeColour,
-					hideFlatMinPolygons: hideFloorPolygons,
-					origin: chartOrigin,
-					startXAngle_GL: startXAngle_GL,
-					startYAngle_GL: startYAngle_GL
-					};
-				
-				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
-				
-			}
-			
-			setUp();
-			
-		</script>
-
-		</dd></dl></div>
-<div class="example" id="m:Ex3"><dl class="example"><dt>Example 5.2.3</dt><dd>
-Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 8<i>x</i><sup>3</sup>&nbsp;+ 2<i>x</i><i>y</i>&nbsp;− 3<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ 1.  We have
+The boundary of the set on which the objective function is defined is the set of points (<i>x</i>,&nbsp;<i>y</i>) with <i>x</i>&nbsp;= 0 or <i>y</i>&nbsp;= 0.  At every such point the value of the objective function is 0.
+</p><p>
+We conclude that if the problem has a solution, it is (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (<i>a</i><i>m</i>/((<i>a</i>&nbsp;+&nbsp;<i>b</i>)<i>p</i>), <i>b</i><i>m</i>/(<i>a</i>&nbsp;+&nbsp;<i>b</i>)).
+</p></dd></dl></div>
+The next example illustrates the possibility that the first-order conditions and constraint have no solution.
+<div class="example" id="m:ex4"><dl class="example"><dt>Example 6.1.1.4</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i> subject to <i>x</i><sup>2</sup>&nbsp;= 0,</div>
+where the objective and constraint functions are defined on the set of all points (<i>x</i>,&nbsp;<i>y</i>).
 <p>
-</p><div class="equation">
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i>&nbsp;− λ<i>x</i><sup>2</sup></div>
+so the first-order conditions are
+<div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
-      <td class="mathAlign2">= 24<i>x</i><sup>2</sup>&nbsp;+ 2<i>y</i>&nbsp;− 6<i>x</i></td>
+      <td class="alignRight">1&nbsp;− 2λ<i>x</i></td>
+      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
 </tr>
  <tr>
   <td class="alignRight">
-<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
-      <td class="mathAlign2">= 2<i>x</i>&nbsp;+ 2<i>y</i>.</td>
+0</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
 </tr>
 </tbody></table></div>
-To find the stationary points of the function, solve the first-order conditions.  From the second equation we have <i>y</i>&nbsp;= −<i>x</i>; substituting this into first equation we find that 24<i>x</i><sup>2</sup>&nbsp;− 8<i>x</i>&nbsp;= 8<i>x</i>(3<i>x</i>&nbsp;− 1)&nbsp;= 0.  This equation has two solutions, <i>x</i>&nbsp;= 0 and <i>x</i>&nbsp;= 1/3.  Thus there are two
-stationary points:
+and the constraint is <i>x</i><sup>2</sup>&nbsp;= 0.  From the constraint we have <i>x</i>&nbsp;= 0, which does not satisfy the first first-order condition.  Thus the three equations have no solution.  Now, we have <i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>x</i> and <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0.  Thus we have
+<i>g</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>g</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 0 for (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;<i>y</i>) for any value of <i>y</i>.  At all these points the value of the objective function is the same (namely 0).  Hence if the problem has a solution, the set of solutions is the set of pairs (0,&nbsp;<i>y</i>)
+for all values of <i>y</i>.
 <p>
-</p><div class="equation">(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) and (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3).</div>
-<p>
-We have
-</p><p>
-</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 48<i>x</i>&nbsp;− 6, <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2, and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=
-<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2,</div>
-so Hessian is
-<p>
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell">48<i>x</i>&nbsp;−&nbsp;6</td>
-  <td class="cell">2</td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell">2</td>
-  <td class="cell">2</td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-<p>
-Look at each stationary point in turn.
-</p><p>
-</p><dl>
-<dt>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0)
-</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)&nbsp;= −6&nbsp;&lt; 0 and
-<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0,&nbsp;0)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(0,&nbsp;0))<sup>2</sup>&nbsp;= −16&nbsp;&lt; 0.</div>
-So (<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) is neither a local maximizer nor a local minimizer (i.e. it is a saddle point).
-</dd><dt>(<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3)
-</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)&nbsp;= 10&nbsp;&gt; 0 and
-<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(1/3,&nbsp;−1/3)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(1/3,&nbsp;−1/3))<sup>2</sup>&nbsp;= 96/3&nbsp;− 16&nbsp;= 16&nbsp;&gt; 0.</div>
-So (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3) is a local minimizer, with <i style="padding-right:0.2em;">f</i>(1/3,&nbsp;−1/3)&nbsp;= 23/27.
-</dd></dl>
-The function is plotted in the following figure.
-<p>
-
-	</p><div id="surfacePlotDiv03" class="surfacePlot">
-		<!-- SurfacePlot goes here... -->
-	<div id="surfacePlot3" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
-
-		
-		<script type="text/javascript">
-		
-		    var surfacePlot;
-			var data, options, basicPlotOptions, glOptions, animated, values;
-			
-			function setUp()
-			{
-				var numRows = 41;
-				var numCols = 41;
-				
-				var tooltipStrings = new Array();
-				values = new Array();
-				data = {nRows: numRows, nCols: numCols, formattedValues: values};
-				
-				var idx = 0;
-				
-				for (var i = 0; i < numRows; i++) 
-				{
-					values[i] = new Array();
-					
-					for (var j = 0; j < numCols; j++)
-					{
-						var x = (i - 20) / 20;
-						var y = (j - 20) / 20;
-						var value = (8 * Math.pow(x, 3) + 2 * x * y - 3 * Math.pow(x, 2) + Math.pow(y, 2) + 1);
-						
-						values[i][j] = value;
-						
-						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
-						idx++;
-					}
-				}
-
-				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv03"));
-				
-				// Don't fill polygons in IE < v9. It's too slow.
-				var fillPly = true;
-				
-				// Define a colour gradient.
-				var colour1 = {red:0, green:0, blue:255};
-				var colour2 = {red:0, green:255, blue:255};
-				var colour3 = {red:0, green:255, blue:0};
-				var colour4 = {red:255, green:255, blue:0};
-				var colour5 = {red:255, green:0, blue:0};
-				var colours = [colour1, colour2, colour3, colour4, colour5];
-				
-				// Axis labels.
-				var xAxisHeader	= "x";
-				var yAxisHeader	= "y";
-				var zAxisHeader	= "f(x,y)";
-				
-				var renderDataPoints = false;
-				var background = '#ccffff';
-				var axisForeColour = '#000000';
-				var hideFloorPolygons = true;
-				var chartOrigin = {x: 0, y:0};
-				
-				var startXAngle_GL = -55; // less negative value tips graphic up, with view more from top
-				var startYAngle_GL = 20; // less negative value rotates graphic counterclockwise
-				
-				// Options for the basic canvas pliot.
-				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
-				
-				// Options for the webGL plot.
-				var xLabels = [-1, -0.5, 0, 0.5, 1];
-				var yLabels = [-1, -0.5, 0, 0.5, 1];
-				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
-				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
-				
-				var plotDiv = document.getElementById("surfacePlotDiv03");
-				
-				// Options common to both types of plot.
-				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
-					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
-					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
-					startXAngle_GL: startXAngle_GL,
-					startYAngle_GL: startYAngle_GL
-					};
-				
-				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
-				
-			}
-			
-			setUp();
-			
-		</script>
-
-		</dd></dl></div>
-
+(In fact the problem has a solution, though we cannot deduce that it does from the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/men/OPN#p:EVT1">Extreme Value Theorem</a>, because the constraint set, which consists of all pairs (0,&nbsp;<i>y</i>), for any value of <i>y</i>, is not compact.)
+</p></dd></dl></div>
 
 
 
@@ -867,7 +611,7 @@ The function is plotted in the following figure.
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="44">
+            <input type="hidden" name="pageId" value="50">
 
             
 
