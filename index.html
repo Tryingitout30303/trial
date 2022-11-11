@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 7.3 Optimization with inequality constraints: the sufficiency of the Kuhn-Tucker conditions</title>
+    <title>Mathematical methods for economic theory: 8.2 First-order differential equations: existence and stability of solutions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: sufficiency of Kuhn-Tucker conditions for optimization problems with inequality constraints">
-        <meta name="keywords" content="mathematical methods, economic theory, optimization, inequality constraints, Kuhn-Tucker conditions, sufficiency">
+            <meta name="description" content="Mathematical methods for economic theory: existence of solution to first-order differential equations">
+        <meta name="keywords" content="mathematical methods, economic theory, differential equations, first-order differential equations">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -199,10 +199,10 @@
         <div class="menuBar">
             <span class="leftMenu">
                 <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/40"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Kuhn-Tucker conditions"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/46"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Differential equations"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/42"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Kuhn-Tucker conditions"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/47"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Differential equations"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,9 +222,9 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/44"><img alt="Next page" src="./index_files/next.gif" height="20" title="Nonnegativity conditions"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/49"><img alt="Next page" src="./index_files/next.gif" height="20" title="Separable equations"></a>
                             <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/46"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Differential equations"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/54"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Difference equations"></a>
                                 </span>
             </span>
         </div>  <!-- menuBar -->
@@ -268,512 +268,268 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>7.3 Optimization with inequality constraints: the sufficiency of the Kuhn-Tucker conditions</h2>
+            <h2>8.2 First-order differential equations: existence and stability of solutions</h2>
         </header>
 
-	We saw previously that for both an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/GOP#p:maxconcaven">unconstrained maximization problem</a> and a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/MEG#p:18.2">maximization problem with an equality constraint</a> the first-order conditions are sufficient for a global optimum when the objective and constraint functions satisfy appropriate concavity/convexity conditions.  The same is true for an optimization problem with
-inequality constraints.
-<h3>Concave objective function</h3>
-<div class="result" id="p:KTFOC"><dl class="result"><dt>Proposition 7.3.1 (Sufficiency of Kuhn-Tucker conditions for concave objective function) &nbsp;<button class="proofButton" id="KTFOC" onclick="javascript:showProof(&#39;KTFOC&#39;)" style="display: none;">proof</button></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that
-<ul>
-   <li><i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a>
-   </li><li>and <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.
-</li></ul>
-If there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) and a point <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.</div>
-</dd></dl></div>
-<div class="hiddenProof" id="f:KTFOC" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC&#39;)">hide</button></dt><dd>
-The fact that (<i>x</i>*,&nbsp;λ) satisfies the Kuhn-Tucker conditions means that
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;− ∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)&nbsp;=&nbsp;0 for
-<i>i</i>&nbsp;= 1, ...,&nbsp;<i>n</i></td>
-</tr>
- <tr>
-  <td class="alignRight">
-</td>
-      <td class="mathAlign2">λ<sub><i>j</i></sub>&nbsp;≥&nbsp;0,&nbsp;<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;≤&nbsp;<i>c</i><sub><i>j</i></sub> and λ<sub><i>j</i></sub>[<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;− <i>c</i><sub><i>j</i></sub>]&nbsp;= 0 for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></td>
-</tr>
-</tbody></table></div>
-(where <i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*) is the derivative of <i>g</i><sub><i>j</i></sub> with respect to its <i>i</i>th argument evaluated at <i>x</i>*).
-<p>
-Let <i>x</i> be such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for all <i>j</i>.  We need to show that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*). 
-</p><p>
-Let <i>j</i> be an index such that <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub>.  (That is, the <i>j</i>th constraint is binding at <i>x</i>*.)  Then <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>g</i><sub><i>j</i></sub>(<i>x</i>*), so that by a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#p:qccOnceDiff">characterization of quasiconvex functions</a>,
-<nobr><span class="nobr">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤</span></nobr> 0.  Thus given λ<sub><i>j</i></sub>&nbsp;≥ 0 we have
-<nobr><span class="nobr">λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤</span></nobr> 0.
-</p><p>
-Now let <i>j</i> be an index such that <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;&lt; <i>c</i><sub><i>j</i></sub>.  Then by the complementary slackness condition for constraint <i>j</i> in the Kuhn-Tucker conditions, λ<sub><i>j</i></sub>&nbsp;= 0.
-</p><p>
-Thus for every constraint <i>j</i> we have
-</p><div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
-0</td>
-</tr>
-</tbody></table></div>
-and hence
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;−
-<i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤ 0,</td>
-</tr>
-</tbody></table></div>
-or, reversing the summations,
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;−
-<i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤ 0.</td>
-</tr>
-</tbody></table></div>
-Now, multiplying the <i>i</i>th first-order condition in the Kuhn-Tucker conditions by <i>x</i><sub><i>i</i></sub>&nbsp;−&nbsp;<i>x</i>*<sub class="star"><i>i</i></sub> and summing over <i>i</i> we get
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;−
-∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub><i>g</i>'<sub class="prime"><i>j</i><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;=&nbsp;0.</td>
-</tr>
-</tbody></table></div>
-By the previous inequality, the second term is nonpositive, so
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
-0.</td>
-</tr>
-</tbody></table></div>
-Thus from <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#p:concaveOnceDiff">characterization of concave functions</a>, <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*), completing the proof.
+	<div class="definition" id="d:foode"><dl class="definition"><dt>Definition</dt><dd>
+A <span class="definition">first-order ordinary differential equation</span> is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IDE#d:ode">ordinary differential equation</a> that may be written in the form
+<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</div>
+for some <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:function">function</a> <i style="padding-right:0.2em;">F</i> of two variables.
 </dd></dl></div>
 
-This result together with <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a>, giving conditions under which the Kuhn-Tucker conditions are necessary, and the fact that a convex function (and hence a linear one) is quasiconvex yields the following useful corollary.
-<div class="result" id="c:KTN&amp;S1"><dl class="result"><dt>Corollary 7.3.1 (Necessity and sufficiency of Kuhn-Tucker conditions for concave objective function)</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and
-<ul>
-   <li><b>either</b> each <i>g</i><sub><i>j</i></sub> is linear
-   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">convex</a> and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i>.
-</li></ul>
-Then <i>x</i>*&nbsp;∈ <i>S</i> solves the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i></div>
-if and only if there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker</a> conditions.
+As I discussed on <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IDE#multiplicity">the previous page</a>, a differential equation generally has many solutions.  For a first-order equation, adding the requirement that <i>x</i> take a specific value for some specific value of <i>t</i> generally pins down a single solution.  Roughly, the additional requirement determines the level of <i>x</i> whereas the differential equation determines
+the rate of change of <i>x</i>.
+<p>
+A first-order differential equation plus a condition of this type—that  is, a condition of the form <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>, called an <i>initial condition</i>—is called a <i>first-order initial value problem</i>.  Despite the use of the word “initial”, the value of <i>t</i><sub>0</sub> in such a problem cannot necessarily be interpreted
+as a starting point.  (Indeed, as I remarked on the previous page, the variable <i>t</i> cannot necessarily be interpreted as time.)
+
+</p><div class="definition" id="d:ivp"><dl class="definition"><dt>Definition</dt><dd>
+A <span class="definition">first-order initial value problem</span> consists of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:foode">first-order ordinary differential equation</a>
+<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</div>
+and an <span class="definition">initial condition</span>
+<div class="equation"><i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>,</div>
+where <i>t</i><sub>0</sub> and <i>x</i><sub>0</sub> are numbers.
 </dd></dl></div>
 
-<h3>Quasiconcave objective function</h3>
-The condition that the objective function be concave is a bit too strong to be useful in some economic applications.  For example, the assumption we would like to impose on a consumer's utility function is that it be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a>.  The next result is useful in this case.
-<div class="result" id="p:KTFOC2"><dl class="result"><dt>Proposition 7.3.2 (Sufficiency of Kuhn-Tucker conditions for quasiconcave objective function) &nbsp;<button class="proofButton" id="KTFOC2" onclick="javascript:showProof(&#39;KTFOC2&#39;)" style="display: none;">proof</button></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of <i>n</i> variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that
-<ul>
-   <li><i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a>
-   </li><li>and <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.
-</li></ul>
-If there exists an <i>m</i>-vector of numbers λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) and <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and it is not the case that <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>n</i> then <i>x</i>* solves the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.</div>
-</dd></dl></div>
-<div class="hiddenProof" id="f:KTFOC2" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC2&#39;)">hide</button></dt><dd>
-The proof of the previous result, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a>, uses the concavity of <i style="padding-right:0.2em;">f</i> only in the last sentence.  In particular, under the assumption that <i style="padding-right:0.2em;">f</i> is quasiconcave we can conclude that
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)·(<i>x</i><sub><i>i</i></sub>&nbsp;− <i>x</i>*<sub class="star"><i>i</i></sub>)&nbsp;≤
-0,</td>
-</tr>
-</tbody></table></div>
-as in that proof.  Now suppose, contrary to the claim that <i>x</i>* solves the maximization problem, that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*) for some <i>x</i> that satisfies the constraints.
+<h3>Existence of a solution</h3>
+Before trying to find a solution of a first-order initial value problem, it is useful to know whether a solution exists.
 <p>
-Denote the vector of partial derivatives of <i style="padding-right:0.2em;">f</i> by ∇<i style="padding-right:0.2em;">f</i>.  Given the continuity of <i style="padding-right:0.2em;">f</i>, the fact that <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*) means that there exists <i>t</i>&nbsp;&gt; 0 (small enough) such that
-<i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*), and the conclusion from the proof of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> may be written
-</p><div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·(<i>x</i>&nbsp;−&nbsp;<i>x</i>*)&nbsp;≤ 0.</td>
-</tr>
-</tbody></table></div>
-Thus
+A diagram known as a <span class="definition">direction field</span> or <span class="definition">integral field</span> helps us think about the existence of a solution.  We plot <i>t</i> on the horizontal axis and <i>x</i> on the vertical axis, and for each of a set of pairs (<i>t</i>,&nbsp;<i>x</i>) we draw a short line segment through (<i>t</i>,&nbsp;<i>x</i>) with slope
+<i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>)), which from the equation is equal to <i>x</i>'(<i>t</i>).  Such a diagram shows us the rate of change of <i>x</i> for each value of <i>t</i> and <i>x</i>(<i>t</i>).
+</p><div class="example" id="m:1"><dl class="example"><dt>Example 8.2.1</dt><dd>
+The direction field of the equation
+<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;= <i>x</i>(<i>t</i>)<i>t</i></div>
+is shown in the figure below.  For example, at every point (<i>t</i>,&nbsp;0) and every point (0,&nbsp;<i>x</i>) we have <i>x</i>'(<i>t</i>)&nbsp;= 0, so the slope of the line segment through every such point is 0.  Similarly, at every point (1,&nbsp;<i>x</i>) we have <i>x</i>'(<i>t</i>)&nbsp;= <i>x</i>, so the slope of the line segment through (1,&nbsp;<i>x</i>) is <i>x</i> for each value of
+<i>x</i>.  (The grid size in the figure is 1/2.)
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290" height="290">
+
+	 <path d="M0,145
+	          L290,145
+			  M145,0
+			  L145,290" class="axis"></path>
+	 
+	 <g transform="translate(-0.6,0)">
+	 
+	 <line x1="137.56677" y1="145" x2="153.62213" y2="145" id="line4195" style="stroke:#ff0000"></line>
+	 
+	 <line x1="107.46296" y1="145" x2="123.51832" y2="145" id="line4197" style="stroke:#ff0000"></line>
+	 
+	 <line x1="77.359138" y1="145" x2="93.414513" y2="145" id="line4199" style="stroke:#ff0000"></line>
+	 
+	 <line x1="47.255333" y1="145" x2="63.310707" y2="145" id="line4201" style="stroke:#ff0000"></line>
+	 
+	 <line x1="17.151545" y1="145" x2="33.206886" y2="145" id="line4203" style="stroke:#ff0000"></line>
+	 
+	 <line x1="167.67056" y1="145" x2="183.72592" y2="145" id="line4205" style="stroke:#ff0000"></line>
+	 
+	 <line x1="202.1926" y1="33.340076" x2="209.35632" y2="19.021135" id="line4207" style="stroke:#ff0000"></line><line x1="200.13251" y1="91.811874" x2="211.48465" y2="80.49794" id="line4209" style="stroke:#ff0000"></line><line x1="197.77435" y1="145" x2="213.82974" y2="145" id="line4211" style="stroke:#ff0000"></line><line x1="262.3992" y1="93.340866" x2="269.56387" y2="79.021927" id="line4213" style="stroke:#ff0000"></line><line x1="264.07495" y1="33.963093" x2="267.95935" y2="18.438128" id="line4215" style="stroke:#ff0000"></line><line x1="257.98196" y1="145" x2="274.03732" y2="145" id="line4217" style="stroke:#ff0000"></line><line x1="227.87817" y1="145" x2="243.93353" y2="145" id="line4219" style="stroke:#ff0000"></line><line x1="137.56677" y1="176.15459" x2="153.62213" y2="176.15459" id="line4221" style="stroke:#ff0000"></line><line x1="137.56677" y1="206.15451" x2="153.62213" y2="206.15451" id="line4223" style="stroke:#ff0000"></line><line x1="137.56677" y1="236.15439" x2="153.62213" y2="236.15439" id="line4225" style="stroke:#ff0000"></line><line x1="137.56677" y1="266.1543" x2="153.62213" y2="266.1543" id="line4227" style="stroke:#ff0000"></line><line x1="137.56677" y1="116.1548" x2="153.62213" y2="116.1548" id="line4229" style="stroke:#ff0000"></line><line x1="137.56677" y1="86.154892" x2="153.62213" y2="86.154892" id="line4231" style="stroke:#ff0000"></line><line x1="137.56677" y1="56.155018" x2="153.62213" y2="56.155018" id="line4233" style="stroke:#ff0000"></line><line x1="137.56677" y1="26.155107" x2="153.62213" y2="26.155107" id="line4235" style="stroke:#ff0000"></line><line x1="167.91541" y1="118.04478" x2="183.49411" y2="114.17482" id="line4237" style="stroke:#ff0000"></line><line x1="168.50644" y1="89.773911" x2="182.86798" y2="82.619919" id="line4239" style="stroke:#ff0000"></line><line x1="169.26105" y1="60.957996" x2="182.10031" y2="51.352039" id="line4241" style="stroke:#ff0000"></line><line x1="198.61023" y1="119.77379" x2="212.97177" y2="112.6198" id="line4243" style="stroke:#ff0000"></line><line x1="201.33264" y1="62.787983" x2="210.24036" y2="49.477039" id="line4245" style="stroke:#ff0000"></line><line x1="170.02869" y1="31.81209" x2="181.38083" y2="20.498125" id="line4247" style="stroke:#ff0000"></line><line x1="229.46866" y1="120.95879" x2="242.30792" y2="111.35182" id="line4249" style="stroke:#ff0000"></line><line x1="231.43643" y1="92.787888" x2="240.34415" y2="79.476913" id="line4251" style="stroke:#ff0000"></line><line x1="232.64059" y1="63.476978" x2="239.17108" y2="48.861042" id="line4253" style="stroke:#ff0000"></line><line x1="260.34009" y1="121.81178" x2="271.69324" y2="110.49785" id="line4255" style="stroke:#ff0000"></line><line x1="263.47992" y1="63.692005" x2="268.54736" y2="48.509022" id="line4257" style="stroke:#ff0000"></line><line x1="233.37613" y1="33.692097" x2="238.4436" y2="18.509142" id="line4259" style="stroke:#ff0000"></line><line x1="87.129829" y1="33.340076" x2="79.966133" y2="19.021135" id="line4261" style="stroke:#ff0000"></line><line x1="89.189949" y1="91.811874" x2="77.836784" y2="80.49794" id="line4263" style="stroke:#ff0000"></line><line x1="26.922228" y1="93.340866" x2="19.758524" y2="79.021927" id="line4265" style="stroke:#ff0000"></line><line x1="25.247454" y1="33.963093" x2="21.363054" y2="18.438128" id="line4267" style="stroke:#ff0000"></line><line x1="121.40705" y1="118.04478" x2="105.82832" y2="114.17482" id="line4269" style="stroke:#ff0000"></line><line x1="120.816" y1="89.773911" x2="106.45448" y2="82.619919" id="line4271" style="stroke:#ff0000"></line><line x1="120.0604" y1="60.957996" x2="107.22112" y2="51.352039" id="line4273" style="stroke:#ff0000"></line><line x1="90.712181" y1="119.77379" x2="76.350655" y2="112.6198" id="line4275" style="stroke:#ff0000"></line><line x1="87.989799" y1="62.787983" x2="79.081078" y2="49.477039" id="line4277" style="stroke:#ff0000"></line><line x1="119.29375" y1="31.81209" x2="107.94061" y2="20.498125" id="line4279" style="stroke:#ff0000"></line><line x1="59.853783" y1="120.95879" x2="47.014503" y2="111.35182" id="line4281" style="stroke:#ff0000"></line><line x1="57.885994" y1="92.787888" x2="48.977272" y2="79.476913" id="line4283" style="stroke:#ff0000"></line><line x1="56.681847" y1="63.476978" x2="50.151329" y2="48.861042" id="line4285" style="stroke:#ff0000"></line><line x1="28.982332" y1="121.81178" x2="17.629183" y2="110.49785" id="line4287" style="stroke:#ff0000"></line><line x1="25.842501" y1="63.692005" x2="20.775034" y2="48.509022" id="line4289" style="stroke:#ff0000"></line><line x1="55.946312" y1="33.692097" x2="50.878838" y2="18.509142" id="line4291" style="stroke:#ff0000"></line><line x1="87.129829" y1="257.14133" x2="79.966133" y2="271.46027" id="line4293" style="stroke:#ff0000"></line><line x1="89.189949" y1="198.66953" x2="77.836784" y2="209.98349" id="line4295" style="stroke:#ff0000"></line><line x1="26.922228" y1="197.14055" x2="19.758524" y2="211.45947" id="line4297" style="stroke:#ff0000"></line><line x1="25.247454" y1="256.51834" x2="21.363054" y2="272.04327" id="line4299" style="stroke:#ff0000"></line><line x1="121.40705" y1="172.43663" x2="105.82832" y2="176.3076" id="line4301" style="stroke:#ff0000"></line><line x1="120.816" y1="200.70749" x2="106.45448" y2="207.86148" id="line4303" style="stroke:#ff0000"></line><line x1="120.0604" y1="229.52341" x2="107.22112" y2="239.12939" id="line4305" style="stroke:#ff0000"></line><line x1="90.712181" y1="170.70763" x2="76.350655" y2="177.86162" id="line4307" style="stroke:#ff0000"></line><line x1="87.989799" y1="227.69342" x2="79.081078" y2="241.00439" id="line4309" style="stroke:#ff0000"></line><line x1="119.29375" y1="258.66934" x2="107.94061" y2="269.98328" id="line4311" style="stroke:#ff0000"></line><line x1="59.853783" y1="169.52263" x2="47.014503" y2="179.12962" id="line4313" style="stroke:#ff0000"></line><line x1="57.885994" y1="197.69351" x2="48.977272" y2="211.00449" id="line4315" style="stroke:#ff0000"></line><line x1="56.681847" y1="227.00443" x2="50.151329" y2="241.62039" id="line4317" style="stroke:#ff0000"></line><line x1="28.982332" y1="168.66963" x2="17.629183" y2="179.98357" id="line4319" style="stroke:#ff0000"></line><line x1="25.842501" y1="226.78943" x2="20.775034" y2="241.97134" id="line4321" style="stroke:#ff0000"></line><line x1="55.946312" y1="256.78934" x2="50.878838" y2="271.97125" id="line4323" style="stroke:#ff0000"></line><line x1="202.1926" y1="257.14133" x2="209.35632" y2="271.46027" id="line4325" style="stroke:#ff0000"></line><line x1="200.13251" y1="198.66953" x2="211.48465" y2="209.98349" id="line4327" style="stroke:#ff0000"></line><line x1="262.3992" y1="197.14055" x2="269.56387" y2="211.45947" id="line4329" style="stroke:#ff0000"></line><line x1="264.07495" y1="256.51834" x2="267.95935" y2="272.04327" id="line4331" style="stroke:#ff0000"></line><line x1="167.91541" y1="172.43663" x2="183.49411" y2="176.3076" id="line4333" style="stroke:#ff0000"></line><line x1="168.50644" y1="200.70749" x2="182.86798" y2="207.86148" id="line4335" style="stroke:#ff0000"></line><line x1="169.26105" y1="229.52341" x2="182.10031" y2="239.12939" id="line4337" style="stroke:#ff0000"></line><line x1="198.61023" y1="170.70763" x2="212.97177" y2="177.86162" id="line4339" style="stroke:#ff0000"></line><line x1="201.33264" y1="227.69342" x2="210.24036" y2="241.00439" id="line4341" style="stroke:#ff0000"></line><line x1="170.02869" y1="258.66934" x2="181.38083" y2="269.98328" id="line4343" style="stroke:#ff0000"></line><line x1="229.46866" y1="169.52263" x2="242.30792" y2="179.12962" id="line4345" style="stroke:#ff0000"></line><line x1="231.43643" y1="197.69351" x2="240.34415" y2="211.00449" id="line4347" style="stroke:#ff0000"></line><line x1="232.64059" y1="227.00443" x2="239.17108" y2="241.62039" id="line4349" style="stroke:#ff0000"></line><line x1="260.34009" y1="168.66963" x2="271.69324" y2="179.98357" id="line4351" style="stroke:#ff0000;stroke-width:2"></line><line x1="263.47992" y1="226.78943" x2="268.54736" y2="241.97134" id="line4353" style="stroke:#ff0000"></line><line x1="233.37613" y1="256.78934" x2="238.4436" y2="271.97125" id="line4355" style="stroke:#ff0000"></line>
+	 
+	 </g>
+	 
+     <text x="153" y="30" style="text-anchor:middle"><tspan font-style="italic">x</tspan></text>
+     <text x="153" y="15" style="text-anchor:middle">↑</text>
+    <text x="145" y="150" style="text-anchor:middle;">0</text>	 
+    <text x="290" y="160" style="text-anchor:end;"><tspan font-style="italic">t →</tspan></text>	 
+	
+	</svg></p></dd></dl></div>
+
+
+If the first-order initial value problem 
 <div class="equation">
-  <table class="mathAlignTop">
+  <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;− <i>x</i>*) </td>
+      <td class="alignRight"><i>x</i>'(<i>t</i>) </td>
       <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">
-−<i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)·∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;+ ∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)(<i>x</i>&nbsp;− <i>x</i>*)</td>
+      <td class="mathAlign2"> <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</td>
 </tr>
  <tr>
   <td class="alignRight">
-</td>
-      <td class="mathAlign2">&nbsp;≤&nbsp;</td>
-      <td class="mathAlign2"> −<i>t</i>∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>(<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*))<sup>2</sup>&nbsp;&lt; 0,</td>
+<i>x</i>(<i>t</i><sub>0</sub>) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>x</i><sub>0</sub></td>
 </tr>
 </tbody></table></div>
-given the assumption that ∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0).  But now, by a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#p:qccOnceDiff">characterization of quasiconcave functions</a>, this inequality implies that <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;−&nbsp;<i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&lt;
-<i style="padding-right:0.2em;">f</i>(<i>x</i>*), contradicting <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;− <i>t</i>∇<i style="padding-right:0.2em;">f</i>(<i>x</i>*))&nbsp;&gt; <i style="padding-right:0.2em;">f</i>(<i>x</i>*).  Thus in fact <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>*).
-</dd></dl></div>
-
-The constraints in a standard consumer's optimization problem are linear, so the following implication of this result and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a>, giving conditions under which the Kuhn-Tucker conditions are necessary, is useful.
-<div class="result" id="c:KTN&amp;S2"><dl class="result"><dt>Corollary 7.3.2 (Necessity and sufficiency of Kuhn-Tucker conditions for quasiconcave objective function)</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/IAF#d:function">functions of <i>n</i> variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
-1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> and each <i>g</i><sub><i>j</i></sub> is linear.
-If <i>x</i>*&nbsp;∈ <i>S</i> solves the problem 
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
-then there exists a unique <i>m</i>-vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>, and if there exists an <i>m</i>-vector λ and a point <i>x</i>*&nbsp;∈ <i>S</i> such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and it is not the case that
-<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i> then <i>x</i>* solves the problem.
-</dd></dl></div>
-If you have a minimization problem, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#trans">remember</a> that you can transform it to a maximization problem by multiplying the objective function by −1.  Thus for a minimization problem the condition on the objective function in the first result above is that it be convex, and the condition in the second result is that it be quasiconvex.
-
-<h3>Examples</h3>
-The next two simple examples illustrate how to use these results and the ones in Section&nbsp;7.2 to solve optimization problems.
-<div class="example" id="m:ex1"><dl class="example"><dt>Example 7.3.1</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to <i>x</i>&nbsp;≥ 1,</div>
-where <i>S</i> is the set of all numbers.  This problem is illustrated in the following figure.
+has a solution, then the direction field for the differential equation helps us to see what it looks like.  The slope of the line segment at (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) gives the direction in which <i>x</i> is headed at <i>t</i><sub>0</sub>.  For instance, in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#m:1">previous example</a>, if the initial condition is <i>x</i>(−1)&nbsp;= 1, then for
+(<i>t</i>,&nbsp;<i>x</i>)&nbsp;= (−1,&nbsp;1), the rate of change of <i>x</i> is −1.  If we sketch a solution of the initial value problem starting at <i>t</i>&nbsp;= −1, we thus start by drawing a path that decreases, with slope −1.  But then as we move along that path, the slopes of the line segments in the direction field change, and we need to adjust the slope of our
+solution to conform.  When our solution crosses the vertical axis, for example, the rate of change of <i>x</i> is zero, so our solution path should be horizontal.  The path we create in this way will look something like the blue line in the following figure (which is the solution of the initial value problem for (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>)&nbsp;= (−1,&nbsp;1)).
 <p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="217" height="190">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290" height="290">
 
-	 <g transform="translate(27,20)">
-
-     <path d="M40,-20
-			  L40,160
-			  L190,160
-			  L190,-20" style="fill:#ccffcc;stroke:none;"></path>
-	 
-	 <path d="M-27,0
-	          L-17,0
-	          M-3,0
-	          L190,0
-			  M0,-3
-			  L0,160" class="axis"></path>	 
-	 
-  <g transform="translate(0,-892.36216)">
-    <path id="path4174" clip-path="url(#clipPath)" title="-((x-80)**2)/40" d="M 0.0 1052.36218 C 7.61904761905 1021.89034327 15.2380952381 995.767894286 22.8571428571 973.994833061 C 30.4761904762 952.221771837 38.0952380952 934.815513333 45.7142857143 921.749935102 C 53.3333333333 908.684356871 60.9523809524 899.985581361 68.5714285714 895.627486122 C 76.1904761905 891.269390884 83.8095238095 891.278098367 91.4285714286 895.627486122 C 99.0476190476 899.976873878 106.666666667 908.693064354 114.285714286 921.749935102 C 121.904761905 934.80680585 129.523809524 952.23047932 137.142857143 973.994833061 C 144.761904762 995.759186803 152.380952381 1021.89034327 160.0 1052.36218" style="opacity:1;fill:none;fill-opacity:0.21176471;stroke:#ff0000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></path>
+  <defs id="defs4138">
+    <clippath id="clipPath">
+      <rect y="0" x="85" height="290" width="205" id="rect5427"></rect>
+    </clippath>
+  </defs>
+  
+  <path id="path4142" class="axis" d="M0,145            L290,145      M145,0      L145,290"></path>
+  <g id="g4144" transform="translate(-0.6,0)">
+    <line style="stroke:#ff0000" id="line4195" y2="145" x2="153.62213" y1="145" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4197" y2="145" x2="123.51832" y1="145" x1="107.46296"></line>
+    <line style="stroke:#ff0000" id="line4199" y2="145" x2="93.414513" y1="145" x1="77.359138"></line>
+    <line style="stroke:#ff0000" id="line4201" y2="145" x2="63.310707" y1="145" x1="47.255333"></line>
+    <line style="stroke:#ff0000" id="line4203" y2="145" x2="33.206886" y1="145" x1="17.151545"></line>
+    <line style="stroke:#ff0000" id="line4205" y2="145" x2="183.72592" y1="145" x1="167.67056"></line>
+    <line style="stroke:#ff0000" id="line4207" y2="19.021135" x2="209.35632" y1="33.340076" x1="202.1926"></line>
+    <line style="stroke:#ff0000" id="line4209" y2="80.49794" x2="211.48465" y1="91.811874" x1="200.13251"></line>
+    <line style="stroke:#ff0000" id="line4211" y2="145" x2="213.82974" y1="145" x1="197.77435"></line>
+    <line style="stroke:#ff0000" id="line4213" y2="79.021927" x2="269.56387" y1="93.340866" x1="262.3992"></line>
+    <line style="stroke:#ff0000" id="line4215" y2="18.438128" x2="267.95935" y1="33.963093" x1="264.07495"></line>
+    <line style="stroke:#ff0000" id="line4217" y2="145" x2="274.03732" y1="145" x1="257.98196"></line>
+    <line style="stroke:#ff0000" id="line4219" y2="145" x2="243.93353" y1="145" x1="227.87817"></line>
+    <line style="stroke:#ff0000" id="line4221" y2="176.15459" x2="153.62213" y1="176.15459" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4223" y2="206.15451" x2="153.62213" y1="206.15451" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4225" y2="236.15439" x2="153.62213" y1="236.15439" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4227" y2="266.1543" x2="153.62213" y1="266.1543" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4229" y2="116.1548" x2="153.62213" y1="116.1548" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4231" y2="86.154892" x2="153.62213" y1="86.154892" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4233" y2="56.155018" x2="153.62213" y1="56.155018" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4235" y2="26.155107" x2="153.62213" y1="26.155107" x1="137.56677"></line>
+    <line style="stroke:#ff0000" id="line4237" y2="114.17482" x2="183.49411" y1="118.04478" x1="167.91541"></line>
+    <line style="stroke:#ff0000" id="line4239" y2="82.619919" x2="182.86798" y1="89.773911" x1="168.50644"></line>
+    <line style="stroke:#ff0000" id="line4241" y2="51.352039" x2="182.10031" y1="60.957996" x1="169.26105"></line>
+    <line style="stroke:#ff0000" id="line4243" y2="112.6198" x2="212.97177" y1="119.77379" x1="198.61023"></line>
+    <line style="stroke:#ff0000" id="line4245" y2="49.477039" x2="210.24036" y1="62.787983" x1="201.33264"></line>
+    <line style="stroke:#ff0000" id="line4247" y2="20.498125" x2="181.38083" y1="31.81209" x1="170.02869"></line>
+    <line style="stroke:#ff0000" id="line4249" y2="111.35182" x2="242.30792" y1="120.95879" x1="229.46866"></line>
+    <line style="stroke:#ff0000" id="line4251" y2="79.476913" x2="240.34415" y1="92.787888" x1="231.43643"></line>
+    <line style="stroke:#ff0000" id="line4253" y2="48.861042" x2="239.17108" y1="63.476978" x1="232.64059"></line>
+    <line style="stroke:#ff0000" id="line4255" y2="110.49785" x2="271.69324" y1="121.81178" x1="260.34009"></line>
+    <line style="stroke:#ff0000" id="line4257" y2="48.509022" x2="268.54736" y1="63.692005" x1="263.47992"></line>
+    <line style="stroke:#ff0000" id="line4259" y2="18.509142" x2="238.4436" y1="33.692097" x1="233.37613"></line>
+    <line style="stroke:#ff0000" id="line4261" y2="19.021135" x2="79.966133" y1="33.340076" x1="87.129829"></line>
+    <line style="stroke:#ff0000" id="line4263" y2="80.49794" x2="77.836784" y1="91.811874" x1="89.189949"></line>
+    <line style="stroke:#ff0000" id="line4265" y2="79.021927" x2="19.758524" y1="93.340866" x1="26.922228"></line>
+    <line style="stroke:#ff0000" id="line4267" y2="18.438128" x2="21.363054" y1="33.963093" x1="25.247454"></line>
+    <line style="stroke:#ff0000" id="line4269" y2="114.17482" x2="105.82832" y1="118.04478" x1="121.40705"></line>
+    <line style="stroke:#ff0000" id="line4271" y2="82.619919" x2="106.45448" y1="89.773911" x1="120.816"></line>
+    <line style="stroke:#ff0000" id="line4273" y2="51.352039" x2="107.22112" y1="60.957996" x1="120.0604"></line>
+    <line style="stroke:#ff0000" id="line4275" y2="112.6198" x2="76.350655" y1="119.77379" x1="90.712181"></line>
+    <line style="stroke:#ff0000" id="line4277" y2="49.477039" x2="79.081078" y1="62.787983" x1="87.989799"></line>
+    <line style="stroke:#ff0000" id="line4279" y2="20.498125" x2="107.94061" y1="31.81209" x1="119.29375"></line>
+    <line style="stroke:#ff0000" id="line4281" y2="111.35182" x2="47.014503" y1="120.95879" x1="59.853783"></line>
+    <line style="stroke:#ff0000" id="line4283" y2="79.476913" x2="48.977272" y1="92.787888" x1="57.885994"></line>
+    <line style="stroke:#ff0000" id="line4285" y2="48.861042" x2="50.151329" y1="63.476978" x1="56.681847"></line>
+    <line style="stroke:#ff0000" id="line4287" y2="110.49785" x2="17.629183" y1="121.81178" x1="28.982332"></line>
+    <line style="stroke:#ff0000" id="line4289" y2="48.509022" x2="20.775034" y1="63.692005" x1="25.842501"></line>
+    <line style="stroke:#ff0000" id="line4291" y2="18.509142" x2="50.878838" y1="33.692097" x1="55.946312"></line>
+    <line style="stroke:#ff0000" id="line4293" y2="271.46027" x2="79.966133" y1="257.14133" x1="87.129829"></line>
+    <line style="stroke:#ff0000" id="line4295" y2="209.98349" x2="77.836784" y1="198.66953" x1="89.189949"></line>
+    <line style="stroke:#ff0000" id="line4297" y2="211.45947" x2="19.758524" y1="197.14055" x1="26.922228"></line>
+    <line style="stroke:#ff0000" id="line4299" y2="272.04327" x2="21.363054" y1="256.51834" x1="25.247454"></line>
+    <line style="stroke:#ff0000" id="line4301" y2="176.3076" x2="105.82832" y1="172.43663" x1="121.40705"></line>
+    <line style="stroke:#ff0000" id="line4303" y2="207.86148" x2="106.45448" y1="200.70749" x1="120.816"></line>
+    <line style="stroke:#ff0000" id="line4305" y2="239.12939" x2="107.22112" y1="229.52341" x1="120.0604"></line>
+    <line style="stroke:#ff0000" id="line4307" y2="177.86162" x2="76.350655" y1="170.70763" x1="90.712181"></line>
+    <line style="stroke:#ff0000" id="line4309" y2="241.00439" x2="79.081078" y1="227.69342" x1="87.989799"></line>
+    <line style="stroke:#ff0000" id="line4311" y2="269.98328" x2="107.94061" y1="258.66934" x1="119.29375"></line>
+    <line style="stroke:#ff0000" id="line4313" y2="179.12962" x2="47.014503" y1="169.52263" x1="59.853783"></line>
+    <line style="stroke:#ff0000" id="line4315" y2="211.00449" x2="48.977272" y1="197.69351" x1="57.885994"></line>
+    <line style="stroke:#ff0000" id="line4317" y2="241.62039" x2="50.151329" y1="227.00443" x1="56.681847"></line>
+    <line style="stroke:#ff0000" id="line4319" y2="179.98357" x2="17.629183" y1="168.66963" x1="28.982332"></line>
+    <line style="stroke:#ff0000" id="line4321" y2="241.97134" x2="20.775034" y1="226.78943" x1="25.842501"></line>
+    <line style="stroke:#ff0000" id="line4323" y2="271.97125" x2="50.878838" y1="256.78934" x1="55.946312"></line>
+    <line style="stroke:#ff0000" id="line4325" y2="271.46027" x2="209.35632" y1="257.14133" x1="202.1926"></line>
+    <line style="stroke:#ff0000" id="line4327" y2="209.98349" x2="211.48465" y1="198.66953" x1="200.13251"></line>
+    <line style="stroke:#ff0000" id="line4329" y2="211.45947" x2="269.56387" y1="197.14055" x1="262.3992"></line>
+    <line style="stroke:#ff0000" id="line4331" y2="272.04327" x2="267.95935" y1="256.51834" x1="264.07495"></line>
+    <line style="stroke:#ff0000" id="line4333" y2="176.3076" x2="183.49411" y1="172.43663" x1="167.91541"></line>
+    <line style="stroke:#ff0000" id="line4335" y2="207.86148" x2="182.86798" y1="200.70749" x1="168.50644"></line>
+    <line style="stroke:#ff0000" id="line4337" y2="239.12939" x2="182.10031" y1="229.52341" x1="169.26105"></line>
+    <line style="stroke:#ff0000" id="line4339" y2="177.86162" x2="212.97177" y1="170.70763" x1="198.61023"></line>
+    <line style="stroke:#ff0000" id="line4341" y2="241.00439" x2="210.24036" y1="227.69342" x1="201.33264"></line>
+    <line style="stroke:#ff0000" id="line4343" y2="269.98328" x2="181.38083" y1="258.66934" x1="170.02869"></line>
+    <line style="stroke:#ff0000" id="line4345" y2="179.12962" x2="242.30792" y1="169.52263" x1="229.46866"></line>
+    <line style="stroke:#ff0000" id="line4347" y2="211.00449" x2="240.34415" y1="197.69351" x1="231.43643"></line>
+    <line style="stroke:#ff0000" id="line4349" y2="241.62039" x2="239.17108" y1="227.00443" x1="232.64059"></line>
+    <line style="stroke:#ff0000;stroke-width:2" id="line4351" y2="179.98357" x2="271.69324" y1="168.66963" x1="260.34009"></line>
+    <line style="stroke:#ff0000" id="line4353" y2="241.97134" x2="268.54736" y1="226.78943" x1="263.47992"></line>
+    <line style="stroke:#ff0000" id="line4355" y2="271.97125" x2="238.4436" y1="256.78934" x1="233.37613"></line>
   </g>
-  
-     <path d="M40,-3
-	          L40,160" style="stroke:green"></path>
-		
-		<circle cx="80" cy="0" r="2.5" style="fill:magenta;stroke:magenta;"></circle>
-
-     <text x="190" y="15" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
-
-       <text x="0" y="-5" style="text-anchor:middle;">0</text>
-       <text x="40" y="-5" style="text-anchor:middle;">1</text>
-       <text x="80" y="-5" style="text-anchor:middle;">2</text>
-       <text x="120" y="-5" style="text-anchor:middle;">3</text>
-       <text x="160" y="-5" style="text-anchor:middle;">4</text>
-
-       <text x="-5" y="5" style="text-anchor:end;">0</text>
-       <text x="-5" y="45" style="text-anchor:end;">−1</text>
-       <text x="-5" y="85" style="text-anchor:end;">−2</text>
-       <text x="-5" y="125" style="text-anchor:end;">−3</text>
-       <text x="-5" y="165" style="text-anchor:end;">−4</text>
-  
-       <text x="45" y="80" style="text-anchor:start;fill:green;"><tspan font-style="italic">x</tspan> = 1</text>
-
-  <text x="148" y="140" style="text-anchor:end;fill:#ff0000">−(<tspan font-style="italic">x</tspan> − 2)<tspan dy="-5">2</tspan></text>
-
-	   </g>
+  <text id="text4227" style="text-anchor:middle" y="30" x="153">
+    <tspan id="tspan4229" font-style="italic">x</tspan>
+  </text>
+  <text id="text4231" style="text-anchor:middle" y="15" x="153">↑</text>
+  <text id="text4233" style="text-anchor:middle;" y="150" x="145">0</text>
+  <text id="text4235" style="text-anchor:end;" y="160" x="290">
+    <tspan id="tspan4237" font-style="italic">t →</tspan>
+  </text>
+  <rect y="0" x="0" height="290" width="290" id="rect4243" style="opacity:1;fill:none;stroke:none;stroke-width:2;"></rect>
+  <path clip-path="url(#clipPath)" title="60*2.71828**(((((x-145)/60)**2)-1)/2)+145" d="m 0,290 290,0 M 0,290 0,0 m 0,-529.84418 c 13.809524,374.99297 27.619048,449.195981 41.428571,513.391729 13.809524,64.195748 27.619048,84.388739 41.428572,99.231201 13.809524,14.842462 27.619047,20.52203 41.428567,23.59471 13.80953,3.07268 27.61905,3.06581 41.42858,0 13.80952,-3.06581 27.61904,-8.772743 41.42857,-23.59471 C 220.95238,67.956783 234.7619,47.641186 248.57143,-16.452451 262.38095,-80.546087 276.19048,-154.85121 290,-529.84418" style="opacity:1;fill:none;stroke:#0000ff;stroke-width:2;" transform="translate(-0.5,2.5)"></path>
 </svg></p><p>
-Written in the standard format, this problem is
-</p><div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to 1&nbsp;− <i>x</i>&nbsp;≤ 0.</div>
-The set <i>S</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> on this set.  The objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and the constraint function is linear, and hence both <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a number λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>) and by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> they are sufficient (if
-(<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem).
-<p>
-The Lagrangean is the function L defined by
-</p><div class="equation">L(<i>x</i>)&nbsp;= −(<i>x</i>&nbsp;− 2)<sup>2</sup>&nbsp;− λ(1&nbsp;− <i>x</i>).</div>
-<p>
-The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">−2(<i>x</i>&nbsp;− 2)&nbsp;+ λ&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-1&nbsp;− <i>x</i>&nbsp;≤ 0, λ&nbsp;≥ 0, and λ(1&nbsp;− <i>x</i>)&nbsp;</td>
-      <td class="mathAlign2">= 0.</td>
-</tr>
-</tbody></table></div>
-From the last condition we have either λ&nbsp;= 0 or <i>x</i>&nbsp;= 1.
-<ul>
-   <li><i>x</i>&nbsp;= 1: 2&nbsp;+ λ&nbsp;= 0, or λ&nbsp;= −2, which violates λ&nbsp;≥ 0.
-   </li><li>λ&nbsp;= 0: −2(<i>x</i>&nbsp;− 2)&nbsp;= 0; the only solution is <i>x</i>&nbsp;= 2.
-</li></ul>
-Thus the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> have a unique solution, (<i>x</i>,&nbsp;λ)&nbsp;= (2,&nbsp;0).  Hence <i>x</i>&nbsp;= 2 is the unique solution of the problem.
-</dd></dl></div>
-<div class="example" id="m:ex2"><dl class="example"><dt>Example 7.3.2</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to <i>x</i>&nbsp;≥ 3,</div>
-where <i>S</i> is the set of all numbers.  This problem is illustrated in the following figure.
-<p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="217" height="190">
-
-	 <g transform="translate(27,20)">
-
-     <path d="M120,-20
-			  L120,160
-			  L190,160
-			  L190,-20" style="fill:#ccffcc;stroke:none;"></path>
-	 
-	 <path d="M-27,0
-	          L-17,0
-			  M-3,0
-	          L190,0
-			  M0,-3
-			  L0,160" class="axis"></path>	 
-	 
-  <g transform="translate(0,-892.36216)">
-    <path id="path4174" clip-path="url(#clipPath)" title="-((x-80)**2)/40" d="M 0.0 1052.36218 C 7.61904761905 1021.89034327 15.2380952381 995.767894286 22.8571428571 973.994833061 C 30.4761904762 952.221771837 38.0952380952 934.815513333 45.7142857143 921.749935102 C 53.3333333333 908.684356871 60.9523809524 899.985581361 68.5714285714 895.627486122 C 76.1904761905 891.269390884 83.8095238095 891.278098367 91.4285714286 895.627486122 C 99.0476190476 899.976873878 106.666666667 908.693064354 114.285714286 921.749935102 C 121.904761905 934.80680585 129.523809524 952.23047932 137.142857143 973.994833061 C 144.761904762 995.759186803 152.380952381 1021.89034327 160.0 1052.36218" style="opacity:1;fill:none;fill-opacity:0.21176471;stroke:#ff0000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></path>
-  </g>
-  
-     <path d="M120,-3
-	          L120,160" style="stroke:green"></path>
-		
-		<circle cx="120" cy="40" r="2.5" style="fill:magenta;stroke:magenta;"></circle>
-		
-
-     <text x="190" y="15" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
-
-       <text x="0" y="-5" style="text-anchor:middle;">0</text>
-       <text x="40" y="-5" style="text-anchor:middle;">1</text>
-       <text x="80" y="-5" style="text-anchor:middle;">2</text>
-       <text x="120" y="-5" style="text-anchor:middle;">3</text>
-       <text x="160" y="-5" style="text-anchor:middle;">4</text>
-
-       <text x="-5" y="5" style="text-anchor:end;">0</text>
-       <text x="-5" y="45" style="text-anchor:end;">−1</text>
-       <text x="-5" y="85" style="text-anchor:end;">−2</text>
-       <text x="-5" y="125" style="text-anchor:end;">−3</text>
-       <text x="-5" y="165" style="text-anchor:end;">−4</text>
-  
-       <text x="115" y="80" style="text-anchor:end;fill:green;"><tspan font-style="italic">x</tspan> = 3</text>
-
-  <text x="8" y="140" style="text-anchor:start;fill:#ff0000">−(<tspan font-style="italic">x</tspan> − 2)<tspan dy="-5">2</tspan></text>
-
-	   </g>
-</svg></p><p>
-Written in the standard format, this problem is
-</p><div class="equation">max<sub><i>x</i>∈<i>S</i></sub>[−(<i>x</i>&nbsp;− 2)<sup>2</sup>] subject to 3&nbsp;− <i>x</i>&nbsp;≤ 0.</div>
-As in the previous example, 7.3.1, the objective function is concave and the constraint function is linear, so that <i>x</i>* is a solution of the problem if and only if there is a number λ such that (<i>x</i>*,&nbsp;λ) is a solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
-<p>
-The Lagrangean is
-</p><div class="equation">L(<i>x</i>)&nbsp;= −(<i>x</i>&nbsp;− 2)<sup>2</sup>&nbsp;− λ(3&nbsp;− <i>x</i>).</div>
-<p>
-The Kuhn-Tucker conditions are
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">−2(<i>x</i>−2)&nbsp;+ λ&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-3&nbsp;− <i>x</i>&nbsp;≤ 0, λ&nbsp;≥ 0, and λ(3&nbsp;− <i>x</i>)&nbsp;</td>
-      <td class="mathAlign2">= 0.</td>
-</tr>
-</tbody></table></div>
-From the last conditions we have either λ&nbsp;= 0 or <i>x</i>&nbsp;= 3.
-<ul>
-   <li><i>x</i>&nbsp;= 3: −2&nbsp;+ λ&nbsp;= 0, or λ&nbsp;= 2.
-   </li><li>λ&nbsp;= 0: −2(<i>x</i>&nbsp;− 2)&nbsp;= 0; since <i>x</i>&nbsp;≥ 3 this has no solution compatible with the other conditions.
-</li></ul>
-Thus the Kuhn-Tucker conditions have a single solution, (<i>x</i>,&nbsp;λ)&nbsp;= (3,&nbsp;2).  Hence <i>x</i>&nbsp;= 3 is the unique solution of the problem.
-</dd></dl></div>
-These two examples illustrate a procedure for finding solutions of the Kuhn-Tucker conditions that is useful in many problems.  First, look at the complementary slackness conditions, which imply that either a Lagrange multiplier is zero or a constraint is binding.  Then follow through the implications of each case, using the other equations.  In the two examples, this procedure is very easy to
-follow.  In the following examples doing so is more complicated.
-<div class="example" id="m:ex3"><dl class="example"><dt>Example 7.3.3</dt><dd>
-Consider the problem
-<div class="equation">max<sub>(<i>x</i><sub>1</sub>,&nbsp;</sub><sub><i>x</i><sub>2</sub>)∈S</sub>&nbsp;[−(<i>x</i><sub>1</sub>&nbsp;− 4)<sup>2</sup>&nbsp;− (<i>x</i><sub>2</sub>&nbsp;−&nbsp;4)<sup>2</sup>] subject to <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;≤ 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;≤ 9,</div>
-where <i>S</i> is the set of all pairs of numbers.  The set <i>S</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">continuously differentiable</a> on this set.  The objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and each constraint function is linear, and hence both
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcvx">quasiconvex</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a number λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>) and by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition
-7.3.1</a> they are sufficient (if (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> then <i>x</i>* solves the problem).
-<p>
-In <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#m:ex1">Example 7.1.1</a> we previously found that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> for this problem are
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">−2(<i>x</i><sub>1</sub>&nbsp;−&nbsp;4)&nbsp;−&nbsp;λ<sub>1</sub>&nbsp;−&nbsp;λ<sub>2</sub>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-−2(<i>x</i><sub>2</sub>&nbsp;−&nbsp;4)&nbsp;−&nbsp;λ<sub>1</sub>&nbsp;−&nbsp;3λ<sub>2</sub>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-<i>x</i><sub>1</sub>&nbsp;+&nbsp;<i>x</i><sub>2</sub>&nbsp;≤&nbsp;4,&nbsp;λ<sub>1</sub>&nbsp;≥ 0, and λ<sub>1</sub>(<i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;− 4)&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-<i>x</i><sub>1</sub>&nbsp;+&nbsp;3<i>x</i><sub>2</sub>&nbsp;≤&nbsp;9,&nbsp;λ<sub>2</sub>&nbsp;≥ 0, and λ<sub>2</sub>(<i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;− 9)&nbsp;</td>
-      <td class="mathAlign2">= 0.</td>
-</tr>
-</tbody></table></div>
-What are the solutions of these conditions?  Start by looking at the two conditions λ<sub>1</sub>(<i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;− 4)&nbsp;= 0 and λ<sub>2</sub>(<i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;− 9)&nbsp;= 0.  These two conditions yield the following four cases.
-<ul>
-   <li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;= 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;= 9: In this case we have <i>x</i><sub>1</sub>&nbsp;= 3/2 and <i>x</i><sub>2</sub>&nbsp;= 5/2.  Then the first two equations are
+This construction suggests that any first-order initial value problem in which the slopes of the line segments in the direction field change continuously as (<i>t</i>,&nbsp;<i>x</i>) changes—that is, in which <i style="padding-right:0.2em;">F</i> is continuous—has a solution.  If the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:partialDeriv">partial derivative</a> of <i style="padding-right:0.2em;">F</i> with
+respect to its second argument is continuous, then in fact the initial value problem has a <i>unique</i> solution.
+</p><div class="result" id="p:deexist"><dl class="result"><dt>Proposition 8.2.1 <span id="deexist" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;deexist&#39;)" class="showProof">source</a></span></dt><dd>
+If <i style="padding-right:0.2em;">F</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:function">function of two variables</a> that is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/IAF#d:cts">continuous</a> at (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) then there exists a number <i>a</i>&nbsp;&gt; 0 and a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:ctsDiff">continuously differentiable</a> function <i>x</i> of a single variable defined on the interval
+(<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>) that solves the first-order initial value problem
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">5&nbsp;− λ<sub>1</sub>&nbsp;−&nbsp;&nbsp;&nbsp;λ<sub>2</sub> </td>
-      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
+      <td class="alignRight"><i>x</i>'(<i>t</i>) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i style="padding-right:0.2em;">F</i>(<i>t</i>,&nbsp;<i>x</i>(<i>t</i>))</td>
 </tr>
  <tr>
   <td class="alignRight">
-3&nbsp;− λ<sub>1</sub>&nbsp;− 3λ<sub>2</sub> </td>
-      <td class="mathAlign2">&nbsp;=&nbsp;0</td>
+<i>x</i>(<i>t</i><sub>0</sub>) </td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>x</i><sub>0</sub></td>
 </tr>
 </tbody></table></div>
-which imply that λ<sub>1</sub>&nbsp;= 6 and λ<sub>2</sub>&nbsp;= −1, which violates the condition λ<sub>2</sub>&nbsp;≥ 0.
-   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;= 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;&lt; 9, so that λ<sub>2</sub>&nbsp;= 0: Then first two equations imply <i>x</i><sub>1</sub>&nbsp;= <i>x</i><sub>2</sub>&nbsp;= 2 and λ<sub>1</sub>&nbsp;= 4.  All the conditions are satisfied, so
-(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;= (2,&nbsp;2,&nbsp;4,&nbsp;0) is a solution.
-   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;= 9, so that λ<sub>1</sub>&nbsp;= 0: Then the first two equations imply <i>x</i><sub>1</sub>&nbsp;= 33/10 and <i>x</i><sub>2</sub>&nbsp;= 19/10, violating <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4.
-   </li><li><i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4 and <i>x</i><sub>1</sub>&nbsp;+ 3<i>x</i><sub>2</sub>&nbsp;&lt; 9, so that λ<sub>1</sub>&nbsp;= λ<sub>2</sub>&nbsp;= 0: Then first two equations imply <i>x</i><sub>1</sub>&nbsp;= <i>x</i><sub>2</sub>&nbsp;= 4, violating <i>x</i><sub>1</sub>&nbsp;+ <i>x</i><sub>2</sub>&nbsp;&lt; 4.
-</li></ul>
-So (<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;= (2,&nbsp;2,&nbsp;4,&nbsp;0) is the single solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.  Hence the unique solution of problem is (<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>)&nbsp;= (2,&nbsp;2).
+for all <i>t</i>&nbsp;∈ (<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>).  If in addition the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/CLN#d:partialDeriv">partial derivative</a> of <i style="padding-right:0.2em;">F</i> with respect to <i>x</i> is continuous on an open rectangle containing (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>) then there exists a number <i>a</i>&nbsp;&gt; 0 and
+a unique function <i>x</i> defined on the interval (<i>t</i><sub>0</sub>&nbsp;−&nbsp;<i>a</i>, <i>t</i><sub>0</sub>&nbsp;+&nbsp;<i>a</i>) that solves the initial value problem for all <i>t</i>&nbsp;∈ (<i>t</i><sub>0</sub>&nbsp;− <i>a</i>, <i>t</i><sub>0</sub>&nbsp;+ <i>a</i>).
 </dd></dl></div>
-The next two examples involve problems of the form
-<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>u</i>(<i>x</i>) subject to <i>p</i>·<i>x</i>&nbsp;≤ <i>w</i>, <i>x</i>&nbsp;≥ 0,</div>
-where <i>u</i> is a function of many variables, <i>p</i> is a vector, and <i>w</i> is a scalar.  A standard consumer's maximization problem in economic theory takes this form; the techniques used in the example may be used also in problems with other specifications of the function <i>u</i>.
-<div class="example" id="m:ex4"><dl class="example"><dt>Example 7.3.4</dt><dd>
-Consider the problem
-<div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i></sub>&nbsp;<i>x</i><i>y</i> subject to <i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ 6, <i>x</i>&nbsp;≥ 0, and <i>y</i>&nbsp;≥ 0,</div>
-where <i>S</i> is the set of all pairs of numbers.  This set is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:CvxSet">convex</a>, and the objective and constraint functions are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:ctsDiff">differentiable</a> on it.  Each constraint function is linear, and hence <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CVN#d:ccvfn">concave</a>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTN#p:KTFOC">Proposition 7.2.1</a> the
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are necessary (if <i>x</i>* solves the problem then there is a vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>).  Also, the objective function is continuous and the constraint set is compact, so by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/OPN#p:EVT1">extreme value theorem</a> the problem has a solution.  Thus
-<i>x</i>* is a solution of the problem if and only if there is a vector λ* such that (<i>x</i>*,&nbsp;λ*) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and <i style="padding-right:0.2em;">f</i>(<i>x</i>*)&nbsp;≥ <i style="padding-right:0.2em;">f</i>(<i>x</i>) for all values of <i>x</i> for which there is a vector λ such that (<i>x</i>,&nbsp;λ) satisfies
-the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
-<p>
-(Note that we cannot use <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC">Proposition 7.3.1</a> because the objective function is not concave, and we cannot use <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#p:KTFOC2">Proposition 7.3.2</a> because although the objective function is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> on the set of vectors <i>x</i> with <i>x</i>&nbsp;≥ 0, it is not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/QCC#d:qcc">quasiconcave</a> on any open set that contains this
-set.)
-</p><p>
-The Lagrangean is given by
-</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><i>y</i>&nbsp;− λ<sub>1</sub>(<i>x</i>&nbsp;+ <i>y</i>&nbsp;− 6)&nbsp;+ λ<sub>2</sub><i>x</i>&nbsp;+ λ<sub>3</sub><i>y</i>.</div>
-The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> are
+<div class="hiddenProof" id="f:deexist" style="display: block;"><dl class="proof"><dt>Source &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;deexist&#39;)" class="showProof">hide</a></span></dt><dd>
+For a proof of existence (the first sentence of the result) see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/REF#CoddingtonLevinson1955">Coddington and Levinson</a>&nbsp;(1955), p.&nbsp;6.  For a proof of uniqueness (the second sentence of the result), see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/REF#BoyceDiPrima1969">Boyce and DiPrima</a>&nbsp;(1969), pp.&nbsp;71–78.
+</dd></dl></div>
+
+The condition guaranteeing a unique solution (that the partial derivative of <i style="padding-right:0.2em;">F</i> with respect to <i>x</i> be continuous) is relatively mild, and is satisfied in almost all the examples we study.  After looking at some direction fields, you might wonder how even a first-order initial value problem that does not satisfy the condition could have more than one
+solution.  Here is an example.
+<div class="example" id="m:nonunique"><dl class="example"><dt>Example 8.2.2</dt><dd>
+Consider the first-order initial value problem
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i>y</i>&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
+      <td class="alignRight"><i>x</i>'(<i>t</i>)&nbsp;</td>
+      <td class="mathAlign2">= (<i>x</i>(<i>t</i>))<sup>1/2</sup></td>
 </tr>
  <tr>
   <td class="alignRight">
-<i>x</i>&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>3</sub>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>1</sub>&nbsp;≥ 0, <i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ 6, λ<sub>1</sub>(<i>x</i>&nbsp;+&nbsp;<i>y</i>&nbsp;−&nbsp;6)&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>2</sub>&nbsp;≥ 0, <i>x</i>&nbsp;≥ 0, λ<sub>2</sub><i>x</i>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>3</sub>&nbsp;≥ 0, <i>y</i>&nbsp;≥ 0, λ<sub>3</sub><i>y</i>&nbsp;</td>
+<i>x</i>(0)&nbsp;</td>
       <td class="mathAlign2">= 0.</td>
 </tr>
 </tbody></table></div>
-<ul>
-   <li>If <i>x</i> &gt; 0 and <i>y</i> &gt; 0 then λ<sub>2</sub>&nbsp;= λ<sub>3</sub>&nbsp;= 0, so that λ<sub>1</sub>&nbsp;= <i>x</i>&nbsp;= <i>y</i> from the first two conditions.  Hence <i>x</i>&nbsp;= <i>y</i>&nbsp;= λ<sub>1</sub>&nbsp;= 3 from the third condition.  These values satisfy all the conditions.
-   </li><li>If <i>x</i>&nbsp;= 0 and <i>y</i> &gt; 0 then λ<sub>3</sub>&nbsp;= 0 from the last condition and hence λ<sub>1</sub>&nbsp;= <i>x</i>&nbsp;= 0 from the second condition.  But now from the first condition λ<sub>2</sub>&nbsp;= −<i>y</i> &lt; 0, contradicting λ<sub>2</sub>&nbsp;≥ 0.
-   </li><li>If <i>x</i> &gt; 0 and <i>y</i>&nbsp;= 0 then λ<sub>2</sub>&nbsp;= 0, and a symmetric argument yields a contradiction.
-   </li><li>If <i>x</i>&nbsp;= <i>y</i>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 0 from the third set of conditions, so that λ<sub>2</sub>&nbsp;= λ<sub>3</sub> from the first and second conditions.  These values satisfy all the conditions.
-</li></ul>
-We conclude that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> have two solutions, (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>,&nbsp;λ<sub>3</sub>)&nbsp;= (3,&nbsp;3,&nbsp;3,&nbsp;0,&nbsp;0) and (0,&nbsp;0,&nbsp;0,&nbsp;0,&nbsp;0).  We have <i style="padding-right:0.2em;">f</i>(3,&nbsp;3)&nbsp;= 9 and
-<i style="padding-right:0.2em;">f</i>(0,&nbsp;0)&nbsp;= 0, so the solution of the problem is (3,&nbsp;3).
-</dd></dl></div>
-
-In this example, the objective function is defined on an open convex set that contains the constraint set and is differentiable there.  In the next example,  there is no such open convex set.
-
-<div class="example" id="m:ex5"><dl class="example"><dt>Example 7.3.5</dt><dd>
-Consider the problem
-<div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i></sub> <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i> subject to <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i>, <i>x</i>&nbsp;≥ 0, and <i>y</i>&nbsp;≥ 0</div>
-where <i>S</i> is the set of pairs (<i>x</i>,&nbsp;<i>y</i>) of numbers with <i>x</i>&nbsp;≥ 0, and <i>p</i>&nbsp;&gt; 0 and <i>I</i>&nbsp;&gt; 0 are parameters.  The set <i>S</i> is not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a>, and the objective function is defined only for <i>x</i>&nbsp;≥ 0, so it is not defined on any <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/CLN#d:open_closed">open</a> set that contains the constraint
-set.  Thus the argument in the previous example cannot be used. 
+This problem does not satisfy the condition in the proposition for a unique solution, because the square root function is not differentiable at 0.
 <p>
-Instead, first consider the problem
-</p><div class="equation">max<sub>(<i>x</i>,<i>y</i>)∈<i>S</i>'</sub> <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i> subject to <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i> and <i>y</i>&nbsp;≥ 0</div>
-where <i>S</i>'&nbsp;= {(<i>x</i>,&nbsp;<i>y</i>):&nbsp;<i>x</i>&nbsp;&gt; 0}.  The set <i>S</i>' is open and convex, the objective and constraint functions are continuously differentiable on this set, the objective function is quasiconcave, and each constraint function is linear, so by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/t#c:KTN&amp;S2">Corollary 7.3.2</a> if <i>x</i>*&nbsp;∈
-<i>S</i>' solves the problem then there is a vector λ such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and if there is a vector λ and a point <i>x</i>*&nbsp;∈ <i>S</i>' such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/kts/KTC#d:KTconds">Kuhn-Tucker conditions</a> and not all the partial derivatives of the objective function
-are 0 at <i>x</i>* then <i>x</i>* solves the problem.
-<p>
-The Lagrangean of the modified problem is given by
-</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>1/2</sup>&nbsp;+ <i>y</i>&nbsp;− λ<sub>1</sub>(<i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;− <i>I</i>)&nbsp;+ λ<sub>2</sub><i>y</i>.</div>
-The Kuhn-Tucker conditions are
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">(1/2)<i>x</i><sup>−1/2</sup>&nbsp;− λ<sub>1</sub><i>p</i>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-1&nbsp;− λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>1</sub>&nbsp;≥ 0, <i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;≤ <i>I</i>, and λ<sub>1</sub>(<i>p</i><i>x</i>&nbsp;+ <i>y</i>&nbsp;− <i>I</i>)&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>2</sub>&nbsp;≥ 0, −<i>y</i>&nbsp;≤ 0, and λ<sub>2</sub><i>y</i>&nbsp;</td>
-      <td class="mathAlign2">= 0.</td>
-</tr>
-</tbody></table></div>
-From the first condition, λ<sub>1</sub>&nbsp;&gt; 0 and <i>x</i>&nbsp;= 1/(2λ<sub>1</sub><i>p</i>)<sup>2</sup>.  From the last condition, either λ<sub>2</sub>&nbsp;= 0 or <i>y</i>&nbsp;= 0.
-<ul>
-   <li>If λ<sub>2</sub>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 1 from the second condition, and hence <i>x</i>&nbsp;= 1/(4<i>p</i><sup>2</sup>) and <i>y</i>&nbsp;= <i>I</i>&nbsp;− 1/(4<i>p</i>).  We have 1/(4<i>p</i><sup>2</sup>)&nbsp;&gt; 0, so (<i>x</i>,&nbsp;<i>y</i>,&nbsp;λ<sub>1</sub>,&nbsp;λ<sub>2</sub>)&nbsp;=
-(1/(4<i>p</i><sup>2</sup>),&nbsp;<i>I</i>&nbsp;−&nbsp;1/(4<i>p</i>),&nbsp;1,&nbsp;0) is a solution of the Kuhn-Tucker conditions if <i>I</i>&nbsp;−&nbsp;1/(4<i>p</i>)&nbsp;≥ 0, or <i>p</i>&nbsp;≥ 1/(4<i>I</i>).
-   </li><li>If <i>y</i>&nbsp;= 0 then <i>x</i>&nbsp;= <i>I</i>/<i>p</i>, λ<sub>1</sub>&nbsp;= 1/(2(<i>p</i><i>I</i>)<sup>1/2</sup>), and λ<sub>2</sub>&nbsp;= λ<sub>1</sub>&nbsp;− 1, so that λ<sub>2</sub>&nbsp;≥ 0 if and only if λ<sub>1</sub>&nbsp;≥ 1, or <i>p</i>&nbsp;≤ 1/(4<i>I</i>).
-</li></ul>
-Thus for each pair (<i>p</i>,&nbsp;<i>I</i>) of values of the parameters, the Kuhn-Tucker conditions have a single solution, 
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">
-        <table class="mathCases">
-          <tbody><tr>
-            <td class="brace" rowspan="2"><img alt="left brace" src="./index_files/lbrace2.gif"></td>
-
-           <td class="function">(<i>I</i>/<i>p</i>,&nbsp;0)</td>
-            <td class="condition">if <i>p</i>&nbsp;≤ 1/(4<i>I</i>)</td>
-          </tr>
-          <tr>
-            <td class="function">(1/(4<i>p</i><sup>2</sup>),<i>I</i>&nbsp;− 1/(4<i>p</i>))</td>
-            <td class="condition">if <i>p</i>&nbsp;&gt; 1/(4<i>I</i>).</td>
-      </tr>
-
-       </tbody></table></td>
-</tr>
-</tbody></table></div>
-Neither partial derivative of the objective function is 0 for any point (<i>x</i>,&nbsp;<i>y</i>), so we conclude that the solution of the modified problem for each value of (<i>p</i>,&nbsp;<i>I</i>) is given by this expression.
-<p>
-Now return to the original problem.  The maximal value of the objective function when <i>x</i>&nbsp;= 0 is <i>I</i>.  At the solution of the modified problem, the value of the objective function is (<i>I</i>/<i>p</i>)<sup>1/2</sup> if <i>p</i>&nbsp;≤ 1/(4<i>I</i>), and 1/(2<i>p</i>)&nbsp;+ <i>I</i>&nbsp;− 1/(4<i>p</i>)&nbsp;= <i>I</i>&nbsp;+ 1/(4<i>p</i>) if <i>p</i>&nbsp;&gt;
-<i>I</i>/(4<i>p</i>).  If <i>p</i>&nbsp;≤ 1/(4<i>I</i>) then (<i>I</i>/<i>p</i>)<sup>1/2</sup>&nbsp;≥ 2<i>I</i>, so in both cases the value of the objective function exceeds <i>I</i>.  We conclude that the solution of the original problem is the solution of the modified problem.
+Two solutions of the problem are <i>x</i>(<i>t</i>)&nbsp;= 0 for all <i>t</i> and <i>x</i>(<i>t</i>)&nbsp;= (<i>t</i>/2)<sup>2</sup> for all <i>t</i>.
 </p></dd></dl></div>
+
+<h3>Stability of solutions</h3>
+
+<div class="definition" id="d:ss"><dl class="definition"><dt>Definition</dt><dd>
+If for some initial condition a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ivp">first-order initial value problem</a> has a solution that is a constant function (independent of <i>t</i>), the value of the constant is an <span class="definition">equilibrium</span> or <span class="definition">stationary state</span> of the associated differential equation.
+</dd></dl></div>
+
+<div class="example" id="m:ex6"><dl class="example"><dt>Example 8.2.3</dt><dd>
+Consider the first-order initial value problem
+<div class="equation"><i>x</i>'(<i>t</i>)&nbsp;+ <i>x</i>(<i>t</i>)&nbsp;= 2 with <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>.</div>
+The solution of this problem, as we shall <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/FLE#lin1">see later</a>, is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= (<i>x</i><sub>0</sub>&nbsp;− 2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup>&nbsp;+ 2.</div>
+(You can verify that this function is a solution of the problem by calculating <i>x</i>'(<i>t</i>) and substituting it into the differential equation and by checking that <i>x</i>(<i>t</i><sub>0</sub>)&nbsp;= <i>x</i><sub>0</sub>.)
+<p>
+Thus for <i>x</i><sub>0</sub>&nbsp;= 2, the solution of the problem is <i>x</i>(<i>t</i>)&nbsp;= 2 for all <i>t</i>, so that 2 is an equilibrium of the differential equation.  For no other value of <i>x</i><sub>0</sub> is the solution a constant function, so 2 is the only equilibrium.
+</p></dd></dl></div>
+
+If the solution of a first-order initial value problem converges to an equilibrium of the associated differential equation for all initial conditions, then we say that the equilibrium is “stable”.  Here is a more precise definition that distinguishes between two types of stability.
+<div class="definition" id="d:stable"><dl class="definition"><dt>Definition</dt><dd>
+If, for all initial conditions, the solution of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ivp">first-order initial value problem</a> converges to an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#d:ss">equilibrium</a> of the associated differential equation as <i>t</i> increases without bound, then the equilibrium is <span class="definition">globally stable</span>.  If, for all values of <i>x</i><sub>0</sub> sufficiently close to the equilibrium the solution
+converges to the equilibrium as <i>t</i> increases without bound, then the equilibrium is <span class="definition">locally stable</span>.  An equilibrium that is not locally stable is <span class="definition">unstable</span>.
+</dd></dl></div>
+<div class="example" id="m:ex7"><dl class="example"><dt>Example 8.2.4</dt><dd>
+The solution of the initial value problem in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/fde/t#m:ex6">previous example</a> is
+<div class="equation"><i>x</i>(<i>t</i>)&nbsp;= (<i>x</i><sub>0</sub>&nbsp;− 2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup>&nbsp;+ 2.</div>
+For every value of (<i>t</i><sub>0</sub>,&nbsp;<i>x</i><sub>0</sub>), (<i>x</i><sub>0</sub>&nbsp;−&nbsp;2)<i>e</i><sup><i>t</i></sup><sup><sub>0</sub></sup><sup>−<i>t</i></sup> converges to zero, so the equilibrium <i>x</i>&nbsp;= 2 is globally stable.
+</dd></dl></div>
 
 
 
@@ -790,7 +546,7 @@ Now return to the original problem.  The maximal value of the objective function
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="65">
+            <input type="hidden" name="pageId" value="72">
 
             
 
@@ -831,7 +587,7 @@ Now return to the original problem.  The maximal value of the objective function
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-06-05.
+              First posted 1997.  This version 2022-06-07.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
