@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 6.2 Optimization with equality constraints: &lt;i&gt;n&lt;/i&gt; variables, &lt;i&gt;m&lt;/i&gt; constraints</title>
+    <title>Mathematical methods for economic theory: 7.2 Optimization with inequality constraints: the necessity of the Kuhn-Tucker conditions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: optimization problems with n variables and m constraints">
-        <meta name="keywords" content="mathematical methods, economic theory, optimization, many variables, many constraints">
+            <meta name="description" content="Mathematical methods for economic theory: necessity of Kuhn-Tucker conditions for optimization problems with inequality constraints">
+        <meta name="keywords" content="mathematical methods, economic theory, optimization, inequality constraints, Kuhn-Tucker conditions, necessity">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -199,10 +199,10 @@
         <div class="menuBar">
             <span class="leftMenu">
                 <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/32"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Equality constraints"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/40"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Kuhn-Tucker conditions"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/37"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Global optima"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/41"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Kuhn-Tucker conditions"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -212,9 +212,6 @@
                         <span class="text"><span class="boldUppercase">Text</span></span>
                     </span>
 
-                                            <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/x" class="menuAction">Exercises</a></span>
-                        </span>
                                     
             </span>  <!-- leftMenu -->
 
@@ -222,9 +219,9 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/39"><img alt="Next page" src="./index_files/next.gif" height="20" title="The envelope theorem"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/43"><img alt="Next page" src="./index_files/next.gif" height="20" title="Kuhn-Tucker conditions"></a>
                             <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/40"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Kuhn-Tucker conditions"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/46"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Differential equations"></a>
                                 </span>
             </span>
         </div>  <!-- menuBar -->
@@ -268,238 +265,107 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>6.2 Optimization with equality constraints: <i>n</i> variables, <i>m</i> constraints</h2>
+            <h2>7.2 Optimization with inequality constraints: the necessity of the Kuhn-Tucker conditions</h2>
         </header>
 
-	The Lagrangean method can easily be generalized to a problem of the form
-<div class="equation">max<sub><i>x</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
-with <i>n</i> variables and <i>m</i> constraints (where <i>x</i>&nbsp;= (<i>x</i><sub>1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>n</i></sub>)).
-<p>
-The Lagrangean for this problem is
-</p><div class="equation">L(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;− ∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub>(<i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;− <i>c</i><sub><i>j</i></sub>).</div>
-That is, there is one Lagrange multiplier for each constraint.
-<p>
-As in the case of a problem with two variables and one constraint, the first-order condition is that <i>x</i>* be a stationary point of the Lagrangean.  The “nondegeneracy” condition in the two variable case—namely that at least one of <i>g</i>'<sub class="prime">1</sub>(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>) and
-<i>g</i>'<sub class="prime">2</sub>(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>2</sub>) is nonzero—is less straightforward to generalize.  The appropriate generalization involves the Jacobian matrix of the constraint functions (<i>g</i><sub>1</sub>, ..., <i>g</i><sub><i>m</i></sub>), named in honor of <a href="https://en.wikipedia.org/wiki/Carl_Gustav_Jacob_Jacobi" target="_blank">Carl Gustav
-Jacob Jacobi</a> (1804–1851) and defined as follows.
-</p><div class="definition" id="d:Jacobian"><dl class="definition"><dt>Definition</dt><dd>
-For <i>j</i>&nbsp;= 1, ..., <i>m</i> let <i>g</i><sub><i>j</i></sub> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:diff">differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/IAF#d:function">function of <i>n</i> variables</a>.  The <span class="definition">Jacobian matrix</span> of (<i>g</i><sub>1</sub>, ..., <i>g</i><sub><i>m</i></sub>) at the point <i>x</i> is
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
- <td class="cell">(∂<i>g</i><sub>1</sub>/∂<i>x</i><sub>1</sub>)(<i>x</i>)
-</td>
-  <td class="cell">...</td>
-  <td class="cell"> (∂<i>g</i><sub>1</sub>/∂<i>x</i><sub><i>n</i></sub>)(<i>x</i>)</td>
-  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
-</tr>
- <tr>
-  <td class="cell">...</td>
-  <td class="cell"> ...</td>
-  <td class="cell"> ...</td>
-</tr>
-
-<tr>
-  <td class="cell">(∂<i>g</i><sub><i>m</i></sub>/∂<i>x</i><sub>1</sub>)(<i>x</i>)</td>
-  <td class="cell"> ...</td>
-  <td class="cell"> (∂<i>g</i><sub><i>m</i></sub>/∂<i>x</i><sub><i>n</i></sub>)(<i>x</i>)</td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-</dd></dl></div>
-<div class="result" id="p:focnm"><dl class="result"><dt>Proposition 6.2.1 (Necessary conditions for an extremum) &nbsp;<button class="proofButton" id="focnm" onclick="javascript:showProof(&#39;focnm&#39;)" style="display: none;">source</button></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/IAF#d:function">functions of <i>n</i> variables</a> defined on a set <i>S</i>, with <i>m</i>&nbsp;≤ <i>n</i>, that are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:ctsDiff">continuously differentiable</a> on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:interior">interior</a> of <i>S</i>, let <i>c</i><sub><i>j</i></sub>
-for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be numbers, and suppose that <i>x</i>* is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:interior">interior point</a> of <i>S</i> that solves the problem
-<div class="equation">max<sub><i>x</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
-or the problem
-<div class="equation">min<sub><i>x</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
-or is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/NEN#d:localMax">local maximizer</a> or minimizer of <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1, ..., <i>m</i>.  Suppose also that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/MAT#d:rank">rank</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/t#d:Jacobian">Jacobian matrix</a> of (<i>g</i><sub>1</sub>, ..., <i>g</i><sub><i>m</i></sub>)
-at the point <i>x</i>* is <i>m</i>.
-<p>
-Then there exist unique numbers λ<sub>1</sub>, ..., λ<sub><i>m</i></sub> such that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/NEN#d:stationaryPointN">stationary point</a> of the Lagrangean function L defined by
-</p><div class="equation">L(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;− ∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub>(<i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;− <i>c</i><sub><i>j</i></sub>).</div>
-That is, <i>x</i>* satisfies the first-order conditions
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight">L'<sub class="prime"><i>i</i></sub>(<i>x</i>*)</td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i style="padding-right:0.2em;">f</i><sub><i>i</i></sub>'(<i>x</i>*)&nbsp;−
-<nobr><span class="nobr">∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ<sub><i>j</i></sub>(∂<i>g</i><sub><i>j</i></sub>/∂<i>x</i><sub><i>i</i></sub>)(<i>x</i>*)&nbsp;=</span></nobr> 0 for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>.</td>
-</tr>
-</tbody></table></div>
-In addition, <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1, ...,&nbsp;<i>m</i>.
-</dd></dl></div>
-<div class="hiddenProof" id="f:focnm" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;focnm&#39;)">hide</button></dt><dd>
-For proofs, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/REF#Sydsaeter1981">Sydsæter</a> (1981), Theorem&nbsp;5.20 (p.&nbsp;275) and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/REF#SimonBlume1994">Simon and Blume</a> (1994), pp.&nbsp;478–480.  (Only Sydsæter argues explicitly that the Lagrange multipliers are unique.)
-</dd></dl></div>
-
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/MEG#p:18.2">As in the case of a problem with two variables and one constraint</a>, an implication of this result is the following procedure.
-<div class="procedure" id="r:1"><dl class="procedure"><dt>Procedure for solving a maximization problem with many equality constraints</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/IAF#d:function">functions of <i>n</i> variables</a> defined on a set <i>S</i>, with <i>m</i>&nbsp;≤ <i>n</i>, that are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:ctsDiff">continuously differentiable</a> on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:interior">interior</a> of <i>S</i>, and let
-<i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be numbers.  If the problem
-<div class="equation">max<sub><i>x</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i></div>
-has a solution, it may be found as follows.
+	<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/MEN#p:con-opt">We have seen</a> that a solution <i>x</i>* of an optimization problem with equality constraints is a stationary point of the Lagrangean if the constraints satisfy a condition sometimes referred to as a “regularity” condition.  In the case of a single constraint <i>g</i>(<i>x</i>)&nbsp;= <i>c</i>, the condition is that the partial derivatives of <i>g</i> are not
+all zero at <i>x</i>*, or, in more compact notation, ∇<i>g</i>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0).  In an optimization problem with inequality constraints a related regularity condition guarantees that a solution satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTC#d:KTconds">Kuhn-Tucker</a> conditions.  The weakest forms of this regularity condition are difficult to verify.  The next result gives three
+alternative strong forms that are much easier to verify.
+<div class="result" id="p:KTFOC"><dl class="result"><dt>Proposition 7.2.1 (Necessity of Kuhn-Tucker conditions) &nbsp;<button class="proofButton" id="KTFOC" onclick="javascript:showProof(&#39;KTFOC&#39;)" style="display: none;">source</button></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CLN#d:diff">differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/IAF#d:function">functions of many variables</a> defined on an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CLN#d:open_closed">open</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:CvxSet">convex</a> set <i>S</i> and let <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;=
+1,&nbsp;...,&nbsp;<i>m</i> be constants.  Suppose that <i>x</i>*&nbsp;∈ <i>S</i> solves the problem
+<div class="equation">max<sub><i>x</i>∈<i>S</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i></div>
+and that
 <ul>
-   <li>Find all the values of (<i>x</i>,&nbsp;λ) (where λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>)) for which (a)&nbsp;<i>x</i> is an interior point of <i>S</i> and (b)&nbsp;(<i>x</i>,&nbsp;λ) satisfies the first-order conditions given in the previous result and the constraints.
-   </li><li>Find all the points <i>x</i> for which the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/MAT#d:rank">rank</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/t#d:Jacobian">Jacobian matrix</a> of (<i>g</i><sub>1</sub>, ..., <i>g</i><sub><i>m</i></sub>) is less than <i>m</i> and <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>.
-   </li><li>If the set <i>S</i> has any boundary points, find all the points that solve the problem max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to the conditions that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i> and <i>x</i> is a boundary point of <i>S</i>.
-   </li><li>The points <i>x</i> you have found for which <i style="padding-right:0.2em;">f</i>(<i>x</i>) is largest are the solutions of the problem.
+   <li><b>either</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:ccvfn">concave</a>
+   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/CVN#d:ccvfn">convex</a> and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub> for every <i>j</i> for which <i>g</i><sub><i>j</i></sub> is linear and <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for every <i>j</i> for which
+<i>g</i><sub><i>j</i></sub> is not linear
+   </li><li><b>or</b> each <i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/QCC#d:qcvx">quasiconvex</a>, ∇<i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;≠ (0,&nbsp;...,&nbsp;0) for all <i>j</i>&nbsp;= 1, ..., <i>m</i>, and there exists <i>x</i>&nbsp;∈ <i>S</i> such that <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;&lt; <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i>.
 </li></ul>
+Then there exists a vector λ&nbsp;= (λ<sub>1</sub>,&nbsp;...,&nbsp;λ<sub><i>m</i></sub>) such that (<i>x</i>*,&nbsp;λ) satisfies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTC#d:KTconds">Kuhn-Tucker conditions</a>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:KTFOC" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;KTFOC&#39;)">hide</button></dt><dd>
+For proofs under the first two conditions, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#ArrowHurwiczUzawa1961">Arrow, Hurwicz, and Uzawa</a> (1961), Theorem&nbsp;3 and Corollaries&nbsp;1 and 3 (p.&nbsp;183).  See also <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Takayama1985">Takayama</a> (1985), pp.&nbsp;106–111.  (Note that in both cases the constraints are formulated as <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≥ 0 rather than
+<i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;≤ <i>c</i><sub><i>j</i></sub>, so the conditions of concavity and convexity have to be interchanged to fit my statement of the result.)  A proof under a slight variant of the second condition is given in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Carter2001">Carter</a> (2001), Theorem&nbsp;5.4 (p.&nbsp;577).  The third condition is also included in Carter's Theorem&nbsp;5.4; the
+proof is left as an exercise (5.42 on p.&nbsp;579).  The solution to the exercise is available on the author's <a href="http://michaelcarteronline.com/FOME/answers.html" target="_blank">website for the book</a>.
 </dd></dl></div>
 
-Also <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/MEG#p:18.2">as in the case of a problem with two variables and one constraint</a>, the first-order conditions and the constraint are sufficient for a maximum if the Lagrangean is concave, and are sufficient for a minimum if the Lagrangean is convex, as stated precisely in the following result.  The proof is the same as the proof for the result for two variables and a single
-constraint.
-<div class="result" id="p:suff"><dl class="result"><dt>Proposition 6.2.2 (Conditions under which necessary conditions for an extremum are sufficient)</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> and <i>g</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1,&nbsp;..., <i>m</i> be <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/IAF#d:function">functions of <i>n</i> variables</a> defined on a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:CvxSet">convex</a> set <i>S</i> that are <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:ctsDiff">continuously differentiable</a> on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:interior">interior</a> of <i>S</i>.  Suppose that there are numbers
-λ*<sub class="star">1</sub>,&nbsp;...,&nbsp;λ*<sub class="star"><i>m</i></sub> and an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CLN#d:interior">interior point</a> <i>x</i>* of <i>S</i> such that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/NEN#d:stationaryPointN">stationary point</a> of the Lagrangean
-<div class="equation">L(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;− ∑<span class="supsub"><i>m</i><br><i>j</i>=1</span>λ*<sub class="star"><i>j</i></sub>&nbsp;(<i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;− <i>c</i><sub><i>j</i></sub>).</div>
-Suppose further that <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1, ...,&nbsp;<i>m</i>.  Then
-<ul>
-   <li>if L is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">concave</a>—in particular if <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">concave</a> and λ*<sub class="star"><i>j</i></sub>&nbsp;<i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">convex</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>—then <i>x</i>* solves the constrained maximization problem
-   </li><li>if L is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">convex</a>—in particular if <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">convex</a> and λ*<sub class="star"><i>j</i></sub>&nbsp;<i>g</i><sub><i>j</i></sub> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/CVN#d:ccvfn">concave</a> for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>—then <i>x</i>* solves the constrained minimization problem
-</li></ul>
-</dd></dl></div>
-<div class="example" id="m:ex1"><dl class="example"><dt>Example 6.2.1</dt><dd>
-Consider the problem
-<div class="equation">min<sub><i>x</i>,<i>y</i>,<i>z</i></sub> <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>z</i><sup>2</sup> subject to <i>x</i>&nbsp;+ 2<i>y</i>&nbsp;+ <i>z</i>&nbsp;= 1 and 2<i>x</i>&nbsp;− <i>y</i>&nbsp;− 3<i>z</i>&nbsp;= 4</div>
-with the domain of the objective function the set of all triples (<i>x</i>,&nbsp;<i>y</i>,&nbsp;<i>z</i>) of real numbers, which has no boundaries.
+Recall that a linear function is concave, so the conditions in the result are satisfied if each constraint function is linear.
 <p>
-The Lagrangean is
-</p><div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight">L(<i>x</i>,&nbsp;<i>y</i>,&nbsp;<i>z</i>)</td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>z</i><sup>2</sup>&nbsp;−
-λ<sub>1</sub>(<i>x</i>&nbsp;+&nbsp;2<i>y</i>&nbsp;+&nbsp;<i>z</i>&nbsp;−&nbsp;1)&nbsp;− λ<sub>2</sub>(2<i>x</i>&nbsp;−&nbsp;<i>y</i>&nbsp;−&nbsp;3<i>z</i>&nbsp;−&nbsp;4).</td>
-</tr>
-</tbody></table></div>
-The Jacobian matrix of the constraints is
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell">1 </td>
-  <td class="cell">2 </td>
-  <td class="cell">1</td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell">2 </td>
-  <td class="cell">−1 </td>
-  <td class="cell">−3</td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-which has <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/MAT#d:rank">rank</a> 2, so any solution of the problem is a stationary point.  Thus the set of solutions of the problem coincides with the set of stationary points.
-<p>
-The Lagrangean is convex for any values of λ<sub>1</sub> and λ<sub>2</sub>, so that any stationary point is a solution of the problem.
+Note that the last part of the second and third conditions requires only that <i>some</i> point strictly satisfy all the constraints.  This requirement is given in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/REF#Slater1950">Slater</a> (1950) and is known as <i>Slater's condition</i>.
 </p><p>
-The first-order conditions are
-</p><div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2">2<i>x</i>&nbsp;− </td>
-      <td class="mathAlign2">λ<sub>1</sub>&nbsp;− 2</td>
-      <td class="mathAlign2">λ<sub>2</sub></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">0</td>
-</tr>
-
-<tr>
-  <td class="alignRight">
-</td>
-      <td class="mathAlign2">2<i>y</i>&nbsp;− 2</td>
-      <td class="mathAlign2">λ<sub>1</sub>&nbsp;+ </td>
-      <td class="mathAlign2">λ<sub>2</sub></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">0</td>
-</tr>
- <tr>
-  <td class="alignRight">
-</td>
-      <td class="mathAlign2">2<i>z</i>&nbsp;− </td>
-      <td class="mathAlign2">λ<sub>1</sub>&nbsp;+ 3</td>
-      <td class="mathAlign2">λ<sub>2</sub></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">0</td>
-</tr>
-</tbody></table></div>
-and the constraints are
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"></td>
-      <td class="mathAlign2"><i>x</i>&nbsp;+ 2</td>
-      <td class="mathAlign2"><i>y</i>&nbsp;+ </td>
-      <td class="mathAlign2"><i>z</i></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">1</td>
-</tr>
- <tr>
-  <td class="alignRight">
-2</td>
-      <td class="mathAlign2"><i>x</i>&nbsp;− </td>
-      <td class="mathAlign2"><i>y</i>&nbsp;− 3</td>
-      <td class="mathAlign2"><i>z</i></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">4</td>
-</tr>
-</tbody></table></div>
-Solve first two first-order conditions for λ<sub>1</sub> and λ<sub>2</sub> to give
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">λ<sub>1</sub></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">(2/5)<i>x</i>&nbsp;+ (4/5)<i>y</i></td>
-</tr>
- <tr>
-  <td class="alignRight">
-λ<sub>2</sub></td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">(4/5)<i>x</i>&nbsp;− (2/5)<i>y</i>.</td>
-</tr>
-</tbody></table></div>
-Now substitute into the last first-order condition and then use the constraints to get
-<div class="equation"><i>x</i>&nbsp;= 16/15, <i>y</i>&nbsp;= 1/3, <i>z</i>&nbsp;= −11/15,</div>
-with λ<sub>1</sub>&nbsp;= 52/75 and λ<sub>2</sub>&nbsp;= 54/75.
-<p>
-We conclude that (<i>x</i>,&nbsp;<i>y</i>,&nbsp;<i>z</i>)&nbsp;= (16/15,&nbsp;1/3,&nbsp;−11/15) is the unique solution of the problem.
-</p></dd></dl></div>
-<h3>Interpretation of Lagrange multipliers</h3>
-In the case of a problem with two variables and one constraint <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/ILM">we saw that</a> the Lagrange multiplier is equal to the rate of increase of the maximal value of the objective function as the constraint is relaxed.  This result has a natural generalization to problems with <i>n</i> variables and <i>m</i> constraints.
-<p>
+One way in which the conditions in the result may be weakened is sometimes useful: the conditions on the constraint functions need to be satisfied only by the binding constraints—those for which <i>g</i><sub><i>j</i></sub>(<i>x</i>*)&nbsp;= <i>c</i><sub><i>j</i></sub>.
+</p><p>
+See the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/KTS">next page</a> for some examples illustrating how to use the result.
+</p><p>
+The next example shows that <i>some</i> conditions on the constraint functions are needed.  The problem in the example has a solution, but this solution does not satisfy the Kuhn-Tucker conditions (which have no solution).
+</p><div class="example" id="m:ex5"><dl class="example"><dt>Example 7.2.1</dt><dd>
 Consider the problem
-</p><div class="equation">max<sub><i>x</i></sub> <i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>g</i><sub><i>j</i></sub>(<i>x</i>)&nbsp;= <i>c</i><sub><i>j</i></sub> for <i>j</i>&nbsp;= 1, ...,&nbsp;<i>m</i>,</div>
-where <i>x</i>&nbsp;= (<i>x</i><sub>1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>n</i></sub>).  For each value of <i>c</i>&nbsp;= (<i>c</i><sub>1</sub>, ..., <i>c</i><sub><i>m</i></sub>), let <i>x</i>*(<i>c</i>) be a solution of this problem that is interior to the domain of the objective function, and assume that the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/t#d:Jacobian">Jacobian matrix</a> of
-(<i>g</i><sub>1</sub>,&nbsp;...,&nbsp;<i>g</i><sub><i>m</i></sub>) at <i>x</i>* has rank <i>m</i>. Then by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mem/t#p:focnm">first result</a> on this page, there are numbers λ<sub>1</sub>(<i>c</i>), ..., λ<sub><i>m</i></sub>(<i>c</i>) such that <i>x</i>*(<i>c</i>) satisfies the first-order conditions given in that result.
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i> subject to <i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>&nbsp;≤ 0 and <i>y</i>&nbsp;≥ 0,</div>
+with the domain of both the objective function and the constraint function the set of all pairs (<i>x</i>,&nbsp;<i>y</i>).
 <p>
-Let 
-</p><div class="equation"><i style="padding-right:0.2em;">f</i>*(<i>c</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>x</i>*(<i>c</i>)),</div>
-the maximized value of the objective function.  Then if the functions <i>x</i>* and λ<sub>1</sub>, ..., λ<sub><i>m</i></sub> are differentiable, we can show that
-<div class="equation"><i style="padding-right:0.2em;">f</i>*<sub class="star"><i>j</i></sub>'(<i>c</i>)&nbsp;= λ<sub><i>j</i></sub>(<i>c</i>) for <i>j</i>&nbsp;= 1, ...,&nbsp;<i>m</i>.</div>
+The constraint does not satisfy any of the conditions in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/t#p:KTFOC">proposition</a>.
+</p><p>
+The solution is clearly (1,&nbsp;0).
+</p><p>
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>)&nbsp;= <i>x</i>&nbsp;− λ<sub>1</sub>(<i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>)&nbsp;+ λ<sub>2</sub><i>y</i>.</div>
+The Kuhn-Tucker conditions are
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">1&nbsp;− 3λ<sub>1</sub>(1&nbsp;− <i>x</i>)<sup>2</sup>&nbsp;=&nbsp;0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">−λ<sub>1</sub>&nbsp;+ λ<sub>2</sub>&nbsp;=&nbsp;0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2"><i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>&nbsp;≤ 0, λ<sub>1</sub>&nbsp;≥ 0, and λ<sub>1</sub>[<i>y</i>&nbsp;− (1&nbsp;− <i>x</i>)<sup>3</sup>]&nbsp;=&nbsp;0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">−<i>y</i>&nbsp;≤ 0, λ<sub>2</sub>&nbsp;≥ 0, and λ<sub>2</sub>[−<i>y</i>]&nbsp;=&nbsp;0.</td>
+</tr>
+</tbody></table></div>
+These conditions have no solution.  From the last condition, either λ<sub>2</sub>&nbsp;= 0 or <i>y</i>&nbsp;= 0.  If λ<sub>2</sub>&nbsp;= 0 then λ<sub>1</sub>&nbsp;= 0 from the second condition, so that no value of <i>x</i> is compatible with the first condition.  If <i>y</i>&nbsp;= 0 then from the third condition either λ<sub>1</sub>&nbsp;= 0 or <i>x</i>&nbsp;= 1, both of
+which are incompatible with the first condition.
+</dd></dl></div>
+The following variant of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/ktn/MEN#m:ex4">previous example</a> shows that the second part of the second condition cannot be dispensed with: the convexity alone of the constraint functions does not guarantee that a solution of the problem satisfies the Kuhn-Tucker conditions.
+<div class="example" id="m:ex4"><dl class="example"><dt>Example 7.2.2</dt><dd>
+Consider the problem
+<div class="equation">max<sub><i>x</i>,<i>y</i></sub> <i>x</i> subject to <i>x</i><sup>2</sup>&nbsp;≤ 0,</div>
+with the domain of both the objective function and the constraint function the set of all numbers <i>x</i>.
 <p>
-That is: 
-</p><blockquote>
-<b>if the solution of the problem is an interior point of the domain of the objective function that satisfies the first-order conditions and is a differentiable function of </b><i>c</i><b>, then the value of the Lagrange multiplier for the </b><i>j</i><b>th constraint at the solution is equal to the rate of change in the maximal value of the objective function as </b><i>c</i><sub><i>j</i></sub><b>
-increases.</b>
-</blockquote>
-If the <i>j</i>th constraint arises because of a limit on the amount of some resource, we sometimes call λ<sub><i>j</i></sub>(<i>c</i>) the <b>shadow price</b> of the <i>j</i>th resource.
+The constraint function is convex, but no value of <i>x</i> strictly satisfies the constraint.
+</p><p>
+The only value of <i>x</i> that satisfies the constraint is 0, so that is the solution of the problem.
+</p><p>
+The Lagrangean is
+</p><div class="equation">L(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i>&nbsp;− λ<i>x</i><sup>2</sup></div>
+so the Kuhn-Tucker conditions are
+<div class="equation">
+  <table class="mathAlignTop">
+    <tbody><tr>
+      <td class="alignRight"></td>
+      <td class="mathAlign2">1&nbsp;− 2λ<i>x</i>&nbsp;= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+</td>
+      <td class="mathAlign2">λ&nbsp;≥ 0, <i>x</i><sup>2</sup>&nbsp;≤ 0, and λ<i>x</i>&nbsp;= 0.</td>
+</tr>
+</tbody></table></div>
+The condition <i>x</i><sup>2</sup>&nbsp;≤ 0 implies that <i>x</i>&nbsp;= 0.  However, there is no value of λ for which (0,&nbsp;λ) satisfies the first condition.
+</dd></dl></div>
+
+
+
 
 
 
@@ -516,7 +382,7 @@ If the <i>j</i>th constraint arises because of a limit on the amount of some res
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="58">
+            <input type="hidden" name="pageId" value="64">
 
             
 
@@ -557,7 +423,7 @@ If the <i>j</i>th constraint arises because of a limit on the amount of some res
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-06-05.
+              First posted 1997.  This version 2022-06-04.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
