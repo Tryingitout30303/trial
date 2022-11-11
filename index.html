@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 9.2 Second-order difference equations</title>
+    <title>Mathematical methods for economic theory: 1.2 Matrices: determinant, inverse, and rank</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: second-order difference equations">
-        <meta name="keywords" content="mathematical methods, economic theory, second-order difference equations">
+            <meta name="description" content="Mathematical methods for economic theory: matrices">
+        <meta name="keywords" content="mathematical methods, economic theory, matrix, matrices, matrix determinant, matrix inverse, rank of matrix">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -199,10 +199,10 @@
         <div class="menuBar">
             <span class="leftMenu">
                 <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/54"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Difference equations"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/2"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Review"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/55"><img alt="Previous page" src="./index_files/back.gif" height="20" title="First-order difference equations"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/3"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Logic"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,9 +222,9 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <img alt="Blank" src="./index_files/blank.gif" height="20">
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/5"><img alt="Next page" src="./index_files/next.gif" height="20" title="Systems of linear equations"></a>
                             <span class="hideable">
-                                    <img alt="Blank" src="./index_files/blank.gif" height="20">
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/10"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Topics in multivariate calculus"></a>
                                 </span>
             </span>
         </div>  <!-- menuBar -->
@@ -268,380 +268,412 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>9.2 Second-order difference equations</h2>
+            <h2>1.2 Matrices: determinant, inverse, and rank</h2>
         </header>
 
-	
-<div class="definition" id="d:sod"><dl class="definition"><dt>Definition</dt><dd>
-A <span class="definition">second-order difference equation</span> is an equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>,&nbsp;<i>x</i><sub><i>t</i></sub>,&nbsp;<i>x</i><sub><i>t</i>+1</sub>),</div>
-where <i style="padding-right:0.2em;">f</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/IAF#d:function">function of three variables</a>.  A <span class="definition">solution</span> of the second-order difference equation <i>x</i><sub><i>t</i>+2</sub>&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>,&nbsp;<i>x</i><sub><i>t</i></sub>,&nbsp;<i>x</i><sub><i>t</i>+1</sub>) is a function <i>x</i> of a single variable whose
-domain is the set of integers such that <i>x</i><sub><i>t</i>+2</sub>&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>,&nbsp;<i>x</i><sub><i>t</i></sub>,&nbsp;<i>x</i><sub><i>t</i>+1</sub>) for every integer <i>t</i>, where <i>x</i><sub><i>t</i></sub> denotes the value of <i>x</i> at <i>t</i>.
+	I assume that you are familiar with vectors and matrices and know, in particular, how to multiply them together.  (Do the first few exercises to check your knowledge.)  On this page I present only the properties of matrices that you need to know to understand the material in the rest of the tutorial.
+<h3>Transpose</h3>
+<div class="definition" id="d:transpose"><dl class="definition"><dt>Definition</dt><dd>
+Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>m</i> matrix (i.e. a matrix with <i>n</i> rows and <i>m</i> columns).  The <span class="definition">transpose</span> <i>A</i>' of <i>A</i> is the <i>m</i>&nbsp;×&nbsp;<i>n</i> matrix in which, for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>, the <i>i</i>th row is the <i>i</i>th column of <i>A</i>.
 </dd></dl></div>
+In particular, if <i>x</i> is a column vector (<i>n</i>&nbsp;×&nbsp;1 matrix) then <i>x</i>' is a row vector (1&nbsp;×&nbsp;<i>n</i> matrix).
 
-As for a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/FOD#d:fod">first-order difference equation</a>, we can find a solution of a second-order difference equation by successive calculation.  The only difference is that for a second-order equation we need the values of <i>x</i> for two values of <i>t</i>, rather than one, to get the process started.  Given <i>x</i><sub><i>t</i></sub> and <i>x</i><sub><i>t</i>+1</sub> for some value
-of <i>t</i>, we use the equation to find <i>x</i><sub><i>t</i>+2</sub>, and then use the equation again for <i>x</i><sub><i>t</i>+1</sub> and <i>x</i><sub><i>t</i>+2</sub> to find <i>x</i><sub><i>t</i>+3</sub>, and so forth.  At each step, the new value of <i>x</i> is uniquely determined, so we have the following result.
+<h3>Determinant</h3>
+An important characteristic of a square matrix (a matrix with the same number of rows as columns) is its “determinant”. We can conveniently define the determinant of a matrix inductively, in terms of the determinants of smaller matrices.
+<div class="definition" id="d:determinant"><dl class="definition"><dt>Definition</dt><dd>
+The <span class="definition">determinant</span> of a 1&nbsp;×&nbsp;1 matrix is the single number in the matrix.  For any <i>n</i>&nbsp;≥ 2, the <span class="definition">determinant</span> of the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is 
+<div class="equation">|<i>A</i>|&nbsp;= ∑<span class="supsub"><i>n</i><br><i>j</i>=1</span>(−1)<sup>1+<i>j</i></sup><i>a</i><sub>1<i>j</i></sub>|<i>A</i><sub>1<i>j</i></sub>|</div>
+where <i>a</i><sub>1<i>j</i></sub> is the number in the first row and <i>j</i>th column of <i>A</i> and <i>A</i><sub>1<i>j</i></sub> is the <i>n</i>&nbsp;−&nbsp;1&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;1 matrix obtained by deleting the first row and <i>j</i>th column of <i>A</i>. </dd></dl></div>
 
-<div class="result" id="p:uniqueSoln"><dl class="result"><dt>Proposition 9.2.1</dt><dd>
-For every pair of numbers <i>x</i><sub>0</sub> and <i>x</i><sub>1</sub>, every <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:sod">second-order difference equation</a> <i>x</i><sub><i>t</i>+2</sub>&nbsp;= <i style="padding-right:0.2em;">f</i>(<i>t</i>,&nbsp;<i>x</i><sub><i>t</i></sub>,&nbsp;<i>x</i><sub><i>t</i>+1</sub>) has a unique solution in which the value of <i>x</i> is <i>x</i><sub>0</sub> at 0 and <i>x</i><sub>1</sub> at 1.
-</dd></dl></div>
-
-<h3>Second-order linear difference equations with constant coefficients</h3>
-<div class="definition" id="d:cc"><dl class="definition"><dt>Definition</dt><dd>
-A <span class="definition">linear second-order difference equation with constant coefficients</span> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:sod">second-order difference equation</a> that may be written in the form
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub>,</div>
-where <i>a</i>, <i>b</i>, and <i>c</i><sub><i>t</i></sub> for each value of <i>t</i>, are numbers.  The equation is <span id="homogeneous"><span class="definition">homogeneous</span></span> if <i>c</i><sub><i>t</i></sub>&nbsp;= 0 for all <i>t</i>.
-</dd></dl></div>
-
-The method for finding a solution of a linear second-order difference equation follows the lines of the method for finding a solution of a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/SDE#s:solde">linear second-order differential equation</a>.  Suppose that <i>x</i> and <i>y</i> are solutions of the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub>,</div>
-which we refer to subsequently as the “original” equation.  Define <i>z</i><sub><i>t</i></sub>&nbsp;= <i>y</i><sub><i>t</i></sub>&nbsp;− <i>x</i><sub><i>t</i></sub>.  Then <i>z</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>z</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>z</i><sub><i>t</i></sub>&nbsp;= [<i>y</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>y</i><sub><i>t</i>+1</sub>&nbsp;+
-<i>b</i><i>y</i><sub><i>t</i></sub>]&nbsp;− [<i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>]&nbsp;= <i>c</i><sub><i>t</i></sub>&nbsp;− <i>c</i><sub><i>t</i></sub>&nbsp;= 0.  That is, <i>z</i> is a solution of the homogeneous equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-Conversely, let <i>x</i> be a solution of the original equation, let <i>z</i> be a solution of the homogeneous equation, and define <i>y</i><sub><i>t</i></sub>&nbsp;= <i>x</i><sub><i>t</i></sub>&nbsp;+ <i>z</i><sub><i>t</i></sub> for all <i>t</i>.  Then <i>y</i> is a solution of the original equation.
-<p>
-Thus we have the following result.
-
-</p><div class="result" id="p:genSoln"><dl class="result"><dt>Proposition 9.2.2</dt><dd>
-Let <i>x</i> be a solution of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:cc">linear second-order ordinary difference equation with constant coefficients</a>
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub>.</div>
-Then <i>y</i> is a solution of this equation if and only if <i>y</i><sub><i>t</i></sub>&nbsp;= <i>x</i><sub><i>t</i></sub>&nbsp;+ <i>z</i><sub><i>t</i></sub> for all <i>t</i>, where <i>z</i> is a solution of the (homogeneous) equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-</dd></dl></div>
-
-An implication of this result is that we can find the set of all solutions of the original equation by finding the set of all solutions of the homogeneous equation and a single solution of the original equation, as described in the following procedure.
-
-<div class="procedure" id="o:lsod"><dl class="procedure"><dt>Procedure for finding general solution of linear second-order difference equation with constant coefficients</dt><dd>
-The solutions of the difference equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub></div>
-may be found as follows.
-<ol type="1">
-<li>Find the solutions of the associated homogeneous equation <i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.
-</li><li>Find a single solution of the original equation <i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub>.
-</li><li>Add together the solutions found in steps&nbsp;1 and 2.
-</li></ol>
-</dd></dl></div>
-
-<h4>1. Find the solutions of a homogeneous equation</h4>
-You might guess that the homogeneous equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0</div>
-has a solution of the form <i>x</i><sub><i>t</i></sub>&nbsp;= <i>m</i><sup><i>t</i></sup>.  For this function to be a solution, we need
-<div class="equation"><i>m</i><sup><i>t</i>+2</sup>&nbsp;+ <i>a</i><i>m</i><sup><i>t</i>+1</sup>&nbsp;+ <i>b</i><i>m</i><sup><i>t</i></sup>&nbsp;= 0</div>
-for all <i>t</i>, or
-<div class="equation"><i>m</i><sup><i>t</i></sup>(<i>m</i><sup>2</sup>&nbsp;+ <i>a</i><i>m</i>&nbsp;+ <i>b</i>)&nbsp;= 0</div>
-or, if <i>m</i>&nbsp;≠ 0,
-<div class="equation"><i>m</i><sup>2</sup>&nbsp;+ <i>a</i><i>m</i>&nbsp;+ <i>b</i>&nbsp;= 0.</div>
-This equation is the <span id="charEq"><span class="definition">characteristic equation</span></span> of the difference equation.  Its solutions are
-<div class="equation">−(1/2)<i>a</i>&nbsp;± √((1/4)<i>a</i><sup>2</sup>&nbsp;− <i>b</i>).</div>
-We have the following result, analogous to a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/SDE#p:sde">result for homogeneous second-order differential equations</a>.
-
-<div class="result" id="p:sod"><dl class="result"><dt>Proposition 9.2.3 <button class="proofButton" id="sod" onclick="javascript:showProof(&#39;sod&#39;)" style="display: none;">source</button></dt><dd>
-Consider the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#homogeneous">homogeneous</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:cc">linear second-order difference equation with constant coefficients</a>
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-The set of solutions of this equation depends on the character of the roots of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#charEq">characteristic equation</a> <i>m</i><sup>2</sup>&nbsp;+ <i>a</i><i>m</i>&nbsp;+ <i>b</i>&nbsp;= 0 as follows.
-<dl>
-<dt class="green">Distinct real roots</dt>
-<dd> If <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>b</i>, in which case the characteristic equation has distinct real roots, say <i>m</i><sub>1</sub> and <i>m</i><sub>2</sub>, every solution of the equation has the form
-<div class="equation"><i>A</i><i>m</i><span class="supsub"><i>t</i><br>1</span>&nbsp;+ <i>B</i><i>m</i><span class="supsub"><i>t</i><br>2</span></div>
-for numbers <i>A</i> and <i>B</i>.
-</dd><dt class="green">Single real root</dt>
-<dd> If <i>a</i><sup>2</sup>&nbsp;= 4<i>b</i>, in which case the characteristic equation has a single root, every solution of the equation has the form
-<div class="equation">(<i>A</i>&nbsp;+ <i>B</i><i>t</i>)<i>m</i><sup><i>t</i></sup></div>
-for numbers <i>A</i> and <i>B</i>, where <i>m</i>&nbsp;= −(1/2)<i>a</i> is the root.
-</dd><dt id="complexroots" class="green">Complex roots</dt>
-<dd>  If <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i>, in which case the characteristic equation has complex roots, every solution of the equation has the form
-<div class="equation"><i>A</i><i>r</i><sup><i>t</i></sup>&nbsp;cos(θ<i>t</i>&nbsp;+ ω)</div>
-for numbers <i>A</i> and ω, where <i>r</i>&nbsp;= √<i>b</i> and cos&nbsp;θ&nbsp;= −<i>a</i>/(2√<i>b</i>).  This solution may alternatively be expressed as 
-<div class="equation"><i>C</i><sub>1</sub><i>r</i><sup><i>t</i></sup>&nbsp;cos(θ<i>t</i>)&nbsp;+ <i>C</i><sub>2</sub><i>r</i><sup><i>t</i></sup>&nbsp;sin(θ<i>t</i>),</div>
-where <i>C</i><sub>1</sub>&nbsp;= <i>A</i>&nbsp;cos&nbsp;ω and <i>C</i><sub>2</sub>&nbsp;= −<i>A</i>&nbsp;sin&nbsp;ω (using the formula cos(<i>x</i>+<i>y</i>)&nbsp;= (cos&nbsp;<i>x</i>)(cos&nbsp;<i>y</i>)&nbsp;− (sin&nbsp;<i>x</i>)(sin&nbsp;<i>y</i>).
-</dd></dl>
-</dd></dl></div>
-<div class="hiddenProof" id="f:sod" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;sod&#39;)">hide</button></dt><dd>
-For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/REF#Goldberg1958">Goldberg</a> (1958), pp.&nbsp;134–142.
-</dd></dl></div>
-
-In the third case, in which the characteristic equation has complex roots, the solutions <b>oscillate</b>.  We use the following terminology: <i>A</i><i>r</i><sup><i>t</i></sup> is the <b>amplitude</b> of the oscillations at time <i>t</i>, <i>r</i> is <b>growth factor</b>, θ/2π is the <b>frequency</b> of the oscillations, and ω is the <b>phase</b> (which depends on the initial
-conditions).  If |<i>r</i>|&nbsp;&lt; 1 then the oscillations are <b>damped</b>; if |<i>r</i>|&nbsp;&gt; 1 then they are <b>explosive</b>.
-
-<div class="example" id="m:ex2"><dl class="example"><dt>Example 9.2.1</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>x</i><sub><i>t</i>+1</sub>&nbsp;− 2<i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-The roots of the characteristic equation are 1 and −2 (real and distinct).  Thus every solution has the form
-<div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= <i>A</i>&nbsp;+ <i>B</i>(−2)<sup><i>t</i></sup>.</div>
-</dd></dl></div>
-
-<div class="example" id="m:ex3"><dl class="example"><dt>Example 9.2.2</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ 6<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 9<i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-The single root of the characteristic equation is −3.  Thus every solution has the form 
-<div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= (<i>A</i>&nbsp;+ <i>B</i><i>t</i>)(−3)<sup><i>t</i></sup>.</div>
-</dd></dl></div>
-
-<div class="example" id="m:ex4"><dl class="example"><dt>Example 9.2.3</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− <i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-The roots of the characteristic equation are complex.  We have <i>r</i>&nbsp;= 1 and cos&nbsp;θ&nbsp;= 1/2, so θ&nbsp;= (1/3)π.  So every solution has the form
-<div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= <i>A</i>cos((1/3)π<i>t</i>&nbsp;+ ω).</div>
-The frequency of the oscillations is (π/3)/2π&nbsp;= 1/6 and the growth factor is 1, so the oscillations are neither damped nor explosive.
-</dd></dl></div>
-
-<h4>2. Find a solution of a nonhomogeneous equation</h4>
-<div id="nonHomogConst">Consider the nonhomogeneous equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><sub><i>t</i></sub>.</div>
-If <i>c</i><sub><i>t</i></sub>&nbsp;= <i>c</i> for all <i>t</i>, then <i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i>/(1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>) is a solution if 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;≠ 0, <i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><i>t</i>/(<i>a</i>&nbsp;+&nbsp;2) is a solution if 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;= 0 and <i>a</i>&nbsp;≠ −2, and
-<i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i><i>t</i><sup>2</sup>/2 if 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;= 0 and <i>a</i>&nbsp;= −2 (in which case <i>b</i>&nbsp;= 1).
-</div>
-<p>
-For other forms of <i>c</i><sub><i>t</i></sub>, the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/SDE#s:nonhomog">method</a> used to find a solution of a nonhomogeneous second-order differential equation can be used.  For example, if <i>c</i><sub><i>t</i></sub> is a linear combination of terms of the form <i>q</i><sup><i>t</i></sup>, <i>t</i><sup><i>m</i></sup>, cos(<i>p</i><i>t</i>), and sin(<i>p</i><i>t</i>), for constants
-<i>q</i>, <i>p</i>, and <i>m</i>, and products of such terms, then guess that the equation has a solution that is a linear combination of such terms; substitute such a function into the equation and see whether there are coefficients that generate a solution.  If the <i>c</i><sub><i>t</i></sub> you find happens to satisfy the <i>homogeneous</i> equation, then a different approach must be taken,
-which I do not discuss.
-
-</p><div class="example" id="m:ex1"><dl class="example"><dt>Example 9.2.4</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− 5<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 6<i>x</i><sub><i>t</i></sub>&nbsp;= 2<i>t</i>&nbsp;− 3.</div>
-To find a solution, guess that there is one of the form <i>a</i><i>t</i>&nbsp;+ <i>b</i>.  For this function to be a solution, we need
-<div class="equation"><i>a</i>(<i>t</i>+2)&nbsp;+ <i>b</i>&nbsp;− 5[<i>a</i>(<i>t</i>+1)&nbsp;+ <i>b</i>]&nbsp;+ 6(<i>a</i><i>t</i>&nbsp;+ <i>b</i>)&nbsp;= 2<i>t</i>&nbsp;− 3.</div>
-Equating the coefficients of <i>t</i> and the constant on each side, we have <i>a</i>&nbsp;= 1 and <i>b</i>&nbsp;= 0.  Thus <i>x</i><sub><i>t</i></sub>&nbsp;= <i>t</i> for all <i>t</i> is a solution.
-</dd></dl></div>
-
-<div class="example" id="m:ex5"><dl class="example"><dt>Example 9.2.5</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− 5<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 6<i>x</i><sub><i>t</i></sub>&nbsp;= 4<sup><i>t</i></sup>&nbsp;+ <i>t</i><sup>2</sup>&nbsp;+ 3.</div>
-To find a solution, try
-<div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= <i>C</i>4<sup><i>t</i></sup>&nbsp;+ <i>D</i><i>t</i><sup>2</sup>&nbsp;+ <i>E</i><i>t</i>&nbsp;+ <i style="padding-right:0.2em;">F</i>.</div>
-Substituting this potential solution into the equation and equating the coefficients of 4<sup><i>t</i></sup>, <i>t</i><sup>2</sup>, and the constant on each side we find that
-<div class="equation"><i>C</i>&nbsp;= 1/2, <i>D</i>&nbsp;= 1/2, <i>E</i>&nbsp;= 3/2, and <i style="padding-right:0.2em;">F</i>&nbsp;= 4.</div>
-<p>
-Thus a solution of the equation is
-</p><div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= (1/2)4<sup><i>t</i></sup>&nbsp;+ (1/2)<i>t</i><sup>2</sup>&nbsp;+ (3/2)<i>t</i>&nbsp;+ 4.</div>
-</dd></dl></div>
-
-<h4>3. Add together the solutions found in steps&nbsp;1 and 2</h4>
-
-<div class="example" id="m:ex6"><dl class="example"><dt>Example 9.2.6</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− 5<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 6<i>x</i><sub><i>t</i></sub>&nbsp;= 2<i>t</i>&nbsp;− 3.</div>
-The associated homogeneous equation is
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− 5<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 6<i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-The characteristic equation has two real roots, 2 and 3, so by a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#p:sod">previous result</a>, every solution of the equation has the form <i>A</i>2<sup><i>t</i></sup>&nbsp;+ <i>B</i>3<sup><i>t</i></sup>.
-<p>
-By a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#m:ex1">previous example</a>, a solution of the original equation is <i>x</i><sub><i>t</i></sub>&nbsp;= <i>t</i> for all <i>t</i>.
-</p><p>
-We conclude that every solution of the equation has the form
-</p><div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= <i>A</i>2<sup><i>t</i></sup>&nbsp;+ <i>B</i>3<sup><i>t</i></sup>&nbsp;+ <i>t</i>.</div>
-</dd></dl></div>
-
-<div class="example" id="m:ex7"><dl class="example"><dt>Example 9.2.7</dt><dd>
-Consider the equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;− 5<i>x</i><sub><i>t</i>+1</sub>&nbsp;+ 6<i>x</i><sub><i>t</i></sub>&nbsp;= 4<sup><i>t</i></sup>&nbsp;+ <i>t</i><sup>2</sup>&nbsp;+ 3.</div>
-As in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#m:ex6">previous example</a>, every solution of the associated homogeneous equation has the form <i>A</i>2<sup><i>t</i></sup>&nbsp;+ <i>B</i>3<sup><i>t</i></sup>.
-<p>
-By a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#m:ex5">previous example</a>, a solution of the original equation is
-</p><div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= (1/2)4<sup><i>t</i></sup>&nbsp;+ (1/2)<i>t</i><sup>2</sup>&nbsp;+ (3/2)<i>t</i>&nbsp;+ 4.</div>
-<p>
-Thus every solution of the original equation has the form
-</p><div class="equation"><i>x</i><sub><i>t</i></sub>&nbsp;= <i>A</i>2<sup><i>t</i></sup>&nbsp;+ <i>B</i>3<sup><i>t</i></sup>&nbsp;+ (1/2)4<sup><i>t</i></sup>&nbsp;+ (1/2)<i>t</i><sup>2</sup>&nbsp;+ (3/2)<i>t</i>&nbsp;+ 4.</div>
-</dd></dl></div>
-
-<h3 id="stability">Equilibrium and stability</h3>
-The notions of equilibrium and stability for a second-order difference equation are analogous to the ones for a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/SDE#stability">differential equation</a>.
-
-<div class="definition" id="d:stability"><dl class="definition"><dt>Definition</dt><dd>
-An <span class="definition">equilibrium</span> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:cc">linear second-order difference equation with constant coefficients</a>
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i></div>
-is a number <i>x</i>* such that <i>x</i><sub><i>t</i></sub>&nbsp;= <i>x</i>* for all <i>t</i> is a solution of the equation.  An equilibrium <i>x</i>* is <span class="definition">stable</span> if every solution of the equation converges to <i>x</i>*.
-</dd></dl></div>
-
-Now, by an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#nonHomogConst">earlier analysis</a>, if 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;≠ 0 then a solution of
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i></div>
-is <i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i>/(1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>) for all <i>t</i>.  Thus if 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;≠ 0 then <i>c</i>/(1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>) is an equilibrium of the equation.  If 1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>&nbsp;= 0 then the equation has no constant solution, and hence no equilibrium.
-<p>
-Also, from a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#p:genSoln">previous result</a> we know that every solution of
-</p><div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i></div>
-is the sum of any given solution of this equation and a solution of the homogeneous equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-Thus if 1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>&nbsp;≠ 0 then every solution of
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i></div>
-is the sum of <i>c</i>/(1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>) and a solution of the homogeneous equation
-<div class="equation"><i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= 0.</div>
-So the equilibrium <i>c</i>/(1&nbsp;+&nbsp;<i>a</i>&nbsp;+&nbsp;<i>b</i>) is stable if and only if every solution of the homogeneous equation converges to zero.  We can use the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#p:sod">earlier result</a> characterizing the solutions of the homogeneous equation to find conditions under which these solutions converge to zero, as follows.  Recall that the characteristic equation of the
-difference equation is <i>m</i><sup>2</sup>&nbsp;+ <i>a</i><i>m</i>&nbsp;+ <i>b</i>&nbsp;= 0.
-<dl>
-<dt class="green">Characteristic equation has distinct real roots</dt>
-<dd> Every solution of the difference equation has the form
-<div class="equation"><i>A</i><i>m</i><span class="supsub"><i>t</i><br>1</span>&nbsp;+ <i>B</i><i>m</i><span class="supsub"><i>t</i><br>2</span></div>
-for numbers <i>A</i> and <i>B</i>.  These solutions converge to zero if and only if |<i>m</i><sub>1</sub>|&nbsp;&lt; 1 and |<i>m</i><sub>2</sub>|&nbsp;&lt; 1.
-</dd><dt class="green">Characteristic equation has single real root</dt>
-<dd> Every solution of the difference equation has the form
-<div class="equation">(<i>A</i>&nbsp;+ <i>B</i><i>t</i>)<i>m</i><sup><i>t</i></sup></div>
-for numbers <i>A</i> and <i>B</i>, where <i>m</i>&nbsp;= −(1/2)<i>a</i> is the root.  These solutions converge to zero if and only if |<i>m</i>|&nbsp;&lt; 1.  (The function <i>t</i><i>m</i><sup><i>t</i></sup> converges to zero if and only if |<i>m</i>|&nbsp;&lt; 1.)
-</dd><dt class="green">Characteristic equation has complex roots</dt>
-<dd> Every solution of the equation has the form
-<div class="equation"><i>A</i><i>r</i><sup><i>t</i></sup>&nbsp;cos(θ<i>t</i>&nbsp;+ ω)</div>
-for numbers <i>A</i> and ω, where <i>r</i>&nbsp;= √<i>b</i> and cos&nbsp;θ&nbsp;= −<i>a</i>/(2√<i>b</i>).  These solutions converge to zero if and only if <i>r</i>&nbsp;&lt; 1.
-</dd></dl>
-
-We can unify these conditions by defining the <span class="definition">modulus</span> of a complex number α&nbsp;+ β<i>i</i> to be √(α<sup>2</sup>&nbsp;+&nbsp;β<sup>2</sup>).
-<p>
-If the characteristic equation has complex roots, then, using the formula for the roots of a quadratic equation, these roots are −<i>a</i>/2&nbsp;± <i>i</i>√(<i>b</i>&nbsp;−&nbsp;<i>a</i><sup>2</sup>/4).  <span id="modulusComplex">Thus the modulus of each root is √(<i>a</i><sup>2</sup>/4&nbsp;+&nbsp;<i>b</i>&nbsp;−&nbsp;<i>a</i><sup>2</sup>/4)&nbsp;=
-√<i>b</i>.</span>  The modulus of a real number is simply its absolute value (the complex number α&nbsp;+ β<i>i</i> is real if and only if β&nbsp;= 0), so the conditions we found for every solution of the homogeneous equation to converge to zero are, in every case, simply that the modulus of each root of the characteristic equation is less than 1.
-</p><p>
-We have the following result.
-
-</p><div class="result" id="p:stable"><dl class="result"><dt>Proposition 9.2.4 <button class="proofButton" id="stable" onclick="javascript:showProof(&#39;stable&#39;)" style="display: none;">proof</button></dt><dd>
-For any value of <i>c</i>, an equilibrium of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:cc">linear second-order difference equation with constant coefficients</a> <i>x</i><sub><i>t</i>+2</sub>&nbsp;+ <i>a</i><i>x</i><sub><i>t</i>+1</sub>&nbsp;+ <i>b</i><i>x</i><sub><i>t</i></sub>&nbsp;= <i>c</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:stability">stable</a> if and only if the modulus of each root of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#d:charEq">characteristic
-equation</a> <i>m</i><sup>2</sup>&nbsp;+ <i>a</i><i>m</i>&nbsp;+ <i>b</i>&nbsp;= 0 is less than 1, or, equivalently, if and only if |<i>a</i>|&nbsp;&lt; 1&nbsp;+ <i>b</i> and <i>b</i>&nbsp;&lt; 1.
-</dd></dl></div>
-
-<div class="hiddenProof" id="f:stable" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;stable&#39;)">hide</button></dt><dd>
-The arguments preceding the statement establish that a necessary and sufficient for the equilibrium to be stable is that the modulus of each root is less than 1.
-<p>
-I now show that this condition is equivalent to the conditions |<i>a</i>|&nbsp;&lt; 1&nbsp;+ <i>b</i> and <i>b</i>&nbsp;&lt; 1.
-</p><p>
-Note that the second condition is equivalent to the two conditions <i>a</i>&nbsp;&lt; 1&nbsp;+ <i>b</i>, or <i>b</i>&nbsp;&gt; <i>a</i>&nbsp;− 1, and −<i>a</i>&nbsp;&lt; 1&nbsp;+ <i>b</i>, or <i>b</i>&nbsp;&gt; −<i>a</i>&nbsp;− 1.  In the following figure, <i>b</i>&nbsp;&gt; <i>a</i>&nbsp;− 1 if <i>b</i> is above the blue line and <i>b</i>&nbsp;&gt;
-−<i>a</i>&nbsp;− 1 if <i>b</i> is above the red line.  Thus the set of values of (<i>a</i>,&nbsp;<i>b</i>) satisfying the conditions |<i>a</i>|&nbsp;&lt; 1&nbsp;+ <i>b</i> and <i>b</i>&nbsp;&lt; 1 is the shaded triangle.  The characteristic equation has real roots if <i>b</i> lies below the black curve <i>b</i>&nbsp;= <i>a</i><sup>2</sup>/4 and complex roots if <i>b</i> lies above this
-curve. The figure is useful in following the logic of the subsequent slightly intricate algebra.
-</p><p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="140">
-
-	 <defs>
-	 
-	 <clippath id="clipPath1">
-			<rect x="40" y="952.36222" width="160" height="42"></rect>
-	 </clippath>
-	 
-     </defs>
-
-	 <path d="M40,40
-	          L120,120
-			  L200,40
-			  L40,40" style="fill:#bbbbbb; stroke:none;"></path>
-	 
-	 <path d="M120,0
-	          L120,140
-			  M0,80
-			  L240,80" class="axis"></path>
-		   
-     <path d="M0,0
-	          L140,140" style="stroke:#ff0000"></path>
-	 
-     <path d="M240,0
-	          L100,140" style="stroke:#0000ff"></path>
-		   
-     <path d="M40,0
-	          L40,140" class="guideline"></path>
-
-     <path d="M200,0
-	          L200,140" class="guideline"></path>
-
-     <path d="M0,40
-	          L240,	40" class="guideline"></path>
-		   
-	<text x="120" y="100" style="text-anchor:middle" fill="#000000">real</text>
-	<text x="120" y="60" style="text-anchor:middle" fill="#000000">complex</text>
-
-     <text x="40" y="95" style="text-anchor:middle">−2</text>
-     <text x="200" y="95" style="text-anchor:middle">2</text>
-
-     <text x="115" y="45" style="text-anchor:end">1</text>
-     <text x="115" y="125" style="text-anchor:end">−1</text>
-	 
-     <text x="240" y="95" style="text-anchor:end"><tspan font-style="italic">a</tspan> →</text>
-
-     <text x="128" y="30" style="text-anchor:middle"><tspan font-style="italic">b</tspan></text>
-     <text x="128" y="11" style="text-anchor:middle">↑</text>
-
-     <text x="215" y="20" style="text-anchor:end"><tspan font-style="italic">b</tspan> = <tspan font-style="italic">a</tspan><tspan dy="-5" style="font-size:0.8em;">2</tspan><tspan dy="5">/4</tspan></text>
-
-     <text x="145" y="110" style="text-anchor:start;" fill="#0000ff"><tspan font-style="italic">b</tspan> = <tspan font-style="italic">a</tspan> − 1</text>
-	 
-     <text x="95" y="110" style="text-anchor:end;" fill="#ff0000"><tspan font-style="italic">b</tspan> = −<tspan font-style="italic">a</tspan> − 1</text>
-
-	 <g transform="translate(0,-912.36222)" id="layer1">
-    <path d="M 0.0 902.36218 C 11.4285714286 919.502588163 22.8571428571 934.196465714 34.2857142857 946.443812653 C 45.7142857143 958.691159592 57.1428571429 968.48218 68.5714285714 975.831567755 C 80.0 983.18095551 91.4285714286 988.074016735 102.857142857 990.525445306 C 114.285714286 992.976873878 125.714285714 992.971975918 137.142857143 990.525445306 C 148.571428571 988.078914694 160.0 983.176057551 171.428571429 975.831567755 C 182.857142857 968.487077959 194.285714286 958.686261633 205.714285714 946.443812653 C 217.142857143 934.201363673 228.571428571 919.502588163 240.0 902.36218" style="opacity:1;fill:none;fill-opacity:0.21176471;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></path>
-  </g>
-
-  	 <g style="clip-path: url(#clipPath1);" transform="translate(0,-912.36222)">
-    <path d="M 0.0 902.36218 
-	      C 11.4285714286 919.502588163 22.8571428571 934.196465714 34.2857142857 946.443812653 
-		  C 45.7142857143 958.691159592 57.1428571429 968.48218 68.5714285714 975.831567755 
-		  C 80.0 983.18095551 91.4285714286 988.074016735 102.857142857 990.525445306 
-		  C 114.285714286 992.976873878 125.714285714 992.971975918 137.142857143 990.525445306 
-		  C 148.571428571 988.078914694 160.0 983.176057551 171.428571429 975.831567755 
-		  C 182.857142857 968.487077959 194.285714286 958.686261633 205.714285714 946.443812653 
-		  C 217.142857143 934.201363673 228.571428571 919.502588163 240.0 902.36218" style="opacity:1;fill:#ff0000;fill-opacity:0.21176471;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"></path>
-     </g>
-
-  
-  </svg></p><p>
-First consider the case in which the roots of the characteristic equation are real.  Then the roots are −<i>a</i>/2&nbsp;± √(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)/2, so the modulus of each root is less than 1 if and only if
-</p><div class="equation">
-  <table class="mathAlign">
+Notice that the term (−1)<sup>1+<i>j</i></sup> in the sum in the definition is equal to 1 if 1&nbsp;+ <i>j</i> is even and −1 if 1&nbsp;+ <i>j</i> is odd, so that the signs of the coefficients of the <i>a</i><sub>1<i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>| terms in the sum alternate between positive and negative.  If we expand the sum we get
+<div class="equation">
+  <table class="mathAlignTop">
     <tbody><tr>
-      <td class="alignRight">−1 </td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> −<i>a</i>/2&nbsp;+ √(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)/2&nbsp;&lt; 1</td>
-</tr>
- <tr>
-  <td class="alignRight">
-−1 </td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> −<i>a</i>/2&nbsp;− √(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)/2&nbsp;&lt; 1</td>
+      <td class="alignRight">|<i>A</i>|</td>
+      <td class="mathAlign2">&nbsp;=&nbsp;</td>
+      <td class="mathAlign2"> <i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>|&nbsp;− <i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>|&nbsp;+ <i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>|&nbsp;− ...&nbsp;+
+(−1)<sup>1+<i>n</i></sup><i>a</i><sub>1<i>n</i></sub>|<i>A</i><sub>1<i>n</i></sub>|.</td>
 </tr>
 </tbody></table></div>
-or
+That is, <i>plus</i> <i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>| <i>minus</i> <i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>| <i>plus</i> <i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>| and so on.
+<p>
+To use the definition to find the determinant of an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, you first write down the expression it gives for the determinant as a sum of the determinants of a collection of <i>n</i>&nbsp;−&nbsp;1&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;1 matrices.  Then, for each of these determinants, you substitute the expression the definition gives as a sum of the
+determinants of a collection of <i>n</i>&nbsp;−&nbsp;2&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;2 matrices.  You continue in the same way until you get to an expression involving the determinants of a collection of 1&nbsp;×&nbsp;1 matrices, which the definition says are simply the single elements of the matrices.  If <i>n</i> is bigger than 3, this process will involve a lot of bytes
+(or paper).  But in principle it is possible.  The following examples illustrate it.
+
+</p><div class="example" id="m:det2"><dl class="example"><dt>Example 1.2.1</dt><dd>
+Let <i>A</i> be the 2&nbsp;×&nbsp;2 matrix
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">−2&nbsp;+&nbsp;<i>a</i>&nbsp;</td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> √(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)&nbsp;&lt; 2&nbsp;+ <i>a</i></td>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell"><i>a</i></td>
+  <td class="cell"><i>b</i></td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
 </tr>
- <tr>
-  <td class="alignRight">
-−2&nbsp;+&nbsp;<i>a</i>&nbsp;</td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> −√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>)&nbsp;&lt; 2&nbsp;+ <i>a</i>.</td>
+
+<tr>
+  <td class="cell"><i>c</i></td>
+  <td class="cell"><i>d</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
 </tr>
 </tbody></table></div>
-Now, the second inequality on the left implies the first inequality on the left, and the first inequality on the right implies the second inequality on the right, so that the modulus of each roots is less than 1 if and only if
+The matrix <i>A</i><sub>11</sub> is the 1&nbsp;×&nbsp;1 matrix consisting of the number <i>d</i> and the matrix <i>A</i><sub>12</sub> is the 1&nbsp;×&nbsp;1 matrix consisting of the number <i>c</i>.  Thus using the expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i> is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>.
+</dd></dl></div>
+<div class="example" id="m:det3"><dl class="example"><dt>Example 1.2.2</dt><dd>
+Let <i>A</i> be the 3&nbsp;×&nbsp;3 matrix
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>) </td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> 2&nbsp;+ <i>a</i></td>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
+ <td class="cell"><i>a</i></td>
+  <td class="cell"><i>b</i></td>
+  <td class="cell"><i>c</i></td>
+  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell"><i>d</i></td>
+  <td class="cell"><i>e</i></td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
 </tr>
  <tr>
-  <td class="alignRight">
-−2&nbsp;+&nbsp;<i>a</i> </td>
-      <td class="mathAlign2">&nbsp;&lt;&nbsp;</td>
-      <td class="mathAlign2"> −√(<i>a</i><sup>2</sup>&nbsp;−&nbsp;4<i>b</i>).</td>
+  <td class="cell"><i>g</i></td>
+  <td class="cell"><i>h</i></td>
+  <td class="cell"><i>i</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
 </tr>
 </tbody></table></div>
-For the first inequality to hold, we need <i>a</i>&nbsp;&gt; −2 (because the left-hand side is positive) and, squaring both sides,
-<div class="equation"><i>a</i><sup>2</sup>&nbsp;− 4<i>b</i>&nbsp;&lt; (2&nbsp;+&nbsp;<i>a</i>)<sup>2</sup>&nbsp;= 4&nbsp;+ 4<i>a</i>&nbsp;+ <i>a</i><sup>2</sup></div>
-or
-<div class="equation">1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
-For the second inequality to hold, we need <i>a</i>&nbsp;&lt; 2 (because the right-hand side is negative) and, squaring both sides,
-<div class="equation">(−2&nbsp;+&nbsp;<i>a</i>)<sup>2</sup>&nbsp;&gt; <i>a</i><sup>2</sup>&nbsp;− 4<i>b</i></div>
-(both sides are negative, so the inequality changes), or
-<div class="equation">4&nbsp;− 4<i>a</i>&nbsp;+ <i>a</i><sup>2</sup>&nbsp;&gt; <i>a</i><sup>2</sup>&nbsp;− 4<i>b</i></div>
-or
-<div class="equation">1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
-In summary, if the roots of the characteristic equation are real, which is true if and only if <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>b</i>, then the modulus of each root is less than 1 if and only if
-<div class="equation">−2&nbsp;&lt; <i>a</i>&nbsp;&lt; 2, 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0, and 1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
-Now, if <i>b</i>&nbsp;&lt; 1 then the last two inequalities imply −2&nbsp;&lt; <i>a</i>&nbsp;&lt; 2.  Further, −2&nbsp;&lt; <i>a</i>&nbsp;&lt; 2 and <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>b</i> imply <i>b</i>&nbsp;&lt; 1.  Thus if the roots of the characteristic equation are real, then the modulus of each root is less than 1 if and only if
-<div class="equation"><i>b</i>&nbsp;&lt; 1, 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0, and 1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
+The matrix <i>A</i><sub>11</sub> is the 2&nbsp;×&nbsp;2 matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell"><i>e</i></td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
 
-Now consider the case in which the roots of the characteristic equation are complex.  Then <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i>, so that <i>b</i>&nbsp;&gt; 0, and, as <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sod/t#modulusComplex">noted previously</a>, the modulus of each root is √<i>b</i>.  Thus the modulus of each root is less than 1 if and only if <i>b</i>&nbsp;&lt; 1.  Now, <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i> and
-<i>b</i>&nbsp;&lt; 1 imply that |<i>a</i>|&nbsp;&lt; 2, so that (<i>a</i>&nbsp;− 2)<sup>2</sup>&nbsp;&gt; 0. But (<i>a</i>&nbsp;−&nbsp;2)<sup>2</sup>&nbsp;= <i>a</i><sup>2</sup>&nbsp;− 4<i>a</i>&nbsp;+ 4, so <i>a</i><sup>2</sup>&nbsp;&gt; 4<i>a</i>&nbsp;− 4, or <i>a</i><sup>2</sup>/4&nbsp;&gt; <i>a</i>&nbsp;− 1.  Given <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i>, we have
-<i>b</i>&nbsp;&gt; <i>a</i>&nbsp;− 1, or 1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.  The inequality |<i>a</i>|&nbsp;&lt; 2 implies also that (<i>a</i>&nbsp;+ 2)<sup>2</sup>&nbsp;&gt; 0, so that <i>a</i><sup>2</sup>&nbsp;+ 4<i>a</i>&nbsp;+ 4&nbsp;&gt; 0, or <i>a</i><sup>2</sup>&nbsp;&gt; −4<i>a</i>&nbsp;− 4, or <i>a</i><sup>2</sup>/4&nbsp;&gt;
-−<i>a</i>&nbsp;− 1.  Thus given <i>a</i><sup>2</sup>&nbsp;&lt; 4<i>b</i>, we have <i>b</i>&nbsp;&gt; −<i>a</i>&nbsp;− 1, or 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.  Thus if the modulus of each root of the characteristic equation is less than 1, we have
-<div class="equation"><i>b</i>&nbsp;&lt; 1, 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0, and 1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
+<tr>
+  <td class="cell"><i>h</i></td>
+  <td class="cell"><i>i</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">,</td>
+</tr>
+</tbody></table></div>
+whose determinant is <i>e</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>h</i>.  Similarly |<i>A</i><sub>12</sub>|&nbsp;= <i>d</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>g</i> and <i>A</i><sub>13</sub>&nbsp;= <i>d</i><i>h</i>&nbsp;− <i>e</i><i>g</i>.  Thus using the expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i>
+is
+<div class="equation"><i>a</i>(<i>e</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>h</i>)&nbsp;− <i>b</i>(<i>d</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>g</i>)&nbsp;+ <i>c</i>(<i>d</i><i>h</i>&nbsp;−&nbsp;<i>e</i><i>g</i>).</div>
+</dd></dl></div>
+
+You have probably noticed an odd asymmetry in the definition of the determinant: all the minors are obtained by deleting the <i>first</i> row of the matrix.  What is special about the first row?  Nothing!  We can show that the determinant of any square matrix is equal to a sum like the one in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a> except that the first row is replaced by any other row.  There
+is nothing special either about rows rather than columns; we can switch their roles in the sum.  The next result gives the exact expressions.
+<div class="result" id="p:determinant"><dl class="result"><dt>Proposition 1.2.1 <button class="proofButton" id="determinant" onclick="javascript:showProof(&#39;determinant&#39;)" style="display: none;">source</button></dt><dd>
+The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> of the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is equal to
+<div class="equation">∑<span class="supsub"><i>n</i><br><i>j</i>=1</span>(−1)<sup><i>i</i>+<i>j</i></sup><i>a</i><sub><i>i</i><i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>|</div>
+for any <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i> and is also equal to
+<div class="equation">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>(−1)<sup><i>i</i>+<i>j</i></sup><i>a</i><sub><i>i</i><i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>|</div>
+for any <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>, where <i>A</i><sub><i>i</i><i>j</i></sub> is the matrix obtained by deleting the <i>i</i>th row and <i>j</i>th column of <i>A</i>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:determinant" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;determinant&#39;)">hide</button></dt><dd>
+For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.1 on p.&nbsp;743.
+</dd></dl></div>
+
+An immediate implication of this result is that the determinant of a matrix for which one or more columns or rows consists entirely of 0's is 0.
 <p>
-In conclusion, whether the roots of the characteristic equation are real or complex, the modulus of each root is less than 1 if and only if 
-</p><div class="equation"><i>b</i>&nbsp;&lt; 1, 1&nbsp;+ <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0, and 1&nbsp;− <i>a</i>&nbsp;+ <i>b</i>&nbsp;&gt; 0.</div>
+Notice that, as in the original <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the coefficients (−1)<sup><i>i</i>+<i>j</i></sup> in each of these sums alternate in sign.  Notice also that the sign of the <i>first</i> term in either sum is positive if the exponent of −1 in that term is even and negative if the exponent is odd.  In particular, it is <i>not</i> always positive.  For example,
+the coefficient (−1)<sup><i>i</i>+1</sup> of the first term in the first sum is negative if <i>i</i> is even.
+</p><p id="determinantExpansion">
+The first expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is called the <i>expansion along the ith row</i> of the matrix; the second expression is called the <i>expansion along the jth column</i> of the matrix.
+</p>
+The next example verifies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> for an arbitrary 3&nbsp;×&nbsp;3 matrix.
+<div class="example" id="m:det4"><dl class="example"><dt>Example 1.2.3</dt><dd>
+Let <i>A</i> be a 3&nbsp;×&nbsp;3 matrix; denote its elements as in an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#m:det3">earlier example</a> (to avoid a dizzying collection of subscripts).  The first sum in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is
+<div class="equation">−<i>a</i><sub>21</sub>|<i>A</i><sub>21</sub>|&nbsp;+ <i>a</i><sub>22</sub>|<i>A</i><sub>22</sub>|&nbsp;− <i>a</i><sub>23</sub>|<i>A</i><sub>23</sub>|&nbsp;= −<i>d</i>(<i>b</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>h</i>)&nbsp;+ <i>e</i>(<i>a</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>g</i>)&nbsp;−
+<i style="padding-right:0.2em;">f</i>(<i>a</i><i>h</i>&nbsp;−&nbsp;<i>b</i><i>g</i>)</div>
+for <i>i</i>&nbsp;= 2 and
+<div class="equation"><i>a</i><sub>31</sub>|<i>A</i><sub>31</sub>|&nbsp;− <i>a</i><sub>32</sub>|<i>A</i><sub>32</sub>|&nbsp;+ <i>a</i><sub>33</sub>|<i>A</i><sub>33</sub>|&nbsp;= <i>g</i>(<i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>e</i>)&nbsp;− <i>h</i>(<i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>d</i>)&nbsp;+
+<i>i</i>(<i>a</i><i>e</i>&nbsp;−&nbsp;<i>b</i><i>d</i>)</div>
+for <i>i</i>&nbsp;= 3, both of which are equal to the value of |<i>A</i>| calculated in the earlier example.  The second sum in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is
+<div class="equation"><i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>|&nbsp;− <i>a</i><sub>21</sub>|<i>A</i><sub>21</sub>|&nbsp;+ <i>a</i><sub>31</sub>|<i>A</i><sub>31</sub>|&nbsp;= <i>a</i>(<i>e</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>h</i>)&nbsp;− <i>d</i>(<i>b</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>h</i>)&nbsp;+
+<i>g</i>(<i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>e</i>)</div>
+for <i>j</i>&nbsp;= 1,
+<div class="equation">−<i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>|&nbsp;+ <i>a</i><sub>22</sub>|<i>A</i><sub>22</sub>|&nbsp;− <i>a</i><sub>32</sub>|<i>A</i><sub>32</sub>|&nbsp;= −<i>b</i>(<i>d</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>g</i>)&nbsp;+ <i>e</i>(<i>a</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>g</i>)&nbsp;−
+<i>h</i>(<i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>d</i>)</div>
+for <i>j</i>&nbsp;= 2 and
+<div class="equation"><i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>|&nbsp;− <i>a</i><sub>23</sub>|<i>A</i><sub>23</sub>|&nbsp;+ <i>a</i><sub>33</sub>|<i>A</i><sub>33</sub>|&nbsp;= <i>c</i>(<i>d</i><i>h</i>&nbsp;−&nbsp;<i>e</i><i>g</i>)&nbsp;− <i style="padding-right:0.2em;">f</i>(<i>a</i><i>h</i>&nbsp;−&nbsp;<i>b</i><i>g</i>)&nbsp;+
+<i>i</i>(<i>a</i><i>e</i>&nbsp;−&nbsp;<i>b</i><i>d</i>)</div>
+for <i>j</i>&nbsp;= 3, all of which are equal to the value of |<i>A</i>| calculated in the earlier example.
+</dd></dl></div>
+
+<div class="example" id="m:det5"><dl class="example"><dt>Example 1.2.4</dt><dd>
+Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix in which all the elements are zero except the ones on the “main diagonal”—that is, the elements <i>a</i><sub><i>k</i><i>k</i></sub> in the <i>k</i>th row and <i>k</i>th column for <i>k</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>.  Applying the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i> is simply
+<i>a</i><sub>11</sub> times the determinant of the matrix obtained by deleting the first row and first column of <i>A</i> (because all the other elements in the first row of <i>A</i> are zero).  This latter matrix has the same structure as <i>A</i>, and its determinant is <i>a</i><sub>22</sub> times the determinant of the matrix obtained by deleting the first two rows and first two columns of
+<i>A</i>.  Proceeding in the same way, we see that the determinant of <i>A</i> is <i>a</i><sub>11</sub><i>a</i><sub>22</sub>···<i>a</i><sub><i>n</i><i>n</i></sub>, the product of all the elements on the main diagonal of the matrix (the only positive elements in the matrix).
+</dd></dl></div>
+
+<h3>Inverse</h3>
+<div class="definition" id="d:nonsingular"><dl class="definition"><dt>Definition</dt><dd>
+The square matrix is <span class="definition">nonsingular</span> if its <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> is not zero.
+</dd></dl></div>
+<div class="example" id="m:nonsingular1"><dl class="example"><dt>Example 1.2.5</dt><dd>
+The determinant of the matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell"><i>a</i></td>
+  <td class="cell"><i>b</i></td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell"><i>c</i></td>
+  <td class="cell"><i>d</i></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i> by an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#m:det2">earlier example</a>.  Thus the matrix is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> if <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>&nbsp;≠ 0.
+</dd></dl></div>
+If <i>a</i>, <i>x</i>, and <i>b</i> are numbers with <i>a</i>&nbsp;≠ 0, we solve the equation <i>a</i><i>x</i>&nbsp;= <i>b</i> for <i>x</i> by dividing both sides by <i>a</i>.  Or, if you like, by multiplying each side by <i>a</i><sup>−1</sup>, which is the inverse operation to multiplication by <i>a</i>.  If <i>A</i> is an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, <i>x</i> is an
+<i>n</i>&nbsp;×&nbsp;1 matrix (column vector), and <i>b</i> is an <i>n</i>&nbsp;×&nbsp;1 matrix, then we'd like to solve for <i>x</i> in the same way, by multiplying both sides by an “inverse” of <i>A</i>. What exactly do we mean by “inverse”?
+<div class="definition" id="d:inverse"><dl class="definition"><dt>Definition</dt><dd>
+Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix.  If there is an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>B</i> such that
+<div class="equation"><i>B</i><i>A</i>&nbsp;= <i>A</i><i>B</i>&nbsp;= <i>I</i>,</div>
+where <i>I</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> identity matrix (in which every entry on the main diagonal is 1 and all other entries are 0), then <i>B</i> is an <span class="definition">inverse</span> of <i>A</i>, denoted <i>A</i><sup>−1</sup>.
+</dd></dl></div>
+
+This definition does not rule out the possibility that a matrix has more than one inverse.  But in fact, as the following result shows, any matrix has at most one inverse.
+
+<div class="result" id="p:uniqueInverse"><dl class="result"><dt>Proposition 1.2.2 <button class="proofButton" id="uniqueInverse" onclick="javascript:showProof(&#39;uniqueInverse&#39;)" style="display: none;">proof</button></dt><dd>
+A square (<i>n</i>&nbsp;×&nbsp;<i>n</i>) matrix has at most one <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:uniqueInverse" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;uniqueInverse&#39;)">hide</button></dt><dd>
+Let <i>A</i> be a <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, and suppose that <i>B</i> and <i>C</i> are both inverses of <i>A</i>.  Then by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">definition of an inverse</a>, <i>B</i><i>A</i>&nbsp;= <i>A</i><i>B</i>&nbsp;= <i>I</i> and <i>C</i><i>A</i>&nbsp;= <i>A</i><i>C</i>&nbsp;= <i>I</i>, where <i>I</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> identity matrix.  Thus
+<i>C</i>&nbsp;= <i>C</i><i>I</i>&nbsp;= <i>C</i>(<i>A</i><i>B</i>)&nbsp;= (<i>C</i><i>A</i>)<i>B</i>&nbsp;= <i>I</i><i>B</i>&nbsp;= <i>B</i>, so that <i>C</i> and <i>B</i> are the same.
+</dd></dl></div>
+
+The next result gives a useful condition for a matrix to have an inverse.
+<div class="result" id="p:nonsingularInverse"><dl class="result"><dt>Proposition 1.2.3 <button class="proofButton" id="nonsingularInverse" onclick="javascript:showProof(&#39;nonsingularInverse&#39;)" style="display: none;">source</button></dt><dd>
+A matrix has an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a> if and only if it is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:nonsingularInverse" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;nonsingularInverse&#39;)">hide</button></dt><dd>
+For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.3 on p.&nbsp;732.
+</dd></dl></div>
+
+And here is an explicit formula for the inverse.
+<div class="result" id="p:inverse"><dl class="result"><dt>Proposition 1.2.4 <button class="proofButton" id="inverse" onclick="javascript:showProof(&#39;inverse&#39;)" style="display: none;">source</button></dt><dd>
+The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix for which the (<i>i</i>,<i>j</i>)th component is
+<div class="equation">(−1)<sup><i>i</i>+<i>j</i></sup>|<i>A</i><sub><i>j</i><i>i</i></sub>|/|<i>A</i>|,</div>
+where <i>A</i><sub><i>j</i><i>i</i></sub> is the matrix obtained by deleting the <i>j</i>th row and <i>i</i>th column of <i>A</i>.
+</dd></dl></div>
+<div class="hiddenProof" id="f:inverse" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;inverse&#39;)">hide</button></dt><dd>
+For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.7 (which follows from Theorem&nbsp;26.6) on p.&nbsp;736.
+</dd></dl></div>
+
+Notice that the (<i>i</i>,<i>j</i>)th component of the inverse involves the determinant of the matrix <i>A</i><sub><i>j</i><i>i</i></sub>, <i>not</i> the determinant of the matrix <i>A</i><sub><i>i</i><i>j</i></sub>.
+
+<div class="example" id="m:2by2Inverse"><dl class="example"><dt>Example 1.2.6</dt><dd>
+For the 2&nbsp;×&nbsp;2 matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i>A</i>&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell"><i>a</i></td>
+  <td class="cell"><i>b</i></td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell"><i>c</i></td>
+  <td class="cell"><i>d</i></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+we have |<i>A</i><sub>11</sub>|&nbsp;= <i>d</i>, |<i>A</i><sub>12</sub>|&nbsp;= <i>c</i>, |<i>A</i><sub>21</sub>|&nbsp;= <i>b</i>, and |<i>A</i><sub>22</sub>|&nbsp;= <i>a</i>, and the determinant is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>.  Thus if <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>&nbsp;≠ 0 then the inverse of <i>A</i> is
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><table class="frac"> <tbody><tr>
+  <td class="fracTop">1 </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i> </td>
+</tr>
+</tbody></table> </td>
+      <td class="mathAlign2">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+
+<td class="cell"><i>d</i></td>
+  <td class="cell">−<i>b</i></td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+ <tr>
+  <td class="cell">−<i>c</i></td>
+  <td class="cell"><i>a</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+(You can check that the product of the matrix and its inverse is the identity matrix.)  
+</dd></dl></div>
+
+<div class="example" id="m:3by3Inverse"><dl class="example"><dt>Example 1.2.7</dt><dd>
+The inverse of the matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i>A</i>&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
+
+<td class="cell"><i>a</i></td>
+  <td class="cell"><i>b</i></td>
+  <td class="cell"><i>c</i></td>
+  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
+</tr>
+ <tr>
+  <td class="cell"><i>d</i></td>
+  <td class="cell"><i>e</i></td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
+</tr>
+
+<tr>
+  <td class="cell"><i>g</i></td>
+  <td class="cell"><i>h</i></td>
+  <td class="cell"><i>i</i></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+is
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><table class="frac"> <tbody><tr>
+  <td class="fracTop">1 </td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> |<i>A</i>| </td>
+</tr>
+</tbody></table> </td>
+      <td class="mathAlign2">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
+
+<td class="cell">|<i>A</i><sub>11</sub>|</td>
+  <td class="cell">−|<i>A</i><sub>21</sub>|</td>
+  <td class="cell">|<i>A</i><sub>31</sub>|</td>
+  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell">−|<i>A</i><sub>12</sub>|</td>
+  <td class="cell">|<i>A</i><sub>22</sub>|</td>
+  <td class="cell">−|<i>A</i><sub>32</sub>|</td>
+</tr>
+ <tr>
+  <td class="cell">|<i>A</i><sub>13</sub>|</td>
+  <td class="cell">−|<i>A</i><sub>23</sub>|</td>
+  <td class="cell">|<i>A</i><sub>33</sub>|</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+if |<i>A</i>|&nbsp;≠ 0.  We have |<i>A</i><sub>11</sub>|&nbsp;= <i>e</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>h</i>, |<i>A</i><sub>21</sub>|&nbsp;= <i>b</i><i>i</i>&nbsp;− <i>c</i><i>h</i>, |<i>A</i><sub>31</sub>|&nbsp;= <i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;− <i>c</i><i>e</i>, |<i>A</i><sub>12</sub>|&nbsp;= <i>d</i><i>i</i>&nbsp;−
+<i style="padding-right:0.2em;">f</i><i>g</i>, |<i>A</i><sub>22</sub>|&nbsp;= <i>a</i><i>i</i>&nbsp;− <i>c</i><i>g</i>, |<i>A</i><sub>32</sub>|&nbsp;= <i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;− <i>c</i><i>d</i>, |<i>A</i><sub>13</sub>|&nbsp;= <i>d</i><i>h</i>&nbsp;− <i>e</i><i>g</i>, |<i>A</i><sub>23</sub>|&nbsp;= <i>a</i><i>h</i>&nbsp;− <i>b</i><i>g</i>, and
+|<i>A</i><sub>33</sub>|&nbsp;= <i>a</i><i>e</i>&nbsp;− <i>b</i><i>d</i>.  (Again, you can check that the product of the matrix and its inverse is the identity matrix.)
+</dd></dl></div>
+
+<h3>Rank</h3>
+The “rank” of a matrix is usually defined as the maximal number of linearly independent column vectors in the matrix.  But to give this definition, I would need to define the concept of linear independence, which is not otherwise needed in this tutorial.  So instead I give a definition that uses only concepts defined so far.  (This definition is usually given as a result, following a
+definition in terms of linear independence.)  Note that the matrix in the definition is not required to be square.
+<div class="definition" id="d:rank"><dl class="definition"><dt>Definition</dt><dd>
+The <span class="definition">rank</span> of a matrix <i>A</i> is the number of rows and columns in the largest square matrix obtained by deleting rows and columns of <i>A</i> that has a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> different from 0.
+</dd></dl></div>
+An immediate consequence of this definition is that the rank of an <i>n</i>&nbsp;×&nbsp;<i>n</i> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> matrix is <i>n</i>.
+<div class="example" id="m:rank1"><dl class="example"><dt>Example 1.2.8</dt><dd>
+The rank of the matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell">1</td>
+  <td class="cell">0</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell">1</td>
+  <td class="cell">0</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+is 1 because the determinant of the matrix is 0 and the determinant of the 1&nbsp;×&nbsp;1 matrix obtained by deleting the second row and second column is 1&nbsp;≠ 0.
+</dd></dl></div>
+<div class="example" id="m:rank2"><dl class="example"><dt>Example 1.2.9</dt><dd>
+The rank of the matrix
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell">1</td>
+  <td class="cell">0</td>
+  <td class="cell">2</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell">0</td>
+  <td class="cell">2</td>
+  <td class="cell">4</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+is 2 because the determinant of the matrix obtained by deleting the last column (i.e. all but the first two rows and columns) is 2&nbsp;≠ 0.
 </dd></dl></div>
 
 
@@ -660,7 +692,7 @@ In conclusion, whether the roots of the characteristic equation are real or comp
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="87">
+            <input type="hidden" name="pageId" value="4">
 
             
 
@@ -701,7 +733,7 @@ In conclusion, whether the roots of the characteristic equation are real or comp
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-06-07.
+              First posted 1997.  This version 2022-08-18.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
