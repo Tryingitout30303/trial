@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 5.1 Necessary conditions for an interior optimum</title>
+    <title>Mathematical methods for economic theory: 5.2 Local optima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: necessary conditions for an interior optimum">
-        <meta name="keywords" content="mathematical methods, economic theory, optimization, interior optimum, necessary conditions">
+            <meta name="description" content="Mathematical methods for economic theory: local optima">
+        <meta name="keywords" content="mathematical methods, economic theory, local optima, optimization">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -202,7 +202,7 @@
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Optimization: interior optima"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Optimization: interior optima"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/29"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Necessary conditions"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,7 +222,7 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/30"><img alt="Next page" src="./index_files/next.gif" height="20" title="Local optima"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/31"><img alt="Next page" src="./index_files/next.gif" height="20" title="Global optima"></a>
                             <span class="hideable">
                                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/32"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Equality constraints"></a>
                                 </span>
@@ -268,302 +268,591 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>5.1 Necessary conditions for an interior optimum</h2>
+            <h2>5.2 Local optima</h2>
         </header>
 
 	<h3>One variable</h3>
-From your previous study of mathematics, you probably know that if the function <i style="padding-right:0.2em;">f</i> of a single variable is differentiable and <i>I</i> is an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF">interval</a> of numbers then there is a relationship between the solutions of the problem
-<div class="equation">max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>I</i></div>
-and the points in <i>I</i> at which the first derivative of <i style="padding-right:0.2em;">f</i> is zero—that is, the stationary points of <i style="padding-right:0.2em;">f</i>.
-<div class="definition" id="d:stationaryPoint1"><dl class="definition"><dt>Definition</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of a single variable</a> defined on a set <i>S</i>. A point <i>x</i>&nbsp;∈ <i>S</i> at which <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable</a> and <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0 is a <span id="stationaryPoints"><span class="definition">stationary point
-of</span></span> <i style="padding-right:0.2em;">f</i>.
-</dd></dl></div>
-What precisely is this relationship?  Consider the cases in the three figures.
-<p>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
-	
-     <path d="M 5,75 
-	    C 105,55 73.535534,-67.525126 195,70" style="fill:none;stroke:#ff0000;stroke-width:2;"></path>
-	 
-	 <path d="M110,10
-	    L110,80" class="guideline"></path>
-	 
-     <text x="5" y="95" style="text-anchor:middle;"><tspan font-style="italic">a</tspan></text>
-     <text x="195" y="95" style="text-anchor:middle;"><tspan font-style="italic">b</tspan></text>
-     <text x="110" y="95" style="text-anchor:middle;"><tspan font-style="italic">x</tspan>*</text>
-     <text x="165" y="20" style="text-anchor:middle;fill:#ff0000;"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)</text>
+Occasionally we are interested only in the <i>local</i> maximizers or minimizers of a function.  We may be able to tell whether a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#stationaryPoints">stationary point</a> point is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a>, a local minimizer, or neither by examining the second derivative of the function at the stationary point.
 
-	 
-	   </svg>
-&nbsp;&nbsp;
-
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
-	
-  <path d="M 80,80 80,3.1464176" class="guideline"></path>
-	 
-  <path d="M 115,80 115,36.4018" class="guideline"></path>
-  
-  <path d="M 136,80 136,29" class="guideline"></path>
-  
-  <path d="M 195,80 195,70" class="guideline"></path>
-
-	 <path d="M 5,75 C 47.921159,56.698727 55.995913,11.527694 77.363718,3.097309 92.39408,-2.832722 95.043772,48.18612 126.19416,31.83633 145.61001,21.645607 167.59115,39.056464 195,70" style="fill:none;stroke:#ff0000;stroke-width:2"></path>
-  <text x="5" y="95" style="text-anchor:middle;">
-    <tspan font-style="italic">a</tspan>
-  </text>
-  
-  <text x="195" y="95" style="text-anchor:middle;">
-    <tspan font-style="italic">b</tspan>
-  </text>
-
-  <text x="80" y="95" style="text-anchor:middle">
-     <tspan style="font-style:italic">x</tspan>*
-  </text>
-  
-  <text x="165" y="25" style="text-anchor:middle;fill:#ff0000;">
-	 <tspan style="font-style:italic">f</tspan>(<tspan font-style="italic">x</tspan>)
-  </text>
-  
-  <text x="115" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">x'</tspan>
-  </text>
-
-  <text x="136" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">x''</tspan>
-  </text>
-</svg>
-&nbsp;&nbsp;
-
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="100">
-	
-  <path d="M 151,80 151,70" class="guideline"></path>
-	 
-  <path d="M 65,80 65,41.386294" class="guideline"></path>
-  
-  <path d="M 195,80, 195,41.386293" class="guideline"></path>
-
-  <path d="M 8,80 8,9.3769472" class="guideline"></path>
-
-	 <path d="M 8,9.2679127 
-	    C 30.16415,37.072559 41.044339,41 65,41 118.75524,41 120.90047,71 151,71 173.04371,71 181.60984,54.944314 195,41.962617" style="fill:none;stroke:#ff0000;stroke-width:2"></path>
-  <text x="8" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">a</tspan>
-  </text>
-  <text x="195" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">b</tspan>
-  </text>
-  <text x="65" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">x'</tspan>
-  </text>
-  
-  <text x="125" y="45" style="text-anchor:middle;fill:#ff0000;">
-	 <tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)
-  </text>
-
-  <text x="151" y="95" style="text-anchor:middle">
-    <tspan style="font-style:italic">x''</tspan>
-  </text>
-</svg></p><ul>
-   <li>The function in the left figure has a unique stationary point <i>x</i>*, which is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#globalMaximizer">global maximizer</a> of the function.
-   </li><li>The function in the middle figure has three stationary points, <i>x</i>*, <i>x</i>', and <i>x</i>".  The point <i>x</i>* is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#globalMaximizer">global maximizer</a> of the function, while <i>x</i>' is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local</a> (though not global) minimizer and <i>x</i>" is a local (but not global) maximizer.
-   </li><li>The function in the right figure has two stationary points, <i>x</i>' and <i>x</i>".  The point <i>x</i>' is neither a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer</a> nor a local minimizer; <i>x</i>" is a global minimizer.
-</li></ul>
-We see that
+<div class="result" id="p:LocalOpt1"><dl class="result"><dt>Proposition 5.2.1 (Second-order conditions for local optimum of function of one variable) &nbsp;<span id="LocalOpt1" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;LocalOpt1&#39;)" class="showProof">proof</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of a single variable</a> with a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:cts">continuous</a> second derivative, defined on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:interval">interval</a> <i>I</i>.  Suppose that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0 for some <i>x</i>* in the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:intervalInterior">interior</a> of <i>I</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPoint1">stationary point</a> of <i style="padding-right:0.2em;">f</i>).
 <ul>
-   <li>a stationary point is not necessarily a global maximizer, or even a local maximizer, or even a local optimizer of any sort (maximizer or minimizer) (consider <i>x</i>' in the right-hand figure)
-   </li><li>a global maximizer is not necessarily a stationary point (consider <i>a</i> in the right-hand figure).
-</li></ul>
-
-That is, being a stationary point is <b>neither</b> a necessary condition nor a sufficient condition for solving the problem.  So what <i>is</i> the relation between stationary points and maximizers?
-<p>
-Although a maximizer may not be a stationary point, the only case in which it is not is when it is one of the endpoints of the interval <i>I</i> on which <i style="padding-right:0.2em;">f</i> is defined.  That is, any point <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:intervalInterior"><i>interior</i></a> to this interval that is a maximizer must be a stationary point.
-</p><div class="result" id="p:NecCond1"><dl class="result"><dt>Proposition 5.1.1 <span id="NecCond1" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;NecCond1&#39;)" class="showProof">proof</a></span></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of a single variable</a> defined on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:interval">interval</a> <i>I</i>.  If a point <i>x</i> in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:intervalInterior">interior</a> of <i>I</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer or minimizer</a> of <i style="padding-right:0.2em;">f</i> and <i style="padding-right:0.2em;">f</i>
-is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable at</a> <i>x</i> then <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0.
-</dd></dl></div>
-<div class="hiddenProof" id="f:NecCond1" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;NecCond1&#39;)" class="showProof">hide</a></span></dt><dd>
-Suppose that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>.  Because <i>x</i> is in the interior of <i>I</i>, for <i>h</i>&nbsp;&gt; 0 sufficiently small we have <i>x</i>&nbsp;+ <i>h</i>&nbsp;∈ <i>I</i>, so that <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>) is defined.  Thus because <i>x</i> is a local maximizer of
-<i style="padding-right:0.2em;">f</i>, for small enough values of <i>h</i> we have <i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>)&nbsp;≤ <i style="padding-right:0.2em;">f</i>(<i>x</i>), and hence (<i style="padding-right:0.2em;">f</i>(<i>x</i>&nbsp;+&nbsp;<i>h</i>)&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i>(<i>x</i>))/<i>h</i>&nbsp;≤ 0.  The limit of
-left-hand side of this inequality as <i>h</i>&nbsp;→ 0 is <i style="padding-right:0.2em;">f</i>'(<i>x</i>) (by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">definition of a derivative</a>), so that <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;≤ 0.  A symmetric argument using <i>h</i>&nbsp;&lt; 0 shows that <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;≥ 0.  Thus
-<i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0.  A similar argument applies when <i>x</i> is a local minimizer of <i style="padding-right:0.2em;">f</i>.
-</dd></dl></div>
-This result gives a <i>necessary</i> condition for <i>x</i> to be a maximizer (or a minimizer) of <i style="padding-right:0.2em;">f</i>: <b>if</b> <i>x</i> is a maximizer (or a minimizer) of <i style="padding-right:0.2em;">f</i>, <i>x</i> is not an endpoint of <i>I</i>, and <i style="padding-right:0.2em;">f</i> is differentiable at <i>x</i>, <b>then</b> <i>x</i> is a
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#d:stationaryPoint1">stationary point</a> of <i style="padding-right:0.2em;">f</i>.  The condition is obviously <b>not</b> <i>sufficient</i> for a point to be a maximizer—the condition is satisfied also, for example, at points that are minimizers.  The first-derivative is involved, so we refer to the condition as a <span class="definition">first-order condition</span>.
-<p>
-Thus among all the points in the interval <i>I</i>, only the endpoints (if any) and the stationary points of <i style="padding-right:0.2em;">f</i> can be maximizers of <i style="padding-right:0.2em;">f</i>.  <span id="method">Most</span> functions have a relatively small number of stationary points, so the following procedure to find the maximizers is useful.
-</p><div class="procedure" id="r:nen1"><dl class="procedure"><dt>Procedure for solving a single-variable maximization problem on an interval</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLC#d:diff">differentiable function of a single variable</a> and let <i>I</i> be an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:interval">interval</a>.  If the problem max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>I</i> has a solution, it may be found as follows.
-<ul>
-   <li>Find all the stationary points of <i style="padding-right:0.2em;">f</i> (the points <i>x</i> for which <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 0) that are in <i>I</i>, and calculate the values of <i style="padding-right:0.2em;">f</i> at each such point.
-   </li><li>Find the values of <i style="padding-right:0.2em;">f</i> at the endpoints, if any, of <i>I</i>.
-   </li><li>Among all the points <i>x</i> that you have found, those at which the value <i style="padding-right:0.2em;">f</i>(<i>x</i>) is largest are the maximizers of <i style="padding-right:0.2em;">f</i>.
+   <li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0 then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≤ 0.
+   </li><li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≥ 0.
 </li></ul>
 </dd></dl></div>
-The variant of this procedure in which the last step involves choosing the points <i>x</i> at which <i style="padding-right:0.2em;">f</i>(<i>x</i>) is smallest may be used to solve the analogous minimization problem.
-<div class="example" id="m:nenm1"><dl class="example"><dt>Example 5.1.1</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ [−1,&nbsp;2].</div>
-This problem satisfies the conditions of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/OPN#p:EVT1">extreme value theorem</a>, and hence has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= <i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 2<i>x</i>, so the function has a single stationary point, <i>x</i>&nbsp;= 0, which is in the constraint set.  The value of the
-function at this point is <i style="padding-right:0.2em;">f</i>(0)&nbsp;= 0.  The values of <i style="padding-right:0.2em;">f</i> at the endpoints of the interval on which it is defined are <i style="padding-right:0.2em;">f</i>(−1)&nbsp;= 1 and <i style="padding-right:0.2em;">f</i>(2)&nbsp;= 4.  Thus the global maximizer of the function on [−1,&nbsp;2] is <i>x</i>&nbsp;= 2 and the
-global minimizer is <i>x</i>&nbsp;= 0.
-</dd></dl></div>
-<div class="example" id="m:ex1"><dl class="example"><dt>Example 5.1.2</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i></sub>&nbsp;−<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ (−∞,&nbsp;∞).</div>
-This problem does <i>not</i> satisfy the conditions of the extreme value theorem, so that the theorem does not tell us whether it has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= −<i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= −2<i>x</i>, so that the function has a single stationary point, <i>x</i>&nbsp;= 0, which is in
-the constraint set.  The constraint set has no endpoints, so <i>x</i>&nbsp;= 0 is the only candidate for a solution to the problem.  We conclude that <i>if the problem has a solution</i> then the solution is <i>x</i>&nbsp;= 0.  In fact, the problem <i>does</i> have a solution: we have <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;≤ 0 for all <i>x</i> and
-<i style="padding-right:0.2em;">f</i>(0)&nbsp;= 0, so the solution is indeed <i>x</i>&nbsp;= 0.
-</dd></dl></div>
-<div class="example" id="m:ex2"><dl class="example"><dt>Example 5.1.3</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i></sub>&nbsp;<i>x</i><sup>2</sup> subject to <i>x</i>&nbsp;∈ (−∞,&nbsp;∞).</div>
-Like the problem in the previous example, this problem does <i>not</i> satisfy the conditions of the extreme value theorem, so that the theorem does not tell us whether it has a solution.  Let <i style="padding-right:0.2em;">f</i>(<i>x</i>)&nbsp;= <i>x</i><sup>2</sup>.  We have <i style="padding-right:0.2em;">f</i>'(<i>x</i>)&nbsp;= 2<i>x</i>, so that the function has a single stationary point,
-<i>x</i>&nbsp;= 0, which is in the constraint set.  The constraint set has no endpoints, so <i>x</i>&nbsp;= 0 is the only candidate for a solution to the problem.  We conclude that <i>if the problem has a solution</i> then the solution is <i>x</i>&nbsp;= 0.  In fact, the problem does <i>not</i> have a solution: the function <i style="padding-right:0.2em;">f</i> increases without bound as <i>x</i>
-increases (or decreases) without bound.
-</dd></dl></div>
-
-<h3>Many variables</h3>
-Consider a maximum of a function of two variables.  At this maximum the function must decrease (or stay the same) in every direction (otherwise the point would not be a maximum!).  In particular, the maximum must be a maximum along a line parallel to the <i>x</i>-axis and also a maximum along a line parallel to the <i>y</i>-axis.  Hence, given the result for a function of a single variable, at the
-maximum both the partial derivative with respect to <i>x</i> and the partial derivative with respect to <i>y</i> must be zero.  Extending this idea to many dimensions gives us the following result, where <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub> is the partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument.
-<div class="result" id="p:NecCondn"><dl class="result"><dt>Proposition 5.1.2 <span id="NecCondn" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;NecCondn&#39;)" class="showProof">proof</a></span></dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of <i>n</i> variables</a> defined on the set <i>S</i>.  If the point <i>x</i> in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">interior</a> of <i>S</i> is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/DEF#d:LocalMax">local maximizer</a> or minimizer of <i style="padding-right:0.2em;">f</i> and the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:partialDeriv">partial derivative</a> of
-<i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument exists at <i>x</i> then
-<div class="equation"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0.</div>
-In particular, if all of the partial derivatives of <i style="padding-right:0.2em;">f</i> exist at <i>x</i> then
-<div class="equation"><i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>j</i></sub>(<i>x</i>)&nbsp;= 0 for <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>.</div>
-</dd></dl></div>
-<div class="hiddenProof" id="f:NecCondn" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;NecCondn&#39;)" class="showProof">hide</a></span></dt><dd>
-Suppose that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>.  Because <i>x</i> is in the interior of <i>S</i>, for some <i>r</i>&nbsp;&gt; 0 the set of all <i>n</i>-vectors <i>h</i> with ∥<i>x</i>&nbsp;−&nbsp;<i>h</i>∥&nbsp;&lt; <i>r</i> is a subset of <i>S</i>.  Define the function <i>g</i> of a single variable on the interval
-(<i>x</i><sub><i>i</i></sub>&nbsp;−&nbsp;<i>r</i>,&nbsp;<i>x</i><sub><i>i</i></sub>&nbsp;+ <i>r</i>) by <i>g</i>(<i>z</i><sub><i>i</i></sub>)&nbsp;=
-<nobr><span class="nobr"><i style="padding-right:0.2em;">f</i>(<i>x</i><sub>1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>i</i>−1</sub>,&nbsp;<i>z</i><sub><i>i</i></sub>,&nbsp;<i>x</i><sub><i>i</i>+1</sub>,&nbsp;...,&nbsp;<i>x</i><sub><i>n</i></sub>)</span></nobr>.  The fact that the partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument exists at
-<i>x</i> means that <i>g</i> is differentiable at <i>x</i><sub><i>i</i></sub>, by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:partialDeriv">definition of a partial derivative</a>, and <i>g</i>'(<i>x</i><sub><i>i</i></sub>)&nbsp;= <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>).  Also, given that <i>x</i> is a local maximizer of <i style="padding-right:0.2em;">f</i>,
-<i>x</i><sub><i>i</i></sub> is a local maximizer of <i>g</i>.  Thus by <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#p:NecCond1">a previous result</a>, <i>g</i>'(<i>x</i><sub><i>i</i></sub>)&nbsp;= 0.  Thus <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0.  A similar argument applies when <i>x</i> is a local minimizer of <i style="padding-right:0.2em;">f</i>.
-</dd></dl></div>
-As for the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#p:NecCond1">analogous result for functions of a single variable</a>, this result gives a <i>necessary</i> condition for a maximum (or minimum): <i>if</i> a point is a maximizer <i>then</i> it satisfies the condition.  As before, the conditions are called <span class="definition">first-order conditions</span> and a point that satisfies them is a “stationary point”.
-<div class="definition" id="d:stationaryPointN"><dl class="definition"><dt>Definition</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/IAF#d:function">function of <i>n</i> variables</a> defined on a set <i>S</i>. A point <i>x</i>&nbsp;∈ <i>S</i> at which <i style="padding-right:0.2em;">f</i> is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:diff">differentiable</a> and <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0 for <i>i</i>&nbsp;= 1, ..., <i>n</i> is a
-<span id="stationaryPointManyVar"><span class="definition">stationary point of</span></span> <i style="padding-right:0.2em;">f</i>.
-</dd></dl></div>
-
-As for functions of a single variable, the result tells us that the only points that can be global maximizers are <i>either</i> stationary points <i>or</i> points in <i>S</i> that are not interior points of <i>S</i>.  Thus the following procedure locates all global maximizers of a differentiable function.
-<div class="procedure" id="r:nenn"><dl class="procedure"><dt>Procedure for solving a many-variable maximization problem on a set</dt><dd>
-Let <i style="padding-right:0.2em;">f</i> be a differentiable function of <i>n</i> variables and let <i>S</i> be a set of <i>n</i>-vectors.  If the problem max<sub><i>x</i></sub><i style="padding-right:0.2em;">f</i>(<i>x</i>) subject to <i>x</i>&nbsp;∈ <i>S</i> has solutions, they may be found as follows.
-<ul>
-   <li>Find all the stationary points of <i style="padding-right:0.2em;">f</i> (the points <i>x</i> for which <i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>)&nbsp;= 0 for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>) in <i>S</i>.
-   </li><li>Among the points in <i>S</i> that are not <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">interior</a> points of <i>S</i>, find those at which the value of <i style="padding-right:0.2em;">f</i> is largest.
-   </li><li>Among all the points you have found, the ones at which the value of <i style="padding-right:0.2em;">f</i> is largest are the maximizers of <i style="padding-right:0.2em;">f</i>.
-</li></ul>
-</dd></dl></div>
-The variant of this procedure in which “largest” is replaced by “smallest” in the second and third steps locates the solutions of the analogous minimization problem.
+<div class="hiddenProof" id="f:LocalOpt1" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt1&#39;)" class="showProof">hide</a></span></dt><dd>
+To prove the first point, note that given that <i style="padding-right:0.2em;">f</i>" is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:diff">derivative</a> of <i style="padding-right:0.2em;">f</i>', we have
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;− <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)
+</td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> <i>h</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+Given <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0, we thus have
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)
+</td>
+</tr>
+<tr>
+  <td class="fracRule"></td>
+</tr>
+<tr>
+  <td class="fracBottom"> <i>h</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+Hence if <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0, there exists ε&nbsp;&gt; 0 such that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;&gt; 0 for −ε&nbsp;&lt; <i>h</i>&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)&nbsp;&lt; 0 for 0&nbsp;&lt; <i>h</i>&nbsp;&lt; ε.  Thus
+<i style="padding-right:0.2em;">f</i> is increasing on (<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*) and decreasing on (<i>x</i>*,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), so that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.
 <p>
-This method is much less generally useful than the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/t#method">analogous method for functions of a single variable</a> because for many problems finding the largest values of <i style="padding-right:0.2em;">f</i> at the points in <i>S</i> that are not interior points of <i>S</i> is difficult.  For this reason, I devote several subsequent pages to better methods for finding solutions of
-maximization problems with constraints.
+The proof of the third point is similar.
 </p><p>
-Here are some examples, however, where the method may be fairly easily applied.  For convenience, for any sete <i>S</i>, I refer to the set of points in <i>S</i> that are not interior points of <i>S</i> as the <i>boundary</i> of <i>S</i>.  Note that this usage is a little nonstandard, and that the boundary of a set defined in this way does <i>not</i> necessarily consist of the
-<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/nen/CLN#d:interior">boundary points</a> of the set, because the boundary points of a set are not necessarily members of the set.  For example, the boundary of (0,&nbsp;1), as I am using the term, is empty, but 0 and 1 are its boundary points.
-</p><div class="example" id="m:ex3"><dl class="example"><dt>Example 5.1.4</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i>,<i>y</i></sub>[−(<i>x</i>&nbsp;− 1)<sup>2</sup>&nbsp;− (<i>y</i>&nbsp;+ 2)<sup>2</sup>] subject to −∞&nbsp;&lt; <i>x</i>&nbsp;&lt; ∞ and −∞&nbsp;&lt; <i>y</i>&nbsp;&lt; ∞.</div>
-This problem does <i>not</i> satisfy the conditions of the extreme value theorem (because the constraint set is not bounded), so the theorem does not tell us whether the problem has a solution.  The first-order conditions are
-<div class="equation">
+To prove the second point, suppose that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.  If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then from the third point, <i>x</i>* is also a local minimizer of <i style="padding-right:0.2em;">f</i>.  But then for some ε&nbsp;&gt; 0, <i style="padding-right:0.2em;">f</i> is constant on the interval
+(<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), in which case <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0, contradicting <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0.
+</p><p>
+The proof of the fourth point is similar.
+</p></dd></dl></div>
+If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0 then we don't know, without further investigation, whether <i>x</i>* is a local maximizer or local minimizer of <i style="padding-right:0.2em;">f</i>, or neither (check the functions <i>x</i><sup>4</sup>, −<i>x</i><sup>4</sup>, and <i>x</i><sup>3</sup> at <i>x</i>&nbsp;= 0).  In this case, information about the signs of the higher
+order derivatives may tell us whether a point is a local maximum or a local minimum.  In practice, however, these conditions are rarely useful; I do not discuss them.
+<h3>Many variables</h3>
+As for a function of a single variable, a stationary point of a function of many variables may be a local maximizer, a local minimizer, or neither, and we may be able to distinguish the cases by examining the second-order derivatives of the function at the stationary point.
+<p>
+Let (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) be a stationary point of the function <i style="padding-right:0.2em;">f</i> of two variables.  Suppose it is a local maximizer.  Then certainly it must be a maximizer along the two lines through (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) parallel to the axes.  Using the theory for functions of a single variable, we conclude that
+</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0,</div>
+where <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> denotes the second partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument, then with respect to its <i>j</i>th argument.
+<p>
+However, even the variant of this condition in which both inequalities are strict is not <i>sufficient</i> for (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) to be a maximizer, as the following example shows.
+</p><div class="example" id="m:loc1"><dl class="example"><dt>Example 5.2.1</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 3<i>x</i><i>y</i>&nbsp;− <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>.  The first-order conditions are
+<p>
+</p><div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">−2(<i>x</i>&nbsp;− 1)&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;3<i>y</i>&nbsp;− 2<i>x</i>&nbsp;= 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-−2(<i>y</i>&nbsp;+ 2)&nbsp;</td>
-      <td class="mathAlign2">= 0,</td>
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;3<i>x</i>&nbsp;− 2<i>y</i>&nbsp;= 0</td>
 </tr>
 </tbody></table></div>
-which have a unique solution, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;−2).  The constraint set has no boundary points, so we conclude that <i>if the problem has a solution</i>, this solution is (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;−2).  In fact, the problem does have a solution, because the value of the objective function at (1,&nbsp;−2) is 0, and its value at any point is
-nonpositive.
-</dd></dl></div>
-<div class="example" id="m:ex4"><dl class="example"><dt>Example 5.1.5</dt><dd>
-Consider the problem
-<div class="equation">max<sub><i>x</i>,<i>y</i></sub>[(<i>x</i>&nbsp;− 1)<sup>2</sup>&nbsp;+ (<i>y</i>&nbsp;− 1)<sup>2</sup>] subject to 0&nbsp;≤ <i>x</i>&nbsp;≤ 2 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3.</div>
-This problem satisfies the conditions of the extreme value theorem, and hence has a solution.  The first-order conditions are
-<div class="equation">
+so that <i style="padding-right:0.2em;">f</i> has a single stationary point, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0).  Now,
+<p>
+</p><div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">2(<i>x</i>&nbsp;− 1)&nbsp;</td>
-      <td class="mathAlign2">= 0</td>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0, 0)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0</td>
 </tr>
  <tr>
   <td class="alignRight">
-2(<i>y</i>&nbsp;− 1)&nbsp;</td>
-      <td class="mathAlign2">= 0,</td>
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0, 0)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0.</td>
 </tr>
 </tbody></table></div>
-which have a unique solution, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (1,&nbsp;1), which is in the constraint set.  The value of the objective function at this point is 0.
+But (0, 0) is <b>not</b> a local maximizer: at (0,&nbsp;0) the value of the function is 0, but at (ε,&nbsp;ε) with ε&nbsp;&gt; 0 the value of the function is 3ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;= ε<sup>2</sup>, which is positive (and hence exceeds <i style="padding-right:0.2em;">f</i>(0,&nbsp;0)&nbsp;= 0) no matter how small
+ε is.
 <p>
-Now consider the behavior of the objective function on the boundary of the constraint set, which is a rectangle.
-</p><ul>
-   <li>If <i>x</i>&nbsp;= 0 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3 then the value of the objective function is 1&nbsp;+ (<i>y</i>&nbsp;− 1)<sup>2</sup>.  The problem of finding <i>y</i> to maximize this function subject to −1&nbsp;≤ <i>y</i>&nbsp;≤ 3 satisfies the conditions of the extreme value theorem, and thus has a solution.  The first-order condition is
-2(<i>y</i>&nbsp;− 1)&nbsp;= 0, which has a unique solution <i>y</i>&nbsp;= 1, which is in the constraint set.  The value of the objective function at this point is 1.  On the boundary of the set {(0,&nbsp;<i>y</i>):&nbsp;−1&nbsp;≤ <i>y</i>&nbsp;≤ 3}—namely at the points (0,&nbsp;−1) and (0,&nbsp;3)—the value of the
-objective function is 5.  Thus on this part of the boundary, the points (0,&nbsp;−1) and (0,&nbsp;3) are the only candidates for a solution of the original problem.
-   </li><li>A similar analysis leads to the conclusion that the points (2,&nbsp;−1) and (2,&nbsp;3) are the only candidates for a maximizer on the part of the boundary for which <i>x</i>&nbsp;= 2 and −1&nbsp;≤ <i>y</i>&nbsp;≤ 3, the points (0,&nbsp;−1) and (2,&nbsp;−1) are the only candidates for a maximizer on the part of the boundary for which 0&nbsp;≤
-<i>x</i>&nbsp;≤ 2 and <i>y</i>&nbsp;= −1, and the points (0,&nbsp;3) and (2,&nbsp;3) are the only candidates for a maximizer on the part of the boundary for which 0&nbsp;≤ <i>x</i>&nbsp;≤ 2 and <i>y</i>&nbsp;= 3.
-   </li><li>The value of the objective function at all these candidates for a solution on the boundary of the constraint set is 5.
+The point (0,&nbsp;0) is a col.  If you walk due north or due south, you descend; if you walk due east or due west, you also descend.  But if you walk northeast or southwest, you climb mountains.  The <a href="https://openstreetmap.org/node/479370430" target="_blank">Col d'Arratille</a> is an example.
+</p><p>
+The function is plotted in the following figure.  Rotate the figure by dragging your mouse.  (Rotation on a touch device isn't possible.)
+</p><p>
+
+	</p><div id="surfacePlotDiv01" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	<div id="surfacePlot1" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 20) / 20;
+						var y = (j - 20) / 20;
+						var value = (3 * x * y - Math.pow(x, 2) - Math.pow(y, 2));
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv01"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+				
+				var startXAngle_GL = -50;
+				var startYAngle_GL = -42;
+				
+				// Options for the basic canvas pliot.
+				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
+				
+				// Options for the webGL plot.
+				var xLabels = [-1, -0.5, 0, 0.5, 1];
+				var yLabels = [-1, -0.5, 0, 0.5, 1];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv01");
+				
+				// Options common to both types of plot.
+				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
+					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
+					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
+This example shows that we cannot determine the nature of a stationary point of a function <i style="padding-right:0.2em;">f</i> of two variables by looking only at the partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub> and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub> at the stationary point.
+<p>
+The next result gives a condition that involves the definiteness of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of the function, and thus all the cross-partials.  The result assumes that all the second-order partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> are continuous for all <i>x</i> in some set <i>S</i>, so that by
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#p:Young">Young's theorem</a> we have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub>(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>j</i><i>i</i></sub>(<i>x</i>) for all <i>x</i>&nbsp;∈ <i>S</i>, and hence the Hessian is <b>symmetric</b>.  (The condition on <i style="padding-right:0.2em;">f</i> is
+satisfied, for example, by any polynomial.)
+</p><div class="result" id="p:LocalOpt"><dl class="result"><dt>Proposition 5.2.2 (Second-order conditions for local optimum of function of many variables) &nbsp;<span id="LocalOpt" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;LocalOpt&#39;)" class="showProof">source</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of <i>n</i> variables</a> with continuous <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:partialDeriv">partial derivatives</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:crossPartial">cross partial derivatives</a>, defined on the set <i>S</i>.  Suppose that
+<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;= 1, ..., <i>n</i> for some <i>x</i>* in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:interior">interior</a> of <i>S</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPointN">stationary point</a> of <i style="padding-right:0.2em;">f</i>).  Let <i style="padding-right:0.2em;">H</i> be the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of <i style="padding-right:0.2em;">f</i>.
+<ul>
+   <li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative definite</a> then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative semidefinite</a>.
+   </li><li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite.
 </li></ul>
-Finally, comparing the values of the objective function at the candidates for a solution that are (a)&nbsp;interior to the constraint set (namely (1,&nbsp;1)) and (b)&nbsp;on the boundary of the constraint set, we conclude that the problem has four solutions, (0,&nbsp;−1), (0,&nbsp;3), (2,&nbsp;−1), and (2,&nbsp;3).
 </dd></dl></div>
-<div class="example" id="m:FindOpt"><dl class="example"><dt>Example 5.1.6</dt><dd>
-Consider the problems
-<div class="equation">max<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1 subject to <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1</div>
-and
-<div class="equation">min<sub><i>x</i>,<i>y</i></sub>&nbsp;<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1 subject to <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1.</div>
-In each case the constraint set, {(<i>x</i>,&nbsp;<i>y</i>): <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;≤ 1}, is compact.  The objective function is continuous, so by the extreme value theorem, the problem has a solution.
-<p>
-We apply the procedure as follows, denoting the objective function by <i style="padding-right:0.2em;">f</i>.
-</p><ul>
-   <li>We have <i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>x</i> and <i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2<i>y</i>&nbsp;+ 1, so the stationary points are the solutions of 2<i>x</i>&nbsp;= 0 and 2<i>y</i>&nbsp;+ 1&nbsp;= 0.  Thus the function has a single stationary point,
-(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;−1/2), which is in the constraint set.  The value of the function at this point is <i style="padding-right:0.2em;">f</i>(0,&nbsp;−1/2)&nbsp;= −5/4.
-   </li><li>The boundary of the constraint set is the set of points (<i>x</i>,&nbsp;<i>y</i>) such that <i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;= 1, as shown in the following figure.
-<p>
+<div class="hiddenProof" id="f:LocalOpt" style="display: block;"><dl class="proof"><dt>Source &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt&#39;)" class="showProof">hide</a></span></dt><dd>
+Proofs may be found in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#Sydsaeter1981">Sydsæter</a> (1981) (Theorem&nbsp;5.11, p.&nbsp;243) and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994">Simon and Blume</a> (1994) (Theorem&nbsp;30.10, p.&nbsp;836).
+</dd></dl></div>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="200">
-
-     <!-- axes -->
-	 <path d="M0,80
-		      L70,80
-			  M90,80
-			  L160,80
-			  M80,0
-			  L80,70
-			  M80,90
-			  L80,160" class="axis"></path>
-     <text x="160" y="95" style="text-anchor:end"><tspan font-style="italic">x</tspan> →</text>
-     <text x="90" y="25" style="text-anchor:middle"><tspan font-style="italic">y</tspan></text>
-     <text x="90" y="12" style="text-anchor:middle">↑</text>
-
-     <!-- label 0 -->
-     <text x="80" y="85" style="text-anchor:middle; fill:#000000;">0</text>
-
-     <!-- labels on y-axis 1, -1 -->
-     <text x="75" y="35" style="text-anchor:end; fill:#000000;">1</text>
-     <text x="75" y="135" style="text-anchor:end; fill:#000000;">−1</text>
-
-     <!-- labels on x-axis 1, -1 -->
-     <text x="130" y="75" style="text-anchor:middle; fill:#000000;">1</text>
-     <text x="30" y="75" style="text-anchor:middle; fill:#000000;">−1</text>
-
-	 <circle cx="80" cy="80" r="50" style="stroke:#FF0000; fill:none; "></circle>
-	
-	 <!-- label at bottom -->
-     <text x="80" y="175" style="text-anchor:middle;">Boundary of</text>
-     <text x="80" y="195" style="text-anchor:middle;">constraint set</text>
-</svg></p><p>
-Thus for a point (<i>x</i>,&nbsp;<i>y</i>) on the boundary we have <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;+ 1&nbsp;− <i>x</i><sup>2</sup>&nbsp;+ <i>y</i>&nbsp;− 1&nbsp;= <i>y</i>.  We have −1&nbsp;≤ <i>y</i>&nbsp;≤ 1 on the boundary, so the maximum of the function on the boundary is 1, which is achieved at
-(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;1), and the minimum is −1, achieved at (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;−1).
-   </p></li><li>Looking at all the values we have found, we see that the global maximum of <i style="padding-right:0.2em;">f</i> is 1, achieved at (0,&nbsp;1), and the global minimum is −5/4, achieved at (0,&nbsp;−1/2).
+An implication of this result is that if <i>x</i>* is a stationary point of <i style="padding-right:0.2em;">f</i> then
+<ul>
+   <li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative definite then <i>x</i>* is a local maximizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative semidefinite, but neither negative definite nor positive semidefinite, then <i>x</i>* is not a local minimizer, but might be a local maximizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite, but neither positive definite nor negative semidefinite, then <i>x</i>* is not a local maximizer, but might be a local minimizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is neither positive semidefinite nor negative semidefinite then <i>x</i>* is neither a local maximizer nor a local minimizer.
 </li></ul>
-</dd></dl></div>
-Notice that the reasoning about the behavior of the function on the boundary of the constraint set is straightforward in this example because we are able easily to express the value of the function on the boundary in terms of a single variable (<i>y</i>).  In many other problems, doing so is not easy.
+For a function <i style="padding-right:0.2em;">f</i> of two variables, the Hessian is
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
 
-   
+<td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)</td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)</td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)</td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+This matrix is negative definite if <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0.  (These two inequalities imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0.)  Thus the extra condition, in addition to the two conditions
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0 considered originally, for <i>x</i>* to be a local maximizer is
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;− <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)&nbsp;&gt; 0.
+<p>
+Similarly, a sufficient condition for a stationary point <i>x</i>* of a function of two variables to be a local minimizer are <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*) &gt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0 (which imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*) &gt; 0).
+</p><p>
+In particular, if, for a function of two variables, |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0, then <i>x</i>* is neither a local maximizer nor a local minimizer.  (Note that this condition is only sufficient, not necessary.)
+</p><p>
+A stationary point that is neither a local maximizer nor a local minimizer is called a <span class="definition">saddle point</span>.  Examples are the point (0,&nbsp;0) for the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup> and the point (0,&nbsp;0) for the function
+<i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  In both cases, (0,&nbsp;0) is a maximizer in the <i>y</i> direction given <i>x</i>&nbsp;= 0 and a minimizer in the <i>x</i> direction given <i>y</i>&nbsp;= 0; the graph of each function resembles a saddle for a horse.  Note that not all saddle points look like saddles. 
+For example, every point (0,&nbsp;<i>y</i>) is a saddle point of the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>.  From the results above, a sufficient, though not necessary, condition for a stationary point <i>x</i>* of a function <i style="padding-right:0.2em;">f</i> of two variables to be a saddle point is
+|<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0.
+</p><p>
+A saddle point is sometimes defined to be a stationary point at which the Hessian is indefinite.  (See, for example, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994"><i>Mathematics for economists</i></a> by Simon and Blume, p.&nbsp;399.) Under this definition, (0,&nbsp;0) is a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>,
+but is not a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  The definition I give appears to be more standard.
+</p><div class="example" id="m:lo2"><dl class="example"><dt>Example 5.2.2</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>&nbsp;+ <i>y</i><sup>3</sup>&nbsp;− 3<i>x</i><i>y</i>.  The first-order conditions for an optimum are
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">3<i>x</i><sup>2</sup>&nbsp;− 3<i>y</i>&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;0<sup>&nbsp;</sup></td>
+</tr>
+ <tr>
+  <td class="alignRight">
+3<i>y</i><sup>2</sup>&nbsp;− 3<i>x</i>&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;0.<sup>&nbsp;</sup></td>
+</tr>
+</tbody></table></div>
+Thus the stationary points satisfy <i>y</i>&nbsp;= <i>x</i><sup>2</sup>&nbsp;= <i>y</i><sup>4</sup>, so that either (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0) or <i>y</i><sup>3</sup>&nbsp;= 1.  So there are two stationary points: (0,&nbsp;0), and (1,&nbsp;1).
+<p>
+Now, the Hessian of <i style="padding-right:0.2em;">f</i> at any point (<i>x</i>,&nbsp;<i>y</i>) is
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">H</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=&nbsp;</td>
+      <td class="mathAlign2">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+
+<td class="cell">6<i>x</i></td>
+  <td class="cell">−3</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+ <tr>
+  <td class="cell">−3</td>
+  <td class="cell">6<i>y</i></td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+Thus |<i style="padding-right:0.2em;">H</i>(0,&nbsp;0)|&nbsp;= −9, so that (0,&nbsp;0) is neither a local maximizer nor a local  minimizer (i.e. is a saddle point).  We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1,&nbsp;1)&nbsp;= 6&nbsp;&gt; 0 and |<i style="padding-right:0.2em;">H</i>(1,&nbsp;1)|&nbsp;= 36&nbsp;− 9&nbsp;&gt; 0, so that (1,&nbsp;1) is
+a local minimizer.
+<p>
+The function is plotted in the following figure.
+</p><p>
+
+	</p><div id="surfacePlotDiv02" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	<div id="surfacePlot2" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 10) / 20;
+						var y = (j - 10) / 20;
+						var value = (Math.pow(x, 3) + Math.pow(y, 3) - 3 * x * y);
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv02"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+
+				var startXAngle_GL = -45; // less negative value tips graphic up, with view more from top
+				var startYAngle_GL = -15; // less negative value rotates graphic counterclockwise
+				
+				// Options for the basic canvas plot.
+				basicPlotOptions = {
+					fillPolygons: fillPly,
+					tooltips: tooltipStrings,
+					renderPoints: renderDataPoints
+					}
+				
+				// Options for the webGL plot.
+				var xLabels = [-0.5, 0, 0.5, 1, 1.5];
+				var yLabels = [-0.5, 0, 0.5, 1, 1.5];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {
+					xLabels: xLabels,
+					yLabels: yLabels,
+					zLabels: zLabels,
+					chkControlId: "allowWebGL",
+					autoCalcZScale: true,
+					animate: true
+					};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv01");
+				
+				// Options common to both types of plot.
+				options = {
+					xPos: 0,
+					yPos: 0,
+					width: plotDiv.offsetWidth,
+					height: plotDiv.offsetHeight,
+					colourGradient: colours,
+					xTitle: xAxisHeader,
+					yTitle: yAxisHeader,
+					zTitle: zAxisHeader, 
+					backColour: background,
+					axisTextColour: axisForeColour,
+					hideFlatMinPolygons: hideFloorPolygons,
+					origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL
+					};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
+<div class="example" id="m:Ex3"><dl class="example"><dt>Example 5.2.3</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 8<i>x</i><sup>3</sup>&nbsp;+ 2<i>x</i><i>y</i>&nbsp;− 3<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ 1.  We have
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">= 24<i>x</i><sup>2</sup>&nbsp;+ 2<i>y</i>&nbsp;− 6<i>x</i></td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">= 2<i>x</i>&nbsp;+ 2<i>y</i>.</td>
+</tr>
+</tbody></table></div>
+To find the stationary points of the function, solve the first-order conditions.  From the second equation we have <i>y</i>&nbsp;= −<i>x</i>; substituting this into first equation we find that 24<i>x</i><sup>2</sup>&nbsp;− 8<i>x</i>&nbsp;= 8<i>x</i>(3<i>x</i>&nbsp;− 1)&nbsp;= 0.  This equation has two solutions, <i>x</i>&nbsp;= 0 and <i>x</i>&nbsp;= 1/3.  Thus there are two
+stationary points:
+<p>
+</p><div class="equation">(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) and (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3).</div>
+<p>
+We have
+</p><p>
+</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 48<i>x</i>&nbsp;− 6, <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2, and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2,</div>
+so Hessian is
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+ <td class="cell">48<i>x</i>&nbsp;−&nbsp;6</td>
+  <td class="cell">2</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell">2</td>
+  <td class="cell">2</td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></div>
+<p>
+Look at each stationary point in turn.
+</p><p>
+</p><dl>
+<dt>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0)
+</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)&nbsp;= −6&nbsp;&lt; 0 and
+<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0,&nbsp;0)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(0,&nbsp;0))<sup>2</sup>&nbsp;= −16&nbsp;&lt; 0.</div>
+So (<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) is neither a local maximizer nor a local minimizer (i.e. it is a saddle point).
+</dd><dt>(<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3)
+</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)&nbsp;= 10&nbsp;&gt; 0 and
+<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(1/3,&nbsp;−1/3)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(1/3,&nbsp;−1/3))<sup>2</sup>&nbsp;= 96/3&nbsp;− 16&nbsp;= 16&nbsp;&gt; 0.</div>
+So (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3) is a local minimizer, with <i style="padding-right:0.2em;">f</i>(1/3,&nbsp;−1/3)&nbsp;= 23/27.
+</dd></dl>
+The function is plotted in the following figure.
+<p>
+
+	</p><div id="surfacePlotDiv03" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	<div id="surfacePlot3" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 20) / 20;
+						var y = (j - 20) / 20;
+						var value = (8 * Math.pow(x, 3) + 2 * x * y - 3 * Math.pow(x, 2) + Math.pow(y, 2) + 1);
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv03"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+				
+				var startXAngle_GL = -55; // less negative value tips graphic up, with view more from top
+				var startYAngle_GL = 20; // less negative value rotates graphic counterclockwise
+				
+				// Options for the basic canvas pliot.
+				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
+				
+				// Options for the webGL plot.
+				var xLabels = [-1, -0.5, 0, 0.5, 1];
+				var yLabels = [-1, -0.5, 0, 0.5, 1];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv03");
+				
+				// Options common to both types of plot.
+				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
+					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
+					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL
+					};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
+
+
+
 
 
 </div><!-- text, exercises, search, contents -->
@@ -578,7 +867,7 @@ Notice that the reasoning about the behavior of the function on the boundary of 
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="42">
+            <input type="hidden" name="pageId" value="44">
 
             
 
@@ -619,7 +908,7 @@ Notice that the reasoning about the behavior of the function on the boundary of 
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-08-16.
+              First posted 1997.  This version 2022-06-05.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
