@@ -377,7 +377,7 @@ But (0, 0) is <b>not</b> a local maximizer: at (0,&nbsp;0) the value of the func
 <p>
 The point (0,&nbsp;0) is a col.  If you walk due north or due south, you descend; if you walk due east or due west, you also descend.  But if you walk northeast or southwest, you climb mountains.  The <a href="https://openstreetmap.org/node/479370430" target="_blank">Col d'Arratille</a> is an example.
 </p><p>
-The function is plotted in the following figure.  Rotate the figure by dragging your mouse.  (Rotation on a touch device isn't possible.)
+The function is plotted in the following figure.  
 </p><p>
 
 	</p><div id="surfacePlotDiv01" class="surfacePlot">
@@ -385,91 +385,7 @@ The function is plotted in the following figure.  Rotate the figure by dragging 
 	</div>
 
 		
-		<script type="text/javascript">
-		
-		    var surfacePlot;
-			var data, options, basicPlotOptions, glOptions, animated, values;
-			
-			function setUp()
-			{
-				var numRows = 41;
-				var numCols = 41;
-				
-				var tooltipStrings = new Array();
-				values = new Array();
-				data = {nRows: numRows, nCols: numCols, formattedValues: values};
-				
-				var idx = 0;
-				
-				for (var i = 0; i < numRows; i++) 
-				{
-					values[i] = new Array();
-					
-					for (var j = 0; j < numCols; j++)
-					{
-						var x = (i - 20) / 20;
-						var y = (j - 20) / 20;
-						var value = (3 * x * y - Math.pow(x, 2) - Math.pow(y, 2));
-						
-						values[i][j] = value;
-						
-						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
-						idx++;
-					}
-				}
-
-				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv01"));
-				
-				// Don't fill polygons in IE < v9. It's too slow.
-				var fillPly = true;
-				
-				// Define a colour gradient.
-				var colour1 = {red:0, green:0, blue:255};
-				var colour2 = {red:0, green:255, blue:255};
-				var colour3 = {red:0, green:255, blue:0};
-				var colour4 = {red:255, green:255, blue:0};
-				var colour5 = {red:255, green:0, blue:0};
-				var colours = [colour1, colour2, colour3, colour4, colour5];
-				
-				// Axis labels.
-				var xAxisHeader	= "x";
-				var yAxisHeader	= "y";
-				var zAxisHeader	= "f(x,y)";
-				
-				var renderDataPoints = false;
-				var background = '#ccffff';
-				var axisForeColour = '#000000';
-				var hideFloorPolygons = true;
-				var chartOrigin = {x: 0, y:0};
-				
-				var startXAngle_GL = -50;
-				var startYAngle_GL = -42;
-				
-				// Options for the basic canvas pliot.
-				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
-				
-				// Options for the webGL plot.
-				var xLabels = [-1, -0.5, 0, 0.5, 1];
-				var yLabels = [-1, -0.5, 0, 0.5, 1];
-				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
-				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
-				
-				var plotDiv = document.getElementById("surfacePlotDiv01");
-				
-				// Options common to both types of plot.
-				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
-					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
-					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
-					startXAngle_GL: startXAngle_GL,
-					startYAngle_GL: startYAngle_GL};
-				
-				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
-				
-			}
-			
-			setUp();
-			
-		</script>
+		<!--PREEZY-->
 
 		</dd></dl></div>
 This example shows that we cannot determine the nature of a stationary point of a function <i style="padding-right:0.2em;">f</i> of two variables by looking only at the partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub> and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub> at the stationary point.
