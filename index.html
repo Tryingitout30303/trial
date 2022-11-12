@@ -13,10 +13,10 @@
         </script>
     
     
-    <title>Mathematical methods for economic theory: 1.2 Matrices: determinant, inverse, and rank</title>
+    <title>Mathematical methods for economic theory: 5.2 Local optima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="description" content="Mathematical methods for economic theory: matrices">
-        <meta name="keywords" content="mathematical methods, economic theory, matrix, matrices, matrix determinant, matrix inverse, rank of matrix">
+            <meta name="description" content="Mathematical methods for economic theory: local optima">
+        <meta name="keywords" content="mathematical methods, economic theory, local optima, optimization">
         
         <link rel="stylesheet" href="./index_files/tutorial.css" type="text/css">
     <link rel="stylesheet" href="./index_files/xy2html.css" type="text/css">
@@ -199,10 +199,10 @@
         <div class="menuBar">
             <span class="leftMenu">
                 <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/2"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Review"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/28"><img alt="Previous section" src="./index_files/backsec.gif" height="20" title="Optimization: interior optima"></a>
                                 </span>
 
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/3"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Logic"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/29"><img alt="Previous page" src="./index_files/back.gif" height="20" title="Necessary conditions"></a>
                 
                 <span class="tab">
                     <span class="contents"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc" class="menuAction">Contents</a></span>
@@ -213,7 +213,7 @@
                     </span>
 
                                             <span class="tab">
-                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/x" class="menuAction">Exercises</a></span>
+                            <span class="exercises"><a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/x" class="menuAction">Exercises</a></span>
                         </span>
                                     
             </span>  <!-- leftMenu -->
@@ -222,9 +222,9 @@
                             <span class="tab">
                     <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/sch" class="menuAction" title="Search"><img alt="Search" src="./index_files/searchIcon.png"></a>
                 </span>
-                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/5"><img alt="Next page" src="./index_files/next.gif" height="20" title="Systems of linear equations"></a>
+                                        <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/31"><img alt="Next page" src="./index_files/next.gif" height="20" title="Global optima"></a>
                             <span class="hideable">
-                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/10"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Topics in multivariate calculus"></a>
+                                    <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/32"><img alt="Next section" src="./index_files/nextsec.gif" height="20" title="Equality constraints"></a>
                                 </span>
             </span>
         </div>  <!-- menuBar -->
@@ -268,413 +268,588 @@ window.onclick = function(event) {
         <div id="text">
 
         <header>
-            <h2>1.2 Matrices: determinant, inverse, and rank</h2>
+            <h2>5.2 Local optima</h2>
         </header>
 
-	I assume that you are familiar with vectors and matrices and know, in particular, how to multiply them together.  (Do the first few exercises to check your knowledge.)  On this page I present only the properties of matrices that you need to know to understand the material in the rest of the tutorial.
-<h3>Transpose</h3>
-<div class="definition" id="d:transpose"><dl class="definition"><dt>Definition</dt><dd>
-Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>m</i> matrix (i.e. a matrix with <i>n</i> rows and <i>m</i> columns).  The <span class="definition">transpose</span> <i>A</i>' of <i>A</i> is the <i>m</i>&nbsp;×&nbsp;<i>n</i> matrix in which, for <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>m</i>, the <i>i</i>th row is the <i>i</i>th column of <i>A</i>.
+	<h3>One variable</h3>
+Occasionally we are interested only in the <i>local</i> maximizers or minimizers of a function.  We may be able to tell whether a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#stationaryPoints">stationary point</a> point is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a>, a local minimizer, or neither by examining the second derivative of the function at the stationary point.
+
+<div class="result" id="p:LocalOpt1"><dl class="result"><dt>Proposition 5.2.1 (Second-order conditions for local optimum of function of one variable) &nbsp;<span id="LocalOpt1" class="proofLink" style="display: none;"><a href="javascript:showProof(&#39;LocalOpt1&#39;)" class="showProof">proof</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of a single variable</a> with a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:cts">continuous</a> second derivative, defined on the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:interval">interval</a> <i>I</i>.  Suppose that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0 for some <i>x</i>* in the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:intervalInterior">interior</a> of <i>I</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPoint1">stationary point</a> of <i style="padding-right:0.2em;">f</i>).
+<ul>
+   <li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0 then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≤ 0.
+   </li><li>If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;≥ 0.
+</li></ul>
 </dd></dl></div>
-In particular, if <i>x</i> is a column vector (<i>n</i>&nbsp;×&nbsp;1 matrix) then <i>x</i>' is a row vector (1&nbsp;×&nbsp;<i>n</i> matrix).
-
-<h3>Determinant</h3>
-An important characteristic of a square matrix (a matrix with the same number of rows as columns) is its “determinant”. We can conveniently define the determinant of a matrix inductively, in terms of the determinants of smaller matrices.
-<div class="definition" id="d:determinant"><dl class="definition"><dt>Definition</dt><dd>
-The <span class="definition">determinant</span> of a 1&nbsp;×&nbsp;1 matrix is the single number in the matrix.  For any <i>n</i>&nbsp;≥ 2, the <span class="definition">determinant</span> of the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is 
-<div class="equation">|<i>A</i>|&nbsp;= ∑<span class="supsub"><i>n</i><br><i>j</i>=1</span>(−1)<sup>1+<i>j</i></sup><i>a</i><sub>1<i>j</i></sub>|<i>A</i><sub>1<i>j</i></sub>|</div>
-where <i>a</i><sub>1<i>j</i></sub> is the number in the first row and <i>j</i>th column of <i>A</i> and <i>A</i><sub>1<i>j</i></sub> is the <i>n</i>&nbsp;−&nbsp;1&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;1 matrix obtained by deleting the first row and <i>j</i>th column of <i>A</i>. </dd></dl></div>
-
-Notice that the term (−1)<sup>1+<i>j</i></sup> in the sum in the definition is equal to 1 if 1&nbsp;+ <i>j</i> is even and −1 if 1&nbsp;+ <i>j</i> is odd, so that the signs of the coefficients of the <i>a</i><sub>1<i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>| terms in the sum alternate between positive and negative.  If we expand the sum we get
-<div class="equation">
-  <table class="mathAlignTop">
-    <tbody><tr>
-      <td class="alignRight">|<i>A</i>|</td>
-      <td class="mathAlign2">&nbsp;=&nbsp;</td>
-      <td class="mathAlign2"> <i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>|&nbsp;− <i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>|&nbsp;+ <i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>|&nbsp;− ...&nbsp;+
-(−1)<sup>1+<i>n</i></sup><i>a</i><sub>1<i>n</i></sub>|<i>A</i><sub>1<i>n</i></sub>|.</td>
-</tr>
-</tbody></table></div>
-That is, <i>plus</i> <i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>| <i>minus</i> <i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>| <i>plus</i> <i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>| and so on.
-<p>
-To use the definition to find the determinant of an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, you first write down the expression it gives for the determinant as a sum of the determinants of a collection of <i>n</i>&nbsp;−&nbsp;1&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;1 matrices.  Then, for each of these determinants, you substitute the expression the definition gives as a sum of the
-determinants of a collection of <i>n</i>&nbsp;−&nbsp;2&nbsp;×&nbsp;<i>n</i>&nbsp;−&nbsp;2 matrices.  You continue in the same way until you get to an expression involving the determinants of a collection of 1&nbsp;×&nbsp;1 matrices, which the definition says are simply the single elements of the matrices.  If <i>n</i> is bigger than 3, this process will involve a lot of bytes
-(or paper).  But in principle it is possible.  The following examples illustrate it.
-
-</p><div class="example" id="m:det2"><dl class="example"><dt>Example 1.2.1</dt><dd>
-Let <i>A</i> be the 2&nbsp;×&nbsp;2 matrix
+<div class="hiddenProof" id="f:LocalOpt1" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt1&#39;)" class="showProof">hide</a></span></dt><dd>
+To prove the first point, note that given that <i style="padding-right:0.2em;">f</i>" is the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#d:diff">derivative</a> of <i style="padding-right:0.2em;">f</i>', we have
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell"><i>a</i></td>
-  <td class="cell"><i>b</i></td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>c</i></td>
-  <td class="cell"><i>d</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-The matrix <i>A</i><sub>11</sub> is the 1&nbsp;×&nbsp;1 matrix consisting of the number <i>d</i> and the matrix <i>A</i><sub>12</sub> is the 1&nbsp;×&nbsp;1 matrix consisting of the number <i>c</i>.  Thus using the expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i> is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>.
-</dd></dl></div>
-<div class="example" id="m:det3"><dl class="example"><dt>Example 1.2.2</dt><dd>
-Let <i>A</i> be the 3&nbsp;×&nbsp;3 matrix
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
- <td class="cell"><i>a</i></td>
-  <td class="cell"><i>b</i></td>
-  <td class="cell"><i>c</i></td>
-  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>d</i></td>
-  <td class="cell"><i>e</i></td>
-  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
-</tr>
- <tr>
-  <td class="cell"><i>g</i></td>
-  <td class="cell"><i>h</i></td>
-  <td class="cell"><i>i</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">.</td>
-</tr>
-</tbody></table></div>
-The matrix <i>A</i><sub>11</sub> is the 2&nbsp;×&nbsp;2 matrix
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell"><i>e</i></td>
-  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>h</i></td>
-  <td class="cell"><i>i</i></td>
-</tr>
-</tbody></table></td>
-      <td class="mathAlign2">,</td>
-</tr>
-</tbody></table></div>
-whose determinant is <i>e</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>h</i>.  Similarly |<i>A</i><sub>12</sub>|&nbsp;= <i>d</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>g</i> and <i>A</i><sub>13</sub>&nbsp;= <i>d</i><i>h</i>&nbsp;− <i>e</i><i>g</i>.  Thus using the expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i>
-is
-<div class="equation"><i>a</i>(<i>e</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>h</i>)&nbsp;− <i>b</i>(<i>d</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>g</i>)&nbsp;+ <i>c</i>(<i>d</i><i>h</i>&nbsp;−&nbsp;<i>e</i><i>g</i>).</div>
-</dd></dl></div>
-
-You have probably noticed an odd asymmetry in the definition of the determinant: all the minors are obtained by deleting the <i>first</i> row of the matrix.  What is special about the first row?  Nothing!  We can show that the determinant of any square matrix is equal to a sum like the one in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a> except that the first row is replaced by any other row.  There
-is nothing special either about rows rather than columns; we can switch their roles in the sum.  The next result gives the exact expressions.
-<div class="result" id="p:determinant"><dl class="result"><dt>Proposition 1.2.1 <button class="proofButton" id="determinant" onclick="javascript:showProof(&#39;determinant&#39;)" style="display: none;">source</button></dt><dd>
-The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> of the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is equal to
-<div class="equation">∑<span class="supsub"><i>n</i><br><i>j</i>=1</span>(−1)<sup><i>i</i>+<i>j</i></sup><i>a</i><sub><i>i</i><i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>|</div>
-for any <i>i</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i> and is also equal to
-<div class="equation">∑<span class="supsub"><i>n</i><br><i>i</i>=1</span>(−1)<sup><i>i</i>+<i>j</i></sup><i>a</i><sub><i>i</i><i>j</i></sub>|<i>A</i><sub><i>i</i><i>j</i></sub>|</div>
-for any <i>j</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>, where <i>A</i><sub><i>i</i><i>j</i></sub> is the matrix obtained by deleting the <i>i</i>th row and <i>j</i>th column of <i>A</i>.
-</dd></dl></div>
-<div class="hiddenProof" id="f:determinant" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;determinant&#39;)">hide</button></dt><dd>
-For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.1 on p.&nbsp;743.
-</dd></dl></div>
-
-An immediate implication of this result is that the determinant of a matrix for which one or more columns or rows consists entirely of 0's is 0.
-<p>
-Notice that, as in the original <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the coefficients (−1)<sup><i>i</i>+<i>j</i></sup> in each of these sums alternate in sign.  Notice also that the sign of the <i>first</i> term in either sum is positive if the exponent of −1 in that term is even and negative if the exponent is odd.  In particular, it is <i>not</i> always positive.  For example,
-the coefficient (−1)<sup><i>i</i>+1</sup> of the first term in the first sum is negative if <i>i</i> is even.
-</p><p id="determinantExpansion">
-The first expression in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is called the <i>expansion along the ith row</i> of the matrix; the second expression is called the <i>expansion along the jth column</i> of the matrix.
-</p>
-The next example verifies the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> for an arbitrary 3&nbsp;×&nbsp;3 matrix.
-<div class="example" id="m:det4"><dl class="example"><dt>Example 1.2.3</dt><dd>
-Let <i>A</i> be a 3&nbsp;×&nbsp;3 matrix; denote its elements as in an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#m:det3">earlier example</a> (to avoid a dizzying collection of subscripts).  The first sum in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is
-<div class="equation">−<i>a</i><sub>21</sub>|<i>A</i><sub>21</sub>|&nbsp;+ <i>a</i><sub>22</sub>|<i>A</i><sub>22</sub>|&nbsp;− <i>a</i><sub>23</sub>|<i>A</i><sub>23</sub>|&nbsp;= −<i>d</i>(<i>b</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>h</i>)&nbsp;+ <i>e</i>(<i>a</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>g</i>)&nbsp;−
-<i style="padding-right:0.2em;">f</i>(<i>a</i><i>h</i>&nbsp;−&nbsp;<i>b</i><i>g</i>)</div>
-for <i>i</i>&nbsp;= 2 and
-<div class="equation"><i>a</i><sub>31</sub>|<i>A</i><sub>31</sub>|&nbsp;− <i>a</i><sub>32</sub>|<i>A</i><sub>32</sub>|&nbsp;+ <i>a</i><sub>33</sub>|<i>A</i><sub>33</sub>|&nbsp;= <i>g</i>(<i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>e</i>)&nbsp;− <i>h</i>(<i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>d</i>)&nbsp;+
-<i>i</i>(<i>a</i><i>e</i>&nbsp;−&nbsp;<i>b</i><i>d</i>)</div>
-for <i>i</i>&nbsp;= 3, both of which are equal to the value of |<i>A</i>| calculated in the earlier example.  The second sum in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#p:determinant">proposition</a> is
-<div class="equation"><i>a</i><sub>11</sub>|<i>A</i><sub>11</sub>|&nbsp;− <i>a</i><sub>21</sub>|<i>A</i><sub>21</sub>|&nbsp;+ <i>a</i><sub>31</sub>|<i>A</i><sub>31</sub>|&nbsp;= <i>a</i>(<i>e</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>h</i>)&nbsp;− <i>d</i>(<i>b</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>h</i>)&nbsp;+
-<i>g</i>(<i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>e</i>)</div>
-for <i>j</i>&nbsp;= 1,
-<div class="equation">−<i>a</i><sub>12</sub>|<i>A</i><sub>12</sub>|&nbsp;+ <i>a</i><sub>22</sub>|<i>A</i><sub>22</sub>|&nbsp;− <i>a</i><sub>32</sub>|<i>A</i><sub>32</sub>|&nbsp;= −<i>b</i>(<i>d</i><i>i</i>&nbsp;−&nbsp;<i style="padding-right:0.2em;">f</i><i>g</i>)&nbsp;+ <i>e</i>(<i>a</i><i>i</i>&nbsp;−&nbsp;<i>c</i><i>g</i>)&nbsp;−
-<i>h</i>(<i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;−&nbsp;<i>c</i><i>d</i>)</div>
-for <i>j</i>&nbsp;= 2 and
-<div class="equation"><i>a</i><sub>13</sub>|<i>A</i><sub>13</sub>|&nbsp;− <i>a</i><sub>23</sub>|<i>A</i><sub>23</sub>|&nbsp;+ <i>a</i><sub>33</sub>|<i>A</i><sub>33</sub>|&nbsp;= <i>c</i>(<i>d</i><i>h</i>&nbsp;−&nbsp;<i>e</i><i>g</i>)&nbsp;− <i style="padding-right:0.2em;">f</i>(<i>a</i><i>h</i>&nbsp;−&nbsp;<i>b</i><i>g</i>)&nbsp;+
-<i>i</i>(<i>a</i><i>e</i>&nbsp;−&nbsp;<i>b</i><i>d</i>)</div>
-for <i>j</i>&nbsp;= 3, all of which are equal to the value of |<i>A</i>| calculated in the earlier example.
-</dd></dl></div>
-
-<div class="example" id="m:det5"><dl class="example"><dt>Example 1.2.4</dt><dd>
-Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix in which all the elements are zero except the ones on the “main diagonal”—that is, the elements <i>a</i><sub><i>k</i><i>k</i></sub> in the <i>k</i>th row and <i>k</i>th column for <i>k</i>&nbsp;= 1,&nbsp;...,&nbsp;<i>n</i>.  Applying the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">definition</a>, the determinant of <i>A</i> is simply
-<i>a</i><sub>11</sub> times the determinant of the matrix obtained by deleting the first row and first column of <i>A</i> (because all the other elements in the first row of <i>A</i> are zero).  This latter matrix has the same structure as <i>A</i>, and its determinant is <i>a</i><sub>22</sub> times the determinant of the matrix obtained by deleting the first two rows and first two columns of
-<i>A</i>.  Proceeding in the same way, we see that the determinant of <i>A</i> is <i>a</i><sub>11</sub><i>a</i><sub>22</sub>···<i>a</i><sub><i>n</i><i>n</i></sub>, the product of all the elements on the main diagonal of the matrix (the only positive elements in the matrix).
-</dd></dl></div>
-
-<h3>Inverse</h3>
-<div class="definition" id="d:nonsingular"><dl class="definition"><dt>Definition</dt><dd>
-The square matrix is <span class="definition">nonsingular</span> if its <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> is not zero.
-</dd></dl></div>
-<div class="example" id="m:nonsingular1"><dl class="example"><dt>Example 1.2.5</dt><dd>
-The determinant of the matrix
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell"><i>a</i></td>
-  <td class="cell"><i>b</i></td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>c</i></td>
-  <td class="cell"><i>d</i></td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i> by an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#m:det2">earlier example</a>.  Thus the matrix is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> if <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>&nbsp;≠ 0.
-</dd></dl></div>
-If <i>a</i>, <i>x</i>, and <i>b</i> are numbers with <i>a</i>&nbsp;≠ 0, we solve the equation <i>a</i><i>x</i>&nbsp;= <i>b</i> for <i>x</i> by dividing both sides by <i>a</i>.  Or, if you like, by multiplying each side by <i>a</i><sup>−1</sup>, which is the inverse operation to multiplication by <i>a</i>.  If <i>A</i> is an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, <i>x</i> is an
-<i>n</i>&nbsp;×&nbsp;1 matrix (column vector), and <i>b</i> is an <i>n</i>&nbsp;×&nbsp;1 matrix, then we'd like to solve for <i>x</i> in the same way, by multiplying both sides by an “inverse” of <i>A</i>. What exactly do we mean by “inverse”?
-<div class="definition" id="d:inverse"><dl class="definition"><dt>Definition</dt><dd>
-Let <i>A</i> be an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix.  If there is an <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>B</i> such that
-<div class="equation"><i>B</i><i>A</i>&nbsp;= <i>A</i><i>B</i>&nbsp;= <i>I</i>,</div>
-where <i>I</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> identity matrix (in which every entry on the main diagonal is 1 and all other entries are 0), then <i>B</i> is an <span class="definition">inverse</span> of <i>A</i>, denoted <i>A</i><sup>−1</sup>.
-</dd></dl></div>
-
-This definition does not rule out the possibility that a matrix has more than one inverse.  But in fact, as the following result shows, any matrix has at most one inverse.
-
-<div class="result" id="p:uniqueInverse"><dl class="result"><dt>Proposition 1.2.2 <button class="proofButton" id="uniqueInverse" onclick="javascript:showProof(&#39;uniqueInverse&#39;)" style="display: none;">proof</button></dt><dd>
-A square (<i>n</i>&nbsp;×&nbsp;<i>n</i>) matrix has at most one <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a>.
-</dd></dl></div>
-<div class="hiddenProof" id="f:uniqueInverse" style="display: block;"><dl class="proof"><dt>Proof &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;uniqueInverse&#39;)">hide</button></dt><dd>
-Let <i>A</i> be a <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix, and suppose that <i>B</i> and <i>C</i> are both inverses of <i>A</i>.  Then by the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">definition of an inverse</a>, <i>B</i><i>A</i>&nbsp;= <i>A</i><i>B</i>&nbsp;= <i>I</i> and <i>C</i><i>A</i>&nbsp;= <i>A</i><i>C</i>&nbsp;= <i>I</i>, where <i>I</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> identity matrix.  Thus
-<i>C</i>&nbsp;= <i>C</i><i>I</i>&nbsp;= <i>C</i>(<i>A</i><i>B</i>)&nbsp;= (<i>C</i><i>A</i>)<i>B</i>&nbsp;= <i>I</i><i>B</i>&nbsp;= <i>B</i>, so that <i>C</i> and <i>B</i> are the same.
-</dd></dl></div>
-
-The next result gives a useful condition for a matrix to have an inverse.
-<div class="result" id="p:nonsingularInverse"><dl class="result"><dt>Proposition 1.2.3 <button class="proofButton" id="nonsingularInverse" onclick="javascript:showProof(&#39;nonsingularInverse&#39;)" style="display: none;">source</button></dt><dd>
-A matrix has an <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a> if and only if it is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a>.
-</dd></dl></div>
-<div class="hiddenProof" id="f:nonsingularInverse" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;nonsingularInverse&#39;)">hide</button></dt><dd>
-For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.3 on p.&nbsp;732.
-</dd></dl></div>
-
-And here is an explicit formula for the inverse.
-<div class="result" id="p:inverse"><dl class="result"><dt>Proposition 1.2.4 <button class="proofButton" id="inverse" onclick="javascript:showProof(&#39;inverse&#39;)" style="display: none;">source</button></dt><dd>
-The <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:inverse">inverse</a> of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix <i>A</i> is the <i>n</i>&nbsp;×&nbsp;<i>n</i> matrix for which the (<i>i</i>,<i>j</i>)th component is
-<div class="equation">(−1)<sup><i>i</i>+<i>j</i></sup>|<i>A</i><sub><i>j</i><i>i</i></sub>|/|<i>A</i>|,</div>
-where <i>A</i><sub><i>j</i><i>i</i></sub> is the matrix obtained by deleting the <i>j</i>th row and <i>i</i>th column of <i>A</i>.
-</dd></dl></div>
-<div class="hiddenProof" id="f:inverse" style="display: block;"><dl class="proof"><dt>Source &nbsp;<button class="proofButton" onclick="javascript:hideProof(&#39;inverse&#39;)">hide</button></dt><dd>
-For a proof, see <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/REF#SimonBlume1994">Simon and Blume</a> (1994), Theorem&nbsp;26.7 (which follows from Theorem&nbsp;26.6) on p.&nbsp;736.
-</dd></dl></div>
-
-Notice that the (<i>i</i>,<i>j</i>)th component of the inverse involves the determinant of the matrix <i>A</i><sub><i>j</i><i>i</i></sub>, <i>not</i> the determinant of the matrix <i>A</i><sub><i>i</i><i>j</i></sub>.
-
-<div class="example" id="m:2by2Inverse"><dl class="example"><dt>Example 1.2.6</dt><dd>
-For the 2&nbsp;×&nbsp;2 matrix
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><i>A</i>&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell"><i>a</i></td>
-  <td class="cell"><i>b</i></td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>c</i></td>
-  <td class="cell"><i>d</i></td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-we have |<i>A</i><sub>11</sub>|&nbsp;= <i>d</i>, |<i>A</i><sub>12</sub>|&nbsp;= <i>c</i>, |<i>A</i><sub>21</sub>|&nbsp;= <i>b</i>, and |<i>A</i><sub>22</sub>|&nbsp;= <i>a</i>, and the determinant is <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>.  Thus if <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i>&nbsp;≠ 0 then the inverse of <i>A</i> is
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><table class="frac"> <tbody><tr>
-  <td class="fracTop">1 </td>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;− <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)
+</td>
 </tr>
 <tr>
   <td class="fracRule"></td>
 </tr>
 <tr>
-  <td class="fracBottom"> <i>a</i><i>d</i>&nbsp;− <i>b</i><i>c</i> </td>
-</tr>
-</tbody></table> </td>
-      <td class="mathAlign2">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
-
-<td class="cell"><i>d</i></td>
-  <td class="cell">−<i>b</i></td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
- <tr>
-  <td class="cell">−<i>c</i></td>
-  <td class="cell"><i>a</i></td>
+  <td class="fracBottom"> <i>h</i></td>
 </tr>
 </tbody></table></td>
       <td class="mathAlign2">.</td>
 </tr>
 </tbody></table></div>
-(You can check that the product of the matrix and its inverse is the identity matrix.)  
-</dd></dl></div>
-
-<div class="example" id="m:3by3Inverse"><dl class="example"><dt>Example 1.2.7</dt><dd>
-The inverse of the matrix
+Given <i style="padding-right:0.2em;">f</i>'(<i>x</i>*)&nbsp;= 0, we thus have
 <div class="equation">
   <table class="mathAlign">
     <tbody><tr>
-      <td class="alignRight"><i>A</i>&nbsp;=&nbsp;</td>
-      <td class="mathAlign2">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
-
-<td class="cell"><i>a</i></td>
-  <td class="cell"><i>b</i></td>
-  <td class="cell"><i>c</i></td>
-  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
-</tr>
- <tr>
-  <td class="cell"><i>d</i></td>
-  <td class="cell"><i>e</i></td>
-  <td class="cell"><i style="padding-right:0.2em;">f</i></td>
-</tr>
-
-<tr>
-  <td class="cell"><i>g</i></td>
-  <td class="cell"><i>h</i></td>
-  <td class="cell"><i>i</i></td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-is
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight"><table class="frac"> <tbody><tr>
-  <td class="fracTop">1 </td>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= lim<sub><i>h</i>→0</sub>&nbsp;</td>
+      <td class="mathAlign2"><table class="frac"> <tbody><tr>
+  <td class="fracTop"><i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)
+</td>
 </tr>
 <tr>
   <td class="fracRule"></td>
 </tr>
 <tr>
-  <td class="fracBottom"> |<i>A</i>| </td>
+  <td class="fracBottom"> <i>h</i></td>
 </tr>
-</tbody></table> </td>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+Hence if <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&lt; 0, there exists ε&nbsp;&gt; 0 such that <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+ <i>h</i>)&nbsp;&gt; 0 for −ε&nbsp;&lt; <i>h</i>&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>'(<i>x</i>*&nbsp;+&nbsp;<i>h</i>)&nbsp;&lt; 0 for 0&nbsp;&lt; <i>h</i>&nbsp;&lt; ε.  Thus
+<i style="padding-right:0.2em;">f</i> is increasing on (<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*) and decreasing on (<i>x</i>*,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), so that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.
+<p>
+The proof of the third point is similar.
+</p><p>
+To prove the second point, suppose that <i>x</i>* is a local maximizer of <i style="padding-right:0.2em;">f</i>.  If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0 then from the third point, <i>x</i>* is also a local minimizer of <i style="padding-right:0.2em;">f</i>.  But then for some ε&nbsp;&gt; 0, <i style="padding-right:0.2em;">f</i> is constant on the interval
+(<i>x</i>*&nbsp;−&nbsp;ε,&nbsp;<i>x</i>*&nbsp;+&nbsp;ε), in which case <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0, contradicting <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;&gt; 0.
+</p><p>
+The proof of the fourth point is similar.
+</p></dd></dl></div>
+If <i style="padding-right:0.2em;">f</i>"(<i>x</i>*)&nbsp;= 0 then we don't know, without further investigation, whether <i>x</i>* is a local maximizer or local minimizer of <i style="padding-right:0.2em;">f</i>, or neither (check the functions <i>x</i><sup>4</sup>, −<i>x</i><sup>4</sup>, and <i>x</i><sup>3</sup> at <i>x</i>&nbsp;= 0).  In this case, information about the signs of the higher
+order derivatives may tell us whether a point is a local maximum or a local minimum.  In practice, however, these conditions are rarely useful; I do not discuss them.
+<h3>Many variables</h3>
+As for a function of a single variable, a stationary point of a function of many variables may be a local maximizer, a local minimizer, or neither, and we may be able to distinguish the cases by examining the second-order derivatives of the function at the stationary point.
+<p>
+Let (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) be a stationary point of the function <i style="padding-right:0.2em;">f</i> of two variables.  Suppose it is a local maximizer.  Then certainly it must be a maximizer along the two lines through (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) parallel to the axes.  Using the theory for functions of a single variable, we conclude that
+</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>)&nbsp;≤ 0,</div>
+where <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> denotes the second partial derivative of <i style="padding-right:0.2em;">f</i> with respect to its <i>i</i>th argument, then with respect to its <i>j</i>th argument.
+<p>
+However, even the variant of this condition in which both inequalities are strict is not <i>sufficient</i> for (<i>x</i><sub>0</sub>,&nbsp;<i>y</i><sub>0</sub>) to be a maximizer, as the following example shows.
+</p><div class="example" id="m:loc1"><dl class="example"><dt>Example 5.2.1</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 3<i>x</i><i>y</i>&nbsp;− <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>.  The first-order conditions are
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;3<i>y</i>&nbsp;− 2<i>x</i>&nbsp;= 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>, <i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;3<i>x</i>&nbsp;− 2<i>y</i>&nbsp;= 0</td>
+</tr>
+</tbody></table></div>
+so that <i style="padding-right:0.2em;">f</i> has a single stationary point, (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0).  Now,
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0, 0)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0</td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0, 0)&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;−2&nbsp;≤ 0.</td>
+</tr>
+</tbody></table></div>
+But (0, 0) is <b>not</b> a local maximizer: at (0,&nbsp;0) the value of the function is 0, but at (ε,&nbsp;ε) with ε&nbsp;&gt; 0 the value of the function is 3ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;− ε<sup>2</sup>&nbsp;= ε<sup>2</sup>, which is positive (and hence exceeds <i style="padding-right:0.2em;">f</i>(0,&nbsp;0)&nbsp;= 0) no matter how small
+ε is.
+<p>
+The point (0,&nbsp;0) is a col.  If you walk due north or due south, you descend; if you walk due east or due west, you also descend.  But if you walk northeast or southwest, you climb mountains.  The <a href="https://openstreetmap.org/node/479370430" target="_blank">Col d'Arratille</a> is an example.
+</p><p>
+The function is plotted in the following figure.  Rotate the figure by dragging your mouse.  (Rotation on a touch device isn't possible.)
+</p><p>
+
+	</p><div id="surfacePlotDiv01" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	</div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 20) / 20;
+						var y = (j - 20) / 20;
+						var value = (3 * x * y - Math.pow(x, 2) - Math.pow(y, 2));
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv01"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+				
+				var startXAngle_GL = -50;
+				var startYAngle_GL = -42;
+				
+				// Options for the basic canvas pliot.
+				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
+				
+				// Options for the webGL plot.
+				var xLabels = [-1, -0.5, 0, 0.5, 1];
+				var yLabels = [-1, -0.5, 0, 0.5, 1];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv01");
+				
+				// Options common to both types of plot.
+				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
+					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
+					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
+This example shows that we cannot determine the nature of a stationary point of a function <i style="padding-right:0.2em;">f</i> of two variables by looking only at the partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub> and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub> at the stationary point.
+<p>
+The next result gives a condition that involves the definiteness of the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of the function, and thus all the cross-partials.  The result assumes that all the second-order partial derivatives <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub> are continuous for all <i>x</i> in some set <i>S</i>, so that by
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLC#p:Young">Young's theorem</a> we have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>i</i><i>j</i></sub>(<i>x</i>)&nbsp;= <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime"><i>j</i><i>i</i></sub>(<i>x</i>) for all <i>x</i>&nbsp;∈ <i>S</i>, and hence the Hessian is <b>symmetric</b>.  (The condition on <i style="padding-right:0.2em;">f</i> is
+satisfied, for example, by any polynomial.)
+</p><div class="result" id="p:LocalOpt"><dl class="result"><dt>Proposition 5.2.2 (Second-order conditions for local optimum of function of many variables) &nbsp;<span id="LocalOpt" class="proofLink"><a href="javascript:showProof(&#39;LocalOpt&#39;)" class="showProof">source</a></span></dt><dd>
+Let <i style="padding-right:0.2em;">f</i> be a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:twiceDiff">twice-differentiable</a> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/IAF#d:function">function of <i>n</i> variables</a> with continuous <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:partialDeriv">partial derivatives</a> and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:crossPartial">cross partial derivatives</a>, defined on the set <i>S</i>.  Suppose that
+<i style="padding-right:0.2em;">f</i>'<sub class="prime"><i>i</i></sub>(<i>x</i>*)&nbsp;= 0 for <i>i</i>&nbsp;= 1, ..., <i>n</i> for some <i>x</i>* in the <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CLN#d:interior">interior</a> of <i>S</i> (so that <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/NEN#d:stationaryPointN">stationary point</a> of <i style="padding-right:0.2em;">f</i>).  Let <i style="padding-right:0.2em;">H</i> be the
+<a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/CVN#d:Hessian">Hessian</a> of <i style="padding-right:0.2em;">f</i>.
+<ul>
+   <li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative definite</a> then <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/DEF#d:LocalMax">local maximizer</a> of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/QFF#d:DefiniteN">negative semidefinite</a>.
+   </li><li>If <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i>.
+   </li><li>If <i>x</i>* is a local minimizer of <i style="padding-right:0.2em;">f</i> then <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite.
+</li></ul>
+</dd></dl></div>
+<div class="hiddenProof" id="f:LocalOpt"><dl class="proof"><dt>Source &nbsp;<span class="proofLink"><a href="javascript:hideProof(&#39;LocalOpt&#39;)" class="showProof">hide</a></span></dt><dd>
+Proofs may be found in <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#Sydsaeter1981">Sydsæter</a> (1981) (Theorem&nbsp;5.11, p.&nbsp;243) and <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994">Simon and Blume</a> (1994) (Theorem&nbsp;30.10, p.&nbsp;836).
+</dd></dl></div>
+
+An implication of this result is that if <i>x</i>* is a stationary point of <i style="padding-right:0.2em;">f</i> then
+<ul>
+   <li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative definite then <i>x</i>* is a local maximizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is negative semidefinite, but neither negative definite nor positive semidefinite, then <i>x</i>* is not a local minimizer, but might be a local maximizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive definite then <i>x</i>* is a local minimizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is positive semidefinite, but neither positive definite nor negative semidefinite, then <i>x</i>* is not a local maximizer, but might be a local minimizer
+   </li><li>if <i style="padding-right:0.2em;">H</i>(<i>x</i>*) is neither positive semidefinite nor negative semidefinite then <i>x</i>* is neither a local maximizer nor a local minimizer.
+</li></ul>
+For a function <i style="padding-right:0.2em;">f</i> of two variables, the Hessian is
+<div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">
+    <table class="matrix">
+      <tbody><tr>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
+
+<td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)</td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
+</tr>
+
+<tr>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)</td>
+  <td class="cell"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)</td>
+</tr>
+</tbody></table></td>
+      <td class="mathAlign2">.</td>
+</tr>
+</tbody></table></div>
+This matrix is negative definite if <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0.  (These two inequalities imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0.)  Thus the extra condition, in addition to the two conditions
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)&nbsp;&lt; 0 and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;&lt; 0 considered originally, for <i>x</i>* to be a local maximizer is
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*)&nbsp;− <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>*)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>*)&nbsp;&gt; 0.
+<p>
+Similarly, a sufficient condition for a stationary point <i>x</i>* of a function of two variables to be a local minimizer are <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>*) &gt; 0 and |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&gt; 0 (which imply that <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>*) &gt; 0).
+</p><p>
+In particular, if, for a function of two variables, |<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0, then <i>x</i>* is neither a local maximizer nor a local minimizer.  (Note that this condition is only sufficient, not necessary.)
+</p><p>
+A stationary point that is neither a local maximizer nor a local minimizer is called a <span class="definition">saddle point</span>.  Examples are the point (0,&nbsp;0) for the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup> and the point (0,&nbsp;0) for the function
+<i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  In both cases, (0,&nbsp;0) is a maximizer in the <i>y</i> direction given <i>x</i>&nbsp;= 0 and a minimizer in the <i>x</i> direction given <i>y</i>&nbsp;= 0; the graph of each function resembles a saddle for a horse.  Note that not all saddle points look like saddles. 
+For example, every point (0,&nbsp;<i>y</i>) is a saddle point of the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>.  From the results above, a sufficient, though not necessary, condition for a stationary point <i>x</i>* of a function <i style="padding-right:0.2em;">f</i> of two variables to be a saddle point is
+|<i style="padding-right:0.2em;">H</i>(<i>x</i>*)|&nbsp;&lt; 0.
+</p><p>
+A saddle point is sometimes defined to be a stationary point at which the Hessian is indefinite.  (See, for example, <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/lon/REF#SimonBlume1994"><i>Mathematics for economists</i></a> by Simon and Blume, p.&nbsp;399.) Under this definition, (0,&nbsp;0) is a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>2</sup>&nbsp;− <i>y</i><sup>2</sup>,
+but is not a saddle point of <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>4</sup>&nbsp;− <i>y</i><sup>4</sup>.  The definition I give appears to be more standard.
+</p><div class="example" id="m:lo2"><dl class="example"><dt>Example 5.2.2</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= <i>x</i><sup>3</sup>&nbsp;+ <i>y</i><sup>3</sup>&nbsp;− 3<i>x</i><i>y</i>.  The first-order conditions for an optimum are
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight">3<i>x</i><sup>2</sup>&nbsp;− 3<i>y</i>&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;0<sup>&nbsp;</sup></td>
+</tr>
+ <tr>
+  <td class="alignRight">
+3<i>y</i><sup>2</sup>&nbsp;− 3<i>x</i>&nbsp;</td>
+      <td class="mathAlign2">=&nbsp;0.<sup>&nbsp;</sup></td>
+</tr>
+</tbody></table></div>
+Thus the stationary points satisfy <i>y</i>&nbsp;= <i>x</i><sup>2</sup>&nbsp;= <i>y</i><sup>4</sup>, so that either (<i>x</i>,&nbsp;<i>y</i>)&nbsp;= (0,&nbsp;0) or <i>y</i><sup>3</sup>&nbsp;= 1.  So there are two stationary points: (0,&nbsp;0), and (1,&nbsp;1).
+<p>
+Now, the Hessian of <i style="padding-right:0.2em;">f</i> at any point (<i>x</i>,&nbsp;<i>y</i>) is
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">H</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=&nbsp;</td>
       <td class="mathAlign2">
     <table class="matrix">
       <tbody><tr>
-        <td class="delimiterLeft" rowspan="3"><img alt="left parenthesis" src="./index_files/lparen3.gif"></td>
+        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
 
-<td class="cell">|<i>A</i><sub>11</sub>|</td>
-  <td class="cell">−|<i>A</i><sub>21</sub>|</td>
-  <td class="cell">|<i>A</i><sub>31</sub>|</td>
-  <td class="delimiterRight" rowspan="3"><img alt="right parenthesis" src="./index_files/rparen3.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell">−|<i>A</i><sub>12</sub>|</td>
-  <td class="cell">|<i>A</i><sub>22</sub>|</td>
-  <td class="cell">−|<i>A</i><sub>32</sub>|</td>
+<td class="cell">6<i>x</i></td>
+  <td class="cell">−3</td>
+  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
 </tr>
  <tr>
-  <td class="cell">|<i>A</i><sub>13</sub>|</td>
-  <td class="cell">−|<i>A</i><sub>23</sub>|</td>
-  <td class="cell">|<i>A</i><sub>33</sub>|</td>
+  <td class="cell">−3</td>
+  <td class="cell">6<i>y</i></td>
 </tr>
 </tbody></table></td>
+      <td class="mathAlign2">.</td>
 </tr>
 </tbody></table></div>
-if |<i>A</i>|&nbsp;≠ 0.  We have |<i>A</i><sub>11</sub>|&nbsp;= <i>e</i><i>i</i>&nbsp;− <i style="padding-right:0.2em;">f</i><i>h</i>, |<i>A</i><sub>21</sub>|&nbsp;= <i>b</i><i>i</i>&nbsp;− <i>c</i><i>h</i>, |<i>A</i><sub>31</sub>|&nbsp;= <i>b</i><i style="padding-right:0.2em;">f</i>&nbsp;− <i>c</i><i>e</i>, |<i>A</i><sub>12</sub>|&nbsp;= <i>d</i><i>i</i>&nbsp;−
-<i style="padding-right:0.2em;">f</i><i>g</i>, |<i>A</i><sub>22</sub>|&nbsp;= <i>a</i><i>i</i>&nbsp;− <i>c</i><i>g</i>, |<i>A</i><sub>32</sub>|&nbsp;= <i>a</i><i style="padding-right:0.2em;">f</i>&nbsp;− <i>c</i><i>d</i>, |<i>A</i><sub>13</sub>|&nbsp;= <i>d</i><i>h</i>&nbsp;− <i>e</i><i>g</i>, |<i>A</i><sub>23</sub>|&nbsp;= <i>a</i><i>h</i>&nbsp;− <i>b</i><i>g</i>, and
-|<i>A</i><sub>33</sub>|&nbsp;= <i>a</i><i>e</i>&nbsp;− <i>b</i><i>d</i>.  (Again, you can check that the product of the matrix and its inverse is the identity matrix.)
-</dd></dl></div>
+Thus |<i style="padding-right:0.2em;">H</i>(0,&nbsp;0)|&nbsp;= −9, so that (0,&nbsp;0) is neither a local maximizer nor a local  minimizer (i.e. is a saddle point).  We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1,&nbsp;1)&nbsp;= 6&nbsp;&gt; 0 and |<i style="padding-right:0.2em;">H</i>(1,&nbsp;1)|&nbsp;= 36&nbsp;− 9&nbsp;&gt; 0, so that (1,&nbsp;1) is
+a local minimizer.
+<p>
+The function is plotted in the following figure.
+</p><p>
 
-<h3>Rank</h3>
-The “rank” of a matrix is usually defined as the maximal number of linearly independent column vectors in the matrix.  But to give this definition, I would need to define the concept of linear independence, which is not otherwise needed in this tutorial.  So instead I give a definition that uses only concepts defined so far.  (This definition is usually given as a result, following a
-definition in terms of linear independence.)  Note that the matrix in the definition is not required to be square.
-<div class="definition" id="d:rank"><dl class="definition"><dt>Definition</dt><dd>
-The <span class="definition">rank</span> of a matrix <i>A</i> is the number of rows and columns in the largest square matrix obtained by deleting rows and columns of <i>A</i> that has a <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:determinant">determinant</a> different from 0.
-</dd></dl></div>
-An immediate consequence of this definition is that the rank of an <i>n</i>&nbsp;×&nbsp;<i>n</i> <a href="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/mat/t#d:nonsingular">nonsingular</a> matrix is <i>n</i>.
-<div class="example" id="m:rank1"><dl class="example"><dt>Example 1.2.8</dt><dd>
-The rank of the matrix
-<div class="equation">
+	</p><div id="surfacePlotDiv02" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	<div id="surfacePlot2" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 10) / 20;
+						var y = (j - 10) / 20;
+						var value = (Math.pow(x, 3) + Math.pow(y, 3) - 3 * x * y);
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv02"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+
+				var startXAngle_GL = -45; // less negative value tips graphic up, with view more from top
+				var startYAngle_GL = -15; // less negative value rotates graphic counterclockwise
+				
+				// Options for the basic canvas plot.
+				basicPlotOptions = {
+					fillPolygons: fillPly,
+					tooltips: tooltipStrings,
+					renderPoints: renderDataPoints
+					}
+				
+				// Options for the webGL plot.
+				var xLabels = [-0.5, 0, 0.5, 1, 1.5];
+				var yLabels = [-0.5, 0, 0.5, 1, 1.5];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {
+					xLabels: xLabels,
+					yLabels: yLabels,
+					zLabels: zLabels,
+					chkControlId: "allowWebGL",
+					autoCalcZScale: true,
+					animate: true
+					};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv01");
+				
+				// Options common to both types of plot.
+				options = {
+					xPos: 0,
+					yPos: 0,
+					width: plotDiv.offsetWidth,
+					height: plotDiv.offsetHeight,
+					colourGradient: colours,
+					xTitle: xAxisHeader,
+					yTitle: yAxisHeader,
+					zTitle: zAxisHeader, 
+					backColour: background,
+					axisTextColour: axisForeColour,
+					hideFlatMinPolygons: hideFloorPolygons,
+					origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL
+					};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
+<div class="example" id="m:Ex3"><dl class="example"><dt>Example 5.2.3</dt><dd>
+Consider the function <i style="padding-right:0.2em;">f</i>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 8<i>x</i><sup>3</sup>&nbsp;+ 2<i>x</i><i>y</i>&nbsp;− 3<i>x</i><sup>2</sup>&nbsp;+ <i>y</i><sup>2</sup>&nbsp;+ 1.  We have
+<p>
+</p><div class="equation">
+  <table class="mathAlign">
+    <tbody><tr>
+      <td class="alignRight"><i style="padding-right:0.2em;">f</i>'<sub class="prime">1</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">= 24<i>x</i><sup>2</sup>&nbsp;+ 2<i>y</i>&nbsp;− 6<i>x</i></td>
+</tr>
+ <tr>
+  <td class="alignRight">
+<i style="padding-right:0.2em;">f</i>'<sub class="prime">2</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;</td>
+      <td class="mathAlign2">= 2<i>x</i>&nbsp;+ 2<i>y</i>.</td>
+</tr>
+</tbody></table></div>
+To find the stationary points of the function, solve the first-order conditions.  From the second equation we have <i>y</i>&nbsp;= −<i>x</i>; substituting this into first equation we find that 24<i>x</i><sup>2</sup>&nbsp;− 8<i>x</i>&nbsp;= 8<i>x</i>(3<i>x</i>&nbsp;− 1)&nbsp;= 0.  This equation has two solutions, <i>x</i>&nbsp;= 0 and <i>x</i>&nbsp;= 1/3.  Thus there are two
+stationary points:
+<p>
+</p><div class="equation">(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) and (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3).</div>
+<p>
+We have
+</p><p>
+</p><div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 48<i>x</i>&nbsp;− 6, <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2, and <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;=
+<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">21</sub>(<i>x</i>,&nbsp;<i>y</i>)&nbsp;= 2,</div>
+so Hessian is
+<p>
+</p><div class="equation">
   <table class="mathAlign">
     <tbody><tr>
       <td class="alignRight">
     <table class="matrix">
       <tbody><tr>
         <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell">1</td>
-  <td class="cell">0</td>
-  <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
-</tr>
-
-<tr>
-  <td class="cell">1</td>
-  <td class="cell">0</td>
-</tr>
-</tbody></table></td>
-</tr>
-</tbody></table></div>
-is 1 because the determinant of the matrix is 0 and the determinant of the 1&nbsp;×&nbsp;1 matrix obtained by deleting the second row and second column is 1&nbsp;≠ 0.
-</dd></dl></div>
-<div class="example" id="m:rank2"><dl class="example"><dt>Example 1.2.9</dt><dd>
-The rank of the matrix
-<div class="equation">
-  <table class="mathAlign">
-    <tbody><tr>
-      <td class="alignRight">
-    <table class="matrix">
-      <tbody><tr>
-        <td class="delimiterLeft" rowspan="2"><img alt="left parenthesis" src="./index_files/lparen2.gif"></td>
- <td class="cell">1</td>
-  <td class="cell">0</td>
+ <td class="cell">48<i>x</i>&nbsp;−&nbsp;6</td>
   <td class="cell">2</td>
   <td class="delimiterRight" rowspan="2"><img alt="right parenthesis" src="./index_files/rparen2.gif"></td>
 </tr>
 
 <tr>
-  <td class="cell">0</td>
   <td class="cell">2</td>
-  <td class="cell">4</td>
+  <td class="cell">2</td>
 </tr>
 </tbody></table></td>
 </tr>
 </tbody></table></div>
-is 2 because the determinant of the matrix obtained by deleting the last column (i.e. all but the first two rows and columns) is 2&nbsp;≠ 0.
-</dd></dl></div>
+<p>
+Look at each stationary point in turn.
+</p><p>
+</p><dl>
+<dt>(<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0)
+</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)&nbsp;= −6&nbsp;&lt; 0 and
+<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(0,&nbsp;0)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(0,&nbsp;0)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(0,&nbsp;0))<sup>2</sup>&nbsp;= −16&nbsp;&lt; 0.</div>
+So (<i>x</i>*,&nbsp;<i>y</i>*)&nbsp;= (0,&nbsp;0) is neither a local maximizer nor a local minimizer (i.e. it is a saddle point).
+</dd><dt>(<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3)
+</dt><dd>We have <i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)&nbsp;= 10&nbsp;&gt; 0 and
+<div class="equation"><i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">11</sub>(1/3,&nbsp;−1/3)<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">22</sub>(1/3,&nbsp;−1/3)&nbsp;− (<i style="padding-right:0.2em;">f</i>"<sub class="doublePrime">12</sub>(1/3,&nbsp;−1/3))<sup>2</sup>&nbsp;= 96/3&nbsp;− 16&nbsp;= 16&nbsp;&gt; 0.</div>
+So (<i>x</i>**,&nbsp;<i>y</i>**)&nbsp;= (1/3,&nbsp;−1/3) is a local minimizer, with <i style="padding-right:0.2em;">f</i>(1/3,&nbsp;−1/3)&nbsp;= 23/27.
+</dd></dl>
+The function is plotted in the following figure.
+<p>
+
+	</p><div id="surfacePlotDiv03" class="surfacePlot">
+		<!-- SurfacePlot goes here... -->
+	<div id="surfacePlot3" class="surfaceplot" style="background: rgb(255, 255, 255); position: relative; left: 0px; top: 0px;"><canvas class="surfacePlotCanvas" width="350" height="350" style="left: 0px; top: 0px;"></canvas><canvas width="512" height="512" style="display: none;"></canvas></div></div>
+
+		
+		<script type="text/javascript">
+		
+		    var surfacePlot;
+			var data, options, basicPlotOptions, glOptions, animated, values;
+			
+			function setUp()
+			{
+				var numRows = 41;
+				var numCols = 41;
+				
+				var tooltipStrings = new Array();
+				values = new Array();
+				data = {nRows: numRows, nCols: numCols, formattedValues: values};
+				
+				var idx = 0;
+				
+				for (var i = 0; i < numRows; i++) 
+				{
+					values[i] = new Array();
+					
+					for (var j = 0; j < numCols; j++)
+					{
+						var x = (i - 20) / 20;
+						var y = (j - 20) / 20;
+						var value = (8 * Math.pow(x, 3) + 2 * x * y - 3 * Math.pow(x, 2) + Math.pow(y, 2) + 1);
+						
+						values[i][j] = value;
+						
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				surfacePlot = new SurfacePlot(document.getElementById("surfacePlotDiv03"));
+				
+				// Don't fill polygons in IE < v9. It's too slow.
+				var fillPly = true;
+				
+				// Define a colour gradient.
+				var colour1 = {red:0, green:0, blue:255};
+				var colour2 = {red:0, green:255, blue:255};
+				var colour3 = {red:0, green:255, blue:0};
+				var colour4 = {red:255, green:255, blue:0};
+				var colour5 = {red:255, green:0, blue:0};
+				var colours = [colour1, colour2, colour3, colour4, colour5];
+				
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "f(x,y)";
+				
+				var renderDataPoints = false;
+				var background = '#ccffff';
+				var axisForeColour = '#000000';
+				var hideFloorPolygons = true;
+				var chartOrigin = {x: 0, y:0};
+				
+				var startXAngle_GL = -55; // less negative value tips graphic up, with view more from top
+				var startYAngle_GL = 20; // less negative value rotates graphic counterclockwise
+				
+				// Options for the basic canvas pliot.
+				basicPlotOptions = {fillPolygons: fillPly, tooltips: tooltipStrings, renderPoints: renderDataPoints }
+				
+				// Options for the webGL plot.
+				var xLabels = [-1, -0.5, 0, 0.5, 1];
+				var yLabels = [-1, -0.5, 0, 0.5, 1];
+				var zLabels = [0, 1, 2, 3, 4, 5, 6]; // These labels are used only when autoCalcZScale is false;
+				glOptions = {xLabels: xLabels, yLabels: yLabels, zLabels: zLabels, chkControlId: "allowWebGL", autoCalcZScale: true, animate: true};
+				
+				var plotDiv = document.getElementById("surfacePlotDiv03");
+				
+				// Options common to both types of plot.
+				options = {xPos: 0, yPos: 0, width: plotDiv.offsetWidth, height: plotDiv.offsetHeight, colourGradient: colours, 
+					xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, 
+					backColour: background, axisTextColour: axisForeColour, hideFlatMinPolygons: hideFloorPolygons, origin: chartOrigin,
+					startXAngle_GL: startXAngle_GL,
+					startYAngle_GL: startYAngle_GL
+					};
+				
+				surfacePlot.draw(data, options, basicPlotOptions, glOptions);
+				
+			}
+			
+			setUp();
+			
+		</script>
+
+		</dd></dl></div>
 
 
 
@@ -692,7 +867,7 @@ is 2 because the determinant of the matrix obtained by deleting the last column 
             <p>
             </p><form method="post" name="tutorialComment" id="tutorialComment" onsubmit="return validateForm();" action="https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/saveTutorialComment">
                         <input type="hidden" name="commentId" value="0">
-            <input type="hidden" name="pageId" value="4">
+            <input type="hidden" name="pageId" value="44">
 
             
 
@@ -733,7 +908,7 @@ is 2 because the determinant of the matrix obtained by deleting the last column 
                 
             <div id="footerNotes">
     	  Copyright © 1997–2022 by <a href="https://www.economics.utoronto.ca/osborne/">Martin J. Osborne</a>.
-              First posted 1997.  This version 2022-08-18.
+              First posted 1997.  This version 2022-06-05.
     <br>
         Site built on the core of the <a href="http://pkp.sfu.ca/?q=ojs">OJS system</a>.
     </div><!-- footerNotes -->
